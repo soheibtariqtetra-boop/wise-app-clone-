@@ -1,0 +1,106 @@
+/* ── PROFILE SETTINGS ROW ────────────────────────
+   Figma frame: ProfileScreen02 (Node ID: 21:2)
+   Row width: 390px
+   Left inset: 17.333px
+   Right inset: 21.667px
+   Icon size: 52px × 52px
+   Text offset: 87.208px from left
+   Chevron position: right 21.667px
+   ─────────────────────────────────────────── */
+
+.profile-settings-row {
+  position: relative;
+  width: 390px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 21.667px 0 17.333px;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  user-select: none;
+  transition: background-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.profile-settings-row--clipped {
+  overflow: hidden;
+}
+
+.profile-settings-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.profile-settings-row:active {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Icon Container ─────────────────────────── */
+.profile-settings-row__icon-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-settings-row__icon {
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.profile-settings-row--clipped .profile-settings-row__icon {
+  object-fit: cover;
+  object-position: top;
+}
+
+/* ── Text Container ─────────────────────────── */
+.profile-settings-row__text {
+  margin-left: 17.875px; /* 17.333px + 52px + 17.875px = 87.208px from left */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-settings-row__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 600;
+  color: #d0d2ce;
+  line-height: normal;
+  display: block;
+}
+
+.profile-settings-row__title--bold {
+  font-weight: 700;
+}
+
+.profile-settings-row__description {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.625px;
+  font-weight: 400;
+  color: #c1c4bf;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ── Chevron Container ──────────────────────── */
+.profile-settings-row__chevron-container {
+  position: absolute;
+  right: 21.667px;
+  width: 7.042px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-settings-row__chevron {
+  width: 7.042px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.profile-settings-row--clipped .profile-settings-row__chevron {
+  object-fit: cover;
+  object-position: top;
+}

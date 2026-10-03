@@ -1,0 +1,78 @@
+/* ── PROFILE INFO ROW ────────────────────────────
+   Figma: ProfileScreen03
+   Used for: MembershipInfo (21:71) & AppVersionInfo (21:65)
+   Width: 390px
+   Left inset: 17.333px
+   Right inset: 16px
+   ─────────────────────────────────────────── */
+
+.profile-info-row {
+  position: relative;
+  width: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 0 17.333px;
+  box-sizing: border-box;
+}
+
+.profile-info-row__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info-row__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 600;
+  line-height: normal;
+  display: block;
+}
+
+.profile-info-row__label--bold {
+  font-weight: 700;
+}
+
+.profile-info-row__value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-top: 4px;
+  line-height: normal;
+  display: block;
+}
+
+/* ── Copy Button ────────────────────────────── */
+.profile-info-row__copy-btn {
+  width: 64.458px;
+  height: 34.667px;
+  background-color: #282b27;
+  border-radius: 16.25px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.profile-info-row__copy-btn--bordered {
+  border: 0.542px solid #232622;
+}
+
+.profile-info-row__copy-btn:hover {
+  background-color: #353833;
+}
+
+.profile-info-row__copy-btn:active {
+  background-color: #1f211e;
+}
+
+.profile-info-row__copy-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.625px;
+  font-weight: 600;
+  color: #caccc8;
+  line-height: normal;
+}

@@ -1,0 +1,53 @@
+/* ── TRANSACTIONS SECTION ──────────────────────
+   Figma node 79:2
+   Width: 390px, Height: 297.917px
+   ─────────────────────────────────────────── */
+
+.transactions-section {
+  position: relative;
+  width: 390px;
+  height: 297.917px;
+  margin-top: 20.46px;
+  flex-shrink: 0;
+}
+
+.transactions-section__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58.981px;
+}
+
+.transactions-section__title {
+  position: absolute;
+  left: 17.45px;
+  top: 25px;
+  font-size: 22.87px;
+  font-weight: 600;
+  color: #ced0cc;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.transactions-section__see-all {
+  position: absolute;
+  right: 17.45px;
+  top: 31px;
+  font-size: 15.046px;
+  font-weight: 600;
+  color: #76aa54;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+}
+
+/* Rows container */
+.transactions-section__list {
+  position: absolute;
+  top: 58.981px;
+  left: 0;
+  width: 100%;
+}

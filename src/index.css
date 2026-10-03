@@ -1,0 +1,128 @@
+/* ─────────────────────────────────────────────
+   WISE BUSINESS PWA — GLOBAL STYLES & TOKENS
+   ───────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── DESIGN TOKENS ─────────────────────────── */
+:root {
+  /* Backgrounds */
+  --color-bg-root:          #121511;
+  --color-bg-card:          #2b2e2b;
+  --color-bg-card-border:   #232623;
+  --color-bg-promo:         #282b27;
+  --color-bg-avatar:        #292c28;
+  --color-bg-avatar-border: #1b1e1a;
+  --color-bg-details-btn:   #404240;
+  --color-bg-pill:          #2b2e2b;
+
+  /* Button Backgrounds */
+  --color-btn-send:          #9ee770;
+  --color-btn-send-border:   #76ab54;
+  --color-btn-dark:          #153200;
+  --color-btn-dark-border:   #142a05;
+  --color-btn-earn:          #9ee870;
+
+  /* Text — from Figma exact hex values */
+  --color-text-heading:      #d4d6d2;
+  --color-text-label:        #b3b6b2;
+  --color-text-card-title:   #ced0cc;
+  --color-text-card-balance: #b3b6b1;
+  --color-text-gbp:          #b2b5b1;
+  --color-text-eur:          #b1b4b0;
+  --color-text-usd:          #c2c5c0;
+  --color-text-send:         #2c5014;
+  --color-text-earn:         #325818;
+  --color-text-green-cta:    #87c85c;
+  --color-text-getpaid:      #83c359;
+  --color-text-green-open:   #90d463;
+  --color-text-green-avatar: #90d066;
+  --color-text-your-card:    #cde1ca;
+  --color-text-acct-detail:  #c9cbc7;
+  --color-text-promo-title:  #caccc9;
+  --color-text-promo-body:   #bbbdb9;
+  --color-text-progress:     #93d768;
+  --color-text-nav-active:   #7eb55a;
+  --color-text-nav-payments: #91958f;
+  --color-text-nav-recip:    #a4a8a1;
+  --color-text-nav-cards:    #8f948d;
+
+}
+
+/* ── RESET ────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #0a0c09;
+  color: var(--color-text-heading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* ── APP SHELL ────────────────────────────── */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #0a0c09;
+}
+
+.app-shell {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background-color: var(--color-bg-root);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── UTILITY ─────────────────────────────── */
+img {
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── GLOBAL SCROLLBAR HIDING ── */
+* {
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Add touch-action for vertical swiping to common scroll containers */
+[class*="__scroll"],
+[class*="-scroll-content"],
+[class*="-scroll-container"] {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}

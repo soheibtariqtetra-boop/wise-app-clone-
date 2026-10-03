@@ -1,0 +1,173 @@
+/* ── TOP BAR SHELL ────────────────────────────
+   Outer wrapper — sits as a flex item in
+   .home-screen above the scroll container.
+   Normal state:  transparent (dark root bg shows through)
+   Scrolled state: dark-grey (#2b2e2b) fills behind the bar.
+   ─────────────────────────────────────────── */
+
+.top-bar-shell {
+  width: 390px;
+  flex-shrink: 0;
+  background-color: transparent;
+  z-index: 10;
+  position: relative;
+  height: 67.824px;
+  transition: background-color 0.15s ease, height 0.15s ease;
+}
+
+.top-bar-shell--scrolled {
+  /* Exact Figma HomeScreen02 copied node 77:2044 fill and node 77:2043 height */
+  height: 83.056px;
+  background-color: #1d201c;
+}
+
+/* ── TOP BAR ──────────────────────────────────
+   Figma node 77:2045 (HomeScreen02 copied)
+   Width: 358.102px, Height: 46.343px
+   Position: x: 14.444px, y: 28.287px inside TopBarArea
+   ─────────────────────────────────────────── */
+
+.top-bar {
+  position: relative;
+  margin-left: 14.444px;
+  width: 358.102px;
+  height: 46.343px;
+  flex-shrink: 0;
+  margin-top: 20.278px;
+  transition: margin-top 0.15s ease;
+}
+
+.top-bar-shell--scrolled .top-bar {
+  margin-top: 28.287px;
+}
+
+/* ── ML Avatar circle ─────────────────────── */
+.top-bar__avatar-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48.148px;
+  height: 46.343px;
+  background: transparent;
+  border: none;
+}
+
+.top-bar__avatar {
+  position: absolute;
+  width: 43.333px;
+  height: 43.333px;
+  left: 3.01px;
+  top: 2.41px;
+  border-radius: 50%;
+  background-color: var(--color-bg-avatar);
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Invisible touch hit target expansion without altering visual geometry */
+.top-bar__avatar::before {
+  content: '';
+  position: absolute;
+  top: -2.41px;
+  left: -3.01px;
+  width: 48.148px;
+  height: 46.343px;
+  background: transparent;
+}
+
+.top-bar-shell--scrolled .top-bar__avatar {
+  background-color: #333632;
+}
+
+.top-bar__avatar-text {
+  font-size: 13.241px;
+  font-weight: 700;
+  color: var(--color-text-green-avatar);
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+/* ── Earn £50 ─────────────────────────────── */
+.top-bar__earn-container {
+  position: absolute;
+  left: 98.10px;
+  top: 0;
+  width: 105.926px;
+  height: 46.944px;
+}
+
+.top-bar__btn--earn {
+  position: absolute;
+  left: 3.01px;
+  top: 2.41px;
+  width: 101.111px;
+  height: 43.333px;
+  border-radius: 21.065px;
+  background-color: var(--color-btn-earn);
+  color: var(--color-text-earn);
+  font-size: 16.852px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Open + ───────────────────────────────── */
+.top-bar__open-container {
+  position: absolute;
+  left: 208.24px;
+  top: 0;
+  width: 99.306px;
+  height: 47.546px;
+}
+
+.top-bar__btn--open {
+  position: absolute;
+  left: 3.01px;
+  top: 2.41px;
+  width: 94.491px;
+  height: 43.333px;
+  border-radius: 21.065px;
+  background-color: var(--color-btn-dark);
+  color: var(--color-text-green-open);
+  font-size: 16.852px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.top-bar__plus-icon {
+  width: 15.046px;
+  height: 15.046px;
+  object-fit: contain;
+}
+
+/* ── Stats/Chart icon ─────────────────────── */
+.top-bar__icon-btn {
+  position: absolute;
+  left: 314.77px;
+  top: 2.41px;
+  width: 43.333px;
+  height: 43.333px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.top-bar__chart-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

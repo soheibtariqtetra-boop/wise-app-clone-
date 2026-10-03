@@ -1,0 +1,85 @@
+/* ── PROFILE MENU ROW ───────────────────────────
+   Figma: 390px wide, icons at left: 17.333px, chevron at right: 21.667px
+   ─────────────────────────────────────────── */
+
+.profile-menu-row {
+  position: relative;
+  width: 390px;
+  min-height: 72.042px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  user-select: none;
+  transition: background-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.profile-menu-row--with-subtitle {
+  min-height: 80.708px;
+}
+
+.profile-menu-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.profile-menu-row:active {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Icon ───────────────────────────────────── */
+.profile-menu-row__icon-container {
+  position: absolute;
+  left: 17.333px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-menu-row__icon {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ── Text ───────────────────────────────────── */
+.profile-menu-row__text {
+  position: absolute;
+  left: 86.667px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-menu-row__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 600;
+  color: #d0d2ce;
+  line-height: normal;
+}
+
+.profile-menu-row__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15.167px;
+  font-weight: 400;
+  color: #c2c5c0;
+  margin-top: 4px;
+  line-height: normal;
+}
+
+/* ── Chevron ────────────────────────────────── */
+.profile-menu-row__chevron {
+  position: absolute;
+  right: 21.667px;
+  width: 7.042px;
+  height: 13px;
+  object-fit: contain;
+  pointer-events: none;
+}

@@ -1,0 +1,40 @@
+/* ── CAROUSEL DOTS ─────────────────────────────
+   Figma node 43:29
+   Width: 49.352px, Height: 27.083px
+   X: 170.32px
+   ─────────────────────────────────────────── */
+
+.carousel-dots {
+  position: relative;
+  width: 49.352px;
+  height: 27.083px;
+  margin-top: 10.231px;
+  margin-left: 170.324px;
+  flex-shrink: 0;
+}
+
+.carousel-dots__bg {
+  position: absolute;
+  left: 2.41px;
+  top: 3.01px;
+  width: 44.537px;
+  height: 21.667px;
+  background-color: #2b2e2b;
+  border-radius: 9.931px;
+}
+
+.carousel-dots__dot1 {
+  position: absolute;
+  left: 28.89px;
+  top: 9.03px;
+  width: 9.028px;
+  height: 9.028px;
+}
+
+.carousel-dots__dot2 {
+  position: absolute;
+  left: 11.44px;
+  top: 9.03px;
+  width: 9.028px;
+  height: 9.028px;
+}

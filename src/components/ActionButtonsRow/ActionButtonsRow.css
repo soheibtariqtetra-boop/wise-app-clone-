@@ -1,0 +1,122 @@
+/* ── ACTION BUTTONS ROW ───────────────────────
+   Figma node 43:59
+   Width: 375.555px, Height: 45.139px
+   X: 14.44px, Y: 163.51px
+   ─────────────────────────────────────────── */
+
+.action-row {
+  position: relative;
+  margin-top: 15.649px;
+  margin-left: 14.444px;
+  width: 375.555px;
+  height: 45.139px;
+  flex-shrink: 0;
+}
+
+/* Common button base for text buttons */
+.action-row__btn-wrap {
+  position: absolute;
+  top: 0;
+  height: 45.139px;
+}
+
+.action-row__btn-bg {
+  position: absolute;
+  left: 3.01px;
+  top: 1.81px;
+  height: 43.333px;
+  border-radius: 19.861px;
+  border: 0.602px solid transparent;
+}
+
+.action-row__btn-content {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ── Send ─────────────────────────────────── */
+.action-row__btn--send-wrap {
+  left: 0;
+  width: 74.028px;
+}
+.action-row__btn--send-bg {
+  width: 68.611px;
+  background-color: var(--color-btn-send);
+  border-color: var(--color-btn-send-border);
+}
+.action-row__btn--send-text {
+  width: 43.333px;
+  height: 18.657px;
+  top: 13.24px;
+  left: 16.85px;
+  font-size: 17.454px;
+  color: var(--color-text-send);
+}
+
+/* ── Add money ────────────────────────────── */
+.action-row__btn--add-wrap {
+  left: 78.24px;
+  width: 123.981px;
+}
+.action-row__btn--add-bg {
+  width: 119.167px;
+  background-color: var(--color-btn-dark);
+  border-color: var(--color-btn-dark-border);
+}
+.action-row__btn--add-text {
+  width: 95.093px;
+  height: 23.472px;
+  top: 12.04px;
+  left: 16.25px;
+  font-size: 16.852px;
+  color: var(--color-text-green-cta);
+}
+
+/* ── Get paid ─────────────────────────────── */
+.action-row__btn--get-wrap {
+  left: 206.44px;
+  width: 123.38px;
+}
+.action-row__btn--get-bg {
+  width: 118.565px;
+  background-color: var(--color-btn-dark);
+  border-color: var(--color-btn-dark-border);
+}
+.action-row__btn--get-text {
+  width: 69.815px;
+  height: 22.87px;
+  top: 12.04px;
+  left: 16.85px;
+  font-size: 16.852px;
+  color: var(--color-text-getpaid);
+}
+.action-row__btn--get-chevron {
+  position: absolute;
+  width: 14.444px;
+  height: 9.028px;
+  top: 19.26px;
+  left: 92.08px;
+  object-fit: contain;
+}
+
+/* ── QR Button ────────────────────────────── */
+.action-row__qr-wrap {
+  position: absolute;
+  left: 337.04px;
+  top: 1.81px;
+  width: 38.519px;
+  height: 43.333px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.action-row__qr-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

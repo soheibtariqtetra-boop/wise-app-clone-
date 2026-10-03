@@ -1,0 +1,605 @@
+/* ── TRANSFER CALCULATOR SECTION ────────────────
+   Figma node 80:2078 (Screen03) — TransferCalculatorSection
+   Container: x: 15.648px, y: 102.278px
+   Width: 357.5px, Height: 572.361px
+   ─────────────────────────────────────────── */
+
+.transfer-calc-section {
+  position: relative;
+  width: 357.5px;
+  margin-left: 15.648px;
+  margin-top: 37.32px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   CARD & CHART CONTAINER
+   Figma node 80:2078 — TransferCalculatorSection
+   width: 357.5px, height: 572.361px
+   ───────────────────────────────────────────── */
+
+.transfer-calc-card-container {
+  position: relative;
+  width: 357.5px;
+  height: 572.361px;
+}
+
+/* ─────────────────────────────────────────────
+   RATE CHART CARD
+   Figma node 80:2108
+   width: 357.5px, height: 229.907px
+   Position: absolute, left: 0, top: 0
+   ───────────────────────────────────────────── */
+
+.rate-chart-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 357.5px;
+  height: 229.907px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Y-axis value labels
+   Figma:
+   22.0 -> node 80:2113: left: 312.361px, top: 57.176px, w: 28.287px, h: 14.444px, font 12.639px SemiBold #9b9e9a
+   21.8 -> node 80:2112: left: 315.370px, top: 112.546px, w: 24.676px, h: 15.000px, font 12.037px SemiBold #9fa29d
+   21.5 -> node 80:2111: left: 314.768px, top: 167.917px, w: 25.278px, h: 13.843px, font 12.037px SemiBold #9b9e9a
+*/
+.rate-chart-card__val-label {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  line-height: normal;
+}
+
+.rate-chart-card__val-label--22 {
+  left: 312.361px;
+  top: 57.176px;
+  width: 28.287px;
+  height: 14.444px;
+  font-size: 12.639px;
+  font-weight: 600;
+  color: #9b9e9a;
+}
+
+.rate-chart-card__val-label--21-8 {
+  left: 315.370px;
+  top: 112.546px;
+  width: 24.676px;
+  height: 15px;
+  font-size: 12.037px;
+  font-weight: 600;
+  color: #9fa29d;
+}
+
+.rate-chart-card__val-label--21-5 {
+  left: 314.768px;
+  top: 167.917px;
+  width: 25.278px;
+  height: 13.843px;
+  font-size: 12.037px;
+  font-weight: 600;
+  color: #9b9e9a;
+}
+
+/* Date labels
+   Figma:
+   Aug 29 -> node 80:2110: left: 18.657px, top: 190.185px, w: 51.759px, h: 18.657px, font 15.046px Regular #afb2ae
+   Today  -> node 80:2109: left: 252.778px, top: 190.787px, w: 43.333px, h: 18.056px, font 14.444px Regular #adb0ab
+*/
+.rate-chart-card__date-label {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  line-height: normal;
+}
+
+.rate-chart-card__date-label--aug {
+  left: 18.657px;
+  top: 190.185px;
+  width: 51.759px;
+  height: 18.657px;
+  font-size: 15.046px;
+  font-weight: 400;
+  color: #afb2ae;
+}
+
+.rate-chart-card__date-label--today {
+  left: 252.778px;
+  top: 190.787px;
+  width: 43.333px;
+  height: 18.056px;
+  font-size: 14.444px;
+  font-weight: 400;
+  color: #adb0ab;
+}
+
+/* Green rate line artwork
+   Figma node 80:2114: left: 20.463px, top: 65.000px, w: 278.056px, h: 114.954px
+*/
+.rate-chart-card__line-artwork {
+  position: absolute;
+  left: 20.463px;
+  top: 65px;
+  width: 278.056px;
+  height: 114.954px;
+  pointer-events: none;
+}
+
+/* Current rate dot indicator
+   Figma node 80:2115: left: 281.667px, top: 109.537px, w: 32.500px, h: 35.509px
+*/
+.rate-chart-card__rate-indicator {
+  position: absolute;
+  left: 281.667px;
+  top: 109.537px;
+  width: 32.5px;
+  height: 35.509px;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   FULL CALCULATOR CARD
+   Figma node 80:2079 — TransferCalculatorCard
+   Position: absolute, left: 0.602px, top: 37.917px
+   width: 356.296px, height: 534.444px
+   ───────────────────────────────────────────── */
+
+.calc-card {
+  position: absolute;
+  left: 0.602px;
+  top: 37.917px;
+  width: 356.296px;
+  height: 534.444px;
+  z-index: 1;
+}
+
+/* Background
+   Figma node 80:2080: left: 1.204px, top: -32.500px, w: 355.093px, h: 566.343px, border-radius: 16.852px, bg: #282b27
+*/
+.calc-card__bg {
+  position: absolute;
+  left: 1.204px;
+  top: -32.5px;
+  width: 355.093px;
+  height: 566.343px;
+  background-color: #282b27;
+  border-radius: 16.852px;
+  z-index: 0;
+}
+
+/* ── Exchange Rate Text ───────────────────────
+   Figma node 80:2107 — ExchangeRateLabel
+   left: 18.657px, top: 193.796px, w: 172.731px, h: 17.454px
+   font: Inter SemiBold 18.056px, color: #caccc8
+   ─────────────────────────────────────────── */
+
+.calc-card__rate-text {
+  position: absolute;
+  left: 18.657px;
+  top: 193.796px;
+  width: 172.731px;
+  height: 17.454px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18.056px;
+  font-weight: 600;
+  color: #caccc8;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   CURRENCY CONVERTER
+   Figma node 84:2
+   Position: absolute, left: 16.852px, top: 232.315px
+   width: 323.195px, height: 132.407px
+   ───────────────────────────────────────────── */
+
+.currency-converter {
+  position: absolute;
+  left: 16.852px;
+  top: 232.315px;
+  width: 323.195px;
+  height: 132.407px;
+  z-index: 1;
+}
+
+/* ── Source Currency Row (GBP) ────────────────
+   Figma node 80:2102: left: 0, top: 0, w: 323.194px, h: 63.194px
+   ─────────────────────────────────────────── */
+
+.currency-row--source {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 323.194px;
+  height: 63.194px;
+}
+
+.currency-row__bg--source {
+  position: absolute;
+  left: 0.602px;
+  top: 0;
+  width: 320.185px;
+  height: 61.991px;
+  border-radius: 16.852px;
+  background-color: #111411;
+  border: 0.602px solid #181b17;
+  box-sizing: border-box;
+}
+
+.currency-row__amount {
+  position: absolute;
+  left: 18.056px;
+  top: 21.667px;
+  width: 14.444px;
+  height: 18.657px;
+  font-family: 'Inter', sans-serif;
+  font-size: 19.861px;
+  font-weight: 600;
+  color: #c2c4c0;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.currency-row__flag--source {
+  position: absolute;
+  left: 204.028px;
+  top: 19.259px;
+  width: 25.88px;
+  height: 25.88px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.currency-row__code--gbp {
+  position: absolute;
+  left: 239.537px;
+  top: 19.259px;
+  width: 40.324px;
+  height: 22.87px;
+  font-family: 'Inter', sans-serif;
+  font-size: 19.259px;
+  font-weight: 600;
+  color: #89c761;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.currency-row__chevron--source {
+  position: absolute;
+  left: 290.093px;
+  top: 28.287px;
+  width: 12.639px;
+  height: 7.824px;
+  z-index: 1;
+}
+
+/* ── Target Currency Row (ZAR) ────────────────
+   Figma node 80:2092: left: 1.204px, top: 59.583px, w: 321.991px, h: 72.824px
+   ─────────────────────────────────────────── */
+
+.currency-row--target {
+  position: absolute;
+  left: 1.204px;
+  top: 59.583px;
+  width: 321.991px;
+  height: 72.824px;
+}
+
+.currency-row__bg--target {
+  position: absolute;
+  left: 0.602px;
+  top: 10.232px;
+  width: 320.185px;
+  height: 62.593px;
+  border-radius: 16.852px;
+  background-color: #121511;
+  border: 1.204px solid #191c18;
+  box-sizing: border-box;
+}
+
+.currency-row__amount--target {
+  position: absolute;
+  left: 18.055px;
+  top: 30.093px;
+  width: 52.361px;
+  height: 22.269px;
+  font-family: 'Inter', sans-serif;
+  font-size: 19.259px;
+  font-weight: 600;
+  color: #cfd1cd;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.currency-row__flag--target {
+  position: absolute;
+  left: 203.426px;
+  top: 29.491px;
+  width: 25.88px;
+  height: 25.88px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.currency-row__code--zar {
+  position: absolute;
+  left: 239.537px;
+  top: 29.491px;
+  width: 39.722px;
+  height: 23px;
+  font-family: 'Inter', sans-serif;
+  font-size: 19.259px;
+  font-weight: 600;
+  color: #8bcb63;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.currency-row__chevron--target {
+  position: absolute;
+  left: 288.889px;
+  top: 38.519px;
+  width: 12.639px;
+  height: 7.824px;
+  z-index: 1;
+}
+
+/* ── Swap Control ────────────────────────────
+   Figma nodes in TargetCurrencyRow:
+   Connector: node 80:2099: left: 2.408px, top: 58.981px, w: 142.639px, h: 14.444px
+   SwapButton: node 80:2097: left: 144.445px, top: 49.352px, w: 36.111px, h: 34.907px
+   SwapIcon: node 80:2098: left: 154.074px, top: 58.981px, w: 15.648px, h: 15.648px
+   ─────────────────────────────────────────── */
+
+.currency-swap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.currency-swap__connector {
+  position: absolute;
+  left: 2.408px;
+  top: 58.981px;
+  width: 142.639px;
+  height: 14.444px;
+  border-radius: 7.222px;
+  z-index: 2;
+}
+
+.currency-swap__button {
+  position: absolute;
+  left: 144.445px;
+  top: 49.352px;
+  width: 36.111px;
+  height: 34.907px;
+  z-index: 3;
+}
+
+.currency-swap__icon {
+  position: absolute;
+  left: 154.074px;
+  top: 58.981px;
+  width: 15.648px;
+  height: 15.648px;
+  z-index: 4;
+}
+
+/* ─────────────────────────────────────────────
+   TRANSFER DETAILS CARD
+   Figma node 80:2084
+   left: 15.648px, top: 377.963px, w: 326.204px, h: 69.213px
+   ───────────────────────────────────────────── */
+
+.transfer-details {
+  position: absolute;
+  left: 15.648px;
+  top: 377.963px;
+  width: 326.204px;
+  height: 69.213px;
+  z-index: 1;
+}
+
+.transfer-details__bg {
+  position: absolute;
+  left: 2.407px;
+  top: 4.213px;
+  width: 320.787px;
+  height: 65px;
+  background-color: #282b27;
+  border: 0.602px solid #494c48;
+  border-radius: 17.454px;
+  box-sizing: border-box;
+}
+
+.transfer-details__divider {
+  position: absolute;
+  left: 162.5px;
+  top: 15.046px;
+  width: 1.204px;
+  height: 43.333px;
+  z-index: 1;
+}
+
+/* Left: Fees */
+.transfer-details__label--fee {
+  position: absolute;
+  left: 25.88px;
+  top: 15.648px;
+  width: 92.685px;
+  height: 16.852px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.444px;
+  font-weight: 400;
+  color: #9fa49d;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.transfer-details__fee-icon {
+  position: absolute;
+  left: 124.583px;
+  top: 17.454px;
+  width: 15.046px;
+  height: 14.444px;
+  z-index: 1;
+}
+
+.transfer-details__value--fee {
+  position: absolute;
+  left: 49.352px;
+  top: 39.12px;
+  width: 67.407px;
+  height: 16.852px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.046px;
+  font-weight: 400;
+  color: #b2b5b0;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Right: Arrival */
+.transfer-details__label--arrival {
+  position: absolute;
+  left: 196.806px;
+  top: 15.648px;
+  width: 94.491px;
+  height: 16.852px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.046px;
+  font-weight: 400;
+  color: #a3a7a0;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.transfer-details__value--arrival {
+  position: absolute;
+  left: 191.389px;
+  top: 37.917px;
+  width: 106.528px;
+  height: 21.667px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.046px;
+  font-weight: 400;
+  color: #b6b9b5;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   SEND BUTTON
+   Figma node 80:2081
+   left: 15.648px, top: 461.019px, w: 325.602px, h: 57.176px
+   ───────────────────────────────────────────── */
+
+.calc-send-button {
+  position: absolute;
+  left: 15.648px;
+  top: 461.019px;
+  width: 325.602px;
+  height: 57.176px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.calc-send-button__bg {
+  position: absolute;
+  left: 3.009px;
+  top: 3.009px;
+  width: 320.185px;
+  height: 52.361px;
+  background-color: #9fe770;
+  border: 0.602px solid #73a255;
+  border-radius: 22.87px;
+  box-sizing: border-box;
+}
+
+.calc-send-button__label {
+  position: absolute;
+  left: 142.037px;
+  top: 19.259px;
+  width: 44.537px;
+  height: 18.056px;
+  font-family: 'Inter', sans-serif;
+  font-size: 17.454px;
+  font-weight: 600;
+  color: #315718;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   EXCHANGE RATE UPDATES ROW
+   Figma node 84:3
+   left: 17.454px (relative to section: 1.806px)
+   top: 704.130px (gap: 29.491px from section bottom 674.639px)
+   w: 350.880px, h: 51.759px
+   ───────────────────────────────────────────── */
+
+.exchange-rate-updates {
+  position: relative;
+  width: 350.88px;
+  height: 51.759px;
+  margin-top: 29.491px;
+  margin-left: 1.806px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.exchange-rate-updates__icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 51.759px;
+  height: 51.759px;
+}
+
+.exchange-rate-updates__label {
+  position: absolute;
+  left: 69.815px;
+  top: 14.445px;
+  width: 222.083px;
+  height: 23.472px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16.852px;
+  font-weight: 600;
+  color: #c9cbc8;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+}
+
+.exchange-rate-updates__chevron {
+  position: absolute;
+  left: 343.657px;
+  top: 19.259px;
+  width: 7.222px;
+  height: 13.241px;
+}

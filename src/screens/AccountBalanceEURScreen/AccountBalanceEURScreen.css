@@ -1,0 +1,643 @@
+/* ──────────────────────────────────────────────
+   ACCOUNT BALANCE EUR SCREEN
+   Figma references:
+     - Screen01: AccountBalanceEURScreen01 (Node 31:454)
+     - Screen02: AccountBalanceEURScreen02 (Node 24:144)
+   Viewport: 390 × 844
+   ────────────────────────────────────────────── */
+
+.eur-screen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background-color: #121511;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── TOP CONTROLS (31:507 / 24:177) ────────── */
+.eur-screen__top-controls {
+  position: relative;
+  width: 390px;
+  height: 70.958px;
+  flex-shrink: 0;
+  z-index: 15;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  background-color: transparent;
+}
+
+.eur-screen__top-controls--scrolled {
+  background-color: #121511;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.eur-screen__btn {
+  position: absolute;
+  width: 43.333px;
+  height: 43.333px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 2;
+}
+.eur-screen__btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Close: x:17.333, top:13.5px */
+.eur-screen__btn--close {
+  left: 17.333px;
+  top: 13.5px;
+}
+
+/* More: x:329.333, top:13.5px */
+.eur-screen__btn--more {
+  right: 17.333px;
+  top: 13.5px;
+}
+
+/* ── COMPACT IDENTITY TITLE (24:186) ────────── */
+/* Centered identity shown when scrolled down to Screen02 state */
+.eur-screen__compact-identity {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.eur-screen__compact-identity--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.eur-screen__compact-icons {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 46px;
+  height: 28px;
+}
+
+.eur-screen__compact-currency-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.eur-screen__compact-flag {
+  position: absolute;
+  right: 0;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.eur-screen__compact-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 19.5px;
+  color: #d5d8d4;
+  line-height: 1;
+}
+
+/* ── SCROLL VIEWPORT (Single Scroll Owner) ───── */
+.eur-screen__scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.eur-screen__scroll-inner {
+  position: relative;
+  width: 390px;
+  min-height: 100%;
+  padding-bottom: 110px; /* Safe space clearance for floating action bar */
+}
+
+/* ── ACCOUNT HERO (31:500-506) ─────────────── */
+.eur-screen__hero {
+  position: relative;
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.eur-screen__currency-icons {
+  position: relative;
+  width: 85.583px;
+  height: 48.75px;
+  margin-bottom: 6px;
+}
+
+.eur-screen__currency-icon {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 39px;
+  height: 43.333px;
+}
+.eur-screen__currency-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eur-screen__flag-icon {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  width: 43.333px;
+  height: 43.333px;
+}
+.eur-screen__flag-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Account label — "Current account / EUR" (31:505) */
+.eur-screen__account-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16.792px;
+  color: #b1b5af;
+  line-height: 1;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Balance — "100.00 EUR" (31:504) */
+.eur-screen__balance {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 41.167px;
+  color: #e9ebe7;
+  line-height: 1;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ── IBAN PILL (31:494/31:495) ──────────────── */
+.eur-screen__iban-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 260.542px;
+  height: 45.5px;
+  background-color: #153200;
+  border-radius: 19.5px;
+  margin: 0 auto 24px auto;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eur-screen__iban-bank-icon {
+  width: 15.167px;
+  height: 15.167px;
+  object-fit: contain;
+}
+
+.eur-screen__iban-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  color: #8dd061;
+  line-height: 1;
+}
+
+.eur-screen__iban-chevron {
+  width: 8.125px;
+  height: 14.083px;
+  object-fit: contain;
+}
+
+/* ── INTEREST CARD (31:488) ─────────────────── */
+.eur-screen__interest-card {
+  position: relative;
+  width: 357.5px;
+  height: 117px;
+  margin: 0 auto 12px auto;
+}
+
+.eur-screen__interest-bg {
+  position: absolute;
+  left: 1.08px;
+  top: 1.08px;
+  width: 355.333px;
+  height: 114.833px;
+  background-color: #292c27;
+  border-radius: 16.25px;
+}
+
+.eur-screen__interest-close {
+  position: absolute;
+  right: 13.54px;
+  top: 14.62px;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.eur-screen__interest-close img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eur-screen__interest-flower {
+  position: absolute;
+  left: 14.25px;
+  bottom: 1.08px;
+  width: 57.417px;
+  height: 86.125px;
+}
+.eur-screen__interest-flower img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eur-screen__interest-body {
+  position: absolute;
+  left: 87px;
+  top: 18px;
+  right: 45px;
+}
+
+.eur-screen__interest-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #c2c5c0;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.eur-screen__interest-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15.167px;
+  color: #88c362;
+  line-height: 1;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+/* ── RISK DISCLAIMER (31:503) ──────────────── */
+.eur-screen__disclaimer {
+  width: 349.917px;
+  margin: 4px auto 16px auto;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11.375px;
+  color: #91958f;
+  text-align: center;
+  line-height: 1.54;
+}
+
+/* ── TRANSACTION TABS (31:480 / 24:180) ─────── */
+/* Sticky segmented control header when scrolling */
+.eur-screen__tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #121511;
+  width: 390px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.eur-screen__tabs-bg {
+  position: absolute;
+  left: 17.33px;
+  top: 4px;
+  width: 355px;
+  height: 43.333px;
+  background-color: #292c27;
+  border-radius: 21.667px;
+}
+.eur-screen__tabs-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Transactions tab (left half, active) */
+.eur-screen__tab--transactions {
+  position: absolute;
+  left: 17.33px;
+  top: 4px;
+  width: 177.667px;
+  height: 43.333px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1;
+}
+.eur-screen__tab-transactions-bg {
+  position: absolute;
+  left: 3px;
+  top: 3.5px;
+  width: 171.708px;
+  height: 36.292px;
+  background-color: #111410;
+  border-radius: 17.875px;
+}
+.eur-screen__tab-transactions-label {
+  position: absolute;
+  left: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  color: #86c25f;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Options tab (right half, inactive) */
+.eur-screen__tab--options {
+  position: absolute;
+  right: 17.33px;
+  top: 4px;
+  width: 177.667px;
+  height: 43.333px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.eur-screen__tab-options-bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.eur-screen__tab-options-label {
+  position: absolute;
+  right: 56px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 17.333px;
+  color: #b9bcb7;
+  line-height: 1;
+}
+
+/* ── TRANSACTION LIST (Data-Driven & Repeatable) ── */
+.eur-screen__tx-list {
+  position: relative;
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Single transaction row (Davy Lim — 31:475 / 24:171) */
+.eur-screen__tx-row {
+  position: relative;
+  width: 390px;
+  height: 75.292px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+
+.eur-screen__tx-row:active {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.eur-screen__tx-icon {
+  position: absolute;
+  left: 17.33px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 51.458px;
+}
+.eur-screen__tx-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eur-screen__tx-title {
+  position: absolute;
+  left: 87.21px;
+  top: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  line-height: 1;
+}
+
+.eur-screen__tx-date {
+  position: absolute;
+  left: 86.67px;
+  top: 42px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15.167px;
+  color: #b6b9b5;
+  line-height: 1;
+}
+
+.eur-screen__tx-amount {
+  position: absolute;
+  right: 17.33px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16.792px;
+  line-height: 1;
+  text-align: right;
+}
+
+/* ── VIEW ALL ROW (Screen02 — 24:166) ────────── */
+.eur-screen__view-all-row {
+  position: relative;
+  width: 390px;
+  height: 78.542px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eur-screen__view-all-row:active {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.eur-screen__view-all-icon {
+  position: absolute;
+  left: 17.33px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 51.458px;
+}
+.eur-screen__view-all-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eur-screen__view-all-title {
+  position: absolute;
+  left: 86.67px;
+  top: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  color: #cacdc9;
+  line-height: 1;
+}
+
+.eur-screen__view-all-subtitle {
+  position: absolute;
+  left: 87.21px;
+  top: 43px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #b0b3ae;
+  line-height: 1;
+}
+
+.eur-screen__view-all-chevron {
+  position: absolute;
+  right: 21.67px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7.042px;
+  height: 13.542px;
+}
+.eur-screen__view-all-chevron img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── FLOATING GREEN ACTION BAR (instances = 1) ─ */
+/* Positioned relative to the 390×844 container, floats above content */
+.eur-screen__floating-bar-wrap {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Symmetrical capsule shape with equal smooth radii on all 4 corners */
+.eur-screen__action-bar {
+  pointer-events: auto;
+  width: 286px;
+  height: 71.5px;
+  background-color: #90d366;
+  border-radius: 36px; /* Symmetrical capsule: H/2 */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.eur-screen__action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eur-screen__action-icon {
+  width: 19.5px;
+  height: 19.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eur-screen__action-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eur-screen__action-icon--convert {
+  width: 21.667px;
+  height: 15.167px;
+}
+.eur-screen__action-icon--send {
+  width: 19.5px;
+  height: 21.667px;
+}
+.eur-screen__action-icon--getpaid {
+  width: 19.5px;
+  height: 21.667px;
+}
+
+.eur-screen__action-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.625px;
+  color: #232f1b;
+  line-height: 1;
+}
+.eur-screen__action-label--getpaid {
+  font-size: 15.167px;
+  color: #232f1a;
+}

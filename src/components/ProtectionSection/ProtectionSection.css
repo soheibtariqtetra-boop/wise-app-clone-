@@ -1,0 +1,124 @@
+/* ── PROTECTION SECTION ─────────────────────────
+   Figma node 80:2147 (HomeScreen04)
+   Width: 390px, Height: 146.852px
+   Gap from ExchangeRateUpdates: 34.306px
+   ─────────────────────────────────────────── */
+
+.protection-section {
+  position: relative;
+  width: 390px;
+  height: 146.852px;
+  margin-top: 34.306px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* ── Header: Shield + Title ───────────────────
+   Figma node 80:2153 (Shield) & 80:2152 (Title)
+   left: 88.472px, top: 14.444px
+   gap between shield & title: 12.639px
+   ─────────────────────────────────────────── */
+
+.protection-section__header {
+  position: absolute;
+  left: 88.472px;
+  top: 14.444px;
+  height: 24.074px;
+  display: flex;
+  align-items: center;
+  gap: 12.639px;
+}
+
+.protection-section__shield {
+  width: 18.056px;
+  height: 22.269px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.protection-section__title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 16.852px;
+  font-weight: 600;
+  color: #84bf5d;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* ── Description ──────────────────────────────
+   Figma node 80:2151
+   left: 19.259px, top: 49.352px, width: 353.287px, height: 45.741px
+   ─────────────────────────────────────────── */
+
+.protection-section__desc {
+  position: absolute;
+  left: 19.259px;
+  top: 49.352px;
+  width: 353.287px;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.444px;
+  font-weight: 400;
+  line-height: 20.581px;
+  color: #b2b4b0;
+  text-align: center;
+}
+
+/* ── Learn More Button Container ──────────────
+   Figma node 80:2148
+   left: 138.426px, top: 110.139px, width: 112.546px, height: 36.713px
+   ─────────────────────────────────────────── */
+
+.protection-section__btn-container {
+  position: absolute;
+  left: 138.426px;
+  top: 110.139px;
+  width: 112.546px;
+  height: 36.713px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Learn More Button Pill ───────────────────
+   Figma node 80:2149
+   width: 108.333px, height: 33.704px, radius: 15.648px
+   fill: #282b27
+   ─────────────────────────────────────────── */
+
+.protection-section__btn {
+  width: 108.333px;
+  height: 33.704px;
+  background-color: #282b27;
+  border-radius: 15.648px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.15s ease;
+}
+
+.protection-section__btn:hover {
+  background-color: #353934;
+}
+
+.protection-section__btn:active {
+  background-color: #20231f;
+}
+
+/* ── Learn More Button Label ──────────────────
+   Figma node 80:2150
+   font: Inter 600, 15.046px, color: #ced0cc
+   ─────────────────────────────────────────── */
+
+.protection-section__btn-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 15.046px;
+  font-weight: 600;
+  color: #ced0cc;
+  line-height: normal;
+  user-select: none;
+}

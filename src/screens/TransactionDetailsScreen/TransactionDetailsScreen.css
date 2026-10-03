@@ -1,0 +1,410 @@
+/* ── TRANSACTION DETAILS SCREEN ─────────────────────────
+   Figma: TransactionDetailsScreen01 — Node 124:2
+   Frame: 390 × 844 px
+   ───────────────────────────────────────────────────── */
+
+/* ── Outer screen shell ─────────────────────────────── */
+.txdetails-screen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+  /* Same app-shell sizing as Home/Profile */
+}
+
+/* ════════════════════════════════════════════════════
+   SUMMARY PANEL  (top: 0, height: 352.625px)
+   SummaryBackground fill: #292c27
+   ════════════════════════════════════════════════════ */
+.txdetails-summary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 352.625px;
+}
+
+.txdetails-summary__bg {
+  position: absolute;
+  inset: 0;
+  background-color: #292c27;
+  border-radius: 0;
+}
+
+/* ── SummaryActions row (y:8.125, h:73.667) ── */
+.txdetails-summary__actions {
+  position: absolute;
+  top: 8.125px;
+  left: 0;
+  width: 390px;
+  height: 73.667px;
+}
+
+/* Shared base for all 3 action buttons — size:43.333px */
+.txdetails-btn {
+  position: absolute;
+  width: 43.333px;
+  height: 43.333px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 24.917px;  /* y within actions frame */
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.12s ease;
+}
+
+.txdetails-btn:active {
+  opacity: 0.75;
+}
+
+.txdetails-btn img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+
+/* x:17.333 from left of frame */
+.txdetails-btn--close {
+  left: 17.333px;
+}
+
+/* x:277.333 from left */
+.txdetails-btn--help {
+  left: 277.333px;
+}
+
+/* x:329.333 from left */
+.txdetails-btn--more {
+  left: 329.333px;
+}
+
+/* ── Transaction Icon (↓ circle) — x:155.458, y:84.5, size:78.542 ── */
+.txdetails-summary__tx-icon {
+  position: absolute;
+  left: 155.458px;
+  top: 84.5px;
+  width: 78.542px;
+  height: 78.542px;
+}
+
+.txdetails-summary__tx-icon img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── Amount Direction Icon (+) — x:118.083, y:193.917, size:16.25 ── */
+.txdetails-summary__amount-direction {
+  position: absolute;
+  left: 118.083px;
+  top: 193.917px;
+  width: 16.25px;
+  height: 16.25px;
+}
+
+.txdetails-summary__amount-direction img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── Amount text — x:145.167, y:182.542, w:131.083, h:32.5 ── */
+/* Figma shows "100 EUR" as the text; the "+" comes from the direction icon */
+.txdetails-summary__amount {
+  position: absolute;
+  left: 145.167px;
+  top: 182.542px;
+  width: 131.083px;
+  height: 32.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 31.958px;
+  font-weight: 700;
+  line-height: normal;
+  /* Color is passed inline from data */
+}
+
+/* ── Recipient Name — x:162.5, y:229.125, w:66.625, h:20.583 ── */
+.txdetails-summary__recipient {
+  position: absolute;
+  left: 162.5px;
+  top: 229.125px;
+  width: 66.625px;
+  height: 20.583px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 15.167px;
+  font-weight: 500;
+  color: #c6c8c4;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* ── Status Pill Container — x:114.292, y:275.167, w:163.583, h:38.458 ── */
+.txdetails-summary__status-container {
+  position: absolute;
+  left: 114.292px;
+  top: 275.167px;
+  width: 163.583px;
+  height: 38.458px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* StatusPill inner — offset x:0.542, y:-2.167, w:158.708, h:37.917 */
+.txdetails-summary__status-pill {
+  position: relative;
+  width: 158.708px;
+  height: 37.917px;
+  display: flex;
+  align-items: center;
+}
+
+/* Pill background — x:3.25, y:3.25, w:153.292, h:34.125 */
+.txdetails-summary__status-pill-bg {
+  position: absolute;
+  left: 3.25px;
+  top: 3.25px;
+  width: 153.292px;
+  height: 34.125px;
+  background-color: #282b27;
+  border: 0.542px solid #494b48;
+  border-radius: 16.25px;
+}
+
+/* StatusIcon — x:7.583, y:7.042, size:26 (within pill) */
+.txdetails-summary__status-icon {
+  position: absolute;
+  left: 7.583px;
+  top: 7.042px;
+  width: 26px;
+  height: 26px;
+  z-index: 1;
+}
+
+.txdetails-summary__status-icon img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+
+/* Status Label — "Money added", x:43.333, y:10.292, w:97.5, h:20.583 */
+.txdetails-summary__status-label {
+  position: absolute;
+  left: 43.333px;
+  top: 10.292px;
+  width: 97.5px;
+  height: 20.583px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.625px;
+  font-weight: 400;
+  color: #b8bbb6;
+  line-height: normal;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* ════════════════════════════════════════════════════
+   DETAILS PANEL (top:353.167, height:481px)
+   Background: #121511 (near-black per design)
+   ════════════════════════════════════════════════════ */
+.txdetails-details {
+  position: absolute;
+  top: 353.167px;
+  left: 0;
+  width: 390px;
+  height: 481px;
+}
+
+.txdetails-details__bg {
+  position: absolute;
+  inset: 0;
+  background-color: #121511;
+}
+
+/* ── Section Title — x:17.875, y:44.958, w:211.792, h:26 ── */
+.txdetails-details__title {
+  position: absolute;
+  left: 17.875px;
+  top: 44.958px;
+  width: 211.792px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 22.75px;
+  font-weight: 600;
+  color: #caccc8;
+  line-height: normal;
+  z-index: 1;
+}
+
+/* ── DetailsRows — x:0, y:109.958, w:390, h:260.542 ── */
+.txdetails-details__rows {
+  position: absolute;
+  top: 109.958px;
+  left: 0;
+  width: 390px;
+  height: 260.542px;
+}
+
+/* ── Dividers (horizontal, #414441, h:0.542) ── */
+.txdetails-divider {
+  position: absolute;
+  left: 17.333px;
+  width: 351.542px;
+  height: 0.542px;
+  background-color: #414441;
+}
+
+/* Top divider at y:0 in DetailsRows */
+.txdetails-divider--top {
+  top: 0;
+}
+
+/* Rows divider (between ReceivedRow and Groups) at y:80.167 in DetailsRows */
+.txdetails-divider--rows {
+  top: 80.167px;
+}
+
+/* ── Shared row layout ── */
+.txdetails-row {
+  position: absolute;
+  left: 0;
+  width: 390px;
+  display: flex;
+  align-items: flex-start;
+  padding: 0 16.333px 0 17.333px;
+  box-sizing: border-box;
+}
+
+.txdetails-row__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 400;
+  color: #b8bbb6;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.txdetails-row__value {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 400;
+  color: #c4c6c2;
+  line-height: normal;
+  text-align: right;
+  margin-left: auto;
+}
+
+/* ── Received row — y:1.083 in DetailsRows, h:79.083 ── */
+.txdetails-row--received {
+  top: 1.083px;
+  height: 79.083px;
+  align-items: center;
+}
+
+/* "You received" label: #b8bbb6, regular */
+.txdetails-row--received .txdetails-row__label {
+  color: #b8bbb6;
+  font-size: 16.792px;
+}
+
+/* "100 EUR" value: #cfd2ce, semibold 18.958px */
+.txdetails-row__value--bold {
+  font-weight: 600;
+  font-size: 18.958px;
+  color: #cfd2ce;
+}
+
+/* ── Groups — y:80.167, h:180.375 ── */
+.txdetails-groups {
+  position: absolute;
+  top: 80.167px;
+  left: 0;
+  width: 390px;
+  height: 180.375px;
+}
+
+/* ── ReceivedDateRow — y:27.625, h:47.083 ── */
+.txdetails-row--received-date {
+  top: 27.625px;
+  height: 47.083px;
+  align-items: flex-start;
+  padding-top: 0;
+}
+
+.txdetails-row--received-date .txdetails-row__label {
+  color: #bbbeb9;
+  padding-top: 2px; /* optical alignment to first date line */
+}
+
+/* Right-side date column — two lines, right-aligned */
+.txdetails-row__date-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+  text-align: right;
+}
+
+.txdetails-row__date-line {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 400;
+  color: #babdb9;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.txdetails-row__date-line:first-child {
+  color: #bcbeba;
+}
+
+/* ── ReferenceRow — y:97.5, h:20.583 ── */
+.txdetails-row--reference {
+  top: 97.5px;
+  height: 20.583px;
+  align-items: center;
+}
+
+/* Reference label has slightly larger size: 17.333px */
+.txdetails-row--reference .txdetails-row__label {
+  font-size: 17.333px;
+  color: #babdb8;
+}
+
+/* Reference value: #c4c6c2, 16.792 */
+.txdetails-row--reference .txdetails-row__value {
+  color: #c4c6c2;
+}
+
+/* ── TransactionNumberRow — y:140.833, h:21.667 ── */
+.txdetails-row--txnumber {
+  top: 140.833px;
+  height: 21.667px;
+  align-items: center;
+}
+
+.txdetails-row--txnumber .txdetails-row__label {
+  color: #babdb9;
+}
+
+.txdetails-row__value--txnumber {
+  color: #cacdc9;
+}

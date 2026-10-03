@@ -1,0 +1,297 @@
+/* ── ACCOUNT CARD ─────────────────────────────
+   Figma node 43:34
+   Width: 355.694px, Height: 362.917px
+   X: 16.25px (inside MainContent)
+   ─────────────────────────────────────────── */
+
+.account-card {
+  position: relative;
+  width: 355.694px;
+  height: 362.917px;
+  margin-left: 16.25px;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.account-card__bg {
+  position: absolute;
+  left: 1.20px;
+  top: 4.21px;
+  width: 351.481px;
+  height: 354.491px;
+  background-color: #2b2e2b;
+  border: 0.602px solid #232623;
+  border-radius: 27.083px;
+}
+
+/* ── ACCOUNT DETAILS BUTTON (43:36) ───────── */
+.account-card__details-wrap {
+  position: absolute;
+  left: 15.65px;
+  top: 303.33px;
+  width: 169.12px;
+  height: 40.926px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.account-card__details-bg {
+  position: absolute;
+  left: 3.01px;
+  top: 3.61px;
+  width: 163.102px;
+  height: 34.306px;
+  background-color: #404240;
+  border-radius: 15.648px;
+}
+.account-card__bank-icon {
+  position: absolute;
+  left: 18.06px;
+  top: 13.24px;
+  width: 15.046px;
+  height: 15.046px;
+  object-fit: contain;
+}
+.account-card__details-text {
+  position: absolute;
+  left: 40.32px;
+  top: 12.04px;
+  width: 113.75px;
+  height: 16.852px;
+  font-size: 14.444px;
+  font-weight: 600;
+  color: #c9cbc7;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 1;
+}
+
+/* ── CURRENCY SECTION (61:3) ──────────────── */
+.account-card__currency-section {
+  position: absolute;
+  left: 0;
+  top: 183.56px;
+  height: 111.944px;
+}
+
+.account-card__primary-row {
+  position: absolute;
+  left: 0.60px;
+  top: 0;
+  width: 355.093px;
+  height: 54.769px;
+}
+
+/* EUR */
+.account-card__eur-chevron {
+  position: absolute;
+  left: 320.79px;
+  top: 20.46px;
+  width: 8.426px;
+  height: 15.046px;
+}
+.account-card__eur-amount {
+  position: absolute;
+  left: 219.07px;
+  top: 17.45px;
+  width: 48.148px;
+  height: 18.657px;
+  font-size: 16.852px;
+  font-weight: 400;
+  color: #b1b4b0;
+  display: flex;
+  align-items: center;
+}
+.account-card__eur-flag {
+  position: absolute;
+  left: 184.77px;
+  top: 15.05px;
+  width: 25.278px;
+  height: 25.88px;
+  border-radius: 50%;
+}
+
+/* ── EUR Full-Row Hit Area ────────────────── */
+/* Transparent button that covers the entire EUR zone
+   (flag → chevron) without changing any child positioning.
+   Children use the same absolute coordinates relative to the button. */
+.account-card__eur-hit-area {
+  position: absolute;
+  left: 175px;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1;
+}
+
+/* Inside the button, children keep exact same visual positions
+   but are now relative to the button instead of primary-row.
+   Offset positions by the button's left (175px). */
+.account-card__eur-hit-area .account-card__eur-flag {
+  left: 9.77px;   /* 184.77 - 175 */
+}
+.account-card__eur-hit-area .account-card__eur-amount {
+  left: 44.07px;   /* 219.07 - 175 */
+}
+.account-card__eur-hit-area .account-card__eur-chevron {
+  left: 145.79px;  /* 320.79 - 175 */
+}
+
+
+/* GBP Separator */
+.account-card__gbp-separator {
+  position: absolute;
+  left: 153.47px;
+  top: 20.46px;
+  width: 9.028px;
+  height: 15.046px;
+}
+/* GBP */
+.account-card__gbp-amount {
+  position: absolute;
+  left: 52.96px;
+  top: 17.45px;
+  width: 46.944px;
+  height: 18.657px;
+  font-size: 16.25px;
+  font-weight: 600;
+  color: #b2b5b1;
+  display: flex;
+  align-items: center;
+}
+.account-card__gbp-flag {
+  position: absolute;
+  left: 18.06px;
+  top: 15.05px;
+  width: 25.88px;
+  height: 25.88px;
+  border-radius: 50%;
+}
+
+/* USD */
+.account-card__usd-row {
+  position: absolute;
+  left: 0;
+  top: 55.37px;
+  width: 352.685px;
+  height: 56.574px;
+}
+.account-card__usd-chevron {
+  position: absolute;
+  left: 154.07px;
+  top: 16.85px;
+  width: 9.028px;
+  height: 15.648px;
+}
+.account-card__usd-amount {
+  position: absolute;
+  left: 53.56px;
+  top: 12.64px;
+  width: 48.148px;
+  height: 22.269px;
+  font-size: 17.454px;
+  font-weight: 400;
+  color: #c2c5c0;
+  display: flex;
+  align-items: center;
+}
+.account-card__usd-flag {
+  position: absolute;
+  left: 18.66px;
+  top: 11.44px;
+  width: 25.88px;
+  height: 25.88px;
+  border-radius: 50%;
+}
+
+/* ── CARD HEADER (43:51) ──────────────────── */
+.account-card__header {
+  position: absolute;
+  left: 0;
+  top: 3.61px;
+  width: 352.685px;
+  height: 177.546px;
+}
+.account-card__header-chevron {
+  position: absolute;
+  left: 321.39px;
+  top: 131.20px;
+  width: 8.426px;
+  height: 15.648px;
+}
+.account-card__header-balance {
+  position: absolute;
+  left: 18.66px;
+  top: 145.65px;
+  width: 46.944px;
+  height: 18.056px;
+  font-size: 16.25px;
+  font-weight: 600;
+  color: #b3b6b1;
+  display: flex;
+  align-items: center;
+}
+.account-card__header-title {
+  position: absolute;
+  left: 19.26px;
+  top: 110.74px;
+  width: 182.963px;
+  height: 25.278px;
+  font-size: 22.87px;
+  font-weight: 600;
+  color: #ced0cc;
+  display: flex;
+  align-items: center;
+}
+
+/* ── CARD ARTWORK ─────────────────────────── */
+.account-card__artwork {
+  position: absolute;
+  left: 6.02px;
+  top: 5.42px;
+  width: 340.648px;
+  height: 86.667px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+.account-card__artwork-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.account-card__wise-logo {
+  position: absolute;
+  left: 302.13px;
+  top: 25.28px;
+  width: 21.667px;
+  height: 21.065px;
+}
+
+.account-card__yourcard-chevron {
+  position: absolute;
+  left: 108.94px;
+  top: 26.48px;
+  width: 8.426px;
+  height: 15.648px;
+}
+
+.account-card__yourcard-text {
+  position: absolute;
+  left: 27.08px;
+  top: 25.28px;
+  width: 69.815px;
+  height: 16.852px;
+  font-size: 15.046px;
+  font-weight: 600;
+  color: #cde1ca;
+  display: flex;
+  align-items: center;
+}

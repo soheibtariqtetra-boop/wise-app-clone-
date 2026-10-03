@@ -1,0 +1,100 @@
+/* ── PULL TO REFRESH ──────────────────────────
+   Global reusable pull-to-refresh interaction.
+   Wraps a scrollable content area and adds
+   touch-driven refresh gesture.
+   ─────────────────────────────────────────── */
+
+/* ── Outer wrapper — occupies same space as
+   the scroll container it replaces ─────────── */
+.ptr-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  /* Prevent native pull-to-refresh on this element */
+  overscroll-behavior-y: contain;
+}
+
+/* ── Refresh indicator — positioned above content,
+   hidden by default ────────────────────────── */
+.ptr-indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1d201c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transition: none;
+  will-change: transform, opacity;
+}
+
+/* When settling (returning to idle), animate smoothly */
+.ptr-indicator--settling {
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1),
+              opacity 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* ── Refresh arrow SVG ────────────────────── */
+.ptr-indicator__arrow {
+  width: 22px;
+  height: 22px;
+  will-change: transform;
+  transition: none;
+}
+
+.ptr-indicator--settling .ptr-indicator__arrow {
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* ── Refreshing spin animation ────────────── */
+@keyframes ptr-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.ptr-indicator--refreshing .ptr-indicator__arrow {
+  animation: ptr-spin 0.8s linear infinite;
+}
+
+/* ── Content layer — the actual scrollable area.
+   Translated downward during pull gesture ──── */
+.ptr-scroll-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  min-height: 0;
+  will-change: transform;
+  /* Prevent native overscroll on the scroll content */
+  overscroll-behavior-y: contain;
+}
+.ptr-scroll-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Reduced motion preference ────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .ptr-indicator--settling {
+    transition: transform 0.15s linear,
+                opacity 0.15s linear;
+  }
+  .ptr-indicator--settling .ptr-indicator__arrow {
+    transition: transform 0.15s linear;
+  }
+  .ptr-indicator--refreshing .ptr-indicator__arrow {
+    animation: ptr-spin 1.6s linear infinite;
+  }
+}

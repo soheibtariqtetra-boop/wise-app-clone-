@@ -1,0 +1,414 @@
+/* ──────────────────────────────────────────────
+   ACCOUNT DETAILS EUR SCREEN — Figma Node 31:344
+   Frame: 390 × 844
+   ────────────────────────────────────────────── */
+
+.eur-details-screen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background-color: #121511;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── TOP HEADER (31:392) ───────────────────── */
+.eur-details-screen__header {
+  position: relative;
+  width: 390px;
+  height: 74.208px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.eur-details-screen__back-btn {
+  position: absolute;
+  left: 17.333px;
+  top: 12.458px;
+  width: 43.333px;
+  height: 43.333px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.eur-details-screen__back-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eur-details-screen__header-titles {
+  position: absolute;
+  left: 78px;
+  top: 13px;
+  display: flex;
+  flex-direction: column;
+}
+
+.eur-details-screen__header-currency {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 18.958px;
+  color: #dadcd8;
+  line-height: 1.2;
+}
+
+.eur-details-screen__header-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12.458px;
+  color: #b8bbb6;
+  line-height: 1.2;
+}
+
+.eur-details-screen__flag {
+  position: absolute;
+  right: 17.333px;
+  top: 12.458px;
+  width: 43.333px;
+  height: 43.333px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ── SCROLLABLE CONTENT ─────────────────────── */
+.eur-details-screen__scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.eur-details-screen__scroll-inner {
+  position: relative;
+  width: 390px;
+  padding: 0 17.333px 40px 17.333px;
+}
+
+/* ── RECEIVE HEADER (31:385) ───────────────── */
+.eur-details-screen__receive-header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+.eur-details-screen__receive-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eur-details-screen__receive-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 22.75px;
+  color: #e2e4e0;
+  line-height: 1.2;
+}
+
+.eur-details-screen__receive-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #c6c8c4;
+  line-height: 1.3;
+}
+
+.eur-details-screen__receive-highlight {
+  font-weight: 600;
+  color: #83bf5d;
+}
+
+.eur-details-screen__share-btn {
+  width: 68.792px;
+  height: 34.667px;
+  background-color: #9ee870;
+  border: 0.542px solid #84c05e;
+  border-radius: 16.25px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.625px;
+  color: #2d5113;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── ACCOUNT INFO CARD (31:365) ─────────────── */
+.eur-details-screen__info-card {
+  width: 355.333px;
+  background-color: #292c28;
+  border: 0.542px solid #242723;
+  border-radius: 17.333px;
+  padding: 20px 18px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.eur-details-screen__info-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.eur-details-screen__info-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.eur-details-screen__info-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #c2c5c0;
+  line-height: 1.2;
+}
+
+.eur-details-screen__copy-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  margin: -4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.eur-details-screen__copy-icon {
+  width: 15.167px;
+  height: 18.417px;
+  object-fit: contain;
+}
+
+.eur-details-screen__info-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  color: #dadcd8;
+  line-height: 1.3;
+}
+
+.eur-details-screen__info-value--bold {
+  font-weight: 700;
+}
+
+.eur-details-screen__info-note {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #a6aaa3;
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+.eur-details-screen__link {
+  font-weight: 600;
+  color: #89c562;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline;
+}
+
+/* ── QUICK FACTS SECTION ─────────────────────── */
+.eur-details-screen__quick-facts {
+  margin-bottom: 24px;
+}
+
+.eur-details-screen__section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 22.208px;
+  color: #dfe1dd;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.eur-details-screen__tab-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.eur-details-screen__fact-tab {
+  height: 34.667px;
+  padding: 0 18px;
+  border-radius: 16.25px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.625px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eur-details-screen__fact-tab--fees {
+  background-color: #9fe870;
+  border: none;
+  font-weight: 600;
+  color: #294c0f;
+}
+
+.eur-details-screen__fact-tab--speed {
+  background-color: #111410;
+  border: 1.083px solid #a3a4a1;
+  font-weight: 600;
+  color: #89c761;
+}
+
+.eur-details-screen__fact-tab--limits {
+  background-color: #111410;
+  border: 1.083px solid #a2a3a0;
+  font-weight: 700;
+  color: #89c761;
+}
+
+.eur-details-screen__cost-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15.167px;
+  color: #bfc2bd;
+  margin-bottom: 12px;
+}
+
+/* ── FEES CARD ─────────────────────────────── */
+.eur-details-screen__fees-card {
+  width: 355.333px;
+  background-color: #121511;
+  border: 0.542px solid #383b37;
+  border-radius: 16.25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.eur-details-screen__fees-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 16px;
+}
+
+.eur-details-screen__fees-row--swift {
+  padding-top: 20px;
+  padding-bottom: 24px;
+}
+
+.eur-details-screen__fees-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.eur-details-screen__fees-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #acafaa;
+  margin-bottom: 4px;
+}
+
+.eur-details-screen__fees-amount {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  color: #c5c7c3;
+}
+
+.eur-details-screen__fees-note {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15.167px;
+  color: #9a9f98;
+  margin-top: 4px;
+}
+
+/* ── AVAILABILITY & DOCUMENTS ──────────────── */
+.eur-details-screen__availability-section,
+.eur-details-screen__documents-section {
+  margin-bottom: 24px;
+}
+
+.eur-details-screen__feature-card {
+  width: 355.333px;
+  background-color: #111410;
+  border: 1.083px solid #3c3f3c;
+  border-radius: 16.25px;
+  padding: 20px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+}
+
+.eur-details-screen__feature-card--clickable {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eur-details-screen__feature-icon {
+  width: 15.167px;
+  height: 15.167px;
+  object-fit: contain;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.eur-details-screen__feature-text-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.eur-details-screen__feature-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.625px;
+  color: #c9ccc8;
+  margin-bottom: 4px;
+}
+
+.eur-details-screen__feature-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #bec0bc;
+  line-height: 1.4;
+}
+
+.eur-details-screen__chevron {
+  width: 7.042px;
+  height: 13px;
+  object-fit: contain;
+  margin-top: 4px;
+}
+
+/* ── FOOTER LINK ───────────────────────────── */
+.eur-details-screen__footer-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.083px;
+  color: #bec1bd;
+  text-align: center;
+  padding: 32px 0 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}

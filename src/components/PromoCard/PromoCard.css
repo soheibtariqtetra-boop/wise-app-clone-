@@ -1,0 +1,87 @@
+/* ── PROMO CARD ────────────────────────────────
+   Figma node 43:21
+   Width: 361.111px, Height: 114.352px
+   X: 14.444px
+   ─────────────────────────────────────────── */
+
+.promo-card {
+  position: relative;
+  width: 361.111px;
+  height: 114.352px;
+  margin-top: 13.843px;
+  margin-left: 14.444px;
+  flex-shrink: 0;
+}
+
+.promo-card__bg {
+  position: absolute;
+  left: 3.01px;
+  top: 1.20px;
+  width: 355.093px;
+  height: 113.75px;
+  background-color: #282b27;
+  border-radius: 15.648px 15.046px 25.278px 27.685px; /* tl tr br bl */
+}
+
+.promo-card__chevron {
+  position: absolute;
+  left: 329.21px;
+  top: 51.16px;
+  width: 7.824px;
+  height: 13.241px;
+}
+
+.promo-card__button {
+  position: absolute;
+  left: 20.47px;
+  top: 27.69px;
+  width: 60.185px;
+  height: 60.185px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo-card__button-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.promo-card__button-text {
+  position: relative;
+  font-size: 18.056px;
+  font-weight: 600;
+  color: #93d768;
+  z-index: 1;
+}
+
+.promo-card__subtitle {
+  position: absolute;
+  left: 98.10px;
+  top: 49.95px;
+  width: 213.657px;
+  height: 45.741px;
+  font-size: 15.046px;
+  font-weight: 400;
+  color: #bbbdb9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 20.971px;
+}
+
+.promo-card__title {
+  position: absolute;
+  left: 98.70px;
+  top: 19.26px;
+  width: 183.565px;
+  height: 23px;
+  font-size: 18.657px;
+  font-weight: 600;
+  color: #caccc9;
+  display: flex;
+  align-items: center;
+}

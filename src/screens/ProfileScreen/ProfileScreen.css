@@ -1,0 +1,345 @@
+/* ── PROFILE SCREEN ─────────────────────────────
+   Figma frame: ProfileScreen (Node ID: 7:492)
+   Dimensions: 390px × 844px
+   Background: #121511
+   ─────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'WiseLocal';
+  src: url('../../assets/fonts/WiseFonts-Regular.ttf.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.profile-screen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background-color: #121511;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Top Bar Area (Node 7:530) ──────────────── */
+.profile-top-bar {
+  position: relative;
+  width: 390px;
+  height: 70.417px;
+  margin-top: 24.542px;
+  flex-shrink: 0;
+  background-color: #121511;
+  z-index: 10;
+}
+
+.profile-top-bar__back {
+  position: absolute;
+  left: 17.333px;
+  top: 17.875px;
+  width: 43.333px;
+  height: 42.792px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+}
+
+.profile-top-bar__back:hover {
+  opacity: 0.85;
+}
+
+.profile-top-bar__back:active {
+  opacity: 0.7;
+}
+
+.profile-top-bar__back-img {
+  width: 43.333px;
+  height: 42.792px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.profile-top-bar__open-account {
+  position: absolute;
+  right: 15.167px;
+  top: 14.625px;
+  width: 165.75px;
+  height: 43.875px;
+  background-color: #143200;
+  border: 0.542px solid #132308;
+  border-radius: 20.583px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  transition: background-color 0.15s ease;
+}
+
+.profile-top-bar__open-account:hover {
+  background-color: #1c4502;
+}
+
+.profile-top-bar__open-account:active {
+  background-color: #0f2400;
+}
+
+.profile-top-bar__open-account-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 600;
+  color: #88ca5d;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* ── Scrollable Body (Node 7:496) ───────────── */
+.profile-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  padding-bottom: 40px;
+}
+
+.profile-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Identity Section (Node 7:520) ─────────── */
+.profile-identity {
+  width: 390px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-identity__avatar-wrapper {
+  position: relative;
+  width: 78.542px;
+  height: 78.542px;
+}
+
+.profile-identity__avatar {
+  position: relative;
+  width: 78.542px;
+  height: 78.542px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-identity__avatar-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.profile-identity__avatar-initials {
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 25.458px;
+  font-weight: 700;
+  color: #96d96a;
+  line-height: normal;
+}
+
+.profile-identity__camera-badge {
+  position: absolute;
+  right: -2px;
+  bottom: 0;
+  width: 28.167px;
+  height: 27.625px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Business Name (Node 7:526) */
+.profile-identity__name {
+  font-family: 'WiseLocal', sans-serif;
+  font-size: 40.625px;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -1.625px;
+  color: #f3f5f1;
+  text-align: center;
+  margin: 10.833px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 295.208px;
+}
+
+.profile-identity__name-line {
+  display: block;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.profile-identity__type {
+  font-family: 'Inter', sans-serif;
+  font-size: 16.792px;
+  font-weight: 600;
+  color: #c4c6c2;
+  text-align: center;
+  margin: 11.375px 0 0 0;
+  line-height: normal;
+}
+
+.profile-identity__email-pill {
+  margin-top: 13px;
+  width: 246.458px;
+  height: 34.667px;
+  background-color: #282b27;
+  border: 0.542px solid #252824;
+  border-radius: 16.25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.profile-identity__email-icon {
+  width: 16.792px;
+  height: 16.25px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.profile-identity__email-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.625px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: normal;
+}
+
+/* ── Your Account Section (Node 109:2) ─────── */
+.profile-account-section {
+  margin-top: 34px;
+  width: 390px;
+}
+
+.profile-account-section__heading {
+  margin: 0 0 10px 17.875px;
+  font-family: 'Inter', sans-serif;
+  font-size: 22.75px;
+  font-weight: 700;
+  color: #dbddd9;
+  line-height: normal;
+}
+
+.profile-account-section__menu {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+}
+
+/* ── Settings Section (Node 7:497) ─────────── */
+.profile-settings-section {
+  margin-top: 24px;
+  width: 390px;
+}
+
+.profile-settings-section__heading {
+  margin: 0 0 9.208px 18.417px;
+  font-family: 'Inter', sans-serif;
+  font-size: 23.292px;
+  font-weight: 600;
+  color: #dddfdb;
+  line-height: normal;
+}
+
+.profile-settings-list {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+}
+
+/* ── Actions and Agreements Section (Node 113:2) ─── */
+.profile-actions-section {
+  margin-top: 24px;
+  width: 390px;
+}
+
+.profile-actions-section__heading {
+  margin: 0 0 7.042px 17.333px;
+  font-family: 'Inter', sans-serif;
+  font-size: 22.75px;
+  font-weight: 600;
+  color: #e8eae6;
+  line-height: normal;
+}
+
+.profile-actions-list {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+}
+
+/* ── Info Section (Membership & Version) ──────── */
+.profile-info-section {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  margin-top: 10px;
+}
+
+/* ── Feedback Section (Node 21:61) ─────────────── */
+.profile-feedback-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 390px;
+  margin-top: 20.042px;
+  padding-bottom: 16.792px;
+}
+
+.profile-feedback-section__prompt {
+  font-family: 'Inter', sans-serif;
+  font-size: 15.167px;
+  font-weight: 400;
+  color: #d4d6d2;
+  text-align: center;
+  line-height: normal;
+}
+
+.profile-feedback-section__link {
+  font-family: 'Inter', sans-serif;
+  font-size: 15.167px;
+  font-weight: 600;
+  color: #9fe870;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+  line-height: normal;
+  transition: opacity 0.15s ease;
+}
+
+.profile-feedback-section__link:hover {
+  opacity: 0.85;
+}

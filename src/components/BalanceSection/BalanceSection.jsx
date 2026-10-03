@@ -1,0 +1,35 @@
+import './BalanceSection.css'
+
+import imgEyeIcon from '../../assets/home/account/eye-icon.png'
+
+/**
+ * BalanceSection — Total balance display with privacy toggle.
+ *
+ * Props:
+ *   balancesHidden {boolean} — when true, monetary values are masked
+ *   onToggle       {function} — called when the eye button is clicked
+ */
+function BalanceSection({ balancesHidden, onToggle }) {
+  return (
+    <section className="balance-section" aria-label="Account balance">
+      <div className="balance-section__label">
+        Total balance
+      </div>
+      
+      <div className="balance-section__amount">
+        {balancesHidden ? '****' : '3.00'} GBP
+      </div>
+
+      <button
+        type="button"
+        className="balance-section__eye-btn"
+        aria-label={balancesHidden ? 'Show balances' : 'Hide balances'}
+        onClick={onToggle}
+      >
+        <img src={imgEyeIcon} alt="" aria-hidden="true" className="balance-section__eye-icon" draggable={false} />
+      </button>
+    </section>
+  )
+}
+
+export default BalanceSection
