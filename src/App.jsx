@@ -4,6 +4,7 @@ import ProfileScreen from './screens/ProfileScreen/ProfileScreen'
 import TransactionDetailsScreen from './screens/TransactionDetailsScreen/TransactionDetailsScreen'
 import AccountBalanceEURScreen from './screens/AccountBalanceEURScreen/AccountBalanceEURScreen'
 import AccountDetailsEURScreen from './screens/AccountDetailsEURScreen/AccountDetailsEURScreen'
+import CurrencyDetailsScreen from './screens/CurrencyDetailsScreen/CurrencyDetailsScreen'
 
 /**
  * App root — manages lightweight SPA screen navigation.
@@ -14,6 +15,7 @@ import AccountDetailsEURScreen from './screens/AccountDetailsEURScreen/AccountDe
  *   'transaction'       → TransactionDetailsScreen  (fed by selectedTransaction state)
  *   'eurAccount'        → AccountBalanceEURScreen
  *   'eurAccountDetails' → AccountDetailsEURScreen
+ *   'currencyDetails'   → CurrencyDetailsScreen
  *
  * Home scroll position is preserved across navigations.
  */
@@ -21,6 +23,7 @@ function App() {
   const getInitialRoute = () => {
     if (window.location.pathname.startsWith('/profile')) return 'profile'
     if (window.location.pathname.startsWith('/account/eur/details')) return 'eurAccountDetails'
+    if (window.location.pathname.startsWith('/account/details') || window.location.pathname.startsWith('/currency-details')) return 'currencyDetails'
     if (window.location.pathname.startsWith('/account/eur') || window.location.pathname.startsWith('/eur')) return 'eurAccount'
     return 'home'
   }
@@ -37,6 +40,8 @@ function App() {
         setCurrentRoute('profile')
       } else if (path.startsWith('/account/eur/details')) {
         setCurrentRoute('eurAccountDetails')
+      } else if (path.startsWith('/account/details') || path.startsWith('/currency-details')) {
+        setCurrentRoute('currencyDetails')
       } else if (path.startsWith('/account/eur') || path.startsWith('/eur')) {
         setCurrentRoute('eurAccount')
       } else if (path.startsWith('/transaction')) {
@@ -81,7 +86,8 @@ function App() {
       window.history.state?.route === 'profile' ||
       window.history.state?.route === 'transaction' ||
       window.history.state?.route === 'eurAccount' ||
-      window.history.state?.route === 'eurAccountDetails'
+      window.history.state?.route === 'eurAccountDetails' ||
+      window.history.state?.route === 'currencyDetails'
     ) {
       window.history.back()
     } else {
@@ -90,6 +96,14 @@ function App() {
       }
       setCurrentRoute('home')
     }
+  }
+
+  const navigateToCurrencyDetails = () => {
+    saveHomeScroll()
+    if (window.location.pathname !== '/account/details') {
+      window.history.pushState({ route: 'currencyDetails' }, '', '/account/details')
+    }
+    setCurrentRoute('currencyDetails')
   }
 
   const navigateToEurAccount = () => {
@@ -159,6 +173,13 @@ function App() {
           transaction={selectedTransaction}
           onClose={closeTransaction}
         />
+      ) : currentRoute === 'currencyDetails' ? (
+        <CurrencyDetailsScreen
+          onBack={navigateToHome}
+          onEurClick={navigateToEurAccountDetails}
+          onGbpClick={() => {}}
+          onOtherCurrenciesClick={() => {}}
+        />
       ) : currentRoute === 'eurAccountDetails' ? (
         <AccountDetailsEURScreen onBack={closeEurAccountDetails} />
       ) : currentRoute === 'eurAccount' ? (
@@ -172,6 +193,7 @@ function App() {
           onProfileClick={navigateToProfile}
           onSelectTransaction={navigateToTransaction}
           onEurClick={navigateToEurAccount}
+          onAccountDetailsClick={navigateToCurrencyDetails}
         />
       )}
     </div>

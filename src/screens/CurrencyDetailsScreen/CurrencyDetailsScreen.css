@@ -1,0 +1,185 @@
+/* ──────────────────────────────────────────────
+   CURRENCY DETAILS SCREEN
+   Figma reference: CurrencyDetailsScreen (Node 169:79)
+   Viewport reference: 390 × 844
+   ────────────────────────────────────────────── */
+
+.currency-details-screen {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  height: 100%;
+  background-color: #121511;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 32px 22px 24px 17px;
+  box-sizing: border-box;
+}
+
+.currency-details-screen::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Back Button (169:80 / 169:81) ─────────── */
+.currency-details-screen__back-container {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-bottom: 11px;
+}
+
+.currency-details-screen__back-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.currency-details-screen__back-btn:active {
+  opacity: 0.8;
+  transform: scale(0.96);
+}
+
+.currency-details-screen__back-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ── Header Section (169:82) ───────────────── */
+.currency-details-screen__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  flex-shrink: 0;
+  padding-bottom: 6px;
+  margin-bottom: 11px;
+}
+
+.currency-details-screen__title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 31px;
+  line-height: 37px;
+  color: #d7d9d5;
+  margin: 0;
+  word-break: break-word;
+}
+
+.currency-details-screen__desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 25px;
+  color: #a9aca8;
+  margin: 0;
+  word-break: break-word;
+}
+
+.currency-details-screen__learn-more {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #7ab157;
+  cursor: pointer;
+}
+
+/* ── Currency Options (169:85) ─────────────── */
+.currency-details-screen__options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* ── Option Row (169:86 / 169:92 / 169:98) ──── */
+.currency-option-row {
+  width: 100%;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: transparent;
+  border: none;
+  padding: 0 4px 0 0;
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s ease;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.currency-option-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.currency-option-row:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.currency-option-row__flag-container {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currency-option-row__flag {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.currency-option-row__text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.currency-option-row__currency-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 23px;
+  color: #d7d9d5;
+}
+
+.currency-option-row__account-details {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19px;
+  color: #a9aca8;
+}
+
+.currency-option-row__chevron {
+  width: 7px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-right: 2px;
+  pointer-events: none;
+}

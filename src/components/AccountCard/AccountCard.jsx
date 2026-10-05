@@ -34,13 +34,18 @@ function displayBalance(hidden, formattedValue) {
   return hidden ? '****' : formattedValue
 }
 
-function AccountCard({ onEurClick, balancesHidden }) {
+function AccountCard({ onEurClick, onAccountDetailsClick, balancesHidden }) {
   return (
     <div className="account-card">
       <div className="account-card__bg" />
       
       {/* ── Account Details Button */}
-      <button className="account-card__details-wrap" aria-label="Account details">
+      <button
+        type="button"
+        className="account-card__details-wrap"
+        onClick={onAccountDetailsClick}
+        aria-label="Account details"
+      >
         <div className="account-card__details-bg" />
         <img src={imgBankIcon} className="account-card__bank-icon" draggable={false} alt="" />
         <div className="account-card__details-text">Account details</div>
