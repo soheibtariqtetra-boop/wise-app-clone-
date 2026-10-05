@@ -5,8 +5,9 @@
 
 .home-screen {
   position: relative;
-  width: 390px;
-  height: 844px;
+  width: 100%;
+  max-width: 390px;
+  height: 100%;
   background-color: var(--color-bg-root);
   display: flex;
   flex-direction: column;
@@ -33,7 +34,8 @@
 .home-screen__scroll-inner {
   display: flex;
   flex-direction: column;
-  width: 390px;
+  width: 100%;
+  max-width: 390px;
   /* BalanceSection margin-top (21.056px) provides the spacing
      below TopBar — no extra padding needed here.
      HomeScreen04: ProtectionSection ends flush with BottomNavBar (gap = 0px). */

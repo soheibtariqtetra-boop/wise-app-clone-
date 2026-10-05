@@ -5,8 +5,9 @@
 
 .eur-details-screen {
   position: relative;
-  width: 390px;
-  height: 844px;
+  width: 100%;
+  max-width: 390px;
+  height: 100%;
   background-color: #121511;
   display: flex;
   flex-direction: column;
@@ -16,7 +17,8 @@
 /* ── TOP HEADER (31:392) ───────────────────── */
 .eur-details-screen__header {
   position: relative;
-  width: 390px;
+  width: 100%;
+  max-width: 390px;
   height: 74.208px;
   flex-shrink: 0;
   display: flex;

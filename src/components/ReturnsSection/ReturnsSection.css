@@ -5,7 +5,8 @@
 
 .returns-section {
   position: relative;
-  width: 390px;
+  width: 100%;
+  max-width: 390px;
   height: 167.917px;
   margin-top: 21.06px; /* spacing derived from 339.44 - 297.9 - 20.46 = 21.06 */
   flex-shrink: 0;

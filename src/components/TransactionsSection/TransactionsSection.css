@@ -5,7 +5,8 @@
 
 .transactions-section {
   position: relative;
-  width: 390px;
+  width: 100%;
+  max-width: 390px;
   height: 297.917px;
   margin-top: 20.46px;
   flex-shrink: 0;

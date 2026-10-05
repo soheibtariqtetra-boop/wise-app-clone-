@@ -6,7 +6,8 @@
 
 .protection-section {
   position: relative;
-  width: 390px;
+  width: 100%;
+  max-width: 390px;
   height: 146.852px;
   margin-top: 34.306px;
   flex-shrink: 0;
