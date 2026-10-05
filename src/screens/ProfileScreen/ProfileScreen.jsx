@@ -131,7 +131,7 @@ function ProfileScreen({ onBack }) {
           <div className="profile-identity__email-pill" data-node-id="7:521">
             <img src={imgWiseFlag} alt="" className="profile-identity__email-icon" draggable={false} data-node-id="7:524" />
             <span className="profile-identity__email-text" data-node-id="7:523">
-              Ranagmujhkomaafkrna@gmail.com
+              MujhKoRanaGmaafKrna@gmail.com
             </span>
           </div>
         </section>

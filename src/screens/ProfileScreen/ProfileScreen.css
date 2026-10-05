@@ -210,15 +210,15 @@
   margin-top: 13px;
   width: fit-content;
   max-width: calc(100% - 32px);
-  padding: 0 16px;
-  height: 34.667px;
+  padding: 0 24px;
+  height: 38px;
   background-color: #282b27;
   border: 0.542px solid #252824;
-  border-radius: 17.333px;
+  border-radius: 19px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
   box-sizing: border-box;
 }
 
@@ -241,8 +241,8 @@
 
 @media (max-width: 360px) {
   .profile-identity__email-pill {
-    padding: 0 10px;
-    gap: 6px;
+    padding: 0 16px;
+    gap: 8px;
   }
 }
 
