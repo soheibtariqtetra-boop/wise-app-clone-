@@ -208,12 +208,14 @@
 
 .profile-identity__email-pill {
   margin-top: 13px;
-  width: 246.458px;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  padding: 0 16px;
   height: 34.667px;
   background-color: #282b27;
   border: 0.542px solid #252824;
-  border-radius: 16.25px;
-  display: flex;
+  border-radius: 17.333px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -223,6 +225,7 @@
 .profile-identity__email-icon {
   width: 16.792px;
   height: 16.25px;
+  flex-shrink: 0;
   object-fit: contain;
   pointer-events: none;
 }
@@ -233,6 +236,14 @@
   font-weight: 600;
   color: #ffffff;
   line-height: normal;
+  white-space: nowrap;
+}
+
+@media (max-width: 360px) {
+  .profile-identity__email-pill {
+    padding: 0 10px;
+    gap: 6px;
+  }
 }
 
 /* ── Your Account Section (Node 109:2) ─────── */
