@@ -1,0 +1,455 @@
+/* ──────────────────────────────────────────────
+   GBP ACCOUNT DETAILS SCREEN — Figma Node 177:308
+   Frame reference: 390 × 844
+   Responsive: width 100% / max-width 390px
+   ────────────────────────────────────────────── */
+
+/* ── ROOT SHELL ─────────────────────────────── */
+.gbp-details {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  height: 100%;
+  background-color: #121511;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── FIXED HEADER (177:309) ─────────────────── */
+.gbp-details__header {
+  flex-shrink: 0;
+  width: 100%;
+  height: 74.8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12.5px 17.33px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.gbp-details__header-identity {
+  display: flex;
+  align-items: center;
+  gap: 17.33px;
+}
+
+.gbp-details__back-btn {
+  width: 43.33px;
+  height: 43.33px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+.gbp-details__back-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gbp-details__header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4.2px;
+}
+
+.gbp-details__header-currency {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: #dfe2de;
+  line-height: 1.11;
+}
+
+.gbp-details__header-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12.5px;
+  color: #b8bbb6;
+  line-height: 1.17;
+}
+
+.gbp-details__flag {
+  width: 43.33px;
+  height: 43.33px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ── SCROLLABLE CONTENT ─────────────────────── */
+.gbp-details__scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.gbp-details__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gbp-details__scroll-inner {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+/* ── RECEIVE GBP SECTION (177:317) ─────────── */
+.gbp-details__receive-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8.7px 17.33px 8.7px 18.96px;
+  min-height: 78px;
+}
+
+.gbp-details__receive-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3.8px;
+}
+
+.gbp-details__receive-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 22.75px;
+  color: #e2e4e0;
+  line-height: 25px;
+  margin: 0;
+}
+
+.gbp-details__receive-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #c5c8c3;
+  line-height: 20px;
+}
+
+.gbp-details__receive-highlight {
+  font-weight: 600;
+  color: #83be5d;
+}
+
+/* Share button (177:322) */
+.gbp-details__share-btn {
+  background-color: #9ee870;
+  border: 0.6px solid #84c05e;
+  border-radius: 16.25px;
+  width: 68.8px;
+  height: 34.67px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.625px;
+  color: #2d5113;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+/* ── ACCOUNT DETAILS CARD (177:324) ─────────── */
+.gbp-details__card {
+  background-color: #292c27;
+  border-radius: 16.25px;
+  margin: 0 17.33px 0 17.33px;
+  padding: 16.75px 31px 14.8px 19px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Each account detail row */
+.gbp-details__row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 16px;
+}
+
+.gbp-details__row--last {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.gbp-details__row-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  padding-right: 28px; /* space for copy icon */
+}
+
+.gbp-details__row-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #c2c5c0;
+  line-height: 17px;
+}
+
+.gbp-details__row-label--small {
+  font-size: 12.5px;
+  line-height: 15.7px;
+}
+
+.gbp-details__row-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.8px;
+  color: #dadcd8;
+  line-height: 22px;
+  margin-top: 6px;
+  word-break: break-word;
+}
+
+.gbp-details__row-note {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #acb1aa;
+  line-height: 20px;
+  margin-top: 4px;
+}
+
+.gbp-details__row-note-highlight {
+  font-weight: 600;
+  color: #87c261;
+}
+
+/* Copy button */
+.gbp-details__copy-btn {
+  position: absolute;
+  right: 0;
+  top: 11.9px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gbp-details__copy-btn--address {
+  top: 53px;
+}
+
+.gbp-details__copy-btn img {
+  width: 15.17px;
+  height: 18.42px;
+  object-fit: contain;
+}
+
+.gbp-details__copy-toast {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  right: 0;
+  background: #3a3d39;
+  color: #9ee870;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 7px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.gbp-details__link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.625px;
+  color: #81b95e;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── QUICK FACTS SECTION ────────────────────── */
+.gbp-details__quick-facts {
+  padding: 28px 17.33px 0;
+}
+
+.gbp-details__section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 19.26px;
+  color: #d9dbd7;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+}
+
+.gbp-details__tab-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.gbp-details__tab {
+  background: #292c27;
+  border: 1px solid #3a3d39;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13.5px;
+  color: #a9ada6;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.gbp-details__tab--active {
+  background: #3d4039;
+  border-color: #5a5e57;
+  color: #e2e4e0;
+}
+
+.gbp-details__cost-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.2px;
+  color: #9a9e98;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+
+.gbp-details__fees-card {
+  background: #1e2119;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gbp-details__fees-row {
+  padding: 14px 16px;
+}
+
+.gbp-details__fees-row--swift {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gbp-details__fees-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.gbp-details__fees-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.2px;
+  color: #a9ada6;
+  line-height: 20px;
+}
+
+.gbp-details__fees-amount {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #d9dbd7;
+  line-height: 22px;
+}
+
+.gbp-details__fees-note {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12.5px;
+  color: #7a7e78;
+  line-height: 18px;
+}
+
+.gbp-details__row-chevron {
+  width: 8px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ── AVAILABILITY SECTION ───────────────────── */
+.gbp-details__availability {
+  padding: 28px 17.33px 0;
+}
+
+/* ── DOCUMENTS SECTION ──────────────────────── */
+.gbp-details__documents {
+  padding: 28px 17.33px 0;
+}
+
+/* Feature card (shared between availability & documents) */
+.gbp-details__feature-card {
+  background: #1e2119;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gbp-details__feature-card--clickable {
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+
+.gbp-details__feature-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.gbp-details__feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.gbp-details__feature-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.625px;
+  color: #dadcd8;
+  line-height: 20px;
+}
+
+.gbp-details__feature-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #8f9390;
+  line-height: 18px;
+}
+
+/* ── FOOTER LINK ────────────────────────────── */
+.gbp-details__footer-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14.2px;
+  color: #8da882;
+  text-align: center;
+  padding: 24px 17.33px 16px;
+  cursor: pointer;
+}
