@@ -6,7 +6,6 @@ import AccountBalanceEURScreen from './screens/AccountBalanceEURScreen/AccountBa
 import AccountDetailsEURScreen from './screens/AccountDetailsEURScreen/AccountDetailsEURScreen'
 import CurrencyDetailsScreen from './screens/CurrencyDetailsScreen/CurrencyDetailsScreen'
 import GBPAccountDetailsScreen from './screens/GBPAccountDetailsScreen/GBPAccountDetailsScreen'
-import AccountBalanceGBPScreen from './screens/AccountBalanceGBPScreen/AccountBalanceGBPScreen'
 import TransactionsScreen from './screens/TransactionsScreen/TransactionsScreen'
 
 /**
@@ -264,12 +263,6 @@ function App() {
           onSelectTransaction={navigateToTransaction}
           onOpenDetails={navigateToEurAccountDetails}
         />
-      ) : currentRoute === 'gbpAccount' ? (
-        <AccountBalanceGBPScreen
-          onClose={closeGbpAccount}
-          onSelectTransaction={navigateToTransaction}
-          onOpenDetails={navigateToGbpAccountDetails}
-        />
       ) : currentRoute === 'transactions' ? (
         <TransactionsScreen
           onClose={closeTransactions}
@@ -279,7 +272,6 @@ function App() {
           onProfileClick={navigateToProfile}
           onSelectTransaction={navigateToTransaction}
           onEurClick={navigateToEurAccount}
-          onGbpClick={navigateToGbpAccount}
           onAccountDetailsClick={navigateToCurrencyDetails}
           onSeeAllTransactions={navigateToTransactions}
         />
