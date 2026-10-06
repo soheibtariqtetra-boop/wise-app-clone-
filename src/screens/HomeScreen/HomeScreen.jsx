@@ -20,7 +20,7 @@ import './HomeScreen.css'
  *   onProfileClick      — opens Profile
  *   onSelectTransaction — called with a transaction object when a row is tapped
  */
-function HomeScreen({ onProfileClick, onSelectTransaction, onEurClick, onAccountDetailsClick }) {
+function HomeScreen({ onProfileClick, onSelectTransaction, onEurClick, onGbpClick, onAccountDetailsClick, onSeeAllTransactions }) {
   const [balancesHidden, setBalancesHidden] = useState(false)
   const handleTogglePrivacy = () => setBalancesHidden(prev => !prev)
 
@@ -50,12 +50,16 @@ function HomeScreen({ onProfileClick, onSelectTransaction, onEurClick, onAccount
           <ActionButtonsRow />
           <AccountCard
             onEurClick={onEurClick}
+            onGbpClick={onGbpClick}
             onAccountDetailsClick={onAccountDetailsClick}
             balancesHidden={balancesHidden}
           />
           <CarouselDots />
           <PromoCard />
-          <TransactionsSection onSelectTransaction={onSelectTransaction} />
+          <TransactionsSection 
+            onSelectTransaction={onSelectTransaction} 
+            onSeeAll={onSeeAllTransactions}
+          />
           <ReturnsSection />
           <TransferCalculatorSection />
           <ProtectionSection />

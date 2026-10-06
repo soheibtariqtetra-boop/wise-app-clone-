@@ -1,0 +1,214 @@
+/* ── TRANSACTIONS SCREEN ─────────────────────
+   Implements continuous scrollable full page
+   Figma 390x844 geometry preserved.
+   ─────────────────────────────────────────────── */
+
+.transactions-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0E0F0C;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.transactions-screen__scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.transactions-screen__scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Header Area */
+.transactions-screen__header {
+  position: sticky;
+  top: 0;
+  background-color: #0E0F0C;
+  z-index: 10;
+  padding-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.transactions-screen__header--compact {
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid #414441;
+}
+
+.transactions-screen__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 18px 0;
+  height: 76px;
+  box-sizing: border-box;
+}
+
+.transactions-screen__close {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 22px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.transactions-screen__search-analytics {
+  display: flex;
+  gap: 8px;
+}
+
+.transactions-screen__btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 22px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.transactions-screen__heading-viewport {
+  padding: 24px 18px 24px;
+}
+
+.transactions-screen__title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 31px;
+  color: #F3F5F1;
+  line-height: 38px;
+  margin: 0;
+}
+
+.transactions-screen__title-compact {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #F3F5F1;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.transactions-screen__filter-viewport {
+  height: 36px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.transactions-screen__filter-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.transactions-screen__filter-strip {
+  display: flex;
+  gap: 10px;
+  padding-left: 18px;
+  padding-right: 18px;
+  width: max-content;
+}
+
+.transactions-screen__filter {
+  height: 36px;
+  background-color: #111410;
+  border: 0.6px solid #8A8B88;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  color: #9FE870;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.transactions-screen__filter--cont {
+  border: 0.6px solid #8A8B88;
+  background-color: transparent;
+  width: 50px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.transactions-screen__filter--cont::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, rgba(14,15,12,0) 0%, rgba(14,15,12,1) 100%);
+  pointer-events: none;
+}
+
+/* Content Area */
+.transactions-screen__content {
+  padding: 0 0 30px;
+}
+
+.transactions-screen__date-section {
+  padding-top: 10px;
+}
+
+.transactions-screen__date-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 18px 0;
+}
+
+.transactions-screen__date-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #B8BDB6;
+  line-height: 24px;
+}
+
+.transactions-screen__divider {
+  height: 0.5px;
+  background-color: #414441;
+  width: 100%;
+}
+
+.transactions-screen__date-transactions {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.transactions-screen__return-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 82px;
+  margin-top: 20px;
+}
+
+.transactions-screen__back-to-top {
+  height: 44px;
+  padding: 0 24px;
+  background-color: #9FE870;
+  color: #0E0F0C;
+  border-radius: 22px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}

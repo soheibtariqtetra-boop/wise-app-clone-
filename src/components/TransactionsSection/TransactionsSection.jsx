@@ -8,7 +8,7 @@ import { mockTransactions } from '../../data/mockData'
  * Calls onSelectTransaction(transaction) when a row is tapped.
  * Adding a new transaction only requires adding an entry to mockData.
  */
-function TransactionsSection({ onSelectTransaction }) {
+function TransactionsSection({ onSelectTransaction, onSeeAll }) {
   const handleSelect = (transaction) => {
     if (transaction.detail && onSelectTransaction) {
       onSelectTransaction(transaction)
@@ -20,7 +20,7 @@ function TransactionsSection({ onSelectTransaction }) {
     <div className="transactions-section">
       <div className="transactions-section__header">
         <h2 className="transactions-section__title">Transactions</h2>
-        <button className="transactions-section__see-all">See all</button>
+        <button className="transactions-section__see-all" onClick={onSeeAll}>See all</button>
       </div>
 
       <div className="transactions-section__list">

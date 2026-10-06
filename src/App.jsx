@@ -6,6 +6,8 @@ import AccountBalanceEURScreen from './screens/AccountBalanceEURScreen/AccountBa
 import AccountDetailsEURScreen from './screens/AccountDetailsEURScreen/AccountDetailsEURScreen'
 import CurrencyDetailsScreen from './screens/CurrencyDetailsScreen/CurrencyDetailsScreen'
 import GBPAccountDetailsScreen from './screens/GBPAccountDetailsScreen/GBPAccountDetailsScreen'
+import AccountBalanceGBPScreen from './screens/AccountBalanceGBPScreen/AccountBalanceGBPScreen'
+import TransactionsScreen from './screens/TransactionsScreen/TransactionsScreen'
 
 /**
  * App root — manages lightweight SPA screen navigation.
@@ -16,6 +18,8 @@ import GBPAccountDetailsScreen from './screens/GBPAccountDetailsScreen/GBPAccoun
  *   'transaction'       → TransactionDetailsScreen  (fed by selectedTransaction state)
  *   'eurAccount'        → AccountBalanceEURScreen
  *   'eurAccountDetails' → AccountDetailsEURScreen
+ *   'gbpAccount'        → AccountBalanceGBPScreen
+ *   'gbpAccountDetails' → GBPAccountDetailsScreen
  *   'currencyDetails'   → CurrencyDetailsScreen
  *
  * Home scroll position is preserved across navigations.
@@ -27,6 +31,8 @@ function App() {
     if (window.location.pathname.startsWith('/account/gbp/details')) return 'gbpAccountDetails'
     if (window.location.pathname.startsWith('/account/details') || window.location.pathname.startsWith('/currency-details')) return 'currencyDetails'
     if (window.location.pathname.startsWith('/account/eur') || window.location.pathname.startsWith('/eur')) return 'eurAccount'
+    if (window.location.pathname.startsWith('/account/gbp') || window.location.pathname.startsWith('/gbp')) return 'gbpAccount'
+    if (window.location.pathname.startsWith('/transactions')) return 'transactions'
     return 'home'
   }
 
@@ -48,8 +54,12 @@ function App() {
         setCurrentRoute('currencyDetails')
       } else if (path.startsWith('/account/eur') || path.startsWith('/eur')) {
         setCurrentRoute('eurAccount')
-      } else if (path.startsWith('/transaction')) {
+      } else if (path.startsWith('/account/gbp') || path.startsWith('/gbp')) {
+        setCurrentRoute('gbpAccount')
+      } else if (path.startsWith('/transaction') && !path.startsWith('/transactions')) {
         setCurrentRoute(selectedTransaction ? 'transaction' : 'home')
+      } else if (path.startsWith('/transactions')) {
+        setCurrentRoute('transactions')
       } else {
         setCurrentRoute('home')
       }
@@ -91,9 +101,29 @@ function App() {
       window.history.state?.route === 'transaction' ||
       window.history.state?.route === 'eurAccount' ||
       window.history.state?.route === 'eurAccountDetails' ||
+      window.history.state?.route === 'gbpAccount' ||
       window.history.state?.route === 'currencyDetails' ||
       window.history.state?.route === 'gbpAccountDetails'
     ) {
+      window.history.back()
+    } else {
+      if (window.location.pathname !== '/') {
+        window.history.pushState({ route: 'home' }, '', '/')
+      }
+      setCurrentRoute('home')
+    }
+  }
+
+  const navigateToTransactions = () => {
+    saveHomeScroll()
+    if (window.location.pathname !== '/transactions') {
+      window.history.pushState({ route: 'transactions' }, '', '/transactions')
+    }
+    setCurrentRoute('transactions')
+  }
+
+  const closeTransactions = () => {
+    if (window.history.state?.route === 'transactions') {
       window.history.back()
     } else {
       if (window.location.pathname !== '/') {
@@ -111,6 +141,25 @@ function App() {
     setCurrentRoute('currencyDetails')
   }
 
+  const navigateToGbpAccount = () => {
+    saveHomeScroll()
+    if (window.location.pathname !== '/account/gbp') {
+      window.history.pushState({ route: 'gbpAccount' }, '', '/account/gbp')
+    }
+    setCurrentRoute('gbpAccount')
+  }
+
+  const closeGbpAccount = () => {
+    if (window.history.state?.route === 'gbpAccount') {
+      window.history.back()
+    } else {
+      if (window.location.pathname !== '/') {
+        window.history.pushState({ route: 'home' }, '', '/')
+      }
+      setCurrentRoute('home')
+    }
+  }
+
   const navigateToGbpAccountDetails = () => {
     if (window.location.pathname !== '/account/gbp/details') {
       window.history.pushState({ route: 'gbpAccountDetails' }, '', '/account/gbp/details')
@@ -122,10 +171,10 @@ function App() {
     if (window.history.state?.route === 'gbpAccountDetails') {
       window.history.back()
     } else {
-      if (window.location.pathname !== '/account/details') {
-        window.history.pushState({ route: 'currencyDetails' }, '', '/account/details')
+      if (window.location.pathname !== '/account/gbp') {
+        window.history.pushState({ route: 'gbpAccount' }, '', '/account/gbp')
       }
-      setCurrentRoute('currencyDetails')
+      setCurrentRoute('gbpAccount')
     }
   }
 
@@ -215,12 +264,24 @@ function App() {
           onSelectTransaction={navigateToTransaction}
           onOpenDetails={navigateToEurAccountDetails}
         />
+      ) : currentRoute === 'gbpAccount' ? (
+        <AccountBalanceGBPScreen
+          onClose={closeGbpAccount}
+          onSelectTransaction={navigateToTransaction}
+          onOpenDetails={navigateToGbpAccountDetails}
+        />
+      ) : currentRoute === 'transactions' ? (
+        <TransactionsScreen
+          onClose={closeTransactions}
+        />
       ) : (
         <HomeScreen
           onProfileClick={navigateToProfile}
           onSelectTransaction={navigateToTransaction}
           onEurClick={navigateToEurAccount}
+          onGbpClick={navigateToGbpAccount}
           onAccountDetailsClick={navigateToCurrencyDetails}
+          onSeeAllTransactions={navigateToTransactions}
         />
       )}
     </div>
@@ -228,3 +289,4 @@ function App() {
 }
 
 export default App
+
