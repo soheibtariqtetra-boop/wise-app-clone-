@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { mockFullTransactions } from './data/mockData'
 import HomeScreen from './screens/HomeScreen/HomeScreen'
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen'
 import TransactionDetailsScreen from './screens/TransactionDetailsScreen/TransactionDetailsScreen'
@@ -11,18 +12,6 @@ import TransactionsScreen from './screens/TransactionsScreen/TransactionsScreen'
 
 /**
  * App root — manages lightweight SPA screen navigation.
- *
- * Routes:
- *   'home'              → HomeScreen
- *   'profile'           → ProfileScreen
- *   'transaction'       → TransactionDetailsScreen  (fed by selectedTransaction state)
- *   'eurAccount'        → AccountBalanceEURScreen
- *   'eurAccountDetails' → AccountDetailsEURScreen
- *   'gbpAccount'        → AccountBalanceGBPScreen
- *   'gbpAccountDetails' → GBPAccountDetailsScreen
- *   'currencyDetails'   → CurrencyDetailsScreen
- *
- * Home scroll position is preserved across navigations.
  */
 function App() {
   const getInitialRoute = () => {
@@ -33,11 +22,23 @@ function App() {
     if (window.location.pathname.startsWith('/account/eur') || window.location.pathname.startsWith('/eur')) return 'eurAccount'
     if (window.location.pathname.startsWith('/account/gbp') || window.location.pathname.startsWith('/gbp')) return 'gbpAccount'
     if (window.location.pathname.startsWith('/transactions')) return 'transactions'
+    if (window.location.pathname.startsWith('/transaction/')) return 'transaction'
     return 'home'
   }
 
+  const getInitialTransaction = () => {
+    if (window.location.pathname.startsWith('/transaction/')) {
+      const txId = window.location.pathname.split('/transaction/')[1]
+      for (const group of mockFullTransactions) {
+        const tx = group.transactions.find(t => t.id === txId)
+        if (tx) return tx
+      }
+    }
+    return null
+  }
+
   const [currentRoute, setCurrentRoute]               = useState(getInitialRoute)
-  const [selectedTransaction, setSelectedTransaction] = useState(null)
+  const [selectedTransaction, setSelectedTransaction] = useState(getInitialTransaction)
   const homeScrollTopRef                              = useRef(0)
 
   // Sync with browser back/forward buttons (popstate)
@@ -56,8 +57,19 @@ function App() {
         setCurrentRoute('eurAccount')
       } else if (path.startsWith('/account/gbp') || path.startsWith('/gbp')) {
         setCurrentRoute('gbpAccount')
-      } else if (path.startsWith('/transaction') && !path.startsWith('/transactions')) {
-        setCurrentRoute(selectedTransaction ? 'transaction' : 'home')
+      } else if (path.startsWith('/transaction/') && !path.startsWith('/transactions')) {
+        const txId = path.split('/transaction/')[1]
+        let found = null
+        for (const group of mockFullTransactions) {
+          const tx = group.transactions.find(t => t.id === txId)
+          if (tx) { found = tx; break; }
+        }
+        if (found) {
+          setSelectedTransaction(found)
+          setCurrentRoute('transaction')
+        } else {
+          setCurrentRoute('home')
+        }
       } else if (path.startsWith('/transactions')) {
         setCurrentRoute('transactions')
       } else {
@@ -218,14 +230,23 @@ function App() {
   const navigateToTransaction = (transaction) => {
     saveHomeScroll()
     setSelectedTransaction(transaction)
-    window.history.pushState({ route: 'transaction', txId: transaction.id }, '', '/transaction')
+    window.history.pushState({ route: 'transaction', txId: transaction.id }, '', `/transaction/${transaction.id}`)
     setCurrentRoute('transaction')
   }
 
   const closeTransaction = () => {
     setSelectedTransaction(null)
-    if (window.history.state?.route === 'transaction') {
-      window.history.back()
+    if (window.history.state?.route === 'transaction' || window.location.pathname.startsWith('/transaction/')) {
+      // If we are at transaction details, determine where to go back
+      if (window.history.length > 1 && window.history.state?.route !== 'transaction') {
+        window.history.back()
+      } else {
+        // Fallback
+        if (window.location.pathname !== '/') {
+          window.history.pushState({ route: 'home' }, '', '/')
+        }
+        setCurrentRoute('home')
+      }
     } else {
       if (window.location.pathname !== '/') {
         window.history.pushState({ route: 'home' }, '', '/')

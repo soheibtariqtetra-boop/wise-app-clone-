@@ -3,9 +3,25 @@ import './TransactionDetailsScreen.css'
 import imgClose  from '../../assets/transactions/shared/btn-close.png'
 import imgHelp   from '../../assets/transactions/shared/btn-help.png'
 import imgMore   from '../../assets/transactions/shared/btn-more.png'
-import imgTxIcon from '../../assets/transactions/details/icon-tx-arrow-down.png'
 import imgStatusIcon from '../../assets/transactions/details/icon-status-money-added.png'
 import imgAmountDir  from '../../assets/transactions/details/icon-amount-direction.png'
+
+import imgIconDown from '../../assets/home/transactions/tx-down.png'
+import imgIconUp from '../../assets/home/transactions/tx-up.png'
+import imgIconPlus from '../../assets/home/transactions/tx-plus.png'
+import imgIconFacebook from '../../assets/home/transactions/tx-facebook.png'
+import imgIconHostinger from '../../assets/home/transactions/tx-hostinger.png'
+import imgIconShopify from '../../assets/home/transactions/tx-shopify.png'
+
+const ICON_MAP = {
+  down: imgIconDown,
+  up:   imgIconUp,
+  plus: imgIconPlus,
+  facebook: imgIconFacebook,
+  hostinger: imgIconHostinger,
+  shopify: imgIconShopify,
+  'eur-down': imgIconDown,
+}
 
 /**
  * TransactionDetailsScreen — Figma: TransactionDetailsScreen01, Node 124:2
@@ -20,12 +36,39 @@ import imgAmountDir  from '../../assets/transactions/details/icon-amount-directi
  *   onClose     — called when X is tapped; returns to previous screen
  */
 function TransactionDetailsScreen({ transaction, onClose }) {
-  const d = transaction?.detail || {}
+  if (!transaction) return null;
 
-  // Split the received date across two lines as Figma defines
-  const dateParts = (d.receivedDate || '').split('\n')
-  const dateLine1 = dateParts[0] || ''
-  const dateLine2 = dateParts[1] || ''
+  const isIncoming = (transaction.amount || '').startsWith('+');
+  const amountText = (transaction.amount || '').replace(/^\+\s*/, '');
+  const amountColor = transaction.amountColor || '#F3F5F1';
+  const recipient = transaction.title || '';
+
+  const dObj = new Date(transaction.dateStr || '2026-10-01T12:00:00Z');
+  const dateFormatted = dObj.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
+  const timeFormatted = dObj.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+  const dateLine1 = `${dateFormatted} at`;
+  const dateLine2 = timeFormatted;
+
+  let typeVerb = 'You sent';
+  if (isIncoming) typeVerb = 'You received';
+  if (transaction.listIconKey === 'plus') typeVerb = 'You added';
+
+  let statusLabel = 'Money sent';
+  if (isIncoming) statusLabel = 'Money received';
+  if (transaction.listIconKey === 'plus') statusLabel = 'Money added';
+  if (transaction.subtitle) statusLabel = transaction.subtitle;
+
+  const txIcon = ICON_MAP[transaction.listIconKey] || imgIconDown;
+
 
   return (
     <div
@@ -86,27 +129,28 @@ function TransactionDetailsScreen({ transaction, onClose }) {
           data-node-id="124:29"
           data-name="TransactionIcon"
         >
-          <img src={imgTxIcon} alt="" draggable={false} />
+          <img src={txIcon} alt="" draggable={false} style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
         </div>
 
         {/* ── Amount direction indicator (+) — x:118.083, y:193.917, size:16.25 ── */}
-        <div
-          className="txdetails-summary__amount-direction"
-          data-node-id="124:28"
-          data-name="AmountDirectionIcon"
-        >
-          <img src={imgAmountDir} alt="" draggable={false} />
-        </div>
+        {isIncoming && (
+          <div
+            className="txdetails-summary__amount-direction"
+            data-node-id="124:28"
+            data-name="AmountDirectionIcon"
+          >
+            <img src={imgAmountDir} alt="" draggable={false} />
+          </div>
+        )}
 
         {/* ── Amount text — x:145.167, y:182.542, #bcdca8, bold 31.958px ── */}
         <div
           className="txdetails-summary__amount"
           data-node-id="124:35"
           data-name="Amount"
-          style={{ color: d.detailAmountColor || '#bcdca8' }}
+          style={{ color: amountColor }}
         >
-          {/* The AmountDirectionIcon already shows '+'; strip it from text */}
-          {(d.detailAmount || '').replace(/^\+\s*/, '')}
+          {amountText}
         </div>
 
         {/* ── Recipient Name — x:162.5, y:229.125, #c6c8c4, medium 15.167px ── */}
@@ -115,7 +159,7 @@ function TransactionDetailsScreen({ transaction, onClose }) {
           data-node-id="124:34"
           data-name="RecipientName"
         >
-          {d.recipient || ''}
+          {recipient}
         </div>
 
         {/* ── Status Pill — centered, y:275.167 ── */}
@@ -130,7 +174,7 @@ function TransactionDetailsScreen({ transaction, onClose }) {
               <img src={imgStatusIcon} alt="" draggable={false} />
             </div>
             <div className="txdetails-summary__status-label" data-node-id="124:27">
-              {d.statusLabel || ''}
+              {statusLabel}
             </div>
           </div>
         </div>
@@ -161,9 +205,9 @@ function TransactionDetailsScreen({ transaction, onClose }) {
 
           {/* You received row */}
           <div className="txdetails-row txdetails-row--received" data-node-id="124:16" data-name="ReceivedRow">
-            <span className="txdetails-row__label" data-node-id="124:18">You received</span>
+            <span className="txdetails-row__label" data-node-id="124:18">{typeVerb}</span>
             <span className="txdetails-row__value txdetails-row__value--bold" data-node-id="124:17">
-              {d.receivedValue || ''}
+              {amountText}
             </span>
           </div>
 
@@ -183,18 +227,20 @@ function TransactionDetailsScreen({ transaction, onClose }) {
             </div>
 
             {/* Reference */}
-            <div className="txdetails-row txdetails-row--reference" data-node-id="124:38" data-name="ReferenceRow">
-              <span className="txdetails-row__label txdetails-row__label--ref" data-node-id="124:11">Reference</span>
-              <span className="txdetails-row__value" data-node-id="124:10">
-                {d.reference || ''}
-              </span>
-            </div>
+            {transaction.reference && (
+              <div className="txdetails-row txdetails-row--reference" data-node-id="124:38" data-name="ReferenceRow">
+                <span className="txdetails-row__label txdetails-row__label--ref" data-node-id="124:11">Reference</span>
+                <span className="txdetails-row__value" data-node-id="124:10">
+                  {transaction.reference}
+                </span>
+              </div>
+            )}
 
             {/* Transaction number */}
             <div className="txdetails-row txdetails-row--txnumber" data-node-id="124:39" data-name="TransactionNumberRow">
               <span className="txdetails-row__label" data-node-id="124:9">Transaction number</span>
               <span className="txdetails-row__value txdetails-row__value--txnumber" data-node-id="124:8">
-                {d.transactionNumber || ''}
+                {transaction.transactionNumber || ''}
               </span>
             </div>
 
