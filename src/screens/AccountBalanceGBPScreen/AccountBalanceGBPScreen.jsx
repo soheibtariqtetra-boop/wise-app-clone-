@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './AccountBalanceGBPScreen.css'
 
-import { mockGbpAccount, mockTransactions } from '../../data/mockData'
+import { mockGbpAccount, mockGbpTransactions } from '../../data/mockData'
 
 /* ── Local assets (reusing exact local assets) ── */
 import imgClose         from '../../assets/accounts/eur/btn-close.png'
@@ -248,7 +248,7 @@ function AccountBalanceGBPScreen({ onClose, onSelectTransaction, onOpenDetails }
 
           {/* ── Transaction List (Data-Driven & Repeatable — Screen01 + Screen02 combined) ── */}
           <div className="gbp-screen__tx-list" data-node-id="31:417">
-            {mockTransactions.map((tx) => {
+            {mockGbpTransactions.map((tx) => {
               const iconSrc = txIconMap[tx.listIconKey] || imgTxDown
               return (
                 <button
