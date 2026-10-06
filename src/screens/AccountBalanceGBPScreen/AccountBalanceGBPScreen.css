@@ -1,0 +1,675 @@
+/* ──────────────────────────────────────────────
+   ACCOUNT BALANCE GBP SCREEN
+   Figma references:
+     - Screen01: AccountBalanceGBPScreen01 (Node 31:510)
+     - Screen02: AccountBalanceGBPScreen02 (Node 31:397)
+   Viewport: 390 × 844
+   ────────────────────────────────────────────── */
+
+.gbp-screen {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  height: 100%;
+  background-color: #121511;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* ── TOP CONTROLS (31:562 / 31:448) ────────── */
+.gbp-screen__top-controls {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  height: 70.958px;
+  flex-shrink: 0;
+  z-index: 15;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  background-color: transparent;
+}
+
+.gbp-screen__top-controls--scrolled {
+  background-color: #121511;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gbp-screen__btn {
+  position: absolute;
+  width: 43.333px;
+  height: 43.333px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 2;
+}
+.gbp-screen__btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Close: x:17.333, top:13.5px */
+.gbp-screen__btn--close {
+  left: 17.333px;
+  top: 13.5px;
+}
+
+/* More: x:329.333, top:13.5px */
+.gbp-screen__btn--more {
+  right: 17.333px;
+  top: 13.5px;
+}
+
+/* ── COMPACT IDENTITY TITLE (31:451) ────────── */
+/* Centered identity shown when scrolled down to Screen02 state */
+.gbp-screen__compact-identity {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.gbp-screen__compact-identity--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gbp-screen__compact-icons {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 46px;
+  height: 28px;
+}
+
+.gbp-screen__compact-currency-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.gbp-screen__compact-flag {
+  position: absolute;
+  right: 0;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.gbp-screen__compact-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 19.5px;
+  color: #d5d8d4;
+  line-height: 1;
+}
+
+/* ── SCROLL VIEWPORT (Single Scroll Owner) ───── */
+.gbp-screen__scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.gbp-screen__scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.gbp-screen__scroll-inner {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  min-height: 100%;
+  padding-bottom: 110px; /* Safe space clearance for floating action bar */
+  margin: 0 auto;
+}
+
+/* ── ACCOUNT HERO (31:556-561) ─────────────── */
+.gbp-screen__hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.gbp-screen__currency-icons {
+  position: relative;
+  width: 85.583px;
+  height: 48.75px;
+  margin-bottom: 6px;
+}
+
+.gbp-screen__currency-icon {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 39px;
+  height: 43.333px;
+}
+.gbp-screen__currency-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gbp-screen__flag-icon {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  width: 43.333px;
+  height: 43.333px;
+}
+.gbp-screen__flag-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Account label — "Current account / GBP" (31:559) */
+.gbp-screen__account-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16.792px;
+  color: #a5a9a2;
+  line-height: 1;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Balance — "3.00 GBP" (31:558) */
+.gbp-screen__balance {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 41.167px;
+  color: #e0e2de;
+  line-height: 1;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ── GREEN ACCOUNT DETAILS PILL (31:550/31:551) ── */
+.gbp-screen__details-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 251.875px;
+  height: 43.333px;
+  background-color: #153200;
+  border: 0.542px solid #152e02;
+  border-radius: 9999px;
+  margin: 0 auto 24px auto;
+  cursor: pointer;
+  padding: 0 16px;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease;
+}
+
+.gbp-screen__details-pill:active {
+  opacity: 0.85;
+}
+
+.gbp-screen__details-bank-icon {
+  width: 15.167px;
+  height: 15.167px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.gbp-screen__details-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  color: #85c55a;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.gbp-screen__details-chevron {
+  width: 8.125px;
+  height: 14.625px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ── INTEREST CARD (31:544) ─────────────────── */
+.gbp-screen__interest-card {
+  position: relative;
+  width: 355.875px;
+  max-width: calc(100% - 32px);
+  height: 114.833px;
+  margin: 0 auto 12px auto;
+}
+
+.gbp-screen__interest-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #292c27;
+  border: 0.542px solid #242723;
+  border-radius: 17.875px;
+}
+
+.gbp-screen__interest-close {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.gbp-screen__interest-close img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gbp-screen__interest-flower {
+  position: absolute;
+  left: 14px;
+  bottom: 4px;
+  width: 57.417px;
+  height: 85.583px;
+}
+.gbp-screen__interest-flower img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gbp-screen__interest-body {
+  position: absolute;
+  left: 86px;
+  top: 18px;
+  right: 44px;
+}
+
+.gbp-screen__interest-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #b5b8b4;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.gbp-screen__interest-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15.167px;
+  color: #83bc5f;
+  line-height: 1;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+/* ── RISK DISCLAIMER (31:557 / 31:446) ──────── */
+.gbp-screen__disclaimer {
+  width: 350.458px;
+  max-width: calc(100% - 32px);
+  margin: 4px auto 16px auto;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11.375px;
+  color: #8b9089;
+  text-align: center;
+  line-height: 1.54;
+}
+
+/* ── TRANSACTION TABS (31:536 / 31:440) ─────── */
+.gbp-screen__tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #121511;
+  width: 100%;
+  max-width: 390px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px auto;
+}
+
+.gbp-screen__tabs-bg {
+  position: absolute;
+  left: 17.33px;
+  top: 4px;
+  right: 17.33px;
+  height: 43.875px;
+  background-color: #292c27;
+  border: 0.542px solid #1e211d;
+  border-radius: 21.667px;
+  overflow: hidden;
+}
+.gbp-screen__tabs-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Transactions tab (left half, active) */
+.gbp-screen__tab--transactions {
+  position: absolute;
+  left: 17.33px;
+  top: 4px;
+  width: calc(50% - 17.33px);
+  height: 43.875px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1;
+}
+.gbp-screen__tab-transactions-bg {
+  position: absolute;
+  left: 3px;
+  top: 3.5px;
+  right: 3px;
+  bottom: 3.5px;
+  background-color: #111410;
+  border-radius: 17.875px;
+}
+.gbp-screen__tab-transactions-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 17.333px;
+  color: #84c05e;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Options tab (right half, inactive) */
+.gbp-screen__tab--options {
+  position: absolute;
+  right: 17.33px;
+  top: 4px;
+  width: calc(50% - 17.33px);
+  height: 43.875px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1;
+}
+.gbp-screen__tab-options-bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.gbp-screen__tab-options-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 17.333px;
+  color: #b4b7b2;
+  line-height: 1;
+}
+
+/* ── TRANSACTION LIST ────────────────────────── */
+.gbp-screen__tx-list {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+/* Single transaction row */
+.gbp-screen__tx-row {
+  position: relative;
+  width: 100%;
+  height: 77.458px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+
+.gbp-screen__tx-row:active {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.gbp-screen__tx-icon {
+  position: absolute;
+  left: 17.33px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+}
+.gbp-screen__tx-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gbp-screen__tx-title {
+  position: absolute;
+  left: 87px;
+  top: 17px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 190px);
+}
+
+.gbp-screen__tx-date {
+  position: absolute;
+  left: 87px;
+  top: 42px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #acafaa;
+  line-height: 1;
+}
+
+.gbp-screen__tx-amount {
+  position: absolute;
+  right: 17.33px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  line-height: 1;
+  text-align: right;
+}
+
+/* ── VIEW ALL ROW (Screen02 — 31:418) ────────── */
+.gbp-screen__view-all-row {
+  position: relative;
+  width: 100%;
+  height: 79.625px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gbp-screen__view-all-row:active {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.gbp-screen__view-all-icon {
+  position: absolute;
+  left: 17.33px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+}
+.gbp-screen__view-all-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gbp-screen__view-all-title {
+  position: absolute;
+  left: 87px;
+  top: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16.792px;
+  color: #cacdc9;
+  line-height: 1;
+}
+
+.gbp-screen__view-all-subtitle {
+  position: absolute;
+  left: 87px;
+  top: 43px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14.625px;
+  color: #b3b6b2;
+  line-height: 1;
+}
+
+.gbp-screen__view-all-chevron {
+  position: absolute;
+  right: 21.67px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7.042px;
+  height: 13px;
+}
+.gbp-screen__view-all-chevron img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── FLOATING GREEN ACTION BAR ───────────────── */
+.gbp-screen__floating-bar-wrap {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Symmetrical capsule shape with equal smooth radii (36px = 71.5/2) */
+.gbp-screen__action-bar {
+  pointer-events: auto;
+  width: 286px;
+  height: 71.5px;
+  background-color: #90d366;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.gbp-screen__action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gbp-screen__action-icon {
+  width: 19.5px;
+  height: 19.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gbp-screen__action-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gbp-screen__action-icon--convert {
+  width: 21.667px;
+  height: 15.167px;
+}
+.gbp-screen__action-icon--send {
+  width: 19.5px;
+  height: 21.667px;
+}
+.gbp-screen__action-icon--getpaid {
+  width: 19.5px;
+  height: 21.667px;
+}
+
+.gbp-screen__action-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14.625px;
+  color: #232f1b;
+  line-height: 1;
+}
+.gbp-screen__action-label--getpaid {
+  font-size: 14.625px;
+  color: #232f1a;
+}

@@ -34,7 +34,7 @@ function displayBalance(hidden, formattedValue) {
   return hidden ? '****' : formattedValue
 }
 
-function AccountCard({ onEurClick, onAccountDetailsClick, balancesHidden }) {
+function AccountCard({ onEurClick, onGbpClick, onAccountDetailsClick, balancesHidden }) {
   return (
     <div className="account-card">
       <div className="account-card__bg" />
@@ -55,6 +55,18 @@ function AccountCard({ onEurClick, onAccountDetailsClick, balancesHidden }) {
       <div className="account-card__currency-section">
         {/* Primary Row (GBP / EUR) */}
         <div className="account-card__primary-row">
+          {/* ── GBP hit area — full-row clickable overlay ── */}
+          <button
+            type="button"
+            className="account-card__gbp-hit-area"
+            onClick={onGbpClick}
+            aria-label="GBP account — £3.00"
+          >
+            <img src={imgFlagGBP} className="account-card__gbp-flag" draggable={false} alt="" />
+            <div className="account-card__gbp-amount">{displayBalance(balancesHidden, '£3.00')}</div>
+            <img src={imgChevronGBP} className="account-card__gbp-separator" draggable={false} alt="" />
+          </button>
+
           {/* ── EUR hit area — full-row clickable overlay ── */}
           <button
             type="button"
@@ -66,10 +78,6 @@ function AccountCard({ onEurClick, onAccountDetailsClick, balancesHidden }) {
             <div className="account-card__eur-amount">{displayBalance(balancesHidden, '€0.00')}</div>
             <img src={imgFlagEUR} className="account-card__eur-flag" draggable={false} alt="" />
           </button>
-
-          <img src={imgChevronGBP} className="account-card__gbp-separator" draggable={false} alt="" />
-          <div className="account-card__gbp-amount">{displayBalance(balancesHidden, '£3.00')}</div>
-          <img src={imgFlagGBP} className="account-card__gbp-flag" draggable={false} alt="" />
         </div>
 
         {/* USD Row */}

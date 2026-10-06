@@ -145,6 +145,21 @@
 }
 
 
+/* ── GBP Full-Row Hit Area ────────────────── */
+.account-card__gbp-hit-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 170px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1;
+}
+
 /* GBP Separator */
 .account-card__gbp-separator {
   position: absolute;
