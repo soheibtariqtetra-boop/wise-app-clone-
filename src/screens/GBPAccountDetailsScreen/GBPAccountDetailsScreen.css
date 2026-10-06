@@ -61,7 +61,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 19px;
-  color: #dfe2de;
+  color: #E8EBE6;
   line-height: 1.11;
 }
 
@@ -118,7 +118,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 22.75px;
-  color: #e2e4e0;
+  color: #E8EBE6;
   line-height: 25px;
   margin: 0;
 }
@@ -138,7 +138,7 @@
 
 /* Share button (177:322) */
 .gbp-details__share-btn {
-  background-color: #9ee870;
+  background-color: #9FE870;
   border: 0.6px solid #84c05e;
   border-radius: 16.25px;
   width: 68.8px;
@@ -205,7 +205,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 16.8px;
-  color: #dadcd8;
+  color: #E8EBE6;
   line-height: 22px;
   margin-top: 6px;
   word-break: break-word;
@@ -257,7 +257,7 @@
   bottom: calc(100% + 4px);
   right: 0;
   background: #3a3d39;
-  color: #9ee870;
+  color: #9FE870;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
@@ -288,7 +288,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 19.26px;
-  color: #d9dbd7;
+  color: #E8EBE6;
   line-height: 1.2;
   margin: 0 0 16px 0;
 }
@@ -316,7 +316,7 @@
 .gbp-details__tab--active {
   background: #3d4039;
   border-color: #5a5e57;
-  color: #e2e4e0;
+  color: #E8EBE6;
 }
 
 .gbp-details__cost-label {
@@ -364,7 +364,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 15px;
-  color: #d9dbd7;
+  color: #E8EBE6;
   line-height: 22px;
 }
 
@@ -431,7 +431,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 14.625px;
-  color: #dadcd8;
+  color: #E8EBE6;
   line-height: 20px;
 }
 

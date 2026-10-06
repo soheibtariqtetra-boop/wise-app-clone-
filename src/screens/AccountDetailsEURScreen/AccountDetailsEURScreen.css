@@ -56,7 +56,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 18.958px;
-  color: #dadcd8;
+  color: #E8EBE6;
   line-height: 1.2;
 }
 
@@ -114,7 +114,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 22.75px;
-  color: #e2e4e0;
+  color: #E8EBE6;
   line-height: 1.2;
 }
 
@@ -134,7 +134,7 @@
 .eur-details-screen__share-btn {
   width: 68.792px;
   height: 34.667px;
-  background-color: #9ee870;
+  background-color: #9FE870;
   border: 0.542px solid #84c05e;
   border-radius: 16.25px;
   font-family: 'Inter', sans-serif;
@@ -203,7 +203,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 16.792px;
-  color: #dadcd8;
+  color: #E8EBE6;
   line-height: 1.3;
 }
 
@@ -239,7 +239,7 @@
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 22.208px;
-  color: #dfe1dd;
+  color: #E8EBE6;
   line-height: 1.2;
   margin-bottom: 16px;
 }
@@ -265,7 +265,7 @@
 }
 
 .eur-details-screen__fact-tab--fees {
-  background-color: #9fe870;
+  background-color: #9FE870;
   border: none;
   font-weight: 600;
   color: #294c0f;

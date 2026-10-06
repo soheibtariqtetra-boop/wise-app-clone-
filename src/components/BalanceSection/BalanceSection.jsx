@@ -1,6 +1,7 @@
 import './BalanceSection.css'
 
 import imgEyeIcon from '../../assets/home/account/eye-icon.png'
+import { mockBalance } from '../../data/mockData'
 
 /**
  * BalanceSection — Total balance display with privacy toggle.
@@ -17,7 +18,7 @@ function BalanceSection({ balancesHidden, onToggle }) {
       </div>
       
       <div className="balance-section__amount">
-        {balancesHidden ? '****' : '3.00'} GBP
+        {balancesHidden ? '****' : mockBalance.total} {mockBalance.currency}
       </div>
 
       <button

@@ -11,6 +11,7 @@ import imgAcctChevron from '../../assets/home/account/chevron-account-balance.pn
 import imgCardBg from '../../assets/home/account/card-artwork.png'
 import imgWiseLogo from '../../assets/home/account/card-logo.png'
 import imgCardArrow from '../../assets/home/shared/chevron-right.png'
+import { mockCurrencyAccounts } from '../../data/mockData'
 
 /**
  * AccountCard — the Current Account card on the Home screen.
@@ -35,6 +36,10 @@ function displayBalance(hidden, formattedValue) {
 }
 
 function AccountCard({ onEurClick, onGbpClick, onAccountDetailsClick, balancesHidden }) {
+  const gbpAcct = mockCurrencyAccounts.find(a => a.id === 'gbp')
+  const eurAcct = mockCurrencyAccounts.find(a => a.id === 'eur')
+  const usdAcct = mockCurrencyAccounts.find(a => a.id === 'usd')
+
   return (
     <div className="account-card">
       <div className="account-card__bg" />
@@ -63,7 +68,7 @@ function AccountCard({ onEurClick, onGbpClick, onAccountDetailsClick, balancesHi
             aria-label="GBP account — £3.00"
           >
             <img src={imgFlagGBP} className="account-card__gbp-flag" draggable={false} alt="" />
-            <div className="account-card__gbp-amount">{displayBalance(balancesHidden, '£3.00')}</div>
+            <div className="account-card__gbp-amount">{displayBalance(balancesHidden, `${gbpAcct.symbol}${gbpAcct.amount}`)}</div>
             <img src={imgChevronGBP} className="account-card__gbp-separator" draggable={false} alt="" />
           </button>
 
@@ -75,7 +80,7 @@ function AccountCard({ onEurClick, onGbpClick, onAccountDetailsClick, balancesHi
             aria-label="EUR account — €0.00"
           >
             <img src={imgChevronEUR} className="account-card__eur-chevron" draggable={false} alt="" />
-            <div className="account-card__eur-amount">{displayBalance(balancesHidden, '€0.00')}</div>
+            <div className="account-card__eur-amount">{displayBalance(balancesHidden, `${eurAcct.symbol}${eurAcct.amount}`)}</div>
             <img src={imgFlagEUR} className="account-card__eur-flag" draggable={false} alt="" />
           </button>
         </div>
@@ -83,7 +88,7 @@ function AccountCard({ onEurClick, onGbpClick, onAccountDetailsClick, balancesHi
         {/* USD Row */}
         <div className="account-card__usd-row">
           <img src={imgChevronUSD} className="account-card__usd-chevron" draggable={false} alt="" />
-          <div className="account-card__usd-amount">{displayBalance(balancesHidden, '$0.00')}</div>
+          <div className="account-card__usd-amount">{displayBalance(balancesHidden, `${usdAcct.symbol}${usdAcct.amount}`)}</div>
           <img src={imgFlagUSD} className="account-card__usd-flag" draggable={false} alt="" />
         </div>
       </div>
@@ -91,7 +96,7 @@ function AccountCard({ onEurClick, onGbpClick, onAccountDetailsClick, balancesHi
       {/* ── Card Header */}
       <div className="account-card__header">
         <img src={imgAcctChevron} className="account-card__header-chevron" draggable={false} alt="" />
-        <div className="account-card__header-balance">{displayBalance(balancesHidden, '£3.00')}</div>
+        <div className="account-card__header-balance">{displayBalance(balancesHidden, `${gbpAcct.symbol}${gbpAcct.amount}`)}</div>
         <div className="account-card__header-title">Current account</div>
         
         <div className="account-card__artwork">

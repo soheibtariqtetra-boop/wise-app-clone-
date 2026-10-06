@@ -234,7 +234,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 14.625px;
   font-weight: 600;
-  color: #ffffff;
+  color: #F3F5F1;
   line-height: normal;
   white-space: nowrap;
 }
@@ -257,7 +257,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 22.75px;
   font-weight: 700;
-  color: #dbddd9;
+  color: #E8EBE6;
   line-height: normal;
 }
 
@@ -278,7 +278,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 23.292px;
   font-weight: 600;
-  color: #dddfdb;
+  color: #E8EBE6;
   line-height: normal;
 }
 
@@ -332,7 +332,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 15.167px;
   font-weight: 400;
-  color: #d4d6d2;
+  color: #E8EBE6;
   text-align: center;
   line-height: normal;
 }
@@ -341,7 +341,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 15.167px;
   font-weight: 600;
-  color: #9fe870;
+  color: #9FE870;
   text-align: center;
   text-decoration: underline;
   text-underline-position: from-font;
