@@ -58,7 +58,7 @@ function TransactionRow({ transaction, onSelect }) {
           className="transaction-row__title"
           style={{ color: transaction.titleColor }}
         >
-          {transaction.title}
+          {transaction.displayName || transaction.title}
         </div>
         {(transaction.date || transaction.subtitle) && (
           <div className="transaction-row__meta">{transaction.date || transaction.subtitle}</div>

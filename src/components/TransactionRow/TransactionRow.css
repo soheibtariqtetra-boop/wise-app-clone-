@@ -46,7 +46,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 .transaction-row__title {
@@ -54,6 +55,9 @@
   font-weight: 600;
   line-height: 1.3;
   font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .transaction-row__meta {
@@ -62,6 +66,9 @@
   color: #aaada8;
   margin-top: 2px;
   font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .transaction-row__amounts {
@@ -70,6 +77,8 @@
   align-items: flex-end;
   justify-content: center;
   flex-shrink: 0;
+  margin-left: 12px;
+  white-space: nowrap;
 }
 
 .transaction-row__amount {
