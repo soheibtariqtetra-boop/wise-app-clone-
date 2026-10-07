@@ -11,24 +11,30 @@ import { mockBalance } from '../../data/mockData'
  *   onToggle       {function} — called when the eye button is clicked
  */
 function BalanceSection({ balancesHidden, onToggle }) {
+  const displayTotal = mockBalance.total.endsWith('.00') 
+    ? mockBalance.total.slice(0, -3) 
+    : mockBalance.total;
+
   return (
     <section className="balance-section" aria-label="Account balance">
       <div className="balance-section__label">
         Total balance
       </div>
       
-      <div className="balance-section__amount">
-        {balancesHidden ? '****' : mockBalance.total} {mockBalance.currency}
-      </div>
+      <div className="balance-section__row">
+        <div className="balance-section__amount">
+          {balancesHidden ? '****' : displayTotal} {mockBalance.currency}
+        </div>
 
-      <button
-        type="button"
-        className="balance-section__eye-btn"
-        aria-label={balancesHidden ? 'Show balances' : 'Hide balances'}
-        onClick={onToggle}
-      >
-        <img src={imgEyeIcon} alt="" aria-hidden="true" className="balance-section__eye-icon" draggable={false} />
-      </button>
+        <button
+          type="button"
+          className="balance-section__eye-btn"
+          aria-label={balancesHidden ? 'Show balances' : 'Hide balances'}
+          onClick={onToggle}
+        >
+          <img src={imgEyeIcon} alt="" aria-hidden="true" className="balance-section__eye-icon" draggable={false} />
+        </button>
+      </div>
     </section>
   )
 }

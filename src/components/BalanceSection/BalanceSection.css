@@ -8,7 +8,7 @@
   position: relative;
   margin-top: 21.056px;
   margin-left: 17.45px;
-  width: 152.87px;
+  min-width: 152.87px;
   height: 58.981px;
   flex-shrink: 0;
 }
@@ -28,32 +28,34 @@
   line-height: 1;
 }
 
-/* "3.00 GBP" */
-.balance-section__amount {
+.balance-section__row {
   position: absolute;
   left: 0.6px;
-  top: 25.88px;
-  width: 105.926px;
-  height: 25.278px;
+  top: 24.68px; /* eye button's original top */
+  display: flex;
+  align-items: center;
+}
+
+.balance-section__amount {
   font-size: 22.87px;
   font-weight: 600;
   color: var(--color-text-heading);
   display: flex;
   align-items: center;
   line-height: 1;
+  white-space: nowrap;
 }
 
 /* Eye button */
 .balance-section__eye-btn {
-  position: absolute;
-  left: 117.96px;
-  top: 24.68px;
   width: 34.907px;
   height: 34.306px;
   padding: 0;
   background: transparent;
   border: none;
   cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 12px;
 }
 
 .balance-section__eye-icon {
