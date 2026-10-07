@@ -235,23 +235,14 @@ function App() {
   }
 
   const closeTransaction = () => {
-    setSelectedTransaction(null)
-    if (window.history.state?.route === 'transaction' || window.location.pathname.startsWith('/transaction/')) {
-      // If we are at transaction details, determine where to go back
-      if (window.history.length > 1 && window.history.state?.route !== 'transaction') {
-        window.history.back()
-      } else {
-        // Fallback
-        if (window.location.pathname !== '/') {
-          window.history.pushState({ route: 'home' }, '', '/')
-        }
-        setCurrentRoute('home')
-      }
+    if (window.history.state?.route === 'transaction') {
+      window.history.back()
     } else {
-      if (window.location.pathname !== '/') {
-        window.history.pushState({ route: 'home' }, '', '/')
+      // Fallback for direct URL entry
+      if (window.location.pathname !== '/transactions') {
+        window.history.pushState({ route: 'transactions' }, '', '/transactions')
       }
-      setCurrentRoute('home')
+      setCurrentRoute('transactions')
     }
   }
 
