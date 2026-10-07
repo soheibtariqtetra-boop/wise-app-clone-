@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './AccountBalanceEURScreen.css'
 
 import { mockEurAccount, mockEurTransactions } from '../../data/mockData'
@@ -37,6 +37,18 @@ import imgActionGetpaid from '../../assets/accounts/eur/icon-action-getpaid.png'
 function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }) {
   const [interestVisible, setInterestVisible] = useState(true)
   const [isScrolled, setIsScrolled]           = useState(false)
+  const scrollRef                             = useRef(null)
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    const savedPos = window.history.state?.scrollPos;
+    if (el && savedPos !== undefined && savedPos > 0) {
+      requestAnimationFrame(() => {
+        el.scrollTop = savedPos;
+        setIsScrolled(savedPos > 100);
+      });
+    }
+  }, [])
 
   const handleScroll = (e) => {
     setIsScrolled(e.target.scrollTop > 100)
@@ -104,7 +116,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
       </header>
 
       {/* ══ SCROLL VIEWPORT (Single scroll owner) ══ */}
-      <div className="eur-screen__scroll" onScroll={handleScroll}>
+      <div className="eur-screen__scroll" onScroll={handleScroll} ref={scrollRef}>
         <div className="eur-screen__scroll-inner">
 
           {/* ── Account Hero (Screen01) ── */}

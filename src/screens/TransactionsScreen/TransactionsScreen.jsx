@@ -26,6 +26,19 @@ function TransactionsScreen({ onClose, onSelectTransaction }) {
     }
   }, [])
 
+  // Restore scroll position
+  useEffect(() => {
+    const el = scrollRef.current;
+    const savedPos = window.history.state?.scrollPos;
+    if (el && savedPos !== undefined && savedPos > 0) {
+      requestAnimationFrame(() => {
+        el.scrollTop = savedPos;
+        // Optionally update header state immediately
+        setIsScrolled(savedPos > 50);
+      });
+    }
+  }, [])
+
   const handleBackToTop = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({

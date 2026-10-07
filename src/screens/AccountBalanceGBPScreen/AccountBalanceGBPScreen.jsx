@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './AccountBalanceGBPScreen.css'
 
 import { mockGbpAccount, mockGbpTransactions } from '../../data/mockData'
@@ -46,6 +46,18 @@ const txIconMap = {
 function AccountBalanceGBPScreen({ onClose, onSelectTransaction, onOpenDetails }) {
   const [interestVisible, setInterestVisible] = useState(true)
   const [isScrolled, setIsScrolled]           = useState(false)
+  const scrollRef                             = useRef(null)
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    const savedPos = window.history.state?.scrollPos;
+    if (el && savedPos !== undefined && savedPos > 0) {
+      requestAnimationFrame(() => {
+        el.scrollTop = savedPos;
+        setIsScrolled(savedPos > 100);
+      });
+    }
+  }, [])
 
   const handleScroll = (e) => {
     setIsScrolled(e.target.scrollTop > 100)
@@ -121,7 +133,7 @@ function AccountBalanceGBPScreen({ onClose, onSelectTransaction, onOpenDetails }
       </header>
 
       {/* ══ SCROLL VIEWPORT (Single scroll owner) ══ */}
-      <div className="gbp-screen__scroll" onScroll={handleScroll}>
+      <div className="gbp-screen__scroll" onScroll={handleScroll} ref={scrollRef}>
         <div className="gbp-screen__scroll-inner">
 
           {/* ── Account Hero (Screen01 / 31:556-559) ── */}

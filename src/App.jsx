@@ -228,6 +228,20 @@ function App() {
   }
 
   const navigateToTransaction = (transaction) => {
+    let scrollPos = 0;
+    if (currentRoute === 'transactions') {
+      scrollPos = document.querySelector('.transactions-screen__scroll')?.scrollTop || 0;
+    } else if (currentRoute === 'gbpAccount') {
+      scrollPos = document.querySelector('.gbp-screen__scroll')?.scrollTop || 0;
+    } else if (currentRoute === 'eurAccount') {
+      scrollPos = document.querySelector('.eur-screen__scroll')?.scrollTop || 0;
+    }
+
+    if (scrollPos > 0) {
+      const currentState = window.history.state || { route: currentRoute };
+      window.history.replaceState({ ...currentState, scrollPos }, '', window.location.pathname);
+    }
+
     saveHomeScroll()
     setSelectedTransaction(transaction)
     window.history.pushState({ route: 'transaction', txId: transaction.id }, '', `/transaction/${transaction.id}`)
