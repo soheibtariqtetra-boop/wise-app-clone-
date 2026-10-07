@@ -294,6 +294,7 @@ function App() {
       ) : currentRoute === 'transactions' ? (
         <TransactionsScreen
           onClose={closeTransactions}
+          onSelectTransaction={navigateToTransaction}
         />
       ) : (
         <HomeScreen

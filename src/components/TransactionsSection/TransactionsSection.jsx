@@ -10,10 +10,9 @@ import { mockTransactions } from '../../data/mockData'
  */
 function TransactionsSection({ onSelectTransaction, onSeeAll }) {
   const handleSelect = (transaction) => {
-    if (transaction.detail && onSelectTransaction) {
+    if (onSelectTransaction) {
       onSelectTransaction(transaction)
     }
-    // If detail is null: row tap is gracefully inactive (no navigation).
   }
 
   return (

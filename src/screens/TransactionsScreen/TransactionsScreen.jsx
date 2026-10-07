@@ -9,7 +9,7 @@ import { mockFullTransactions } from '../../data/mockData'
  * Top content corresponds to TransactionsScreen01
  * Bottom content corresponds to TransactionsScreen02
  */
-function TransactionsScreen({ onClose }) {
+function TransactionsScreen({ onClose, onSelectTransaction }) {
   const scrollRef = useRef(null)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -98,7 +98,7 @@ function TransactionsScreen({ onClose }) {
               </div>
               <div className="transactions-screen__date-transactions">
                 {group.transactions.map(tx => (
-                  <TransactionRow key={tx.id} transaction={tx} />
+                  <TransactionRow key={tx.id} transaction={tx} onSelect={onSelectTransaction} />
                 ))}
               </div>
             </div>

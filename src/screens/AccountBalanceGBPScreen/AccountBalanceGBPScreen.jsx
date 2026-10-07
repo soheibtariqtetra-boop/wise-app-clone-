@@ -52,7 +52,7 @@ function AccountBalanceGBPScreen({ onClose, onSelectTransaction, onOpenDetails }
   }
 
   const handleTxRowClick = (tx) => {
-    if (tx.detail && onSelectTransaction) {
+    if (onSelectTransaction) {
       onSelectTransaction(tx)
     }
   }
