@@ -132,25 +132,25 @@ function TransactionDetailsScreen({ transaction, onClose }) {
           <img src={txIcon} alt="" draggable={false} style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
         </div>
 
-        {/* ── Amount direction indicator (+) — x:118.083, y:193.917, size:16.25 ── */}
-        {isIncoming && (
+        {/* ── Amount Row ── */}
+        <div className="txdetails-summary__amount-row" data-name="AmountRow">
+          {isIncoming && (
+            <div
+              className="txdetails-summary__amount-direction"
+              data-node-id="124:28"
+              data-name="AmountDirectionIcon"
+            >
+              <img src={imgAmountDir} alt="" draggable={false} />
+            </div>
+          )}
           <div
-            className="txdetails-summary__amount-direction"
-            data-node-id="124:28"
-            data-name="AmountDirectionIcon"
+            className="txdetails-summary__amount"
+            data-node-id="124:35"
+            data-name="Amount"
+            style={{ color: amountColor }}
           >
-            <img src={imgAmountDir} alt="" draggable={false} />
+            {amountText}
           </div>
-        )}
-
-        {/* ── Amount text — x:145.167, y:182.542, #bcdca8, bold 31.958px ── */}
-        <div
-          className="txdetails-summary__amount"
-          data-node-id="124:35"
-          data-name="Amount"
-          style={{ color: amountColor }}
-        >
-          {amountText}
         </div>
 
         {/* ── Recipient Name — x:162.5, y:229.125, #c6c8c4, medium 15.167px ── */}

@@ -101,13 +101,27 @@
   display: block;
 }
 
-/* ── Amount Direction Icon (+) — x:118.083, y:193.917, size:16.25 ── */
-.txdetails-summary__amount-direction {
+/* ── Amount Row ── */
+.txdetails-summary__amount-row {
   position: absolute;
-  left: 118.083px;
-  top: 193.917px;
+  top: 182.542px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10.8px;
+  white-space: nowrap;
+}
+
+/* ── Amount Direction Icon (+) ── */
+.txdetails-summary__amount-direction {
   width: 16.25px;
   height: 16.25px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .txdetails-summary__amount-direction img {
@@ -117,14 +131,8 @@
   display: block;
 }
 
-/* ── Amount text — x:145.167, y:182.542, w:131.083, h:32.5 ── */
-/* Figma shows "100 EUR" as the text; the "+" comes from the direction icon */
+/* ── Amount text ── */
 .txdetails-summary__amount {
-  position: absolute;
-  left: 145.167px;
-  top: 182.542px;
-  width: 131.083px;
-  height: 32.5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,15 +140,15 @@
   font-size: 31.958px;
   font-weight: 700;
   line-height: normal;
-  /* Color is passed inline from data */
+  white-space: nowrap;
 }
 
-/* ── Recipient Name — x:162.5, y:229.125, w:66.625, h:20.583 ── */
+/* ── Recipient Name ── */
 .txdetails-summary__recipient {
   position: absolute;
-  left: 162.5px;
   top: 229.125px;
-  width: 66.625px;
+  left: 16px;
+  right: 16px;
   height: 20.583px;
   display: flex;
   align-items: center;
@@ -151,49 +159,47 @@
   color: #c6c8c4;
   line-height: normal;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ── Status Pill Container — x:114.292, y:275.167, w:163.583, h:38.458 ── */
+/* ── Status Pill Container ── */
 .txdetails-summary__status-container {
   position: absolute;
-  left: 114.292px;
   top: 275.167px;
-  width: 163.583px;
-  height: 38.458px;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* StatusPill inner — offset x:0.542, y:-2.167, w:158.708, h:37.917 */
+/* StatusPill inner */
 .txdetails-summary__status-pill {
   position: relative;
-  width: 158.708px;
   height: 37.917px;
   display: flex;
   align-items: center;
 }
 
-/* Pill background — x:3.25, y:3.25, w:153.292, h:34.125 */
+/* Pill background */
 .txdetails-summary__status-pill-bg {
   position: absolute;
-  left: 3.25px;
-  top: 3.25px;
-  width: 153.292px;
-  height: 34.125px;
+  inset: 3.25px 0;
   background-color: #282b27;
   border: 0.542px solid #494b48;
   border-radius: 16.25px;
+  z-index: 0;
 }
 
-/* StatusIcon — x:7.583, y:7.042, size:26 (within pill) */
+/* StatusIcon */
 .txdetails-summary__status-icon {
-  position: absolute;
-  left: 7.583px;
-  top: 7.042px;
+  position: relative;
   width: 26px;
   height: 26px;
   z-index: 1;
+  margin-left: 7.583px;
+  flex-shrink: 0;
 }
 
 .txdetails-summary__status-icon img {
@@ -203,13 +209,9 @@
   display: block;
 }
 
-/* Status Label — "Money added", x:43.333, y:10.292, w:97.5, h:20.583 */
+/* Status Label */
 .txdetails-summary__status-label {
-  position: absolute;
-  left: 43.333px;
-  top: 10.292px;
-  width: 97.5px;
-  height: 20.583px;
+  position: relative;
   display: flex;
   align-items: center;
   font-family: 'Inter', sans-serif;
@@ -219,6 +221,8 @@
   line-height: normal;
   z-index: 1;
   white-space: nowrap;
+  margin-left: 9.75px;
+  margin-right: 18px;
 }
 
 /* ════════════════════════════════════════════════════
@@ -312,6 +316,7 @@
   line-height: normal;
   text-align: right;
   margin-left: auto;
+  white-space: nowrap;
 }
 
 /* ── Received row — y:1.083 in DetailsRows, h:79.083 ── */
