@@ -22,6 +22,54 @@
   scrollbar-width: none;
 }
 
+.transfer-compact-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88px;
+  background-color: #292c27;
+  padding: 32px 18px 12px 18px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 101;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.transfer-compact-header--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.transfer-compact-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  margin-left: 18px;
+  gap: 2px;
+}
+
+.transfer-compact-amount {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #F3F5F1;
+}
+
+.transfer-compact-recipient {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #E8EBE6;
+}
+
 .transfer-header {
   background-color: #292c27;
   padding: 35px 18px 41px 18px;
@@ -31,6 +79,7 @@
   flex-shrink: 0;
   width: 100%;
   box-sizing: border-box;
+  margin-top: -88px; /* Offset the sticky compact header space to stay continuous */
 }
 
 .transfer-header__actions {
@@ -270,6 +319,15 @@
   color: #E8EBE6;
 }
 
+.timeline-completion-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #F3F5F1;
+  margin-top: 4px;
+}
+
 .timeline-text {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -277,6 +335,39 @@
   line-height: 22px;
   color: #F3F5F1;
   white-space: pre-wrap;
+}
+
+/* Transfer Actions */
+.transfer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 38px;
+  padding-bottom: 24px;
+}
+
+.transfer-action-btn {
+  height: 52px;
+  border-radius: 28px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.transfer-action-btn--primary {
+  background-color: #163300;
+  color: #9FE870;
+}
+
+.transfer-action-btn--secondary {
+  background-color: #292c28;
+  color: #F3F5F1;
 }
 
 /* Details tab styles */

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './TransferDetailsScreen.css'
 
 import imgClose  from '../../assets/transactions/shared/btn-close.png'
@@ -15,11 +15,40 @@ const CheckmarkIcon = () => (
 
 function TransferDetailsScreen({ transaction, onClose }) {
   const [activeTab, setActiveTab] = useState('updates')
+  const [isScrolled, setIsScrolled] = useState(false)
+  
+  const handleScroll = (e) => {
+    setIsScrolled(e.target.scrollTop > 120)
+  }
 
   if (!transaction) return null;
 
+  const displayAmount = transaction.amount.replace('-', '');
+  const displayCurrency = transaction.currency || 'EUR';
+  const fullAmountStr = `${displayAmount} ${displayCurrency}`;
+
   return (
-    <div className="transfer-screen">
+    <div className="transfer-screen" onScroll={handleScroll}>
+      
+      {/* ── Compact Header (Visible on Scroll) ── */}
+      <div className={`transfer-compact-header ${isScrolled ? 'transfer-compact-header--visible' : ''}`}>
+        <button type="button" className="transfer-btn" onClick={onClose}>
+          <img src={imgClose} alt="Close" draggable={false} />
+        </button>
+        <div className="transfer-compact-identity">
+          <div className="transfer-compact-amount">{fullAmountStr}</div>
+          <div className="transfer-compact-recipient">{transaction.title}</div>
+        </div>
+        <div className="transfer-header__actions-right">
+          <button type="button" className="transfer-btn">
+            <img src={imgHelp} alt="Help" draggable={false} />
+          </button>
+          <button type="button" className="transfer-btn">
+            <img src={imgMore} alt="More" draggable={false} />
+          </button>
+        </div>
+      </div>
+
       <div className="transfer-header">
         <div className="transfer-header__actions">
           <button type="button" className="transfer-btn" onClick={onClose}>
@@ -40,7 +69,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
             <img src={imgIconUp} alt="" draggable={false} />
           </div>
           <div className="transfer-status-text">Sent</div>
-          <div className="transfer-amount">{transaction.amount.replace('-', '')} {transaction.currency || 'EUR'}</div>
+          <div className="transfer-amount">{fullAmountStr}</div>
           <div className="transfer-recipient">{transaction.title}</div>
           
           <div className="transfer-pill">
@@ -125,10 +154,23 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   </div>
                   <div className="timeline-content">
                     <div className="timeline-time">Wednesday, September 23 at 16:49</div>
-                    <div className="timeline-text">Your transfer is complete.</div>
+                    <div className="timeline-completion-title">Your transfer's complete</div>
+                    <div className="timeline-text">We sent {fullAmountStr} to {transaction.title}.</div>
                   </div>
                 </div>
               </div>
+            </div>
+            
+            <div className="transfer-actions">
+              <button className="transfer-action-btn transfer-action-btn--primary">
+                Repeat this transfer
+              </button>
+              <button className="transfer-action-btn transfer-action-btn--secondary">
+                Rate the app
+              </button>
+              <button className="transfer-action-btn transfer-action-btn--primary">
+                Share with recipient
+              </button>
             </div>
           </div>
         ) : (
@@ -137,15 +179,15 @@ function TransferDetailsScreen({ transaction, onClose }) {
               <h2 className="transfer-section-title">Transaction details</h2>
               <div className="details-row">
                 <span className="details-label">You sent</span>
-                <span className="details-value">1 EUR</span>
+                <span className="details-value">{fullAmountStr}</span>
               </div>
               <div className="details-row">
                 <span className="details-label">Wise's fees</span>
                 <span className="details-value">0 EUR</span>
               </div>
               <div className="details-row">
-                <span className="details-label">Erkan Schwarz received</span>
-                <span className="details-value">1 EUR</span>
+                <span className="details-label">{transaction.title} received</span>
+                <span className="details-value">{fullAmountStr}</span>
               </div>
               <div className="details-row">
                 <span className="details-label">Transaction number</span>
@@ -156,10 +198,10 @@ function TransferDetailsScreen({ transaction, onClose }) {
             <div className="transfer-details-divider"></div>
 
             <div className="transfer-details-section">
-              <h2 className="transfer-section-title">Erkan Schwarz's bank details</h2>
+              <h2 className="transfer-section-title">{transaction.title}'s bank details</h2>
               <div className="details-row">
                 <span className="details-label">Account holder name</span>
-                <span className="details-value">Erkan Schwarz</span>
+                <span className="details-value">{transaction.title}</span>
               </div>
               <div className="details-row">
                 <span className="details-label">Bank code (BIC/SWIFT)</span>

@@ -11,7 +11,7 @@ export const mockUser = {
 export const EUR_TO_GBP_RATE = 0.85;
 
 export const mockBalance = {
-  total: '5,576.00',
+  total: '4,777.85',
   currency: 'GBP',
 }
 
@@ -27,7 +27,7 @@ export const mockCurrencyAccounts = [
     id: 'eur',
     flag: '🇪🇺',
     symbol: '€',
-    amount: '2,980.00',
+    amount: '2,041.00',
     currency: 'EUR',
   },
   {
@@ -106,7 +106,7 @@ export const mockFullTransactions = [
         "type": "transfer",
         "title": "Erkan Schwarz",
         "titleColor": "#F3F5F1",
-        "amount": "-1 EUR",
+        "amount": "-940 EUR",
         "amountColor": "#F3F5F1",
         "listIconKey": "up",
         "dateGroup": "Wednesday, October 7",
@@ -553,7 +553,7 @@ export const mockGbpTransactions = [
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
-  balance: '2,980.00',
+  balance: '2,041.00',
   iban: 'BE58 9030 1491 1979',
   accountLabel: 'Current account / EUR',
   accountName: 'Muhammad Ahsan Ayaz Ltd',
@@ -570,7 +570,7 @@ export const mockEurTransactions = [
     "type": "transfer",
     "title": "Erkan Schwarz",
     "titleColor": "#F3F5F1",
-    "amount": "-1 EUR",
+    "amount": "-940 EUR",
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
     "dateGroup": "Wednesday, October 7",
