@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
 import './TransferDetailsScreen.css'
 
 import imgClose  from '../../assets/transactions/shared/btn-close.png'
@@ -14,12 +14,17 @@ const CheckmarkIcon = () => (
 )
 
 function TransferDetailsScreen({ transaction, onClose }) {
-  const [activeTab, setActiveTab] = useState('updates')
-  const [isScrolled, setIsScrolled] = useState(false)
-  
+  const [activeTab, setActiveTab] = useState('updates');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollRef = useRef(null);
+
   const handleScroll = (e) => {
-    setIsScrolled(e.target.scrollTop > 120)
-  }
+    setIsScrolled(e.target.scrollTop > 120);
+  };
+
+  const handleTabSwitch = (newTab) => {
+    setActiveTab(newTab);
+  };
 
   if (!transaction) return null;
 
@@ -30,10 +35,10 @@ function TransferDetailsScreen({ transaction, onClose }) {
     : `${displayAmount} ${displayCurrency}`;
 
   return (
-    <div className="transfer-screen" onScroll={handleScroll}>
+    <div className="transfer-screen" onScroll={handleScroll} ref={scrollRef}>
       
-      {/* ── Compact Header (Visible on Scroll or in Details Tab) ── */}
-      <div className={`transfer-compact-header ${isScrolled || activeTab === 'details' ? 'transfer-compact-header--visible' : ''}`}>
+      {/* ── Compact Header (Visible on Scroll) ── */}
+      <div className={`transfer-compact-header ${isScrolled ? 'transfer-compact-header--visible' : ''}`}>
         <button type="button" className="transfer-btn" onClick={onClose}>
           <img src={imgClose} alt="Close" draggable={false} />
         </button>
@@ -51,49 +56,47 @@ function TransferDetailsScreen({ transaction, onClose }) {
         </div>
       </div>
 
-      {activeTab === 'updates' && (
-        <div className="transfer-header">
-          <div className="transfer-header__actions">
-            <button type="button" className="transfer-btn" onClick={onClose}>
-              <img src={imgClose} alt="Close" draggable={false} />
+      <div className="transfer-header">
+        <div className="transfer-header__actions">
+          <button type="button" className="transfer-btn" onClick={onClose}>
+            <img src={imgClose} alt="Close" draggable={false} />
+          </button>
+          <div className="transfer-header__actions-right">
+            <button type="button" className="transfer-btn">
+              <img src={imgHelp} alt="Help" draggable={false} />
             </button>
-            <div className="transfer-header__actions-right">
-              <button type="button" className="transfer-btn">
-                <img src={imgHelp} alt="Help" draggable={false} />
-              </button>
-              <button type="button" className="transfer-btn">
-                <img src={imgMore} alt="More" draggable={false} />
-              </button>
-            </div>
-          </div>
-
-          <div className="transfer-summary">
-            <div className="transfer-icon">
-              <img src={imgIconUp} alt="" draggable={false} />
-            </div>
-            <div className="transfer-status-text">Sent</div>
-            <div className="transfer-amount">{fullAmountStr}</div>
-            <div className="transfer-recipient">{transaction.title}</div>
-            
-            <div className="transfer-pill">
-              <img src={imgGeneral} alt="" className="transfer-pill-icon" />
-              <span>General</span>
-            </div>
+            <button type="button" className="transfer-btn">
+              <img src={imgMore} alt="More" draggable={false} />
+            </button>
           </div>
         </div>
-      )}
+
+        <div className="transfer-summary">
+          <div className="transfer-icon">
+            <img src={imgIconUp} alt="" draggable={false} />
+          </div>
+          <div className="transfer-status-text">Sent</div>
+          <div className="transfer-amount">{fullAmountStr}</div>
+          <div className="transfer-recipient">{transaction.title}</div>
+          
+          <div className="transfer-pill">
+            <img src={imgGeneral} alt="" className="transfer-pill-icon" />
+            <span>General</span>
+          </div>
+        </div>
+      </div>
 
       <div className="transfer-content">
         <div className="transfer-tabs">
           <button 
             className={`transfer-tab ${activeTab === 'updates' ? 'transfer-tab--active' : ''}`}
-            onClick={() => setActiveTab('updates')}
+            onClick={() => handleTabSwitch('updates')}
           >
             Updates
           </button>
           <button 
             className={`transfer-tab ${activeTab === 'details' ? 'transfer-tab--active' : ''}`}
-            onClick={() => setActiveTab('details')}
+            onClick={() => handleTabSwitch('details')}
           >
             Details
           </button>
