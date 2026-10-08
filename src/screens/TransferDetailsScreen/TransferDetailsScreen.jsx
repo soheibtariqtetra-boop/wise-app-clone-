@@ -23,9 +23,11 @@ function TransferDetailsScreen({ transaction, onClose }) {
 
   if (!transaction) return null;
 
-  const displayAmount = transaction.amount.replace('-', '');
+  const displayAmount = transaction.amount.replace('-', '').trim();
   const displayCurrency = transaction.currency || 'EUR';
-  const fullAmountStr = `${displayAmount} ${displayCurrency}`;
+  const fullAmountStr = displayAmount.includes(displayCurrency) 
+    ? displayAmount 
+    : `${displayAmount} ${displayCurrency}`;
 
   return (
     <div className="transfer-screen" onScroll={handleScroll}>
