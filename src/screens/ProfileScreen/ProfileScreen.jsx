@@ -3,7 +3,7 @@ import ProfileMenuRow from '../../components/ProfileMenuRow/ProfileMenuRow'
 import ProfileSettingsRow from '../../components/ProfileSettingsRow/ProfileSettingsRow'
 import ProfileInfoRow from '../../components/ProfileInfoRow/ProfileInfoRow'
 import './ProfileScreen.css'
-
+import { mockUser } from '../../data/mockData'
 import imgBack from '../../assets/profile/shared/btn-back.png'
 import imgAvatarBg from '../../assets/profile/shared/avatar-bg.png'
 import imgCameraBadge from '../../assets/profile/shared/badge-camera.png'
@@ -83,7 +83,7 @@ function ProfileScreen({ onBack }) {
           <div className="profile-identity__avatar-wrapper" data-node-id="7:527">
             <div className="profile-identity__avatar">
               <img src={imgAvatarBg} alt="" className="profile-identity__avatar-bg" draggable={false} />
-              <span className="profile-identity__avatar-initials" data-node-id="7:529">ML</span>
+              <span className="profile-identity__avatar-initials" data-node-id="7:529">{mockUser.initials}</span>
             </div>
             <img
               src={imgCameraBadge}
@@ -98,9 +98,9 @@ function ProfileScreen({ onBack }) {
           <h1
             className="profile-identity__name"
             data-node-id="7:526"
-            aria-label="SHOAIB KHAN"
+            aria-label={mockUser.name}
           >
-            SHOAIB KHAN
+            {mockUser.name}
           </h1>
 
           {/* Account Type (Figma node 7:525) */}
@@ -112,7 +112,7 @@ function ProfileScreen({ onBack }) {
           <div className="profile-identity__email-pill" data-node-id="7:521">
             <img src={imgWiseFlag} alt="" className="profile-identity__email-icon" draggable={false} data-node-id="7:524" />
             <span className="profile-identity__email-text" data-node-id="7:523">
-              MujhKoRanaGmaafKrna@gmail.com
+              {mockUser.handle}
             </span>
           </div>
         </section>

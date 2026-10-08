@@ -3,6 +3,7 @@ import './TopBar.css'
 
 import imgChartIcon from '../../assets/home/shared/analytics-icon.png'
 import imgPlusIcon from '../../assets/home/shared/plus-icon.png'
+import { mockUser } from '../../data/mockData'
 
 function TopBar({ onProfileClick }) {
   const [scrolled, setScrolled] = useState(false)
@@ -24,7 +25,7 @@ function TopBar({ onProfileClick }) {
     <div className={`top-bar-shell${scrolled ? ' top-bar-shell--scrolled' : ''}`}>
       <header className="top-bar" aria-label="Top bar">
 
-        {/* ML Avatar */}
+        {/* Profile Avatar */}
         <div className="top-bar__avatar-container">
           <button
             className="top-bar__avatar"
@@ -32,7 +33,7 @@ function TopBar({ onProfileClick }) {
             type="button"
             onClick={onProfileClick}
           >
-            <span className="top-bar__avatar-text">ML</span>
+            <span className="top-bar__avatar-text">{mockUser.initials}</span>
           </button>
         </div>
 
