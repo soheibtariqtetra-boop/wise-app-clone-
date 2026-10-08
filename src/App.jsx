@@ -9,6 +9,7 @@ import CurrencyDetailsScreen from './screens/CurrencyDetailsScreen/CurrencyDetai
 import GBPAccountDetailsScreen from './screens/GBPAccountDetailsScreen/GBPAccountDetailsScreen'
 import AccountBalanceGBPScreen from './screens/AccountBalanceGBPScreen/AccountBalanceGBPScreen'
 import TransactionsScreen from './screens/TransactionsScreen/TransactionsScreen'
+import TransferDetailsScreen from './screens/TransferDetailsScreen/TransferDetailsScreen'
 
 /**
  * App root — manages lightweight SPA screen navigation.
@@ -22,13 +23,14 @@ function App() {
     if (window.location.pathname.startsWith('/account/eur') || window.location.pathname.startsWith('/eur')) return 'eurAccount'
     if (window.location.pathname.startsWith('/account/gbp') || window.location.pathname.startsWith('/gbp')) return 'gbpAccount'
     if (window.location.pathname.startsWith('/transactions')) return 'transactions'
+    if (window.location.pathname.startsWith('/transfer/')) return 'transfer'
     if (window.location.pathname.startsWith('/transaction/')) return 'transaction'
     return 'home'
   }
 
   const getInitialTransaction = () => {
-    if (window.location.pathname.startsWith('/transaction/')) {
-      const txId = window.location.pathname.split('/transaction/')[1]
+    if (window.location.pathname.startsWith('/transaction/') || window.location.pathname.startsWith('/transfer/')) {
+      const txId = window.location.pathname.split(/\/(?:transaction|transfer)\//)[1]
       for (const group of mockFullTransactions) {
         const tx = group.transactions.find(t => t.id === txId)
         if (tx) return tx
@@ -57,8 +59,8 @@ function App() {
         setCurrentRoute('eurAccount')
       } else if (path.startsWith('/account/gbp') || path.startsWith('/gbp')) {
         setCurrentRoute('gbpAccount')
-      } else if (path.startsWith('/transaction/') && !path.startsWith('/transactions')) {
-        const txId = path.split('/transaction/')[1]
+      } else if ((path.startsWith('/transaction/') || path.startsWith('/transfer/')) && !path.startsWith('/transactions')) {
+        const txId = path.split(/\/(?:transaction|transfer)\//)[1]
         let found = null
         for (const group of mockFullTransactions) {
           const tx = group.transactions.find(t => t.id === txId)
@@ -66,7 +68,7 @@ function App() {
         }
         if (found) {
           setSelectedTransaction(found)
-          setCurrentRoute('transaction')
+          setCurrentRoute(path.startsWith('/transfer/') ? 'transfer' : 'transaction')
         } else {
           setCurrentRoute('home')
         }
@@ -111,6 +113,7 @@ function App() {
     if (
       window.history.state?.route === 'profile' ||
       window.history.state?.route === 'transaction' ||
+      window.history.state?.route === 'transfer' ||
       window.history.state?.route === 'eurAccount' ||
       window.history.state?.route === 'eurAccountDetails' ||
       window.history.state?.route === 'gbpAccount' ||
@@ -244,12 +247,18 @@ function App() {
 
     saveHomeScroll()
     setSelectedTransaction(transaction)
-    window.history.pushState({ route: 'transaction', txId: transaction.id }, '', `/transaction/${transaction.id}`)
-    setCurrentRoute('transaction')
+    
+    if (transaction.type === 'transfer') {
+      window.history.pushState({ route: 'transfer', txId: transaction.id }, '', `/transfer/${transaction.id}`)
+      setCurrentRoute('transfer')
+    } else {
+      window.history.pushState({ route: 'transaction', txId: transaction.id }, '', `/transaction/${transaction.id}`)
+      setCurrentRoute('transaction')
+    }
   }
 
   const closeTransaction = () => {
-    if (window.history.state?.route === 'transaction') {
+    if (window.history.state?.route === 'transaction' || window.history.state?.route === 'transfer') {
       window.history.back()
     } else {
       // Fallback for direct URL entry
@@ -266,6 +275,11 @@ function App() {
     <div className="app-shell">
       {currentRoute === 'profile' ? (
         <ProfileScreen onBack={navigateToHome} />
+      ) : currentRoute === 'transfer' && selectedTransaction ? (
+        <TransferDetailsScreen
+          transaction={selectedTransaction}
+          onClose={closeTransaction}
+        />
       ) : currentRoute === 'transaction' && selectedTransaction ? (
         <TransactionDetailsScreen
           transaction={selectedTransaction}

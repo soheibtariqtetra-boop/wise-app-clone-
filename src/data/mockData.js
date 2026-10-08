@@ -99,6 +99,25 @@ export const mockTransactions = [
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
+    "dateGroup": "Wednesday, October 7",
+    "transactions": [
+      {
+        "id": "tx-transfer-erkan",
+        "type": "transfer",
+        "title": "Erkan Schwarz",
+        "titleColor": "#F3F5F1",
+        "amount": "-1 EUR",
+        "amountColor": "#F3F5F1",
+        "listIconKey": "up",
+        "dateGroup": "Wednesday, October 7",
+        "dateStr": "2026-10-07T10:00:00Z",
+        "currency": "EUR",
+        "date": "Wednesday, October 7",
+        "transactionNumber": "#2418268688"
+      }
+    ]
+  },
+  {
     "dateGroup": "Today",
     "transactions": [
       {
@@ -546,6 +565,20 @@ export const mockEurAccount = {
   ],
 }
 export const mockEurTransactions = [
+  {
+    "id": "tx-transfer-erkan",
+    "type": "transfer",
+    "title": "Erkan Schwarz",
+    "titleColor": "#F3F5F1",
+    "amount": "-1 EUR",
+    "amountColor": "#F3F5F1",
+    "listIconKey": "up",
+    "dateGroup": "Wednesday, October 7",
+    "dateStr": "2026-10-07T10:00:00Z",
+    "currency": "EUR",
+    "date": "Wednesday, October 7",
+    "transactionNumber": "#2418268688"
+  },
   {
     "id": "tx-new-eur-6",
     "title": "Westfield Creative Studio",
