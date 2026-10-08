@@ -555,7 +555,7 @@ export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: '2,041.00',
-  iban: 'BE58 9030 1491 1979',
+  iban: 'BE48 9000 1491 1879',
   accountLabel: 'Current account / EUR',
   accountName: 'Muhammad Ahsan Ayaz Ltd',
   swiftBic: 'TRWIBEB1XXX',
