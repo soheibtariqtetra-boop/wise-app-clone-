@@ -17,14 +17,24 @@ function TransferDetailsScreen({ transaction, onClose }) {
   const [activeTab, setActiveTab] = useState('updates');
   const [isScrolled, setIsScrolled] = useState(false);
   const scrollRef = useRef(null);
+  const scrollPositions = useRef({ updates: 0, details: 0 });
 
   const handleScroll = (e) => {
-    setIsScrolled(e.target.scrollTop > 120);
+    const top = e.target.scrollTop;
+    setIsScrolled(top > 120);
+    scrollPositions.current[activeTab] = top;
   };
 
   const handleTabSwitch = (newTab) => {
+    scrollPositions.current[activeTab] = scrollRef.current?.scrollTop ?? 0;
     setActiveTab(newTab);
   };
+
+  useLayoutEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollPositions.current[activeTab];
+    }
+  }, [activeTab]);
 
   if (!transaction) return null;
 
