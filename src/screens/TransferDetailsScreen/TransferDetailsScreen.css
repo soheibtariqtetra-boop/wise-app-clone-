@@ -429,6 +429,12 @@
   width: 170px;
 }
 
+.details-row-compact--iban .details-label,
+.details-row-compact--bank-name .details-label {
+  width: auto;
+  max-width: 100px;
+}
+
 .details-value {
   color: #F3F5F1;
   font-size: 15px;
@@ -446,8 +452,7 @@
 
 .details-value--iban {
   white-space: nowrap;
-  font-size: 13.5px;
-  letter-spacing: -0.2px;
+  font-size: 14px;
 }
 
 .details-value--bank-name {
