@@ -5,7 +5,7 @@ import imgClose  from '../../assets/transactions/shared/btn-close.png'
 import imgHelp   from '../../assets/transactions/shared/btn-help.png'
 import imgMore   from '../../assets/transactions/shared/btn-more.png'
 import imgIconUp from '../../assets/home/transactions/tx-up.png'
-import imgGeneral from '../../assets/transactions/details/icon-status-money-added.png'
+import imgGeneral from '../../assets/transactions/details/icon-general.png'
 
 const CheckmarkIcon = () => (
   <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
