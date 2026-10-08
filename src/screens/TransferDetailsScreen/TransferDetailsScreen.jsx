@@ -5,7 +5,13 @@ import imgClose  from '../../assets/transactions/shared/btn-close.png'
 import imgHelp   from '../../assets/transactions/shared/btn-help.png'
 import imgMore   from '../../assets/transactions/shared/btn-more.png'
 import imgIconUp from '../../assets/home/transactions/tx-up.png'
-import imgGeneral from '../../assets/transactions/details/icon-status-money-added.png' // fallback for general icon
+import imgGeneral from '../../assets/transactions/details/icon-status-money-added.png'
+
+const CheckmarkIcon = () => (
+  <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 8L6.5 13.5L19 1" stroke="#9FE870" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
 
 function TransferDetailsScreen({ transaction, onClose }) {
   const [activeTab, setActiveTab] = useState('updates')
@@ -34,7 +40,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
             <img src={imgIconUp} alt="" draggable={false} />
           </div>
           <div className="transfer-status-text">Sent</div>
-          <div className="transfer-amount">{transaction.amount.replace('-', '')}</div>
+          <div className="transfer-amount">{transaction.amount.replace('-', '')} {transaction.currency || 'EUR'}</div>
           <div className="transfer-recipient">{transaction.title}</div>
           
           <div className="transfer-pill">
@@ -60,40 +66,63 @@ function TransferDetailsScreen({ transaction, onClose }) {
           </button>
         </div>
 
-        <div className="transfer-scrollable">
-          {activeTab === 'updates' ? (
-            <div className="transfer-updates">
-              <h2 className="transfer-section-title">Transfer timeline</h2>
-              <div className="timeline">
+        {activeTab === 'updates' ? (
+          <div className="transfer-updates">
+            <h2 className="transfer-section-title">Transfer timeline</h2>
+            <div className="timeline">
+              <div className="timeline-item-container">
                 <div className="timeline-item">
-                  <div className="timeline-icon timeline-icon--done">✓</div>
+                  <div className="timeline-indicator-col">
+                    <div className="timeline-icon">
+                      <CheckmarkIcon />
+                    </div>
+                    <div className="timeline-line"></div>
+                  </div>
                   <div className="timeline-content">
                     <div className="timeline-time">Wednesday, September 23 at 16:49</div>
                     <div className="timeline-text">You set up your transfer</div>
                   </div>
                 </div>
-                <div className="timeline-line"></div>
-                
+              </div>
+
+              <div className="timeline-item-container">
                 <div className="timeline-item">
-                  <div className="timeline-icon timeline-icon--done">✓</div>
+                  <div className="timeline-indicator-col">
+                    <div className="timeline-icon">
+                      <CheckmarkIcon />
+                    </div>
+                    <div className="timeline-line"></div>
+                  </div>
                   <div className="timeline-content">
                     <div className="timeline-time">Wednesday, September 23 at 16:49 PM</div>
-                    <div className="timeline-text">We've taken the funds from Shoaib khan Wise account</div>
+                    <div className="timeline-text">We've taken the funds from Shoaib khan  Wise account</div>
                   </div>
                 </div>
-                <div className="timeline-line"></div>
-                
+              </div>
+
+              <div className="timeline-item-container">
                 <div className="timeline-item">
-                  <div className="timeline-icon timeline-icon--done">✓</div>
+                  <div className="timeline-indicator-col">
+                    <div className="timeline-icon">
+                      <CheckmarkIcon />
+                    </div>
+                    <div className="timeline-line"></div>
+                  </div>
                   <div className="timeline-content">
                     <div className="timeline-time">Wednesday, September 23 at 16:49</div>
                     <div className="timeline-text">We paid out your EUR</div>
                   </div>
                 </div>
-                <div className="timeline-line"></div>
-                
+              </div>
+
+              <div className="timeline-item-container">
                 <div className="timeline-item">
-                  <div className="timeline-icon timeline-icon--done">✓</div>
+                  <div className="timeline-indicator-col">
+                    <div className="timeline-icon">
+                      <CheckmarkIcon />
+                    </div>
+                    <div className="timeline-line"></div>
+                  </div>
                   <div className="timeline-content">
                     <div className="timeline-time">Wednesday, September 23 at 16:49</div>
                     <div className="timeline-text">Your transfer is complete.</div>
@@ -101,58 +130,58 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="transfer-details-tab">
-              <div className="transfer-details-section">
-                <h2 className="transfer-section-title">Transaction details</h2>
-                <div className="details-row">
-                  <span className="details-label">You sent</span>
-                  <span className="details-value">1 EUR</span>
-                </div>
-                <div className="details-row">
-                  <span className="details-label">Wise's fees</span>
-                  <span className="details-value">0 EUR</span>
-                </div>
-                <div className="details-row">
-                  <span className="details-label">Erkan Schwarz received</span>
-                  <span className="details-value">1 EUR</span>
-                </div>
-                <div className="details-row">
-                  <span className="details-label">Transaction number</span>
-                  <span className="details-value">#2418268688</span>
-                </div>
+          </div>
+        ) : (
+          <div className="transfer-details-tab">
+            <div className="transfer-details-section">
+              <h2 className="transfer-section-title">Transaction details</h2>
+              <div className="details-row">
+                <span className="details-label">You sent</span>
+                <span className="details-value">1 EUR</span>
               </div>
-
-              <div className="transfer-details-divider"></div>
-
-              <div className="transfer-details-section">
-                <h2 className="transfer-section-title">Erkan Schwarz's bank details</h2>
-                <div className="details-row">
-                  <span className="details-label">Account holder name</span>
-                  <span className="details-value">Erkan Schwarz</span>
-                </div>
-                <div className="details-row">
-                  <span className="details-label">Bank code (BIC/SWIFT)</span>
-                  <span className="details-value">BYLADEM1001</span>
-                </div>
-                <div className="details-row">
-                  <span className="details-label">IBAN</span>
-                  <span className="details-value">DE62 1203 0000 1083 3924 05</span>
-                </div>
-                <div className="details-row">
-                  <span className="details-label">Bank name</span>
-                  <span className="details-value">DEUTSCHE KREDIT BANK A.G. BERLIN</span>
-                </div>
+              <div className="details-row">
+                <span className="details-label">Wise's fees</span>
+                <span className="details-value">0 EUR</span>
               </div>
-
-              <div className="transfer-details-divider"></div>
-              
-              <div className="transfer-download">
-                <span className="download-text">Download transfer confirmation</span>
+              <div className="details-row">
+                <span className="details-label">Erkan Schwarz received</span>
+                <span className="details-value">1 EUR</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Transaction number</span>
+                <span className="details-value">#2418268688</span>
               </div>
             </div>
-          )}
-        </div>
+
+            <div className="transfer-details-divider"></div>
+
+            <div className="transfer-details-section">
+              <h2 className="transfer-section-title">Erkan Schwarz's bank details</h2>
+              <div className="details-row">
+                <span className="details-label">Account holder name</span>
+                <span className="details-value">Erkan Schwarz</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Bank code (BIC/SWIFT)</span>
+                <span className="details-value">BYLADEM1001</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">IBAN</span>
+                <span className="details-value">DE62 1203 0000 1083 3924 05</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Bank name</span>
+                <span className="details-value">DEUTSCHE KREDIT BANK A.G. BERLIN</span>
+              </div>
+            </div>
+
+            <div className="transfer-details-divider"></div>
+            
+            <div className="transfer-download">
+              <span className="download-text">Download transfer confirmation</span>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

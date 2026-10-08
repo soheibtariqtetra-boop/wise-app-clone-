@@ -4,23 +4,40 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #171815; /* Matching dark theme background */
+  background-color: #121511;
   z-index: 100;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   color: #F3F5F1;
 }
 
+/* Hide scrollbar for a clean look but keep scrollable */
+.transfer-screen::-webkit-scrollbar {
+  display: none;
+}
+.transfer-screen {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .transfer-header {
-  background-color: #292c27; /* slightly lighter for header area */
-  padding-bottom: 24px;
+  background-color: #292c27;
+  padding: 35px 18px 41px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .transfer-header__actions {
   display: flex;
   justify-content: space-between;
-  padding: 24px 17px 0 17px;
+  width: 100%;
+  height: 44px;
 }
 
 .transfer-header__actions-right {
@@ -50,19 +67,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 16px;
+  width: 100%;
+  margin-top: 8px;
 }
 
 .transfer-icon {
-  width: 78px;
-  height: 78px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
 }
 
 .transfer-icon img {
@@ -71,148 +87,203 @@
 }
 
 .transfer-status-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   font-size: 16px;
+  line-height: 20px;
   color: #E8EBE6;
-  margin-bottom: 4px;
+  margin-top: 18px;
 }
 
 .transfer-amount {
-  font-size: 32px;
-  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41px;
   color: #F3F5F1;
-  margin-bottom: 8px;
+  margin-top: 14px;
 }
 
 .transfer-recipient {
-  font-size: 15px;
-  color: #c6c8c4;
-  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #F3F5F1;
+  margin-top: 5px;
 }
 
 .transfer-pill {
   display: flex;
   align-items: center;
-  background-color: #3f423d;
-  border-radius: 20px;
-  padding: 6px 16px;
-  gap: 8px;
-  font-size: 14px;
-  color: #F3F5F1;
+  background-color: #282b27;
+  border: 1px solid #4f514e;
+  border-radius: 24px;
+  height: 36px;
+  padding: 0 17px 0 4px;
+  gap: 9px;
+  margin-top: 24px;
 }
 
 .transfer-pill-icon {
-  width: 16px;
-  height: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.transfer-pill span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #E8EBE6;
 }
 
 .transfer-content {
-  flex: 1;
+  background-color: #121511;
+  width: 100%;
+  padding: 27px 18px 20px 18px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: #111111; /* or match the figma bg for the lower part */
 }
 
 .transfer-tabs {
   display: flex;
-  padding: 16px;
-  background-color: #111111;
+  height: 44px;
+  background-color: #292c27;
+  border-radius: 24px;
+  padding: 3px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .transfer-tab {
   flex: 1;
-  background-color: #1f1f1f;
-  color: #c6c8c4;
+  height: 38px;
+  border-radius: 24px;
   border: none;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 500;
+  background: transparent;
+  color: #E8EBE6;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
   cursor: pointer;
-  text-align: center;
-}
-
-.transfer-tab:first-child {
-  border-radius: 20px 0 0 20px;
-}
-
-.transfer-tab:last-child {
-  border-radius: 0 20px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .transfer-tab--active {
-  background-color: #292c27;
-  color: #9FE870; /* Active tab green */
+  background-color: #111410;
+  color: #9FE870;
+  font-weight: 600;
 }
 
-.transfer-scrollable {
-  flex: 1;
-  overflow-y: auto;
-  padding: 24px 16px;
-  background-color: #111111;
+.transfer-updates {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .transfer-section-title {
-  font-size: 22px;
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
   color: #F3F5F1;
-  margin-bottom: 24px;
+  margin: 0;
 }
 
 /* Timeline styles */
 .timeline {
   display: flex;
   flex-direction: column;
+  margin-top: 28px;
+}
+
+.timeline-item-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .timeline-item {
   display: flex;
-  gap: 16px;
+  gap: 30px;
+  width: 100%;
+}
+
+.timeline-indicator-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35px;
+  flex-shrink: 0;
+  padding-top: 3px;
 }
 
 .timeline-icon {
   width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #3f423d;
-  color: transparent;
+  height: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
-.timeline-icon--done {
-  color: #9FE870;
+.timeline-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.timeline-line {
+  width: 1px;
+  background-color: #4f514e;
+  margin-top: 12px;
+  flex-grow: 1;
 }
 
 .timeline-content {
   display: flex;
   flex-direction: column;
-  padding-bottom: 8px;
+  gap: 4px;
+  flex: 1;
+  padding-bottom: 28px;
+}
+
+/* Last timeline content has no padding bottom */
+.timeline-item-container:last-child .timeline-content {
+  padding-bottom: 0;
+}
+.timeline-item-container:last-child .timeline-line {
+  display: none;
 }
 
 .timeline-time {
-  font-size: 14px;
-  color: #c6c8c4;
-  margin-bottom: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #E8EBE6;
 }
 
 .timeline-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   font-size: 16px;
+  line-height: 22px;
   color: #F3F5F1;
-}
-
-.timeline-line {
-  width: 1px;
-  height: 24px;
-  background-color: #3f423d;
-  margin-left: 9.5px; /* Centers under 20px icon */
-  margin-top: 4px;
-  margin-bottom: 4px;
+  white-space: pre-wrap;
 }
 
 /* Details tab styles */
+.transfer-details-tab {
+  margin-top: 28px;
+}
+
 .transfer-details-section {
   display: flex;
   flex-direction: column;
@@ -226,14 +297,16 @@
 }
 
 .details-label {
-  color: #c6c8c4;
+  color: #E8EBE6;
   font-size: 16px;
+  font-family: 'Inter', sans-serif;
   flex: 1;
 }
 
 .details-value {
   color: #F3F5F1;
   font-size: 16px;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   text-align: right;
   flex: 1;
@@ -241,7 +314,7 @@
 
 .transfer-details-divider {
   height: 1px;
-  background-color: #3f423d;
+  background-color: #4f514e;
   margin: 8px 0 24px 0;
 }
 
@@ -253,6 +326,7 @@
 .download-text {
   color: #9FE870;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
 }
