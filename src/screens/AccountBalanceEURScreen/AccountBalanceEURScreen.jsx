@@ -124,7 +124,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
             {/* Currency/Flag icons (31:500, 31:501, 31:502) */}
             <div className="eur-screen__currency-icons">
               <div className="eur-screen__currency-icon" data-node-id="31:501">
-                <img src={imgCurrencyIcon} alt="" draggable={false} />
+                <img src={imgCurrencyIcon} alt="" draggable={false} className="eur-screen__wise-logo" />
               </div>
               <div className="eur-screen__flag-icon" data-node-id="31:502">
                 <img src={imgCurrencyFlag} alt="" draggable={false} />
