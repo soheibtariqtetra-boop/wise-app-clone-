@@ -6,7 +6,7 @@ import { mockEurAccount, mockEurTransactions } from '../../data/mockData'
 /* ── Local assets (extracted from Figma nodes 31:454 & 24:144) ── */
 import imgClose         from '../../assets/accounts/eur/btn-close.png'
 import imgMore          from '../../assets/accounts/eur/btn-more.png'
-import imgCurrencyIcon  from '../../assets/accounts/eur/icon-currency.png'
+import imgWiseMask      from '../../assets/accounts/eur/wise-mask.svg'
 import imgCurrencyFlag  from '../../assets/accounts/eur/flag-eur.png'
 import imgIbanBank      from '../../assets/accounts/eur/icon-iban-bank.png'
 import imgIbanChevron   from '../../assets/accounts/eur/icon-iban-chevron.png'
@@ -87,12 +87,14 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
           data-node-id="24:186"
         >
           <div className="eur-screen__compact-icons">
-            <img
-              src={imgCurrencyIcon}
-              className="eur-screen__compact-currency-icon"
-              alt=""
-              draggable={false}
-            />
+            <div className="eur-screen__compact-wise-circle">
+              <img
+                src={imgWiseMask}
+                className="eur-screen__compact-wise-mask"
+                alt=""
+                draggable={false}
+              />
+            </div>
             <img
               src={imgCurrencyFlag}
               className="eur-screen__compact-flag"
@@ -124,7 +126,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
             {/* Currency/Flag icons (31:500, 31:501, 31:502) */}
             <div className="eur-screen__currency-icons">
               <div className="eur-screen__currency-icon" data-node-id="31:501">
-                <img src={imgCurrencyIcon} alt="" draggable={false} className="eur-screen__wise-logo" />
+                <img src={imgWiseMask} alt="" draggable={false} className="eur-screen__wise-mask" />
               </div>
               <div className="eur-screen__flag-icon" data-node-id="31:502">
                 <img src={imgCurrencyFlag} alt="" draggable={false} />

@@ -97,17 +97,17 @@
   top: 1px;
   width: 26px;
   height: 26px;
+  background-color: #153200;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.eur-screen__compact-currency-icon {
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  object-fit: cover;
+.eur-screen__compact-wise-mask {
+  width: 11px;
+  height: 12px;
+  object-fit: contain;
 }
 
 .eur-screen__compact-flag {
@@ -167,12 +167,18 @@
   top: 2px;
   width: 43.333px;
   height: 43.333px;
+  background-color: #153200;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.eur-screen__wise-logo {
-  width: 100%;
-  height: 100%;
+.eur-screen__wise-mask {
+  width: 17.6338px;
+  height: 19.5px;
   object-fit: contain;
+  margin-left: 2px;
 }
 
 .eur-screen__flag-icon {
