@@ -98,28 +98,9 @@ function ProfileScreen({ onBack }) {
           <h1
             className="profile-identity__name"
             data-node-id="7:526"
-            aria-label="MUHAMMAD AHSAN AYAZ LTD"
+            aria-label="SHOAIB KHAN"
           >
-            <span className="profile-identity__name-line" aria-hidden="true">
-              <span style={{ letterSpacing: '-2.8438px' }}>MUHAMMA</span>
-              <span>D</span>
-            </span>
-            <span className="profile-identity__name-line" aria-hidden="true">
-              <span style={{ letterSpacing: '-2.8438px' }}>A</span>
-              <span style={{ letterSpacing: '-3.25px' }}>H</span>
-              <span style={{ letterSpacing: '-3.6563px' }}>S</span>
-              <span style={{ letterSpacing: '-2.8438px' }}>A</span>
-              <span>N</span>
-              <span style={{ letterSpacing: '-4.0625px' }}> </span>
-              <span style={{ letterSpacing: '-8.125px' }}>A</span>
-              <span style={{ letterSpacing: '-8.125px' }}>y</span>
-              <span style={{ letterSpacing: '-2.8438px' }}>a</span>
-              <span>Z</span>
-              <span style={{ letterSpacing: '-4.0625px' }}> </span>
-              <span style={{ letterSpacing: '-8.5313px' }}>L</span>
-              <span style={{ letterSpacing: '-3.25px' }}>T</span>
-              <span>D</span>
-            </span>
+            SHOAIB KHAN
           </h1>
 
           {/* Account Type (Figma node 7:525) */}

@@ -5,7 +5,7 @@
 
 export const mockUser = {
   initials: 'ML',
-  name: 'Muhammad L',
+  name: 'SHOAIB KHAN',
 }
 
 export const EUR_TO_GBP_RATE = 0.85;
