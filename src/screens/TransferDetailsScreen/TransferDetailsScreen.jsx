@@ -229,13 +229,13 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   <span className="details-label">Bank code (BIC/SWIFT)</span>
                   <span className="details-value">BYLADEM1001</span>
                 </div>
-                <div className="details-row-compact">
+                <div className="details-row-compact details-row-compact--iban">
                   <span className="details-label">IBAN</span>
-                  <span className="details-value">DE62 1203 0000 1083 3924 05</span>
+                  <span className="details-value details-value--iban">DE62 1203 0000 1083 3924 05</span>
                 </div>
-                <div className="details-row-compact">
+                <div className="details-row-compact details-row-compact--bank-name">
                   <span className="details-label">Bank name</span>
-                  <span className="details-value">
+                  <span className="details-value details-value--bank-name">
                     DEUTSCHE KREDIT BANK<br />
                     A.G. BERLIN
                   </span>

@@ -444,6 +444,17 @@
   font-size: 14px;
 }
 
+.details-value--iban {
+  white-space: nowrap;
+  font-size: 13.5px;
+  letter-spacing: -0.2px;
+}
+
+.details-value--bank-name {
+  word-break: normal;
+  line-height: 19px;
+}
+
 .details-value--bold {
   font-size: 18px;
   font-weight: 600;
