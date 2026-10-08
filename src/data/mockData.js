@@ -561,7 +561,7 @@ export const mockEurAccount = {
   balance: '2,041.00',
   iban: 'BE48 9000 1491 1879',
   accountLabel: 'Current account / EUR',
-  accountName: 'Muhammad Ahsan Ayaz Ltd',
+  accountName: 'Shoaib Khan',
   swiftBic: 'TRWIBEB1XXX',
   bankAddressLines: [
     'Wise Europe SA, Rue du Trône',
