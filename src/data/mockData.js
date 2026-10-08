@@ -68,7 +68,7 @@ export const mockTransactions = [
   },
   {
     "id": "tx-new-eur-6",
-    "title": "Westfield Creative Studio",
+    "title": "Westfield Creative",
     "displayName": "Westfield Creative",
     "titleColor": "#F3F5F1",
     "amount": "+1,480 EUR",
@@ -136,7 +136,7 @@ export const mockFullTransactions = [
       },
       {
         "id": "tx-new-eur-6",
-        "title": "Westfield Creative Studio",
+        "title": "Westfield Creative",
     "displayName": "Westfield Creative",
         "titleColor": "#F3F5F1",
         "amount": "+1,480 EUR",
@@ -164,7 +164,7 @@ export const mockFullTransactions = [
       },
       {
         "id": "tx-new-eur-7",
-        "title": "Horizon Business Services",
+        "title": "Horizon Business",
     "displayName": "Horizon Business",
         "titleColor": "#F3F5F1",
         "amount": "-265 EUR",
@@ -586,7 +586,7 @@ export const mockEurTransactions = [
   },
   {
     "id": "tx-new-eur-6",
-    "title": "Westfield Creative Studio",
+    "title": "Westfield Creative",
     "displayName": "Westfield Creative",
     "titleColor": "#F3F5F1",
     "amount": "+1,480 EUR",
@@ -601,7 +601,7 @@ export const mockEurTransactions = [
   },
   {
     "id": "tx-new-eur-7",
-    "title": "Horizon Business Services",
+    "title": "Horizon Business",
     "displayName": "Horizon Business",
     "titleColor": "#F3F5F1",
     "amount": "-265 EUR",
