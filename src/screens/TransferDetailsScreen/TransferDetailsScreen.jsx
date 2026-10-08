@@ -32,8 +32,8 @@ function TransferDetailsScreen({ transaction, onClose }) {
   return (
     <div className="transfer-screen" onScroll={handleScroll}>
       
-      {/* ── Compact Header (Visible on Scroll) ── */}
-      <div className={`transfer-compact-header ${isScrolled ? 'transfer-compact-header--visible' : ''}`}>
+      {/* ── Compact Header (Visible on Scroll or in Details Tab) ── */}
+      <div className={`transfer-compact-header ${isScrolled || activeTab === 'details' ? 'transfer-compact-header--visible' : ''}`}>
         <button type="button" className="transfer-btn" onClick={onClose}>
           <img src={imgClose} alt="Close" draggable={false} />
         </button>
@@ -51,35 +51,37 @@ function TransferDetailsScreen({ transaction, onClose }) {
         </div>
       </div>
 
-      <div className="transfer-header">
-        <div className="transfer-header__actions">
-          <button type="button" className="transfer-btn" onClick={onClose}>
-            <img src={imgClose} alt="Close" draggable={false} />
-          </button>
-          <div className="transfer-header__actions-right">
-            <button type="button" className="transfer-btn">
-              <img src={imgHelp} alt="Help" draggable={false} />
+      {activeTab === 'updates' && (
+        <div className="transfer-header">
+          <div className="transfer-header__actions">
+            <button type="button" className="transfer-btn" onClick={onClose}>
+              <img src={imgClose} alt="Close" draggable={false} />
             </button>
-            <button type="button" className="transfer-btn">
-              <img src={imgMore} alt="More" draggable={false} />
-            </button>
+            <div className="transfer-header__actions-right">
+              <button type="button" className="transfer-btn">
+                <img src={imgHelp} alt="Help" draggable={false} />
+              </button>
+              <button type="button" className="transfer-btn">
+                <img src={imgMore} alt="More" draggable={false} />
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div className="transfer-summary">
-          <div className="transfer-icon">
-            <img src={imgIconUp} alt="" draggable={false} />
-          </div>
-          <div className="transfer-status-text">Sent</div>
-          <div className="transfer-amount">{fullAmountStr}</div>
-          <div className="transfer-recipient">{transaction.title}</div>
-          
-          <div className="transfer-pill">
-            <img src={imgGeneral} alt="" className="transfer-pill-icon" />
-            <span>General</span>
+          <div className="transfer-summary">
+            <div className="transfer-icon">
+              <img src={imgIconUp} alt="" draggable={false} />
+            </div>
+            <div className="transfer-status-text">Sent</div>
+            <div className="transfer-amount">{fullAmountStr}</div>
+            <div className="transfer-recipient">{transaction.title}</div>
+            
+            <div className="transfer-pill">
+              <img src={imgGeneral} alt="" className="transfer-pill-icon" />
+              <span>General</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="transfer-content">
         <div className="transfer-tabs">
@@ -179,51 +181,58 @@ function TransferDetailsScreen({ transaction, onClose }) {
           <div className="transfer-details-tab">
             <div className="transfer-details-section">
               <h2 className="transfer-section-title">Transaction details</h2>
-              <div className="details-row">
-                <span className="details-label">You sent</span>
-                <span className="details-value">{fullAmountStr}</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">Wise's fees</span>
-                <span className="details-value">0 EUR</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">{transaction.title} received</span>
-                <span className="details-value">{fullAmountStr}</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">Transaction number</span>
-                <span className="details-value">#2418268688</span>
+              
+              <div className="details-row-container">
+                <div className="details-row">
+                  <span className="details-label">You sent</span>
+                  <span className="details-value">{fullAmountStr}</span>
+                </div>
+                <div className="details-row">
+                  <span className="details-label">Wise's fees</span>
+                  <span className="details-value">0 EUR</span>
+                </div>
+                <div className="transfer-dashed-divider"></div>
+                <div className="details-row details-row--tall">
+                  <span className="details-label">{transaction.title} received</span>
+                  <span className="details-value details-value--bold">{fullAmountStr}</span>
+                </div>
+                <div className="transfer-dashed-divider"></div>
+                <div className="details-row">
+                  <span className="details-label">Transaction number</span>
+                  <span className="details-value">#2418268688</span>
+                </div>
               </div>
             </div>
-
-            <div className="transfer-details-divider"></div>
 
             <div className="transfer-details-section">
               <h2 className="transfer-section-title">{transaction.title}'s bank details</h2>
-              <div className="details-row">
-                <span className="details-label">Account holder name</span>
-                <span className="details-value">{transaction.title}</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">Bank code (BIC/SWIFT)</span>
-                <span className="details-value">BYLADEM1001</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">IBAN</span>
-                <span className="details-value">DE62 1203 0000 1083 3924 05</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">Bank name</span>
-                <span className="details-value">DEUTSCHE KREDIT BANK A.G. BERLIN</span>
+              
+              <div className="details-row-container">
+                <div className="details-row-compact">
+                  <span className="details-label">Account holder name</span>
+                  <span className="details-value">{transaction.title}</span>
+                </div>
+                <div className="details-row-compact">
+                  <span className="details-label">Bank code (BIC/SWIFT)</span>
+                  <span className="details-value">BYLADEM1001</span>
+                </div>
+                <div className="details-row-compact">
+                  <span className="details-label">IBAN</span>
+                  <span className="details-value">DE62 1203 0000 1083 3924 05</span>
+                </div>
+                <div className="details-row-compact">
+                  <span className="details-label">Bank name</span>
+                  <span className="details-value">
+                    DEUTSCHE KREDIT BANK<br />
+                    A.G. BERLIN
+                  </span>
+                </div>
               </div>
             </div>
 
-            <div className="transfer-details-divider"></div>
-            
-            <div className="transfer-download">
-              <span className="download-text">Download transfer confirmation</span>
-            </div>
+            <button className="transfer-download-btn">
+              Download transfer confirmation
+            </button>
           </div>
         )}
       </div>

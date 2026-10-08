@@ -372,52 +372,105 @@
 
 /* Details tab styles */
 .transfer-details-tab {
-  margin-top: 28px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .transfer-details-section {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+.details-row-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
 }
 
 .details-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
+  align-items: center;
+  min-height: 44px;
+  padding: 12px 0;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+.details-row--tall {
+  min-height: 52px;
+}
+
+.details-row-compact {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
+  min-height: 36px;
+  padding: 8px 0;
+  box-sizing: border-box;
+  gap: 12px;
 }
 
 .details-label {
   color: #E8EBE6;
-  font-size: 16px;
+  font-size: 15px;
   font-family: 'Inter', sans-serif;
-  flex: 1;
+  line-height: 20px;
+  font-weight: 400;
+  width: 194px;
+  flex-shrink: 0;
+}
+
+.details-row-compact .details-label {
+  font-size: 14px;
+  width: 170px;
 }
 
 .details-value {
   color: #F3F5F1;
-  font-size: 16px;
+  font-size: 15px;
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   text-align: right;
+  line-height: 20px;
   flex: 1;
+  word-break: break-word;
 }
 
-.transfer-details-divider {
-  height: 1px;
-  background-color: #4f514e;
-  margin: 8px 0 24px 0;
+.details-row-compact .details-value {
+  font-size: 14px;
 }
 
-.transfer-download {
-  padding: 16px 0;
-  text-align: center;
-}
-
-.download-text {
-  color: #9FE870;
-  font-size: 16px;
+.details-value--bold {
+  font-size: 18px;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
+  line-height: 22px;
 }
+
+.transfer-dashed-divider {
+  width: 100%;
+  height: 1px;
+  background-image: repeating-linear-gradient(to right, #4f514e 0, #4f514e 4px, transparent 4px, transparent 8px);
+}
+
+.transfer-download-btn {
+  background-color: #153200;
+  color: #9FE870;
+  height: 52px;
+  border-radius: 28px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 52px; /* 76px from previous block (24px gap on transfer-details-tab + 52px margin) */
+  width: 100%;
+}
+
