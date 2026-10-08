@@ -74,11 +74,11 @@ export const mockTransactions = [
     "amount": "+1,480 EUR",
     "amountColor": "#9FE870",
     "listIconKey": "eur-down",
-    "dateGroup": "Today",
+    "dateGroup": "October 6",
     "dateStr": "2026-10-06T14:10:00Z",
     "currency": "EUR",
     "isNew": true,
-    "date": "Today",
+    "date": "October 6",
     "transactionNumber": "#2409599651"
   },
   {
@@ -142,10 +142,11 @@ export const mockFullTransactions = [
         "amount": "+1,480 EUR",
         "amountColor": "#9FE870",
         "listIconKey": "eur-down",
-        "dateGroup": "Today",
+        "dateGroup": "October 6",
         "dateStr": "2026-10-06T14:10:00Z",
         "currency": "EUR",
         "isNew": true,
+        "date": "October 6",
         "transactionNumber": "#2409599651"
       },
       {
@@ -169,10 +170,11 @@ export const mockFullTransactions = [
         "amount": "-265 EUR",
         "amountColor": "#F3F5F1",
         "listIconKey": "up",
-        "dateGroup": "Today",
+        "dateGroup": "October 6",
         "dateStr": "2026-10-06T11:50:00Z",
         "currency": "EUR",
         "isNew": true,
+        "date": "October 6",
         "transactionNumber": "#2409599653"
       },
       {
@@ -213,10 +215,11 @@ export const mockFullTransactions = [
         "amount": "+925 EUR",
         "amountColor": "#9FE870",
         "listIconKey": "eur-down",
-        "dateGroup": "Yesterday",
+        "dateGroup": "October 5",
         "dateStr": "2026-10-05T15:30:00Z",
         "currency": "EUR",
         "isNew": true,
+        "date": "October 5",
         "transactionNumber": "#2409599656"
       },
       {
@@ -226,10 +229,11 @@ export const mockFullTransactions = [
         "amount": "-610 EUR",
         "amountColor": "#F3F5F1",
         "listIconKey": "up",
-        "dateGroup": "Yesterday",
+        "dateGroup": "October 4",
         "dateStr": "2026-10-05T14:00:00Z",
         "currency": "EUR",
         "isNew": true,
+        "date": "October 4",
         "transactionNumber": "#2409599657"
       },
       {
@@ -588,11 +592,11 @@ export const mockEurTransactions = [
     "amount": "+1,480 EUR",
     "amountColor": "#9FE870",
     "listIconKey": "eur-down",
-    "dateGroup": "Today",
+    "dateGroup": "October 6",
     "dateStr": "2026-10-06T14:10:00Z",
     "currency": "EUR",
     "isNew": true,
-    "date": "Today",
+    "date": "October 6",
     "transactionNumber": "#2409599651"
   },
   {
@@ -603,11 +607,11 @@ export const mockEurTransactions = [
     "amount": "-265 EUR",
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
-    "dateGroup": "Today",
+    "dateGroup": "October 6",
     "dateStr": "2026-10-06T11:50:00Z",
     "currency": "EUR",
     "isNew": true,
-    "date": "Today",
+    "date": "October 6",
     "transactionNumber": "#2409599653"
   },
   {
@@ -617,11 +621,11 @@ export const mockEurTransactions = [
     "amount": "+925 EUR",
     "amountColor": "#9FE870",
     "listIconKey": "eur-down",
-    "dateGroup": "Yesterday",
+    "dateGroup": "October 5",
     "dateStr": "2026-10-05T15:30:00Z",
     "currency": "EUR",
     "isNew": true,
-    "date": "Yesterday",
+    "date": "October 5",
     "transactionNumber": "#2409599656"
   },
   {
@@ -631,11 +635,11 @@ export const mockEurTransactions = [
     "amount": "-610 EUR",
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
-    "dateGroup": "Yesterday",
+    "dateGroup": "October 4",
     "dateStr": "2026-10-05T14:00:00Z",
     "currency": "EUR",
     "isNew": true,
-    "date": "Yesterday",
+    "date": "October 4",
     "transactionNumber": "#2409599657"
   },
   {
