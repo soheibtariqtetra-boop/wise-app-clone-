@@ -95,18 +95,60 @@ function ProfileScreen({ onBack }) {
           </div>
 
           {/* Business Name (Figma node 7:526) */}
-          <h1
-            className="profile-identity__name"
-            data-node-id="7:526"
-            aria-label={mockUser.name.replace(/\n/g, ' ')}
-            style={{ display: 'block' }}
-          >
-            {mockUser.name.split('\n').map((line, i) => (
-              <span key={i} className="profile-identity__name-line">
-                {line}
+          {mockUser.name === 'MUHAMMAD\nWAZEER' ? (
+            <h1
+              className="profile-identity__name"
+              data-node-id="7:526"
+              aria-label="MUHAMMAD WAZEER"
+              style={{ position: 'relative', display: 'block' }}
+            >
+              <span className="profile-identity__name-line">
+                <span style={{ letterSpacing: '-2.8438px' }}>MUHA</span>
+                <span style={{ letterSpacing: '-0.8px' }}>M</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>MAD</span>
               </span>
-            ))}
-          </h1>
+              <span className="profile-identity__name-line">
+                <span style={{ whiteSpace: 'pre' }}>{' '}</span>
+                <span style={{ letterSpacing: '-3.52px' }}>W</span>
+                <span style={{ letterSpacing: '-1.76px' }}>A</span>
+                <span style={{ whiteSpace: 'pre' }}>{'  '}</span>
+                <span style={{ letterSpacing: '-1.76px', whiteSpace: 'pre' }}>{' '}</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>EER</span>
+              </span>
+              <span
+                data-node-id="304:23"
+                style={{
+                  position: 'absolute',
+                  left: '134px',
+                  top: '31px',
+                  width: '31px',
+                  height: '48px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  lineHeight: 0.9,
+                  letterSpacing: '-2.8438px',
+                  pointerEvents: 'none'
+                }}
+              >
+                Z
+              </span>
+            </h1>
+          ) : (
+            <h1
+              className="profile-identity__name"
+              data-node-id="7:526"
+              aria-label={mockUser.name.replace(/\n/g, ' ')}
+              style={{ display: 'block' }}
+            >
+              {mockUser.name.split('\n').map((line, i) => (
+                <span key={i} className="profile-identity__name-line">
+                  {line}
+                </span>
+              ))}
+            </h1>
+          )}
 
           {/* Account Type (Figma node 7:525) */}
           <p className="profile-identity__type" data-node-id="7:525">
