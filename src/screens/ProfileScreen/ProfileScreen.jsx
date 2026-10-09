@@ -94,45 +94,25 @@ function ProfileScreen({ onBack }) {
             />
           </div>
 
-          {/* Business Name (Figma node 7:526) */}
+          {/* Business Name (Figma node 7:526 & 304:23) */}
           {mockUser.name === 'MUHAMMAD\nWAZEER' ? (
             <h1
               className="profile-identity__name"
               data-node-id="7:526"
               aria-label="MUHAMMAD WAZEER"
-              style={{ position: 'relative', display: 'block' }}
             >
-              <span className="profile-identity__name-line">
+              <span className="profile-identity__name-line" aria-hidden="true">
                 <span style={{ letterSpacing: '-2.8438px' }}>MUHA</span>
                 <span style={{ letterSpacing: '-0.8px' }}>M</span>
                 <span style={{ letterSpacing: '-2.8438px' }}>MAD</span>
               </span>
-              <span className="profile-identity__name-line">
-                <span style={{ whiteSpace: 'pre' }}>{' '}</span>
+              <span className="profile-identity__name-line profile-identity__name-line--second" aria-hidden="true">
                 <span style={{ letterSpacing: '-3.52px' }}>W</span>
                 <span style={{ letterSpacing: '-1.76px' }}>A</span>
-                <span style={{ whiteSpace: 'pre' }}>{'  '}</span>
-                <span style={{ letterSpacing: '-1.76px', whiteSpace: 'pre' }}>{' '}</span>
-                <span style={{ letterSpacing: '-2.8438px' }}>EER</span>
-              </span>
-              <span
-                data-node-id="304:23"
-                style={{
-                  position: 'absolute',
-                  left: '134px',
-                  top: '31px',
-                  width: '31px',
-                  height: '48px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  lineHeight: 0.9,
-                  letterSpacing: '-2.8438px',
-                  pointerEvents: 'none'
-                }}
-              >
-                Z
+                <span data-node-id="304:23" className="profile-identity__name-z" style={{ letterSpacing: '-2.8438px' }}>Z</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>E</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>E</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>R</span>
               </span>
             </h1>
           ) : (

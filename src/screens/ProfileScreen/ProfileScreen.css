@@ -174,7 +174,7 @@
   pointer-events: none;
 }
 
-/* Business Name (Node 7:526) */
+/* Business Name (Node 7:526 & 304:23) */
 .profile-identity__name {
   font-family: 'WiseLocal', sans-serif;
   font-size: 40.625px;
@@ -183,19 +183,26 @@
   letter-spacing: -2.8438px;
   color: #f3f5f1;
   text-align: center;
-  margin: 10.833px 0 0 0;
+  margin: 12.458px 0 0 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 295.208px;
   max-width: 100%;
-  white-space: nowrap;
 }
 
 .profile-identity__name-line {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   line-height: 0.9;
   white-space: nowrap;
+}
+
+.profile-identity__name-z {
+  display: inline-block;
+  line-height: 0.9;
 }
 
 .profile-identity__type {
