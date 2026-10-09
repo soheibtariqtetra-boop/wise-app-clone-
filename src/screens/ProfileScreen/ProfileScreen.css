@@ -176,20 +176,20 @@
 
 /* Business Name (Node 7:526 & 304:23) */
 .profile-identity__name {
+  font-family: 'WiseLocal', sans-serif;
+  font-size: 40.625px;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -2.8438px;
+  color: #f3f5f1;
+  text-align: center;
   margin: 12.458px 0 0 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 295.208px;
   max-width: 100%;
-}
-
-.profile-identity__name-img {
-  width: 221.05px;
-  height: 66.1px;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
 }
 
 .profile-identity__name-line {
@@ -198,6 +198,11 @@
   align-items: center;
   line-height: 0.9;
   white-space: nowrap;
+}
+
+.profile-identity__name-z {
+  display: inline-block;
+  line-height: 0.9;
 }
 
 .profile-identity__type {

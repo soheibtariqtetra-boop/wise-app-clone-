@@ -28,8 +28,6 @@ import imgRate from '../../assets/profile/actions/icon-rate.png'
 import imgClose from '../../assets/profile/actions/icon-close.png'
 import imgLogout from '../../assets/profile/actions/icon-logout.png'
 
-import imgAccountName from '../../assets/profile/account-name.svg'
-
 function ProfileScreen({ onBack }) {
   React.useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -101,15 +99,21 @@ function ProfileScreen({ onBack }) {
             <h1
               className="profile-identity__name"
               data-node-id="7:526"
+              aria-label="MUHAMMAD WAZEER"
             >
-              <img
-                src={imgAccountName}
-                alt="Muhammad Wazeer"
-                className="profile-identity__name-img"
-                width="221.05"
-                height="66.1"
-                draggable={false}
-              />
+              <span className="profile-identity__name-line" aria-hidden="true">
+                <span style={{ letterSpacing: '-2.8438px' }}>MUHA</span>
+                <span style={{ letterSpacing: '-0.8px' }}>M</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>MAD</span>
+              </span>
+              <span className="profile-identity__name-line profile-identity__name-line--second" aria-hidden="true">
+                <span style={{ letterSpacing: '-7.5px' }}>W</span>
+                <span style={{ letterSpacing: '-3.2px' }}>A</span>
+                <span data-node-id="304:23" className="profile-identity__name-z" style={{ letterSpacing: '-2.8438px' }}>Z</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>E</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>E</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>R</span>
+              </span>
             </h1>
           ) : (
             <h1
