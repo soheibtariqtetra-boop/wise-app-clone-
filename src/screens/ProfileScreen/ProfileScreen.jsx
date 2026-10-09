@@ -98,9 +98,14 @@ function ProfileScreen({ onBack }) {
           <h1
             className="profile-identity__name"
             data-node-id="7:526"
-            aria-label={mockUser.name}
+            aria-label={mockUser.name.replace(/\n/g, ' ')}
+            style={{ display: 'block' }}
           >
-            {mockUser.name}
+            {mockUser.name.split('\n').map((line, i) => (
+              <span key={i} className="profile-identity__name-line">
+                {line}
+              </span>
+            ))}
           </h1>
 
           {/* Account Type (Figma node 7:525) */}
