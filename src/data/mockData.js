@@ -105,13 +105,13 @@ export const mockFullTransactions = [
       {
         "id": "tx-transfer-erkan",
         "type": "transfer",
-        "title": "Erkan Schwarz",
+        "title": "Viktoriia Podhurska",
         "titleColor": "#F3F5F1",
-        "amount": "-940 EUR",
+        "amount": "-800 EUR",
         "amountColor": "#F3F5F1",
         "listIconKey": "up",
         "dateGroup": "Wednesday, October 7",
-        "dateStr": "2026-10-07T10:00:00Z",
+        "dateStr": "2026-10-07T18:55:00Z",
         "currency": "EUR",
         "date": "Wednesday, October 7",
         "transactionNumber": "#2418268688"
@@ -573,13 +573,13 @@ export const mockEurTransactions = [
   {
     "id": "tx-transfer-erkan",
     "type": "transfer",
-    "title": "Erkan Schwarz",
+    "title": "Viktoriia Podhurska",
     "titleColor": "#F3F5F1",
-    "amount": "-940 EUR",
+    "amount": "-800 EUR",
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
     "dateGroup": "Wednesday, October 7",
-    "dateStr": "2026-10-07T10:00:00Z",
+    "dateStr": "2026-10-07T18:55:00Z",
     "currency": "EUR",
     "date": "Wednesday, October 7",
     "transactionNumber": "#2418268688"

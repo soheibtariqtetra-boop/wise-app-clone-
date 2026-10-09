@@ -125,7 +125,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, September 23 at 16:49</div>
+                    <div className="timeline-time">Wednesday, october 07 at 18:55</div>
                     <div className="timeline-text">You set up your transfer</div>
                   </div>
                 </div>
@@ -140,8 +140,8 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, September 23 at 16:49 PM</div>
-                    <div className="timeline-text">We've taken the funds from Shoaib khan  Wise account</div>
+                    <div className="timeline-time">Wednesday, october 07 at 18:55 PM</div>
+                    <div className="timeline-text">We've taken the funds from Muhammad wazeer Wise account</div>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, September 23 at 16:49</div>
+                    <div className="timeline-time">Wednesday, october 07 at 18:55</div>
                     <div className="timeline-text">We paid out your EUR</div>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, September 23 at 16:49</div>
+                    <div className="timeline-time">Wednesday, october 07 at 18:55</div>
                     <div className="timeline-completion-title">Your transfer's complete</div>
                     <div className="timeline-text">We sent {fullAmountStr} to {transaction.title}.</div>
                   </div>
@@ -227,17 +227,17 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 </div>
                 <div className="details-row-compact">
                   <span className="details-label">Bank code (BIC/SWIFT)</span>
-                  <span className="details-value">BYLADEM1001</span>
+                  <span className="details-value">INGBROBU</span>
                 </div>
                 <div className="details-row-compact details-row-compact--iban">
                   <span className="details-label">IBAN</span>
-                  <span className="details-value details-value--iban">DE62 1203 0000 1083 3924 05</span>
+                  <span className="details-value details-value--iban">RO48 INGB 0000 9999 2033 3575</span>
                 </div>
                 <div className="details-row-compact details-row-compact--bank-name">
                   <span className="details-label">Bank name</span>
                   <span className="details-value details-value--bank-name">
-                    DEUTSCHE KREDIT BANK<br />
-                    A.G. BERLIN
+                    ING BANK N.V. AMSTERDAM<br />
+                    - SUCURSALA BUCURESTI
                   </span>
                 </div>
               </div>
