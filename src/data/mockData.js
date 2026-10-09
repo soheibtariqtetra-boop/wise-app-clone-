@@ -4,7 +4,7 @@
  */
 
 export const mockUser = {
-  initials: 'ML',
+  initials: 'MW',
   name: 'MUHAMMAD\nWAZEER',
   handle: '@MuhammadWazeer',
 }
