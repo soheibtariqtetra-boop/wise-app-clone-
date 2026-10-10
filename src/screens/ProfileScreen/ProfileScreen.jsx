@@ -96,30 +96,27 @@ function ProfileScreen({ onBack }) {
 
           {/* Business Name (Figma node 7:526 & 304:23 & 319:25) */}
           {mockUser.name === 'REGINA SYBILLE\nKROOG' ? (
-            <div
-              className="profile-identity__name"
-              data-node-id="7:526"
-              aria-label="REGINA SYBILLE KROOG"
-            >
-              <div className="profile-identity__layer-main" data-node-id="7:526">
-                <p className="m-0 p-0" style={{ margin: 0, padding: 0 }}>
-                  <span style={{ lineHeight: 0.9 }}>regina </span>
-                  <span style={{ lineHeight: 0.9, letterSpacing: '-1.92px' }}>s</span>
-                  <span style={{ lineHeight: 0.9, letterSpacing: '-1.76px' }}>y </span>
-                  <span style={{ lineHeight: 0.9 }}> </span>
-                  <span style={{ lineHeight: 0.9, letterSpacing: '-0.16px' }}> </span>
-                  <span style={{ lineHeight: 0.9 }}>ille</span>
-                  <br />
-                  <span style={{ lineHeight: 0.9 }}>roog</span>
-                </p>
+              <div className="profile-identity__name" data-node-id="7:526" aria-label="REGINA SYBILLE KROOG">
+                <div className="profile-identity__layer-main" aria-hidden="true">
+                  <div style={{ position: 'absolute', left: '0px', top: '-3.333px', height: '48px', display: 'flex', alignItems: 'center', whiteSpace: 'pre' }}>
+                    <span style={{ lineHeight: 0.9 }}>regina </span>
+                    <span style={{ lineHeight: 0.9, letterSpacing: '-1.92px' }}>s</span>
+                    <span style={{ lineHeight: 0.9, letterSpacing: '-1.76px' }}>y</span>
+                  </div>
+                  <div style={{ position: 'absolute', left: '213px', top: '-3.333px', height: '48px', display: 'flex', alignItems: 'center', whiteSpace: 'pre' }}>
+                    <span style={{ lineHeight: 0.9 }}>ille</span>
+                  </div>
+                  <div style={{ position: 'absolute', left: '98px', top: '31.667px', height: '48px', display: 'flex', alignItems: 'center', whiteSpace: 'pre' }}>
+                    <span style={{ lineHeight: 0.9 }}>roog</span>
+                  </div>
+                </div>
+                <div className="profile-identity__layer-b" aria-hidden="true" data-node-id="319:23">
+                  <span className="profile-identity__name-z">b</span>
+                </div>
+                <div className="profile-identity__layer-k" aria-hidden="true" data-node-id="319:25">
+                  <span className="profile-identity__name-z">k</span>
+                </div>
               </div>
-              <div className="profile-identity__layer-b" data-node-id="319:23">
-                <p className="m-0 p-0" style={{ margin: 0, padding: 0, lineHeight: 0.9 }}>b</p>
-              </div>
-              <div className="profile-identity__layer-k" data-node-id="319:25">
-                <p className="m-0 p-0" style={{ margin: 0, padding: 0, lineHeight: 0.9 }}>k</p>
-              </div>
-            </div>
           ) : mockUser.name === 'MUHAMMAD\nWAZEER' ? (
             <h1
               className="profile-identity__name"

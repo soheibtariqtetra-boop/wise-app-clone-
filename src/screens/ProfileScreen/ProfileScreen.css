@@ -184,49 +184,60 @@
   letter-spacing: -2.8438px;
   color: #f3f5f1;
   margin: 12.458px 0 0 0;
-  width: 390px;
+  width: 295.208px;
   height: 75.833px;
   max-width: 100%;
 }
 
 .profile-identity__layer-main {
   position: absolute;
-  left: 193.6px;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  top: 0;
   width: 295.208px;
   height: 75.833px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  white-space: pre-wrap;
-  word-break: break-word;
+}
+
+.profile-identity__name-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.profile-identity__name-z {
+  display: inline-block;
+  line-height: 0.9;
 }
 
 .profile-identity__layer-b {
   position: absolute;
-  left: 253.5px;
-  top: calc(50% - 17.25px);
-  transform: translate(-50%, -50%);
+  left: 186px;
+  top: -3.333px;
   width: 31px;
   height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .profile-identity__layer-k {
   position: absolute;
-  left: 126.5px;
-  top: calc(50% + 17.75px);
-  transform: translate(-50%, -50%);
+  left: 71px;
+  top: 31.667px;
   width: 31px;
   height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
