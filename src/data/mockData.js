@@ -559,10 +559,10 @@ export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: '2,041.00',
-  iban: 'BE48 9000 1491 1879',
+  iban: 'BE74967497769307',
   accountLabel: 'Current account / EUR',
-  accountName: 'Muhammad Wazeer',
-  swiftBic: 'TRWIBEB1XXX',
+  accountName: 'Regina Sybille Krog',
+  swiftBic: 'TRWIBEB1',
   bankAddressLines: [
     'Wise Europe SA, Rue du Trône',
     '100, 3rd floor, Brussels, 1050,',
