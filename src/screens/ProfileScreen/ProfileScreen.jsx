@@ -83,7 +83,7 @@ function ProfileScreen({ onBack }) {
           <div className="profile-identity__avatar-wrapper" data-node-id="7:527">
             <div className="profile-identity__avatar">
               <img src={imgAvatarBg} alt="" className="profile-identity__avatar-bg" draggable={false} />
-              <span className="profile-identity__avatar-initials" data-node-id="7:529">{mockUser.initials}</span>
+              <span className="profile-identity__avatar-initials" data-node-id="7:529">RS</span>
             </div>
             <img
               src={imgCameraBadge}
