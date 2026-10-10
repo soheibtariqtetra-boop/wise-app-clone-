@@ -564,9 +564,9 @@ export const mockEurAccount = {
   accountName: 'Regina Sybille Krog',
   swiftBic: 'TRWIBEB1',
   bankAddressLines: [
-    'Wise Europe SA, Rue du Trône',
-    '100, 3rd floor, Brussels, 1050,',
-    'Belgium',
+    'Wise Europe SA',
+    'RUE DU TRONE 100',
+    '1050 BRUSSELS',
   ],
 }
 export const mockEurTransactions = [
