@@ -94,8 +94,26 @@ function ProfileScreen({ onBack }) {
             />
           </div>
 
-          {/* Business Name (Figma node 7:526 & 304:23) */}
-          {mockUser.name === 'MUHAMMAD\nWAZEER' ? (
+          {/* Business Name (Figma node 7:526 & 304:23 & 319:25) */}
+          {mockUser.name === 'REGINA SYBILLE\nKROOG' ? (
+            <h1
+              className="profile-identity__name"
+              data-node-id="7:526"
+              aria-label="REGINA SYBILLE KROOG"
+            >
+              <span className="profile-identity__name-line" aria-hidden="true">
+                <span style={{ letterSpacing: '-2.8438px' }}>REGINA&nbsp;</span>
+                <span style={{ letterSpacing: '-1.92px' }}>S</span>
+                <span style={{ letterSpacing: '-1.76px' }}>Y</span>
+                <span data-node-id="319:23" className="profile-identity__name-z" style={{ letterSpacing: '-2.8438px' }}>B</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>ILLE</span>
+              </span>
+              <span className="profile-identity__name-line profile-identity__name-line--second" aria-hidden="true">
+                <span data-node-id="319:25" className="profile-identity__name-z" style={{ letterSpacing: '-2.8438px' }}>K</span>
+                <span style={{ letterSpacing: '-2.8438px' }}>ROOG</span>
+              </span>
+            </h1>
+          ) : mockUser.name === 'MUHAMMAD\nWAZEER' ? (
             <h1
               className="profile-identity__name"
               data-node-id="7:526"
