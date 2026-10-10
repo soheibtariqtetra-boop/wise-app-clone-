@@ -83,7 +83,7 @@ function ProfileScreen({ onBack }) {
           <div className="profile-identity__avatar-wrapper" data-node-id="7:527">
             <div className="profile-identity__avatar">
               <img src={imgAvatarBg} alt="" className="profile-identity__avatar-bg" draggable={false} />
-              <span className="profile-identity__avatar-initials" data-node-id="7:529">RS</span>
+              <span className="profile-identity__avatar-initials" data-node-id="7:529">{mockUser.initials}</span>
             </div>
             <img
               src={imgCameraBadge}
@@ -103,12 +103,14 @@ function ProfileScreen({ onBack }) {
             >
               <div className="profile-identity__layer-main" data-node-id="7:526">
                 <p className="m-0 p-0" style={{ margin: 0, padding: 0 }}>
-                  <span style={{ lineHeight: 0.9 }}>Regina </span>
+                  <span style={{ lineHeight: 0.9 }}>regina </span>
                   <span style={{ lineHeight: 0.9, letterSpacing: '-1.92px' }}>s</span>
                   <span style={{ lineHeight: 0.9, letterSpacing: '-1.76px' }}>y </span>
                   <span style={{ lineHeight: 0.9 }}> </span>
                   <span style={{ lineHeight: 0.9, letterSpacing: '-0.16px' }}> </span>
-                  <span style={{ lineHeight: 0.9 }}>ille                  roog</span>
+                  <span style={{ lineHeight: 0.9 }}>ille</span>
+                  <br />
+                  <span style={{ lineHeight: 0.9 }}>roog</span>
                 </p>
               </div>
               <div className="profile-identity__layer-b" data-node-id="319:23">
