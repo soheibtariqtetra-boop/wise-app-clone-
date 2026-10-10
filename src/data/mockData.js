@@ -114,7 +114,16 @@ export const mockFullTransactions = [
         "dateStr": "2026-10-07T20:05:00Z",
         "currency": "EUR",
         "date": "Wednesday, October 7",
-        "transactionNumber": "#2418268688"
+        "transactionNumber": "#2418268688",
+        "recipientBankDetails": {
+          "accountHolderName": "Regina Sybille Kroog",
+          "swiftBic": "TRWIBEB1",
+          "iban": "BE74967497769307",
+          "bankNameLines": [
+            "Wise Europe SA RUE DU TRONE 100",
+            "1050 BRUSSELS"
+          ]
+        }
       }
     ]
   },
@@ -582,7 +591,16 @@ export const mockEurTransactions = [
     "dateStr": "2026-10-07T20:05:00Z",
     "currency": "EUR",
     "date": "Wednesday, October 7",
-    "transactionNumber": "#2418268688"
+    "transactionNumber": "#2418268688",
+    "recipientBankDetails": {
+      "accountHolderName": "Regina Sybille Kroog",
+      "swiftBic": "TRWIBEB1",
+      "iban": "BE74967497769307",
+      "bankNameLines": [
+        "Wise Europe SA RUE DU TRONE 100",
+        "1050 BRUSSELS"
+      ]
+    }
   },
   {
     "id": "tx-new-eur-6",

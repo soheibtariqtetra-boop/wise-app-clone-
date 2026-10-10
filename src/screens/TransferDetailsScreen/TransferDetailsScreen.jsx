@@ -212,32 +212,40 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 <div className="transfer-dashed-divider"></div>
                 <div className="details-row">
                   <span className="details-label">Transaction number</span>
-                  <span className="details-value">#2418268688</span>
+                  <span className="details-value">{transaction.transactionNumber || '#2418268688'}</span>
                 </div>
               </div>
             </div>
 
             <div className="transfer-details-section">
-              <h2 className="transfer-section-title">{transaction.title}'s bank details</h2>
+              <h2 className="transfer-section-title">
+                {transaction.recipientBankDetails?.accountHolderName || 'Regina Sybille Kroog'}'s bank details
+              </h2>
               
               <div className="details-row-container">
                 <div className="details-row-compact">
                   <span className="details-label">Account holder name</span>
-                  <span className="details-value">{transaction.title}</span>
+                  <span className="details-value">
+                    {transaction.recipientBankDetails?.accountHolderName || 'Regina Sybille Kroog'}
+                  </span>
                 </div>
                 <div className="details-row-compact">
                   <span className="details-label">Bank code (BIC/SWIFT)</span>
-                  <span className="details-value">INGBROBU</span>
+                  <span className="details-value">
+                    {transaction.recipientBankDetails?.swiftBic || 'TRWIBEB1'}
+                  </span>
                 </div>
                 <div className="details-row-compact details-row-compact--iban">
                   <span className="details-label">IBAN</span>
-                  <span className="details-value details-value--iban">RO48 INGB 0000 9999 2033 3575</span>
+                  <span className="details-value details-value--iban">
+                    {transaction.recipientBankDetails?.iban || 'BE74967497769307'}
+                  </span>
                 </div>
                 <div className="details-row-compact details-row-compact--bank-name">
                   <span className="details-label">Bank name</span>
                   <span className="details-value details-value--bank-name">
-                    ING BANK N.V. AMSTERDAM<br />
-                    - SUCURSALA BUCURESTI
+                    Wise Europe SA RUE DU TRONE 100<br />
+                    1050 BRUSSELS
                   </span>
                 </div>
               </div>
