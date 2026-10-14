@@ -219,18 +219,20 @@
 
 /* ── IBAN PILL (31:494/31:495) ──────────────── */
 .eur-screen__iban-pill {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 260.542px;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 0 16px;
   height: 45.5px;
   background-color: #153200;
   border-radius: 19.5px;
   margin: 0 auto 24px auto;
   cursor: pointer;
   border: none;
-  padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -238,6 +240,7 @@
   width: 15.167px;
   height: 15.167px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .eur-screen__iban-text {
@@ -246,12 +249,14 @@
   font-size: 16.792px;
   color: #8dd061;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .eur-screen__iban-chevron {
   width: 8.125px;
   height: 14.083px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* ── INTEREST CARD (31:488) ─────────────────── */
