@@ -116,12 +116,12 @@ export const mockFullTransactions = [
         "date": "Wednesday, October 7",
         "transactionNumber": "#2418268688",
         "recipientBankDetails": {
-          "accountHolderName": "Regina Sybille Kroog",
-          "swiftBic": "TRWIBEB1",
-          "iban": "BE74967497769307",
+          "accountHolderName": "OSPAgrio Hafen",
+          "swiftBic": "NOLADE21RO",
+          "iban": "BE50130500001260026155",
           "bankNameLines": [
-            "Wise Europe SA RUE DU TRONE 100",
-            "1050 BRUSSELS"
+            "Ostseesparkasse Rostock",
+            "Goerdelerstrasse 50-53"
           ]
         }
       }
@@ -592,12 +592,12 @@ export const mockEurTransactions = [
     "date": "Wednesday, October 7",
     "transactionNumber": "#2418268688",
     "recipientBankDetails": {
-      "accountHolderName": "Regina Sybille Kroog",
-      "swiftBic": "TRWIBEB1",
-      "iban": "BE74967497769307",
+      "accountHolderName": "OSPAgrio Hafen",
+      "swiftBic": "NOLADE21RO",
+      "iban": "BE50130500001260026155",
       "bankNameLines": [
-        "Wise Europe SA RUE DU TRONE 100",
-        "1050 BRUSSELS"
+        "Ostseesparkasse Rostock",
+        "Goerdelerstrasse 50-53"
       ]
     }
   },

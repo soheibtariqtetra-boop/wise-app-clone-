@@ -125,7 +125,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, October 07 at 20:05 PM</div>
+                    <div className="timeline-time">Wednesday, october 07 at 20:10 PM</div>
                     <div className="timeline-text">You set up your transfer</div>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, October 07 at 20:05 PM</div>
+                    <div className="timeline-time">Wednesday, october 07 at 20:10 PM</div>
                     <div className="timeline-text">We've taken the funds from OSPAgrio Hafen Wise account</div>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, October 07 at 20:05 PM</div>
+                    <div className="timeline-time">Wednesday, october 07 at 20:10 PM</div>
                     <div className="timeline-text">We paid out your EUR</div>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">Wednesday, October 07 at 20:05 PM</div>
+                    <div className="timeline-time">Wednesday, october 07 at 20:10 PM</div>
                     <div className="timeline-completion-title">Your transfer's complete.</div>
                     <div className="timeline-text">We sent {fullAmountStr} to {transaction.title}.</div>
                   </div>
@@ -244,8 +244,12 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 <div className="details-row-compact details-row-compact--bank-name">
                   <span className="details-label">Bank name</span>
                   <span className="details-value details-value--bank-name">
-                    Wise Europe SA RUE DU TRONE 100<br />
-                    1050 BRUSSELS
+                    {transaction.recipientBankDetails?.bankNameLines
+                      ? transaction.recipientBankDetails.bankNameLines.map((line, i) => (
+                          <span key={i}>{line}{i < transaction.recipientBankDetails.bankNameLines.length - 1 && <br />}</span>
+                        ))
+                      : <span>Wise Europe SA RUE DU TRONE 100<br />1050 BRUSSELS</span>
+                    }
                   </span>
                 </div>
               </div>
