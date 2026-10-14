@@ -105,9 +105,9 @@ export const mockFullTransactions = [
       {
         "id": "tx-transfer-erkan",
         "type": "transfer",
-        "title": "Timo Holger",
+        "title": "MR Ebube ABAKWAM",
         "titleColor": "#F3F5F1",
-        "amount": "-915 EUR",
+        "amount": "-800 EUR",
         "amountColor": "#F3F5F1",
         "listIconKey": "up",
         "dateGroup": "Wednesday, October 7",
@@ -582,9 +582,9 @@ export const mockEurTransactions = [
   {
     "id": "tx-transfer-erkan",
     "type": "transfer",
-    "title": "Timo Holger",
+    "title": "MR Ebube ABAKWAM",
     "titleColor": "#F3F5F1",
-    "amount": "-915 EUR",
+    "amount": "-800 EUR",
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
     "dateGroup": "Wednesday, October 7",
