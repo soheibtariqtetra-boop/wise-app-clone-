@@ -568,14 +568,13 @@ export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: '2,041.00',
-  iban: 'BE74967497769307',
+  iban: 'BE50130500001260026155',
   accountLabel: 'Current account / EUR',
-  accountName: 'Regina Sybille Krog',
-  swiftBic: 'TRWIBEB1',
+  accountName: 'OSPAgrio Hafen',
+  swiftBic: 'NOLADE21ROS',
   bankAddressLines: [
-    'Wise Europe SA',
-    'RUE DU TRONE 100',
-    '1050 BRUSSELS',
+    'Ostseesparkasse Rostock',
+    'Goerdelerstrasse 50-53',
   ],
 }
 export const mockEurTransactions = [
