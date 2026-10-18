@@ -14,7 +14,9 @@ const CheckmarkIcon = () => (
 )
 
 function TransferDetailsScreen({ transaction, onClose }) {
-  const [activeTab, setActiveTab] = useState('updates');
+  const [activeTab, setActiveTab] = useState(() => 
+    typeof window !== 'undefined' && window.location.hash === '#details' ? 'details' : 'updates'
+  );
   const [isScrolled, setIsScrolled] = useState(false);
   const scrollRef = useRef(null);
   const scrollPositions = useRef({ updates: 0, details: 0 });
@@ -171,7 +173,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   </div>
                   <div className="timeline-content">
                     <div className="timeline-time">Wednesday, october 17 at 15:55 PM</div>
-                    <div className="timeline-completion-title">Your transfer is complete.</div>
+                    <div className="timeline-completion-title">Your transfer's complete</div>
                     <div className="timeline-text">We sent {fullAmountStr} to {transaction.title}.</div>
                   </div>
                 </div>
@@ -206,7 +208,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 </div>
                 <div className="transfer-dashed-divider"></div>
                 <div className="details-row details-row--tall">
-                  <span className="details-label">{transaction.title} received</span>
+                  <span className="details-label">{transaction.recipientReceivedLabel || `${transaction.title} received`}</span>
                   <span className="details-value details-value--bold">{fullAmountStr}</span>
                 </div>
                 <div className="transfer-dashed-divider"></div>
@@ -219,26 +221,26 @@ function TransferDetailsScreen({ transaction, onClose }) {
 
             <div className="transfer-details-section">
               <h2 className="transfer-section-title">
-                {transaction.recipientBankDetails?.accountHolderName || 'Regina Sybille Kroog'}'s bank details
+                {transaction.recipientBankDetails?.accountHolderName || 'Rita Johanna Elisabeth'}'s bank details
               </h2>
               
               <div className="details-row-container">
                 <div className="details-row-compact">
                   <span className="details-label">Account holder name</span>
                   <span className="details-value">
-                    {transaction.recipientBankDetails?.accountHolderName || 'Regina Sybille Kroog'}
+                    {transaction.recipientBankDetails?.accountHolderName || 'Rita Johanna Elisabeth'}
                   </span>
                 </div>
                 <div className="details-row-compact">
                   <span className="details-label">Bank code (BIC/SWIFT)</span>
                   <span className="details-value">
-                    {transaction.recipientBankDetails?.swiftBic || 'TRWIBEB1'}
+                    {transaction.recipientBankDetails?.swiftBic || 'TRWIBEB1XX'}
                   </span>
                 </div>
                 <div className="details-row-compact details-row-compact--iban">
                   <span className="details-label">IBAN</span>
                   <span className="details-value details-value--iban">
-                    {transaction.recipientBankDetails?.iban || 'BE74967497769307'}
+                    {transaction.recipientBankDetails?.iban || 'BE95967269552858'}
                   </span>
                 </div>
                 <div className="details-row-compact details-row-compact--bank-name">
@@ -248,7 +250,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                       ? transaction.recipientBankDetails.bankNameLines.map((line, i) => (
                           <span key={i}>{line}{i < transaction.recipientBankDetails.bankNameLines.length - 1 && <br />}</span>
                         ))
-                      : <span>Wise Europe SA RUE DU TRONE 100<br />1050 BRUSSELS</span>
+                      : <span>Wise Europe SA<br />RUE DU TRONE 100<br />BRUSSELS</span>
                     }
                   </span>
                 </div>
