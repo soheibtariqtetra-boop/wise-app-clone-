@@ -89,7 +89,10 @@
 
 .eur-details-screen__scroll-inner {
   position: relative;
-  width: 390px;
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  box-sizing: border-box;
   padding: 0 17.333px 40px 17.333px;
 }
 
@@ -150,7 +153,8 @@
 
 /* ── ACCOUNT INFO CARD (31:365) ─────────────── */
 .eur-details-screen__info-card {
-  width: 355.333px;
+  width: 100%;
+  box-sizing: border-box;
   background-color: #292c28;
   border: 0.542px solid #242723;
   border-radius: 17.333px;
@@ -295,7 +299,8 @@
 
 /* ── FEES CARD ─────────────────────────────── */
 .eur-details-screen__fees-card {
-  width: 355.333px;
+  width: 100%;
+  box-sizing: border-box;
   background-color: #121511;
   border: 0.542px solid #383b37;
   border-radius: 16.25px;
@@ -350,7 +355,8 @@
 }
 
 .eur-details-screen__feature-card {
-  width: 355.333px;
+  width: 100%;
+  box-sizing: border-box;
   background-color: #111410;
   border: 1.083px solid #3c3f3c;
   border-radius: 16.25px;

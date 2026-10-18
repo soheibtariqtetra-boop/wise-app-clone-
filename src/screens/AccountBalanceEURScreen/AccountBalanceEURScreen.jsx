@@ -148,7 +148,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
               type="button"
               className="eur-screen__iban-pill"
               onClick={onOpenDetails}
-              aria-label="Account details — BE58 9030 1491 1979"
+              aria-label={`Account details — ${mockEurAccount.iban}`}
               data-node-id="31:495"
             >
               <img
