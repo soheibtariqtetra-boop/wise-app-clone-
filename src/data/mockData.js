@@ -100,20 +100,20 @@ export const mockTransactions = [
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
-    "dateGroup": "Wednesday, October 7",
+    "dateGroup": "Wednesday, October 17",
     "transactions": [
       {
         "id": "tx-transfer-erkan",
         "type": "transfer",
-        "title": "MR Ebube ABAKWAM",
+        "title": "Njinowou Njeungue",
         "titleColor": "#F3F5F1",
-        "amount": "-800 EUR",
+        "amount": "-678 EUR",
         "amountColor": "#F3F5F1",
         "listIconKey": "up",
-        "dateGroup": "Wednesday, October 7",
-        "dateStr": "2026-10-07T20:05:00Z",
+        "dateGroup": "Wednesday, October 17",
+        "dateStr": "2026-10-17T15:55:00Z",
         "currency": "EUR",
-        "date": "Wednesday, October 7",
+        "date": "Wednesday, October 17",
         "transactionNumber": "#2418268688",
         "recipientBankDetails": {
           "accountHolderName": "OSPAgrio Hafen",
@@ -581,15 +581,15 @@ export const mockEurTransactions = [
   {
     "id": "tx-transfer-erkan",
     "type": "transfer",
-    "title": "MR Ebube ABAKWAM",
+    "title": "Njinowou Njeungue",
     "titleColor": "#F3F5F1",
-    "amount": "-800 EUR",
+    "amount": "-678 EUR",
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
-    "dateGroup": "Wednesday, October 7",
-    "dateStr": "2026-10-07T20:05:00Z",
+    "dateGroup": "Wednesday, October 17",
+    "dateStr": "2026-10-17T15:55:00Z",
     "currency": "EUR",
-    "date": "Wednesday, October 7",
+    "date": "Wednesday, October 17",
     "transactionNumber": "#2418268688",
     "recipientBankDetails": {
       "accountHolderName": "OSPAgrio Hafen",
