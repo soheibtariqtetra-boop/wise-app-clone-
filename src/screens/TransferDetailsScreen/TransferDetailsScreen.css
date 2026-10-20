@@ -235,6 +235,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  /*
+   * Same collapse clearance as Details. 199 = compact 88 + content
+   * pad-top 27 + tabs 44 + this margin-top 38 + content pad-bottom 2.
+   * On a taller screen the timeline alone cannot scroll the General
+   * badge under the compact bar; this supplies only that shortfall.
+   */
+  min-height: calc(var(--transfer-viewport, 844px) - 199px);
 }
 
 .transfer-section-title {
@@ -342,7 +349,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 38px;
+  margin-top: auto;
+  padding-top: 38px;
   padding-bottom: 24px;
 }
 
