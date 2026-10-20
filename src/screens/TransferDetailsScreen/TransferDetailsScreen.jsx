@@ -33,9 +33,12 @@ function TransferDetailsScreen({ transaction, onClose }) {
   };
 
   useLayoutEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollPositions.current[activeTab];
-    }
+    if (!scrollRef.current) return;
+    const top = scrollPositions.current[activeTab] ?? 0;
+    scrollRef.current.scrollTop = top;
+    // Keep compact-header visibility in sync with restored scroll
+    // (programmatic scrollTop does not fire onScroll).
+    setIsScrolled(top > 120);
   }, [activeTab]);
 
   if (!transaction) return null;

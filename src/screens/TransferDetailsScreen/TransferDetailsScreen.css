@@ -376,6 +376,16 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  /* Match Updates bottom inset so the download CTA isn't clipped */
+  padding-bottom: 24px;
+  /*
+   * Details content is shorter than Updates. Without a viewport-relative
+   * min-height, maxScroll stays below the shared hero-clearance distance
+   * (~298px), so the General pill never leaves under the sticky compact bar.
+   * 183px = compact(88) + content pad-top(27) + tabs(44) + details margin-top(24).
+   * Screen03 also shows inset below the download once scrolled.
+   */
+  min-height: calc(100dvh - 183px);
 }
 
 .transfer-details-section {
