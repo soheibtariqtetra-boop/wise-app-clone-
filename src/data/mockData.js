@@ -571,7 +571,7 @@ export const mockGbpTransactions = [
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
-  balance: '100.00',
+  balance: '2,041.00',
   iban: 'BE58903014911979',
   accountLabel: 'Current account / EUR',
   accountName: 'Muhammad Wazeer',
@@ -583,19 +583,6 @@ export const mockEurAccount = {
   ],
 }
 export const mockEurTransactions = [
-  {
-    "id": "full-tx-007",
-    "title": "Davy Lim",
-    "titleColor": "#F3F5F1",
-    "amount": "+ 100 EUR",
-    "amountColor": "#9FE870",
-    "listIconKey": "down",
-    "dateGroup": "Today",
-    "dateStr": "2026-10-20T10:00:00Z",
-    "currency": "EUR",
-    "date": "Today",
-    "transactionNumber": "#2409599666"
-  },
   {
     "id": "tx-transfer-erkan",
     "type": "transfer",
@@ -707,5 +694,18 @@ export const mockEurTransactions = [
     "currency": "EUR",
     "date": "Saturday, October 3",
     "transactionNumber": "#2409599662"
+  },
+  {
+    "id": "full-tx-007",
+    "title": "Davy Lim",
+    "titleColor": "#F3F5F1",
+    "amount": "+ 100 EUR",
+    "amountColor": "#9FE870",
+    "listIconKey": "down",
+    "dateGroup": "Today",
+    "dateStr": "2026-10-20T10:00:00Z",
+    "currency": "EUR",
+    "date": "Today",
+    "transactionNumber": "#2409599666"
   }
 ];
