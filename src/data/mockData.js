@@ -120,8 +120,8 @@ export const mockFullTransactions = [
         "timelineTimestamp": "Wednesday, october 19 at 6:10 PM",
         "recipientBankDetails": {
           "accountHolderName": "Rita Johanna Elisabeth",
-          "swiftBic": "TRWIBEB1XX",
-          "iban": "BE95967269552858",
+          "swiftBic": "TRWIBEB1XXX",
+          "iban": "BE58903014911979",
           "bankNameLines": [
             "Wise Europe SA",
             "RUE DU TRONE 100",
@@ -571,11 +571,11 @@ export const mockGbpTransactions = [
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
-  balance: '2,041.00',
-  iban: 'BE95967269552858',
+  balance: '100.00',
+  iban: 'BE58903014911979',
   accountLabel: 'Current account / EUR',
-  accountName: 'Rita Johanna Elisabeth',
-  swiftBic: 'TRWIBEB1XX',
+  accountName: 'Muhammad Wazeer',
+  swiftBic: 'TRWIBEB1XXX',
   bankAddressLines: [
     'Wise Europe SA',
     'RUE DU TRONE 100',
@@ -583,6 +583,19 @@ export const mockEurAccount = {
   ],
 }
 export const mockEurTransactions = [
+  {
+    "id": "full-tx-007",
+    "title": "Davy Lim",
+    "titleColor": "#F3F5F1",
+    "amount": "+ 100 EUR",
+    "amountColor": "#9FE870",
+    "listIconKey": "down",
+    "dateGroup": "Today",
+    "dateStr": "2026-10-20T10:00:00Z",
+    "currency": "EUR",
+    "date": "Today",
+    "transactionNumber": "#2409599666"
+  },
   {
     "id": "tx-transfer-erkan",
     "type": "transfer",
@@ -601,8 +614,8 @@ export const mockEurTransactions = [
     "timelineTimestamp": "Wednesday, october 19 at 6:10 PM",
     "recipientBankDetails": {
       "accountHolderName": "Rita Johanna Elisabeth",
-      "swiftBic": "TRWIBEB1XX",
-      "iban": "BE95967269552858",
+      "swiftBic": "TRWIBEB1XXX",
+      "iban": "BE58903014911979",
       "bankNameLines": [
         "Wise Europe SA",
         "RUE DU TRONE 100",
@@ -694,18 +707,5 @@ export const mockEurTransactions = [
     "currency": "EUR",
     "date": "Saturday, October 3",
     "transactionNumber": "#2409599662"
-  },
-  {
-    "id": "full-tx-007",
-    "title": "Davy Lim",
-    "titleColor": "#F3F5F1",
-    "amount": "+100 EUR",
-    "amountColor": "#9FE870",
-    "listIconKey": "down",
-    "dateGroup": "Wednesday, September 30",
-    "dateStr": "2026-09-30T10:00:00Z",
-    "currency": "EUR",
-    "date": "Wednesday, September 30",
-    "transactionNumber": "#2409599666"
   }
 ];
