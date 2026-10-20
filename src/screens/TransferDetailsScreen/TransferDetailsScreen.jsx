@@ -33,11 +33,22 @@ function TransferDetailsScreen({ transaction, onClose }) {
   };
 
   useLayoutEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const syncViewport = () => {
+      el.style.setProperty('--transfer-viewport', `${el.clientHeight}px`);
+    };
+    syncViewport();
+    const observer = new ResizeObserver(syncViewport);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useLayoutEffect(() => {
     if (!scrollRef.current) return;
     const top = scrollPositions.current[activeTab] ?? 0;
     scrollRef.current.scrollTop = top;
-    // Keep compact-header visibility in sync with restored scroll
-    // (programmatic scrollTop does not fire onScroll).
+    // Programmatic scrollTop does not fire onScroll.
     setIsScrolled(top > 120);
   }, [activeTab]);
 
@@ -240,13 +251,13 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 <div className="details-row-compact">
                   <span className="details-label">Bank code (BIC/SWIFT)</span>
                   <span className="details-value">
-                    {transaction.recipientBankDetails?.swiftBic || 'TRWIBEB1XX'}
+                    {transaction.recipientBankDetails?.swiftBic || 'TRWIBEB1XXX'}
                   </span>
                 </div>
                 <div className="details-row-compact details-row-compact--iban">
                   <span className="details-label">IBAN</span>
                   <span className="details-value details-value--iban">
-                    {transaction.recipientBankDetails?.iban || 'BE95967269552858'}
+                    {transaction.recipientBankDetails?.iban || 'BE58903014911979'}
                   </span>
                 </div>
                 <div className="details-row-compact details-row-compact--bank-name">
