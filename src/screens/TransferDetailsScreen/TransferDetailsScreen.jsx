@@ -252,14 +252,16 @@ function TransferDetailsScreen({ transaction, onClose }) {
 
             <div className="transfer-details-section">
               <h2 className="transfer-section-title">
-                {transaction.recipientBankDetails?.accountHolderName || 'Rita Johanna Elisabeth'}'s bank details
+                {transaction.recipientBankDetails?.bankDetailsHeadingName
+                  || transaction.recipientBankDetails?.accountHolderName
+                  || 'Muhammad Wazeer'}'s bank details
               </h2>
               
               <div className="details-row-container">
                 <div className="details-row-compact">
                   <span className="details-label">Account holder name</span>
                   <span className="details-value">
-                    {transaction.recipientBankDetails?.accountHolderName || 'Rita Johanna Elisabeth'}
+                    {transaction.recipientBankDetails?.accountHolderName || 'Manzooran Bibi'}
                   </span>
                 </div>
                 <div className="details-row-compact">
