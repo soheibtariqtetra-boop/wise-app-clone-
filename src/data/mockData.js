@@ -137,7 +137,7 @@ export const mockFullTransactions = [
         "timelineCompletionTitle": "Your transfer's complete",
         "timelineCompletionDetail": "We sent 651 EUR to VICENTA JOAQUINA BOSCA LOPEZ .",
         "recipientBankDetails": {
-          "bankDetailsHeadingName": "Muhammad Wazeer",
+          "bankDetailsHeadingName": "Manzooran Bibi",
           "accountHolderName": "Manzooran Bibi",
           "swiftBic": "TRWIBEB1XXX",
           "iban": "BE58903014911979",
@@ -623,7 +623,7 @@ export const mockEurTransactions = [
     "timelineCompletionTitle": "Your transfer's complete",
     "timelineCompletionDetail": "We sent 651 EUR to VICENTA JOAQUINA BOSCA LOPEZ .",
     "recipientBankDetails": {
-      "bankDetailsHeadingName": "Muhammad Wazeer",
+      "bankDetailsHeadingName": "Manzooran Bibi",
       "accountHolderName": "Manzooran Bibi",
       "swiftBic": "TRWIBEB1XXX",
       "iban": "BE58903014911979",

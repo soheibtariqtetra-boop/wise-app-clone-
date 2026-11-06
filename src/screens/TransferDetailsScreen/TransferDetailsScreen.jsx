@@ -64,7 +64,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
   const timelinePaidTimestamp = transaction.timelinePaidTimestamp || timelineTimestamp;
   const timelineCompletionTitle = transaction.timelineCompletionTitle;
   const timelineCompletionDetail = transaction.timelineCompletionDetail;
-  const senderAccountName = transaction.senderAccountName || 'Muhammad Wazeer';
+  const senderAccountName = transaction.senderAccountName || "Manzooran Bibi's";
 
   return (
     <div className="transfer-screen" onScroll={handleScroll} ref={scrollRef}>
@@ -254,7 +254,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
               <h2 className="transfer-section-title">
                 {transaction.recipientBankDetails?.bankDetailsHeadingName
                   || transaction.recipientBankDetails?.accountHolderName
-                  || 'Muhammad Wazeer'}'s bank details
+                  || 'Manzooran Bibi'}'s bank details
               </h2>
               
               <div className="details-row-container">
