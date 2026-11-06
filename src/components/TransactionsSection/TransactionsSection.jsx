@@ -4,16 +4,19 @@ import { mockTransactions } from '../../data/mockData'
 
 /**
  * TransactionsSection — data-driven.
- * Renders one <TransactionRow /> per entry in mockTransactions.
+ * Home shows only the latest 3 transactions; full history stays in mockData.
  * Calls onSelectTransaction(transaction) when a row is tapped.
- * Adding a new transaction only requires adding an entry to mockData.
  */
+const HOME_TRANSACTION_LIMIT = 3
+
 function TransactionsSection({ onSelectTransaction, onSeeAll }) {
   const handleSelect = (transaction) => {
     if (onSelectTransaction) {
       onSelectTransaction(transaction)
     }
   }
+
+  const homeTransactions = mockTransactions.slice(0, HOME_TRANSACTION_LIMIT)
 
   return (
     <div className="transactions-section">
@@ -23,7 +26,7 @@ function TransactionsSection({ onSelectTransaction, onSeeAll }) {
       </div>
 
       <div className="transactions-section__list">
-        {mockTransactions.map((tx) => (
+        {homeTransactions.map((tx) => (
           <TransactionRow
             key={tx.id}
             transaction={tx}
