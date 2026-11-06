@@ -4,9 +4,9 @@
  */
 
 export const mockUser = {
-  initials: 'MW',
-  name: 'REGINA SYBILLE\nKROOG',
-  handle: '@reginasybillekroog',
+  initials: 'ML',
+  name: 'MANZOORAN\nBIBI',
+  handle: '@ManzooranBibi',
 }
 
 export const EUR_TO_GBP_RATE = 0.85;
