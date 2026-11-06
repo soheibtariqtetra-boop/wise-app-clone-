@@ -61,7 +61,7 @@ export const mockTransactions = [
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
     "dateGroup": "Today",
-    "dateStr": "2026-11-06T11:10:00Z",
+    "dateStr": "2026-11-06T11:11:00Z",
     "currency": "EUR",
     "date": "Today",
     "transactionNumber": "#2418268688"
@@ -111,7 +111,7 @@ export const mockTransactions = [
   }
 ];
 
-// Shared full transfer record — referenced by EUR account list + history
+// Shared Nov 6 records — referenced by EUR account list + history
 export const thomasAndreTransfer = {
   "id": "tx-transfer-thomas-andre",
   "type": "transfer",
@@ -121,7 +121,7 @@ export const thomasAndreTransfer = {
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
   "dateGroup": "Friday, November 06",
-  "dateStr": "2026-11-06T12:10:00Z",
+  "dateStr": "2026-11-06T12:11:00Z",
   "currency": "EUR",
   "date": "Friday, November 06",
   "transactionNumber": "#2418268788",
@@ -144,11 +144,26 @@ export const thomasAndreTransfer = {
   }
 }
 
+export const incomingEur6200 = {
+  "id": "tx-incoming-eur-6200",
+  "title": "Incoming transfer",
+  "titleColor": "#F3F5F1",
+  "amount": "+6,200 EUR",
+  "amountColor": "#9FE870",
+  "listIconKey": "eur-down",
+  "dateGroup": "Friday, November 06",
+  "dateStr": "2026-11-06T10:00:00Z",
+  "currency": "EUR",
+  "date": "Friday, November 06",
+  "isNew": true
+}
+
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
     "dateGroup": "Friday, November 06",
     "transactions": [
+      thomasAndreTransfer,
       {
         "id": "tx-transfer-erkan",
         "type": "transfer",
@@ -158,7 +173,7 @@ export const mockFullTransactions = [
         "amountColor": "#F3F5F1",
         "listIconKey": "up",
         "dateGroup": "Friday, November 06",
-        "dateStr": "2026-11-06T11:10:00Z",
+        "dateStr": "2026-11-06T11:11:00Z",
         "currency": "EUR",
         "date": "Friday, November 06",
         "transactionNumber": "#2418268688",
@@ -181,7 +196,7 @@ export const mockFullTransactions = [
           ]
         }
       },
-      thomasAndreTransfer
+      incomingEur6200
     ]
   },
   {
@@ -636,6 +651,7 @@ export const mockEurAccount = {
   ],
 }
 export const mockEurTransactions = [
+  thomasAndreTransfer,
   {
     "id": "tx-transfer-erkan",
     "type": "transfer",
@@ -645,7 +661,7 @@ export const mockEurTransactions = [
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
     "dateGroup": "Friday, November 06",
-    "dateStr": "2026-11-06T11:10:00Z",
+    "dateStr": "2026-11-06T11:11:00Z",
     "currency": "EUR",
     "date": "Friday, November 06",
     "transactionNumber": "#2418268688",
@@ -668,7 +684,7 @@ export const mockEurTransactions = [
       ]
     }
   },
-  thomasAndreTransfer,
+  incomingEur6200,
   {
     "id": "tx-new-eur-6",
     "title": "Westfield Creative",
