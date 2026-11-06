@@ -243,52 +243,56 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   <span className="details-value details-value--bold">{fullAmountStr}</span>
                 </div>
                 <div className="transfer-dashed-divider"></div>
-                <div className="details-row">
-                  <span className="details-label">Transaction number</span>
-                  <span className="details-value">{transaction.transactionNumber || '#2418268688'}</span>
-                </div>
+                {transaction.transactionNumber && (
+                  <div className="details-row">
+                    <span className="details-label">Transaction number</span>
+                    <span className="details-value">{transaction.transactionNumber}</span>
+                  </div>
+                )}
               </div>
             </div>
 
-            <div className="transfer-details-section">
-              <h2 className="transfer-section-title">
-                {transaction.recipientBankDetails?.bankDetailsHeadingName
-                  || transaction.recipientBankDetails?.accountHolderName
-                  || 'Manzooran Bibi'}'s bank details
-              </h2>
-              
-              <div className="details-row-container">
-                <div className="details-row-compact">
-                  <span className="details-label">Account holder name</span>
-                  <span className="details-value">
-                    {transaction.recipientBankDetails?.accountHolderName || 'Manzooran Bibi'}
-                  </span>
-                </div>
-                <div className="details-row-compact">
-                  <span className="details-label">Bank code (BIC/SWIFT)</span>
-                  <span className="details-value">
-                    {transaction.recipientBankDetails?.swiftBic || 'TRWIBEB1XXX'}
-                  </span>
-                </div>
-                <div className="details-row-compact details-row-compact--iban">
-                  <span className="details-label">IBAN</span>
-                  <span className="details-value details-value--iban">
-                    {transaction.recipientBankDetails?.iban || 'BE58903014911979'}
-                  </span>
-                </div>
-                <div className="details-row-compact details-row-compact--bank-name">
-                  <span className="details-label">Bank name</span>
-                  <span className="details-value details-value--bank-name">
-                    {transaction.recipientBankDetails?.bankNameLines
-                      ? transaction.recipientBankDetails.bankNameLines.map((line, i) => (
-                          <span key={i}>{line}{i < transaction.recipientBankDetails.bankNameLines.length - 1 && <br />}</span>
-                        ))
-                      : <span>Wise Europe SA<br />RUE DU TRONE 100<br />BRUSSELS</span>
-                    }
-                  </span>
+            {transaction.recipientBankDetails && (
+              <div className="transfer-details-section">
+                <h2 className="transfer-section-title">
+                  {(transaction.recipientBankDetails.bankDetailsHeadingName
+                    || transaction.recipientBankDetails.accountHolderName)
+                  }'s bank details
+                </h2>
+                
+                <div className="details-row-container">
+                  <div className="details-row-compact">
+                    <span className="details-label">Account holder name</span>
+                    <span className="details-value">
+                      {transaction.recipientBankDetails.accountHolderName}
+                    </span>
+                  </div>
+                  <div className="details-row-compact">
+                    <span className="details-label">Bank code (BIC/SWIFT)</span>
+                    <span className="details-value">
+                      {transaction.recipientBankDetails.swiftBic}
+                    </span>
+                  </div>
+                  <div className="details-row-compact details-row-compact--iban">
+                    <span className="details-label">IBAN</span>
+                    <span className="details-value details-value--iban">
+                      {transaction.recipientBankDetails.iban}
+                    </span>
+                  </div>
+                  <div className="details-row-compact details-row-compact--bank-name">
+                    <span className="details-label">Bank name</span>
+                    <span className="details-value details-value--bank-name">
+                      {transaction.recipientBankDetails.bankNameLines?.map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          {i < transaction.recipientBankDetails.bankNameLines.length - 1 && <br />}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <button className="transfer-download-btn">
               Download transfer confirmation

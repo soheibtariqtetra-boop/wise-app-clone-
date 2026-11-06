@@ -111,6 +111,39 @@ export const mockTransactions = [
   }
 ];
 
+// Shared full transfer record — referenced by EUR account list + history
+export const thomasAndreTransfer = {
+  "id": "tx-transfer-thomas-andre",
+  "type": "transfer",
+  "title": "THOMAS ANDRE",
+  "titleColor": "#F3F5F1",
+  "amount": "-747 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Friday, November 06",
+  "dateStr": "2026-11-06T12:10:00Z",
+  "currency": "EUR",
+  "date": "Friday, November 06",
+  "transactionNumber": "#2418268788",
+  "recipientReceivedLabel": "THOMAS ANDRE received",
+  "senderAccountName": "Manzooran Bibi's",
+  "timelineTimestamp": "Friday, November 06 at 12:10 PM",
+  "timelineSetupTimestamp": "Friday, November 06 at 12:10 PM",
+  "timelinePaidTimestamp": "Friday, November 06 at 12:11 PM",
+  "timelineCompletionTitle": "Your transfer is complete.",
+  "recipientBankDetails": {
+    "bankDetailsHeadingName": "Manzooran Bibi",
+    "accountHolderName": "Manzooran Bibi",
+    "swiftBic": "TRWIBEB1XXX",
+    "iban": "BE58903014911979",
+    "bankNameLines": [
+      "Wise Europe SA",
+      "RUE DU TRONE 100",
+      "BRUSSELS"
+    ]
+  }
+}
+
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
@@ -147,7 +180,8 @@ export const mockFullTransactions = [
             "BRUSSELS"
           ]
         }
-      }
+      },
+      thomasAndreTransfer
     ]
   },
   {
@@ -634,6 +668,7 @@ export const mockEurTransactions = [
       ]
     }
   },
+  thomasAndreTransfer,
   {
     "id": "tx-new-eur-6",
     "title": "Westfield Creative",
