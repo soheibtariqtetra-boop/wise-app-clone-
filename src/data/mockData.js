@@ -148,7 +148,7 @@ export const thomasAndreTransfer = {
 
 export const incomingEur6200 = {
   "id": "tx-incoming-eur-6200",
-  "title": "Incoming transfer",
+  "title": "maxwilliams",
   "titleColor": "#F3F5F1",
   "amount": "+6,200 EUR",
   "amountColor": "#9FE870",
