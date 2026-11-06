@@ -60,6 +60,10 @@ function TransferDetailsScreen({ transaction, onClose }) {
     ? displayAmount 
     : `${displayAmount} ${displayCurrency}`;
   const timelineTimestamp = transaction.timelineTimestamp || 'Wednesday, october 19 at 6:10 PM';
+  const timelineSetupTimestamp = transaction.timelineSetupTimestamp || timelineTimestamp;
+  const timelinePaidTimestamp = transaction.timelinePaidTimestamp || timelineTimestamp;
+  const timelineCompletionTitle = transaction.timelineCompletionTitle;
+  const timelineCompletionDetail = transaction.timelineCompletionDetail;
   const senderAccountName = transaction.senderAccountName || 'Muhammad Wazeer';
 
   return (
@@ -144,7 +148,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">{timelineTimestamp}</div>
+                    <div className="timeline-time">{timelineSetupTimestamp}</div>
                     <div className="timeline-text">You set up your transfer</div>
                   </div>
                 </div>
@@ -159,7 +163,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">{timelineTimestamp}</div>
+                    <div className="timeline-time">{timelinePaidTimestamp}</div>
                     <div className="timeline-text">We've taken the funds from {senderAccountName} Wise account</div>
                   </div>
                 </div>
@@ -174,7 +178,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">{timelineTimestamp}</div>
+                    <div className="timeline-time">{timelinePaidTimestamp}</div>
                     <div className="timeline-text">We paid out your EUR</div>
                   </div>
                 </div>
@@ -189,9 +193,19 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">{timelineTimestamp}</div>
-                    <div className="timeline-completion-title">Your transfer's complete</div>
-                    <div className="timeline-text">We sent {fullAmountStr} to {transaction.title} .</div>
+                    <div className="timeline-time">{timelinePaidTimestamp}</div>
+                    {timelineCompletionDetail ? (
+                      <>
+                        <div className="timeline-completion-title">
+                          {timelineCompletionTitle || "Your transfer's complete"}
+                        </div>
+                        <div className="timeline-text">{timelineCompletionDetail}</div>
+                      </>
+                    ) : (
+                      <div className="timeline-text">
+                        {timelineCompletionTitle || `We sent ${fullAmountStr} to ${transaction.title} .`}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
