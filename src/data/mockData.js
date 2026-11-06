@@ -120,8 +120,8 @@ export const mockFullTransactions = [
         "timelineTimestamp": "Friday, November 06 at 11:10 AM",
         "timelineSetupTimestamp": "Friday, November 06 at 11:10 AM",
         "timelinePaidTimestamp": "Friday, November 06 at 11:11 AM",
-        "timelineCompletionTitle": "Your transfer is complete.",
-        "timelineCompletionDetail": "",
+        "timelineCompletionTitle": "Your transfer's complete",
+        "timelineCompletionDetail": "We sent 651 EUR to VICENTA JOAQUINA BOSCA LOPEZ .",
         "recipientBankDetails": {
           "accountHolderName": "Rita Johanna Elisabeth",
           "swiftBic": "TRWIBEB1XXX",
@@ -605,8 +605,8 @@ export const mockEurTransactions = [
     "timelineTimestamp": "Friday, November 06 at 11:10 AM",
     "timelineSetupTimestamp": "Friday, November 06 at 11:10 AM",
     "timelinePaidTimestamp": "Friday, November 06 at 11:11 AM",
-    "timelineCompletionTitle": "Your transfer is complete.",
-    "timelineCompletionDetail": "",
+    "timelineCompletionTitle": "Your transfer's complete",
+    "timelineCompletionDetail": "We sent 651 EUR to VICENTA JOAQUINA BOSCA LOPEZ .",
     "recipientBankDetails": {
       "accountHolderName": "Rita Johanna Elisabeth",
       "swiftBic": "TRWIBEB1XXX",
