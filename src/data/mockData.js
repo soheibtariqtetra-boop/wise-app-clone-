@@ -1,7 +1,9 @@
 /**
  * Mock application data for the Home screen.
- * Calculated dynamically to ensure consistent balances and correct sorting.
+ * Account balances come from accountBalances.js (ledger-verified).
  */
+
+import { accountBalances, EUR_TO_GBP_RATE as LEDGER_EUR_TO_GBP_RATE } from './accountBalances.js'
 
 export const mockUser = {
   initials: 'MB',
@@ -9,10 +11,10 @@ export const mockUser = {
   handle: '@ManzooranBibi',
 }
 
-export const EUR_TO_GBP_RATE = 0.85;
+export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
 
 export const mockBalance = {
-  total: '4,777.85',
+  total: accountBalances.homeTotalGbp,
   currency: 'GBP',
 }
 
@@ -21,14 +23,14 @@ export const mockCurrencyAccounts = [
     id: 'gbp',
     flag: '🇬🇧',
     symbol: '£',
-    amount: '3,043.00',
+    amount: accountBalances.gbp,
     currency: 'GBP',
   },
   {
     id: 'eur',
     flag: '🇪🇺',
     symbol: '€',
-    amount: '2,041.00',
+    amount: accountBalances.eur,
     currency: 'EUR',
   },
   {
@@ -501,7 +503,7 @@ export const mockFullTransactions = [
 export const mockGbpAccount = {
   currency: 'GBP',
   symbol: '£',
-  balance: '3,043.00',
+  balance: accountBalances.gbp,
   accountLabel: 'Current account / GBP',
   accountName: 'Muhammad Rana hussnain',
   accountNumber: '54158151',
@@ -642,7 +644,7 @@ export const mockGbpTransactions = [
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
-  balance: '2,041.00',
+  balance: accountBalances.eur,
   iban: 'BE58903014911979',
   accountLabel: 'Current account / EUR',
   accountName: 'Mamzooran Bibi',
