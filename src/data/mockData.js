@@ -50,8 +50,22 @@ export const mockPromoSlides = [
   },
 ]
 
-// The top 3 newest transactions for the Home screen
+// Newest transactions for the Home screen (display stubs; full records live in mockFullTransactions)
 export const mockTransactions = [
+  {
+    "id": "tx-transfer-erkan",
+    "type": "transfer",
+    "title": "VICENTA JOAQUINA",
+    "titleColor": "#F3F5F1",
+    "amount": "-651 EUR",
+    "amountColor": "#F3F5F1",
+    "listIconKey": "up",
+    "dateGroup": "Today",
+    "dateStr": "2026-11-06T11:10:00Z",
+    "currency": "EUR",
+    "date": "Today",
+    "transactionNumber": "#2418268688"
+  },
   {
     "id": "tx-new-gbp-1",
     "title": "Northbridge Consulting Ltd",

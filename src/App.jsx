@@ -230,6 +230,15 @@ function App() {
     }
   }
 
+  const resolveTransaction = (transaction) => {
+    if (!transaction?.id) return transaction
+    for (const group of mockFullTransactions) {
+      const found = group.transactions.find((t) => t.id === transaction.id)
+      if (found) return found
+    }
+    return transaction
+  }
+
   const navigateToTransaction = (transaction) => {
     let scrollPos = 0;
     if (currentRoute === 'transactions') {
@@ -246,13 +255,14 @@ function App() {
     }
 
     saveHomeScroll()
-    setSelectedTransaction(transaction)
+    const resolved = resolveTransaction(transaction)
+    setSelectedTransaction(resolved)
     
-    if (transaction.type === 'transfer') {
-      window.history.pushState({ route: 'transfer', txId: transaction.id }, '', `/transfer/${transaction.id}`)
+    if (resolved.type === 'transfer') {
+      window.history.pushState({ route: 'transfer', txId: resolved.id }, '', `/transfer/${resolved.id}`)
       setCurrentRoute('transfer')
     } else {
-      window.history.pushState({ route: 'transaction', txId: transaction.id }, '', `/transaction/${transaction.id}`)
+      window.history.pushState({ route: 'transaction', txId: resolved.id }, '', `/transaction/${resolved.id}`)
       setCurrentRoute('transaction')
     }
   }
