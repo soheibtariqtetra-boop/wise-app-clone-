@@ -196,6 +196,27 @@
   align-items: center;
 }
 
+/*
+ * Stacked two-line names (e.g. MANZOORAN / BIBI):
+ * WiseLocal ink is ~36px at 48px. Leading 0.7 (33.6px) overlaps;
+ * leading 1.0 leaves too much air inside each line box.
+ * Match line boxes to ink (~0.75) and use a small flex gap for ~4–6px visible space.
+ */
+.profile-identity__name--stacked {
+  height: auto;
+  min-height: 77px;
+  line-height: 0.75;
+  gap: 5px;
+  justify-content: flex-start;
+}
+
+.profile-identity__name--stacked .profile-identity__name-line {
+  display: block;
+  width: 100%;
+  line-height: 0.75;
+  text-align: center;
+}
+
 .profile-identity__layer-main {
   position: absolute;
   left: 0;

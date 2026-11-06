@@ -139,12 +139,19 @@ function ProfileScreen({ onBack }) {
             </h1>
           ) : (
             <h1
-              className="profile-identity__name"
+              className="profile-identity__name profile-identity__name--stacked"
               data-node-id="7:526"
               aria-label={mockUser.name.replace(/\n/g, ' ')}
             >
               {mockUser.name.split('\n').map((line, i) => (
-                <span key={i} className="profile-identity__name-line">
+                <span
+                  key={i}
+                  className={
+                    i === 0
+                      ? 'profile-identity__name-line'
+                      : 'profile-identity__name-line profile-identity__name-line--second'
+                  }
+                >
                   {line}
                 </span>
               ))}
