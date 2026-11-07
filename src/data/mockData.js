@@ -148,25 +148,27 @@ export const hannaYavtukhovskaTransfer = {
 }
 
 // Shared transfer — same id as former THOMAS ANDRE; referenced by EUR list + history
+// Screen01 expanded uses fullRecipientName; Screen02/03 compact headers use compactRecipientName.
 export const panagiotisPapastathopoulosTransfer = {
   "id": "tx-transfer-thomas-andre",
   "type": "transfer",
   "title": "PANAGIOTIS PAPASTATHOPOULOS",
-  "compactRecipient": "PANAGIOTIS",
+  "fullRecipientName": "PANAGIOTIS PAPASTATHOPOULOS",
+  "compactRecipientName": "PANAGIOTIS",
   "titleColor": "#F3F5F1",
   "amount": "-1209 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
   "dateGroup": "Friday, November 07",
-  "dateStr": "2026-11-07T11:11:00Z",
+  "dateStr": "2026-11-07T23:11:00Z",
   "currency": "EUR",
   "date": "Friday, November 07",
-  "transactionNumber": "#2418268788",
-  "recipientReceivedLabel": "PANAGIOTIS PAPASTATHOPOULOS received",
+  "transactionNumber": "#2418298788",
+  "recipientReceivedLabel": "PANAGIOTIS received",
   "senderAccountName": "Manzooran Bibi's",
-  "timelineTimestamp": "Friday, November 07 at 11:10 AM",
-  "timelineSetupTimestamp": "Friday, November 07 at 11:10 AM",
-  "timelinePaidTimestamp": "Friday, November 07 at 11:11 AM",
+  "timelineTimestamp": "Friday, November 07 at 11:10 PM",
+  "timelineSetupTimestamp": "Friday, November 07 at 11:10 PM",
+  "timelinePaidTimestamp": "Friday, November 07 at 11:11 PM",
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 1209 EUR to PANAGIOTIS .",
   "recipientBankDetails": {

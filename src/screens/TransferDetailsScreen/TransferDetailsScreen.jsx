@@ -59,6 +59,14 @@ function TransferDetailsScreen({ transaction, onClose }) {
   const fullAmountStr = displayAmount.includes(displayCurrency) 
     ? displayAmount 
     : `${displayAmount} ${displayCurrency}`;
+  // Expanded Screen01 vs compact Screen02/03 use separate presentation fields.
+  const fullRecipientName =
+    transaction.fullRecipientName
+    ?? transaction.title;
+  const compactRecipientName =
+    transaction.compactRecipientName
+    ?? transaction.compactRecipient
+    ?? transaction.title;
   const timelineTimestamp = transaction.timelineTimestamp || 'Wednesday, october 19 at 6:10 PM';
   const timelineSetupTimestamp = transaction.timelineSetupTimestamp || timelineTimestamp;
   const timelinePaidTimestamp = transaction.timelinePaidTimestamp || timelineTimestamp;
@@ -70,13 +78,13 @@ function TransferDetailsScreen({ transaction, onClose }) {
     <div className="transfer-screen" onScroll={handleScroll} ref={scrollRef}>
       
       {/* ── Compact Header — TransferDetailsScreen02 scrolled state ── */}
-      <div className={`transfer-compact-header ${isScrolled ? 'transfer-compact-header--visible' : ''}`}>
-        <button type="button" className="transfer-btn" onClick={onClose}>
+      <div className={`transfer-compact-header ${isScrolled ? 'transfer-compact-header--visible' : ''}`} aria-hidden={!isScrolled}>
+        <button type="button" className="transfer-btn" onClick={onClose} tabIndex={isScrolled ? 0 : -1}>
           <img src={imgClose} alt="Close" draggable={false} />
         </button>
         <div className="transfer-compact-identity">
           <div className="transfer-compact-amount">{fullAmountStr}</div>
-          <div className="transfer-compact-recipient">{transaction.compactRecipient ?? transaction.title}</div>
+          <div className="transfer-compact-recipient">{compactRecipientName}</div>
         </div>
         <div className="transfer-header__actions-right">
           <button type="button" className="transfer-btn">
@@ -110,7 +118,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
           </div>
           <div className="transfer-status-text">Sent</div>
           <div className="transfer-amount">{fullAmountStr}</div>
-          <div className="transfer-recipient">{transaction.title}</div>
+          <div className="transfer-recipient">{fullRecipientName}</div>
           
           <div className="transfer-pill">
             <img src={imgGeneral} alt="" className="transfer-pill-icon" />
@@ -239,7 +247,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 </div>
                 <div className="transfer-dashed-divider"></div>
                 <div className="details-row details-row--tall">
-                  <span className="details-label">{transaction.recipientReceivedLabel || `${transaction.title} received`}</span>
+                  <span className="details-label">{transaction.recipientReceivedLabel || `${compactRecipientName} received`}</span>
                   <span className="details-value details-value--bold">{fullAmountStr}</span>
                 </div>
                 <div className="transfer-dashed-divider"></div>
