@@ -44,7 +44,7 @@ function TransactionRow({ transaction, onSelect }) {
       className="transaction-row"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      aria-label={`${transaction.title}, ${transaction.date || transaction.subtitle || ''}, ${transaction.amount}`}
+      aria-label={`${transaction.displayName || transaction.title}, ${transaction.date || transaction.subtitle || ''}, ${transaction.amount}`}
       data-tx-id={transaction.id}
     >
       <img

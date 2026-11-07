@@ -153,6 +153,7 @@ export const panagiotisPapastathopoulosTransfer = {
   "id": "tx-transfer-thomas-andre",
   "type": "transfer",
   "title": "PANAGIOTIS PAPASTATHOPOULOS",
+  "displayName": "PANAGIOTIS",
   "fullRecipientName": "PANAGIOTIS PAPASTATHOPOULOS",
   "compactRecipientName": "PANAGIOTIS",
   "titleColor": "#F3F5F1",

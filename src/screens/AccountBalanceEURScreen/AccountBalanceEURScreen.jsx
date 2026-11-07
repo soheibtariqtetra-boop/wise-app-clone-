@@ -261,7 +261,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
                 type="button"
                 className="eur-screen__tx-row"
                 onClick={() => handleTxRowClick(tx)}
-                aria-label={`${tx.title}, ${tx.amount}`}
+                aria-label={`${tx.displayName || tx.title}, ${tx.amount}`}
                 data-node-id="24:171"
               >
                 <div className="eur-screen__tx-icon" data-node-id="24:176">
@@ -272,7 +272,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
                   style={{ color: tx.titleColor }}
                   data-node-id="24:175"
                 >
-                  {tx.title}
+                  {tx.displayName || tx.title}
                 </div>
                 <div className="eur-screen__tx-date" data-node-id="24:174">
                   {tx.date}
