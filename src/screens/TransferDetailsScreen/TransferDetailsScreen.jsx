@@ -76,7 +76,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
         </button>
         <div className="transfer-compact-identity">
           <div className="transfer-compact-amount">{fullAmountStr}</div>
-          <div className="transfer-compact-recipient">{transaction.title}</div>
+          <div className="transfer-compact-recipient">{transaction.compactRecipient ?? transaction.title}</div>
         </div>
         <div className="transfer-header__actions-right">
           <button type="button" className="transfer-btn">
