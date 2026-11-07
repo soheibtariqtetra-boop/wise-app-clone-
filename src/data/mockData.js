@@ -57,16 +57,16 @@ export const mockTransactions = [
   {
     "id": "tx-transfer-erkan",
     "type": "transfer",
-    "title": "VICENTA JOAQUINA",
+    "title": "HANNA YAVTUKHOVSKA",
     "titleColor": "#F3F5F1",
-    "amount": "-651 EUR",
+    "amount": "-1116 EUR",
     "amountColor": "#F3F5F1",
     "listIconKey": "up",
     "dateGroup": "Today",
-    "dateStr": "2026-11-06T11:11:00Z",
+    "dateStr": "2026-11-07T12:11:00Z",
     "currency": "EUR",
     "date": "Today",
-    "transactionNumber": "#2418268688"
+    "transactionNumber": "#2418268788"
   },
   {
     "id": "tx-new-gbp-1",
@@ -112,6 +112,40 @@ export const mockTransactions = [
     "transactionNumber": "#2409599652"
   }
 ];
+
+// Shared transfer — referenced by EUR account list + history (same id as former VICENTA)
+export const hannaYavtukhovskaTransfer = {
+  "id": "tx-transfer-erkan",
+  "type": "transfer",
+  "title": "HANNA YAVTUKHOVSKA",
+  "titleColor": "#F3F5F1",
+  "amount": "-1116 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Friday, November 07",
+  "dateStr": "2026-11-07T12:11:00Z",
+  "currency": "EUR",
+  "date": "Friday, November 07",
+  "transactionNumber": "#2418268788",
+  "recipientReceivedLabel": "HANNA YAVTUKHOVSKA received",
+  "senderAccountName": "Manzooran Bibi's",
+  "timelineTimestamp": "Friday, November 07 at 12:10 PM",
+  "timelineSetupTimestamp": "Friday, November 07 at 12:10 PM",
+  "timelinePaidTimestamp": "Friday, November 07 at 12:11 PM",
+  "timelineCompletionTitle": "Your transfer's complete",
+  "timelineCompletionDetail": "We sent 1116 EUR to HANNA YAVTUKHOVSKA .",
+  "recipientBankDetails": {
+    "bankDetailsHeadingName": "Manzooran Bibi",
+    "accountHolderName": "Manzooran Bibi",
+    "swiftBic": "TRWIBEB1XXX",
+    "iban": "BE58903014911979",
+    "bankNameLines": [
+      "Wise Europe SA",
+      "RUE DU TRONE 100",
+      "BRUSSELS"
+    ]
+  }
+}
 
 // Shared Nov 6 records — referenced by EUR account list + history
 export const thomasAndreTransfer = {
@@ -163,41 +197,15 @@ export const incomingEur6200 = {
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
+    "dateGroup": "Friday, November 07",
+    "transactions": [
+      hannaYavtukhovskaTransfer
+    ]
+  },
+  {
     "dateGroup": "Friday, November 06",
     "transactions": [
       thomasAndreTransfer,
-      {
-        "id": "tx-transfer-erkan",
-        "type": "transfer",
-        "title": "VICENTA JOAQUINA",
-        "titleColor": "#F3F5F1",
-        "amount": "-651 EUR",
-        "amountColor": "#F3F5F1",
-        "listIconKey": "up",
-        "dateGroup": "Friday, November 06",
-        "dateStr": "2026-11-06T11:11:00Z",
-        "currency": "EUR",
-        "date": "Friday, November 06",
-        "transactionNumber": "#2418268688",
-        "recipientReceivedLabel": "VICENTA JOAQUINA received",
-        "senderAccountName": "Manzooran Bibi's",
-        "timelineTimestamp": "Friday, November 06 at 11:10 AM",
-        "timelineSetupTimestamp": "Friday, November 06 at 11:10 AM",
-        "timelinePaidTimestamp": "Friday, November 06 at 11:11 AM",
-        "timelineCompletionTitle": "Your transfer's complete",
-        "timelineCompletionDetail": "We sent 651 EUR to VICENTA JOAQUINA BOSCA LOPEZ .",
-        "recipientBankDetails": {
-          "bankDetailsHeadingName": "Manzooran Bibi",
-          "accountHolderName": "Manzooran Bibi",
-          "swiftBic": "TRWIBEB1XXX",
-          "iban": "BE58903014911979",
-          "bankNameLines": [
-            "Wise Europe SA",
-            "RUE DU TRONE 100",
-            "BRUSSELS"
-          ]
-        }
-      },
       incomingEur6200
     ]
   },
@@ -656,39 +664,8 @@ export const mockEurAccount = {
   ],
 }
 export const mockEurTransactions = [
+  hannaYavtukhovskaTransfer,
   thomasAndreTransfer,
-  {
-    "id": "tx-transfer-erkan",
-    "type": "transfer",
-    "title": "VICENTA JOAQUINA",
-    "titleColor": "#F3F5F1",
-    "amount": "-651 EUR",
-    "amountColor": "#F3F5F1",
-    "listIconKey": "up",
-    "dateGroup": "Friday, November 06",
-    "dateStr": "2026-11-06T11:11:00Z",
-    "currency": "EUR",
-    "date": "Friday, November 06",
-    "transactionNumber": "#2418268688",
-    "recipientReceivedLabel": "VICENTA JOAQUINA received",
-    "senderAccountName": "Manzooran Bibi's",
-    "timelineTimestamp": "Friday, November 06 at 11:10 AM",
-    "timelineSetupTimestamp": "Friday, November 06 at 11:10 AM",
-    "timelinePaidTimestamp": "Friday, November 06 at 11:11 AM",
-    "timelineCompletionTitle": "Your transfer's complete",
-    "timelineCompletionDetail": "We sent 651 EUR to VICENTA JOAQUINA BOSCA LOPEZ .",
-    "recipientBankDetails": {
-      "bankDetailsHeadingName": "Manzooran Bibi",
-      "accountHolderName": "Manzooran Bibi",
-      "swiftBic": "TRWIBEB1XXX",
-      "iban": "BE58903014911979",
-      "bankNameLines": [
-        "Wise Europe SA",
-        "RUE DU TRONE 100",
-        "BRUSSELS"
-      ]
-    }
-  },
   incomingEur6200,
   {
     "id": "tx-new-eur-6",

@@ -22,36 +22,36 @@ const eurCredits = EUR_CREDITS_MINOR.reduce((s, e) => s + e.amountMinor, 0)
 const eurDebits = EUR_DEBITS_MINOR.reduce((s, e) => s + e.amountMinor, 0)
 
 assert.equal(eurCredits, 620_000, 'EUR credits must be +6,200.00')
-assert.equal(eurDebits, 65_100 + 74_700, 'EUR debits must be 651 + 747')
+assert.equal(eurDebits, 111_600 + 74_700, 'EUR debits must be 1116 + 747')
 assert.equal(EUR_FEES_MINOR, 0, 'No EUR fees posted')
 assert.equal(
   calculateEurClosingMinor(),
   EUR_OPENING_MINOR + eurCredits - eurDebits - EUR_FEES_MINOR,
   'EUR closing formula',
 )
-assert.equal(calculateEurClosingMinor(), 778_200, 'EUR closing = 7,782.00')
-assert.equal(formatMajorFromMinor(calculateEurClosingMinor()), '7,782.00')
+assert.equal(calculateEurClosingMinor(), 731_700, 'EUR closing = 7,317.00')
+assert.equal(formatMajorFromMinor(calculateEurClosingMinor()), '7,317.00')
 
 assert.equal(calculateGbpClosingMinor(), GBP_OPENING_MINOR, 'GBP unchanged at opening')
 assert.equal(calculateGbpClosingMinor(), 304_300, 'GBP closing = 3,043.00')
 assert.equal(formatMajorFromMinor(calculateGbpClosingMinor()), '3,043.00')
 
 assert.equal(EUR_TO_GBP_RATE, 0.85)
-assert.equal(eurMinorToGbpMinor(778_200), 661_470)
-assert.equal(calculateHomeTotalGbpMinor(), 304_300 + 661_470)
-assert.equal(formatMajorFromMinor(calculateHomeTotalGbpMinor()), '9,657.70')
+assert.equal(eurMinorToGbpMinor(731_700), 621_945)
+assert.equal(calculateHomeTotalGbpMinor(), 304_300 + 621_945)
+assert.equal(formatMajorFromMinor(calculateHomeTotalGbpMinor()), '9,262.45')
 
-assert.equal(accountBalances.eur, '7,782.00')
+assert.equal(accountBalances.eur, '7,317.00')
 assert.equal(accountBalances.gbp, '3,043.00')
-assert.equal(accountBalances.homeTotalGbp, '9,657.70')
+assert.equal(accountBalances.homeTotalGbp, '9,262.45')
 
 // Double-counting guard: each posted id appears once
 const ids = [...EUR_CREDITS_MINOR, ...EUR_DEBITS_MINOR].map((e) => e.id)
 assert.equal(new Set(ids).size, ids.length, 'No duplicate EUR ledger ids')
 
-// Net Nov 6 EUR change vs verified opening
-assert.equal(6200 - 651 - 747, 4802)
-assert.equal(2980 + 4802, 7782)
+// Net EUR change vs verified opening (HANNA 1116 replaces VICENTA 651)
+assert.equal(6200 - 1116 - 747, 4337)
+assert.equal(2980 + 4337, 7317)
 
 console.log('verify-balances: PASS')
 console.log(JSON.stringify({

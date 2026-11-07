@@ -5,13 +5,12 @@
  *   GBP base 3.00 + B2B net +3,040.00 = 3,043.00
  *   EUR base 100.00 + B2B net +2,880.00 = 2,980.00
  *
- * EUR 2,041.00 (commit 21b05b3) was 2,980.00 after applying an earlier
- * −940 EUR transfer (Δ −939 from a −1 placeholder). That transfer amount
- * later became −651 (VICENTA). THOMAS (−747) and Incoming (+6,200) were
- * added without updating balances.
+ * EUR debit tx-transfer-erkan was −651 (VICENTA), then replaced with
+ * −1,116 (HANNA YAVTUKHOVSKA) on the same record id. THOMAS (−747) and
+ * Incoming (+6,200) remain unchanged.
  *
  * Closing EUR from the verified pre-transfer opening:
- *   2,980 + 6,200 − 651 − 747 = 7,782
+ *   2,980 + 6,200 − 1,116 − 747 = 7,317
  *
  * GBP has no new posted ledger changes since 3,043.00.
  * Combined total uses existing EUR_TO_GBP_RATE only.
@@ -29,7 +28,7 @@ export const EUR_CREDITS_MINOR = [
 
 /** Posted EUR debits that affect the closing balance. */
 export const EUR_DEBITS_MINOR = [
-  { id: 'tx-transfer-erkan', amountMinor: 65_100 },
+  { id: 'tx-transfer-erkan', amountMinor: 111_600 },
   { id: 'tx-transfer-thomas-andre', amountMinor: 74_700 },
 ]
 
