@@ -14,12 +14,20 @@ import imgFlower        from '../../assets/accounts/eur/artwork-flower.png'
 import imgInterestClose from '../../assets/accounts/eur/btn-interest-close.png'
 import imgTabsBg        from '../../assets/accounts/eur/bg-transaction-tabs.png'
 import imgTxDown        from '../../assets/accounts/eur/icon-tx-down.png'
+import imgTxUp          from '../../assets/home/transactions/tx-up.png'
 import imgViewAllIcon   from '../../assets/accounts/eur/icon-view-all.png'
 import imgRowChevron    from '../../assets/accounts/eur/icon-row-chevron.png'
 import imgActionAdd     from '../../assets/accounts/eur/icon-action-add.png'
 import imgActionConvert from '../../assets/accounts/eur/icon-action-convert.png'
 import imgActionSend    from '../../assets/accounts/eur/icon-action-send.png'
 import imgActionGetpaid from '../../assets/accounts/eur/icon-action-getpaid.png'
+
+/** Outgoing uses shared home up arrow; incoming keeps the EUR down asset. */
+const txIconMap = {
+  up: imgTxUp,
+  down: imgTxDown,
+  'eur-down': imgTxDown,
+}
 
 /**
  * AccountBalanceEURScreen — Single continuous screen representing
@@ -245,8 +253,9 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
 
           {/* ── Transaction List (Data-Driven & Repeatable) ── */}
           <div className="eur-screen__tx-list" data-node-id="24:165">
-            {/* Davy Lim Transaction Row */}
-            {mockEurTransactions.map((tx) => (
+            {mockEurTransactions.map((tx) => {
+              const iconSrc = txIconMap[tx.listIconKey] || imgTxDown
+              return (
               <button
                 key={tx.id}
                 type="button"
@@ -256,7 +265,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
                 data-node-id="24:171"
               >
                 <div className="eur-screen__tx-icon" data-node-id="24:176">
-                  <img src={imgTxDown} alt="" draggable={false} />
+                  <img src={iconSrc} alt="" draggable={false} />
                 </div>
                 <div
                   className="eur-screen__tx-title"
@@ -276,7 +285,8 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
                   {tx.amount}
                 </div>
               </button>
-            ))}
+              )
+            })}
 
             {/* View all Transactions Row (Screen02 / 24:166) */}
             <button
