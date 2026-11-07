@@ -48,12 +48,14 @@ function TransactionDetailsScreen({ transaction, onClose }) {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
-    year: 'numeric'
+    year: 'numeric',
+    timeZone: 'UTC',
   });
   const timeFormatted = dObj.toLocaleTimeString('en-US', {
     hour: 'numeric',
     minute: '2-digit',
-    hour12: true
+    hour12: true,
+    timeZone: 'UTC',
   });
   const dateLine1 = `${dateFormatted} at`;
   const dateLine2 = timeFormatted;

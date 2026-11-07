@@ -4,6 +4,7 @@
  */
 
 import { accountBalances, EUR_TO_GBP_RATE as LEDGER_EUR_TO_GBP_RATE } from './accountBalances.js'
+import { applyDerivedDateLabels } from './transactionDates.js'
 
 /** Newest-first by structured dateStr (ISO). Do not sort by formatted date labels. */
 export function compareTransactionsByDateDesc(a, b) {
@@ -28,6 +29,10 @@ function uniqueTransactionsById(transactions) {
 function applyChronologicalSort(groups) {
   for (const group of groups) {
     group.transactions.sort(compareTransactionsByDateDesc)
+    // Keep section headers aligned with the newest tx label in the group
+    if (group.transactions[0]?.dateGroup) {
+      group.dateGroup = group.transactions[0].dateGroup
+    }
   }
   groups.sort((ga, gb) =>
     compareTransactionsByDateDesc(ga.transactions[0], gb.transactions[0]),
@@ -115,6 +120,10 @@ export const hannaYavtukhovskaTransfer = {
     ]
   }
 }
+applyDerivedDateLabels(hannaYavtukhovskaTransfer, {
+  setupTime: '12:10 PM',
+  paidTime: '12:11 PM',
+})
 
 // Shared transfer — same id as former THOMAS ANDRE; referenced by EUR list + history
 // Screen01 expanded uses fullRecipientName; Screen02/03 compact headers use compactRecipientName.
@@ -153,6 +162,10 @@ export const panagiotisPapastathopoulosTransfer = {
     ]
   }
 }
+applyDerivedDateLabels(panagiotisPapastathopoulosTransfer, {
+  setupTime: '11:10 AM',
+  paidTime: '11:11 AM',
+})
 
 export const incomingEur6200 = {
   "id": "tx-incoming-eur-6200",
