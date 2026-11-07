@@ -147,25 +147,25 @@ export const hannaYavtukhovskaTransfer = {
   }
 }
 
-// Shared Nov 6 records — referenced by EUR account list + history
-export const thomasAndreTransfer = {
+// Shared transfer — same id as former THOMAS ANDRE; referenced by EUR list + history
+export const panagiotisPapastathopoulosTransfer = {
   "id": "tx-transfer-thomas-andre",
   "type": "transfer",
-  "title": "THOMAS ANDRE",
+  "title": "PANAGIOTIS PAPASTATHOPOULOS",
   "titleColor": "#F3F5F1",
-  "amount": "-747 EUR",
+  "amount": "-1209 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
-  "dateGroup": "Friday, November 06",
-  "dateStr": "2026-11-06T12:11:00Z",
+  "dateGroup": "Friday, November 07",
+  "dateStr": "2026-11-07T23:11:00Z",
   "currency": "EUR",
-  "date": "Friday, November 06",
+  "date": "Friday, November 07",
   "transactionNumber": "#2418268788",
-  "recipientReceivedLabel": "THOMAS ANDRE received",
+  "recipientReceivedLabel": "PANAGIOTIS PAPASTATHOPOULOS received",
   "senderAccountName": "Manzooran Bibi's",
-  "timelineTimestamp": "Friday, November 06 at 12:10 PM",
-  "timelineSetupTimestamp": "Friday, November 06 at 12:10 PM",
-  "timelinePaidTimestamp": "Friday, November 06 at 12:11 PM",
+  "timelineTimestamp": "Friday, November 07 at 11:10 PM",
+  "timelineSetupTimestamp": "Friday, November 07 at 11:10 PM",
+  "timelinePaidTimestamp": "Friday, November 07 at 11:11 PM",
   "timelineCompletionTitle": "Your transfer is complete.",
   "recipientBankDetails": {
     "bankDetailsHeadingName": "Manzooran Bibi",
@@ -199,13 +199,13 @@ export const mockFullTransactions = [
   {
     "dateGroup": "Friday, November 07",
     "transactions": [
+      panagiotisPapastathopoulosTransfer,
       hannaYavtukhovskaTransfer
     ]
   },
   {
     "dateGroup": "Friday, November 06",
     "transactions": [
-      thomasAndreTransfer,
       incomingEur6200
     ]
   },
@@ -664,8 +664,8 @@ export const mockEurAccount = {
   ],
 }
 export const mockEurTransactions = [
+  panagiotisPapastathopoulosTransfer,
   hannaYavtukhovskaTransfer,
-  thomasAndreTransfer,
   incomingEur6200,
   {
     "id": "tx-new-eur-6",

@@ -5,12 +5,13 @@
  *   GBP base 3.00 + B2B net +3,040.00 = 3,043.00
  *   EUR base 100.00 + B2B net +2,880.00 = 2,980.00
  *
- * EUR debit tx-transfer-erkan was −651 (VICENTA), then replaced with
- * −1,116 (HANNA YAVTUKHOVSKA) on the same record id. THOMAS (−747) and
- * Incoming (+6,200) remain unchanged.
+ * EUR debit tx-transfer-erkan: −1,116 (HANNA YAVTUKHOVSKA).
+ * EUR debit tx-transfer-thomas-andre: was −747 (THOMAS ANDRE),
+ * then replaced with −1,209 (PANAGIOTIS PAPASTATHOPOULOS) on the same id.
+ * Incoming (+6,200) unchanged.
  *
  * Closing EUR from the verified pre-transfer opening:
- *   2,980 + 6,200 − 1,116 − 747 = 7,317
+ *   2,980 + 6,200 − 1,116 − 1,209 = 6,855
  *
  * GBP has no new posted ledger changes since 3,043.00.
  * Combined total uses existing EUR_TO_GBP_RATE only.
@@ -29,7 +30,7 @@ export const EUR_CREDITS_MINOR = [
 /** Posted EUR debits that affect the closing balance. */
 export const EUR_DEBITS_MINOR = [
   { id: 'tx-transfer-erkan', amountMinor: 111_600 },
-  { id: 'tx-transfer-thomas-andre', amountMinor: 74_700 },
+  { id: 'tx-transfer-thomas-andre', amountMinor: 120_900 },
 ]
 
 /** EUR fees in minor units (none posted). */
