@@ -455,16 +455,17 @@
   max-width: 100px;
 }
 
-/* Bank name: value starts near the label and wraps naturally (Screenshot 1). */
+/* Bank name: Figma 244:144 — label 75px, gap 12, value text-right wraps in remaining width. */
 .details-row-compact--bank-name {
   justify-content: flex-start;
-  gap: 16px;
+  gap: 12px;
   align-items: flex-start;
 }
 
 .details-row-compact--bank-name .details-label {
-  width: auto;
-  flex: 0 0 auto;
+  width: 75px;
+  flex: 0 0 75px;
+  max-width: none;
 }
 
 .details-value {
@@ -482,19 +483,26 @@
   font-size: 14px;
 }
 
+/* Account holder value: Figma 244:137 — 16px / 22px (after compact 14px rule). */
+.details-row-compact--account-holder .details-value {
+  font-size: 16px;
+  line-height: 22px;
+}
+
 .details-value--iban {
   white-space: nowrap;
   font-size: 14px;
 }
 
 .details-value--bank-name {
-  text-align: left;
+  text-align: right;
   flex: 1 1 auto;
   min-width: 0;
+  max-width: 265px;
   word-break: normal;
   overflow-wrap: break-word;
   white-space: normal;
-  line-height: 19px;
+  line-height: 20px;
 }
 
 .details-value--bold {

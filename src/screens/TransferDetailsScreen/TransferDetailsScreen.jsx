@@ -431,7 +431,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 </h2>
                 
                 <div className="details-row-container">
-                  <div className="details-row-compact">
+                  <div className="details-row-compact details-row-compact--account-holder">
                     <span className="details-label">Account holder name</span>
                     <span className="details-value">
                       {transaction.recipientBankDetails.accountHolderName}
