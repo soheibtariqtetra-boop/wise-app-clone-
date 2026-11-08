@@ -517,6 +517,7 @@
 }
 
 /* ── Download confirmation toast (portaled into #app-overlay) ── */
+/* Wise reference: wide rounded rectangle (not pill), single-line message + pill View. */
 .transfer-download-toast {
   position: absolute;
   left: 16px;
@@ -524,14 +525,17 @@
   bottom: max(28px, calc(20px + env(safe-area-inset-bottom, 0px)));
   z-index: 1;
   box-sizing: border-box;
-  min-height: 56px;
-  padding: 12px 12px 12px 20px;
+  width: auto;
+  max-width: none;
+  min-height: 48px;
+  height: auto;
+  padding: 8px 8px 8px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   background: #ffffff;
-  border-radius: 28px;
+  border-radius: 12px;
   box-shadow: none;
   transform: translateY(16px);
   opacity: 0;
@@ -555,22 +559,38 @@
   line-height: 20px;
   color: #2e2e2e;
   text-align: left;
+  white-space: nowrap;
 }
 
 .transfer-download-toast__view {
   flex: 0 0 auto;
-  height: 36px;
-  padding: 0 18px;
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 16px;
   border: none;
   border-radius: 999px;
   background: #9fe870;
   color: #163300;
   font-family: 'Inter', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   line-height: 18px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 370px) {
+  .transfer-download-toast {
+    left: 12px;
+    right: 12px;
+    padding: 8px 8px 8px 14px;
+    gap: 8px;
+  }
+
+  .transfer-download-toast__text {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 
 .transfer-download-toast__view:active {
