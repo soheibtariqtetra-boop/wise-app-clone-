@@ -511,3 +511,101 @@
   width: 100%;
 }
 
+.transfer-download-btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+/* ── Download confirmation toast (fixed to app viewport) ── */
+.transfer-download-toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(24px, calc(16px + env(safe-area-inset-bottom, 0px)));
+  z-index: 300;
+  box-sizing: border-box;
+  width: min(358px, calc(100vw - 32px));
+  max-width: calc(390px - 32px);
+  min-height: 56px;
+  padding: 12px 12px 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: none;
+  transform: translateX(-50%) translateY(12px);
+  opacity: 0;
+  animation: transfer-toast-in 220ms ease-out forwards;
+  pointer-events: auto;
+}
+
+.transfer-download-toast--downloaded,
+.transfer-download-toast--error {
+  animation: transfer-toast-swap 180ms ease-out forwards;
+}
+
+.transfer-download-toast__text {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #2e2e2e;
+  text-align: left;
+}
+
+.transfer-download-toast__view {
+  flex: 0 0 auto;
+  height: 36px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: #9fe870;
+  color: #163300;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.transfer-download-toast__view:active {
+  transform: scale(0.98);
+}
+
+@keyframes transfer-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes transfer-toast-swap {
+  from {
+    opacity: 0.72;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transfer-download-toast,
+  .transfer-download-toast--downloaded,
+  .transfer-download-toast--error {
+    animation: none;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+

@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'react'
+import { useState, useRef, useLayoutEffect, useEffect, useCallback } from 'react'
 import './TransferDetailsScreen.css'
 
 import imgClose  from '../../assets/transactions/shared/btn-close.png'
@@ -6,6 +6,10 @@ import imgHelp   from '../../assets/transactions/shared/btn-help.png'
 import imgMore   from '../../assets/transactions/shared/btn-more.png'
 import imgIconUp from '../../assets/home/transactions/tx-up.png'
 import imgGeneral from '../../assets/transactions/details/icon-general.png'
+import {
+  generateTransferConfirmationPdf,
+  triggerBlobDownload,
+} from '../../utils/generateTransferConfirmationPdf'
 
 const CheckmarkIcon = () => (
   <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,8 +22,76 @@ function TransferDetailsScreen({ transaction, onClose }) {
     typeof window !== 'undefined' && window.location.hash === '#details' ? 'details' : 'updates'
   );
   const [isScrolled, setIsScrolled] = useState(false);
+  const [downloadStatus, setDownloadStatus] = useState('idle');
+  const [downloadError, setDownloadError] = useState('');
+  const [toastVisible, setToastVisible] = useState(false);
   const scrollRef = useRef(null);
   const scrollPositions = useRef({ updates: 0, details: 0 });
+  const pdfObjectUrlRef = useRef(null);
+  const downloadInFlightRef = useRef(false);
+
+  const revokePdfUrl = useCallback(() => {
+    if (pdfObjectUrlRef.current) {
+      URL.revokeObjectURL(pdfObjectUrlRef.current)
+      pdfObjectUrlRef.current = null
+    }
+  }, [])
+
+  useEffect(() => () => {
+    revokePdfUrl()
+  }, [revokePdfUrl])
+
+  const handleDownloadConfirmation = useCallback(async () => {
+    if (downloadInFlightRef.current || downloadStatus === 'downloading') return
+
+    downloadInFlightRef.current = true
+    setDownloadError('')
+    setToastVisible(true)
+    setDownloadStatus('downloading')
+
+    // Yield so the downloading toast paints before PDF work.
+    await new Promise((resolve) => requestAnimationFrame(() => resolve()))
+
+    try {
+      const { blob, filename } = await generateTransferConfirmationPdf(transaction)
+      if (!blob || blob.size < 1) {
+        throw new Error('Generated confirmation was empty')
+      }
+
+      revokePdfUrl()
+      const objectUrl = triggerBlobDownload(blob, filename)
+      pdfObjectUrlRef.current = objectUrl
+      setDownloadStatus('downloaded')
+    } catch (err) {
+      revokePdfUrl()
+      setDownloadError(err?.message || 'Unable to download confirmation')
+      setDownloadStatus('error')
+    } finally {
+      downloadInFlightRef.current = false
+    }
+  }, [downloadStatus, revokePdfUrl, transaction])
+
+  const handleViewConfirmation = useCallback(() => {
+    const url = pdfObjectUrlRef.current
+    if (!url) {
+      setDownloadError('Confirmation file is no longer available. Please download again.')
+      setDownloadStatus('error')
+      setToastVisible(true)
+      return
+    }
+
+    const opened = window.open(url, '_blank', 'noopener,noreferrer')
+    if (opened) return
+
+    // Popup blocked — try an explicit anchor open without leaving this screen.
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.target = '_blank'
+    anchor.rel = 'noopener noreferrer'
+    document.body.appendChild(anchor)
+    anchor.click()
+    anchor.remove()
+  }, [])
 
   const handleScroll = (e) => {
     const top = e.target.scrollTop;
@@ -302,12 +374,62 @@ function TransferDetailsScreen({ transaction, onClose }) {
               </div>
             )}
 
-            <button className="transfer-download-btn">
+            <button
+              type="button"
+              className="transfer-download-btn"
+              onClick={handleDownloadConfirmation}
+              disabled={downloadStatus === 'downloading'}
+              aria-busy={downloadStatus === 'downloading'}
+            >
               Download transfer confirmation
             </button>
           </div>
         )}
       </div>
+
+      {toastVisible && downloadStatus !== 'idle' && (
+        <div
+          className={`transfer-download-toast transfer-download-toast--${downloadStatus}`}
+          role="status"
+          aria-live="polite"
+        >
+          {downloadStatus === 'downloading' && (
+            <p className="transfer-download-toast__text">
+              Downloading transfer confirmation
+            </p>
+          )}
+
+          {downloadStatus === 'downloaded' && (
+            <>
+              <p className="transfer-download-toast__text">
+                Transfer confirmation downloaded
+              </p>
+              <button
+                type="button"
+                className="transfer-download-toast__view"
+                onClick={handleViewConfirmation}
+              >
+                View
+              </button>
+            </>
+          )}
+
+          {downloadStatus === 'error' && (
+            <>
+              <p className="transfer-download-toast__text">
+                {downloadError || 'Unable to download confirmation'}
+              </p>
+              <button
+                type="button"
+                className="transfer-download-toast__view"
+                onClick={handleDownloadConfirmation}
+              >
+                Retry
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   )
 }
