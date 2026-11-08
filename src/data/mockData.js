@@ -151,13 +151,14 @@ export const panagiotisPapastathopoulosTransfer = {
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 1209 EUR to PANAGIOTIS .",
   "recipientBankDetails": {
-    "bankDetailsHeadingName": "PANAGIOTIS",
-    "accountHolderName": "PANAGIOTIS",
-    "swiftBic": "PIRBGRAAXXX",
-    "iban": "GR1001720430005043059241906",
+    "bankDetailsHeadingName": "Manzooran Bibi",
+    "accountHolderName": "Manzooran Bibi",
+    "swiftBic": "TRWIBEB1XXX",
+    "iban": "BE58903014911979",
     "bankNameLines": [
-      "PIRAEUS BANK S.A KOLIATSOU.229,",
-      "Patission str. ATHENS"
+      "Wise Europe SA",
+      "RUE DU TRONE 100",
+      "BRUSSELS"
     ]
   }
 }
