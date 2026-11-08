@@ -283,6 +283,8 @@ function App() {
 
   return (
     <div className="app-shell">
+      {/* App-scoped overlay host for floating toasts (outside scroll content). */}
+      <div id="app-overlay" className="app-overlay" aria-live="polite" />
       {currentRoute === 'profile' ? (
         <ProfileScreen onBack={navigateToHome} />
       ) : currentRoute === 'transfer' && selectedTransaction ? (

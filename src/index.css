@@ -100,6 +100,14 @@ body {
   overflow: hidden;
 }
 
+.app-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 400;
+  pointer-events: none;
+  overflow: visible;
+}
+
 @media (max-width: 480px) {
   .app-shell {
     max-height: 100%;

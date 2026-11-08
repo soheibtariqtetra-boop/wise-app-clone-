@@ -516,15 +516,14 @@
   opacity: 0.85;
 }
 
-/* ── Download confirmation toast (fixed to app viewport) ── */
+/* ── Download confirmation toast (portaled into #app-overlay) ── */
 .transfer-download-toast {
-  position: fixed;
-  left: 50%;
-  bottom: max(24px, calc(16px + env(safe-area-inset-bottom, 0px)));
-  z-index: 300;
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: max(28px, calc(20px + env(safe-area-inset-bottom, 0px)));
+  z-index: 1;
   box-sizing: border-box;
-  width: min(358px, calc(100vw - 32px));
-  max-width: calc(390px - 32px);
   min-height: 56px;
   padding: 12px 12px 12px 20px;
   display: flex;
@@ -534,15 +533,16 @@
   background: #ffffff;
   border-radius: 28px;
   box-shadow: none;
-  transform: translateX(-50%) translateY(12px);
+  transform: translateY(16px);
   opacity: 0;
-  animation: transfer-toast-in 220ms ease-out forwards;
+  animation: transfer-toast-in 240ms ease-out forwards;
   pointer-events: auto;
 }
 
 .transfer-download-toast--downloaded,
 .transfer-download-toast--error {
-  animation: transfer-toast-swap 180ms ease-out forwards;
+  /* Same anchored box — only content changes; soft refresh, no vertical jump. */
+  animation: transfer-toast-swap 160ms ease-out forwards;
 }
 
 .transfer-download-toast__text {
@@ -580,22 +580,20 @@
 @keyframes transfer-toast-in {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(16px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes transfer-toast-swap {
   from {
-    opacity: 0.72;
-    transform: translateX(-50%) translateY(4px);
+    opacity: 0.78;
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -605,7 +603,7 @@
   .transfer-download-toast--error {
     animation: none;
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 
