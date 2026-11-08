@@ -450,10 +450,21 @@
   width: 170px;
 }
 
-.details-row-compact--iban .details-label,
-.details-row-compact--bank-name .details-label {
+.details-row-compact--iban .details-label {
   width: auto;
   max-width: 100px;
+}
+
+/* Bank name: value starts near the label and wraps naturally (Screenshot 1). */
+.details-row-compact--bank-name {
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.details-row-compact--bank-name .details-label {
+  width: auto;
+  flex: 0 0 auto;
 }
 
 .details-value {
@@ -477,7 +488,12 @@
 }
 
 .details-value--bank-name {
+  text-align: left;
+  flex: 1 1 auto;
+  min-width: 0;
   word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
   line-height: 19px;
 }
 

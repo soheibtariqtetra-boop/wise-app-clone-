@@ -452,12 +452,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   <div className="details-row-compact details-row-compact--bank-name">
                     <span className="details-label">Bank name</span>
                     <span className="details-value details-value--bank-name">
-                      {transaction.recipientBankDetails.bankNameLines?.map((line, i) => (
-                        <span key={i}>
-                          {line}
-                          {i < transaction.recipientBankDetails.bankNameLines.length - 1 && <br />}
-                        </span>
-                      ))}
+                      {transaction.recipientBankDetails.bankNameLines?.join(' ')}
                     </span>
                   </div>
                 </div>
