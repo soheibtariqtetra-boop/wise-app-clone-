@@ -31,6 +31,10 @@ function TransferDetailsScreen({ transaction, onClose }) {
   const pdfUrlRef = useRef(null);
   const downloadInFlightRef = useRef(false);
   const downloadTimerRef = useRef(null);
+  const toastRef = useRef(null);
+  const toastDismissedRef = useRef(false);
+  const downloadSessionRef = useRef(0);
+  const suppressOutsideUntilRef = useRef(0);
 
   useEffect(() => {
     setOverlayHost(document.getElementById('app-overlay'))
@@ -44,11 +48,32 @@ function TransferDetailsScreen({ transaction, onClose }) {
     downloadInFlightRef.current = false
   }, [])
 
+  // Outside tap dismisses the toast without blocking page interaction.
+  useEffect(() => {
+    if (!toastVisible) return undefined
+
+    const onPointerDown = (event) => {
+      if (Date.now() < suppressOutsideUntilRef.current) return
+      const toastEl = toastRef.current
+      if (toastEl && toastEl.contains(event.target)) return
+
+      toastDismissedRef.current = true
+      setToastVisible(false)
+    }
+
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+    }
+  }, [toastVisible])
+
   const handleDownloadConfirmation = useCallback(async () => {
     if (downloadInFlightRef.current || downloadStatus === 'downloading') return
 
     const pdfPath = getTransferConfirmationPdfPath(transaction?.id)
     if (!pdfPath) {
+      toastDismissedRef.current = false
+      suppressOutsideUntilRef.current = Date.now() + 350
       setToastVisible(true)
       setDownloadError('Unable to download confirmation')
       setDownloadStatus('error')
@@ -56,6 +81,10 @@ function TransferDetailsScreen({ transaction, onClose }) {
     }
 
     downloadInFlightRef.current = true
+    toastDismissedRef.current = false
+    downloadSessionRef.current += 1
+    const sessionId = downloadSessionRef.current
+    suppressOutsideUntilRef.current = Date.now() + 350
     setDownloadError('')
     setToastVisible(true)
     setDownloadStatus('downloading')
@@ -81,7 +110,8 @@ function TransferDetailsScreen({ transaction, onClose }) {
       })
       downloadTimerRef.current = null
 
-      if (!downloadInFlightRef.current) return
+      // Session aborted / superseded by a newer download attempt.
+      if (sessionId !== downloadSessionRef.current) return
 
       pdfUrlRef.current = pdfPath
 
@@ -98,6 +128,12 @@ function TransferDetailsScreen({ transaction, onClose }) {
       setTimeout(() => URL.revokeObjectURL(objectUrl), 1500)
 
       setDownloadStatus('downloaded')
+      // If the user already dismissed this session's toast, do not reopen success.
+      if (!toastDismissedRef.current && sessionId === downloadSessionRef.current) {
+        setToastVisible(true)
+      } else {
+        setToastVisible(false)
+      }
     } catch (err) {
       const elapsed = Date.now() - startedAt
       const waitMs = Math.max(0, DOWNLOAD_TOAST_MIN_MS - elapsed)
@@ -105,17 +141,30 @@ function TransferDetailsScreen({ transaction, onClose }) {
         downloadTimerRef.current = setTimeout(resolve, waitMs)
       })
       downloadTimerRef.current = null
+
+      if (sessionId !== downloadSessionRef.current) return
+
       pdfUrlRef.current = null
       setDownloadError(err?.message || 'Unable to download confirmation')
       setDownloadStatus('error')
+      if (!toastDismissedRef.current) {
+        setToastVisible(true)
+      } else {
+        setToastVisible(false)
+      }
     } finally {
-      downloadInFlightRef.current = false
+      if (sessionId === downloadSessionRef.current) {
+        downloadInFlightRef.current = false
+      }
     }
   }, [downloadStatus, transaction])
 
-  const handleViewConfirmation = useCallback(() => {
+  const handleViewConfirmation = useCallback((event) => {
+    event?.stopPropagation?.()
     const url = pdfUrlRef.current || getTransferConfirmationPdfPath(transaction?.id)
     if (!url) {
+      toastDismissedRef.current = false
+      suppressOutsideUntilRef.current = Date.now() + 350
       setDownloadError('Confirmation file is no longer available. Please download again.')
       setDownloadStatus('error')
       setToastVisible(true)
@@ -433,9 +482,11 @@ function TransferDetailsScreen({ transaction, onClose }) {
         && overlayHost
         && createPortal(
           <div
+            ref={toastRef}
             className={`transfer-download-toast transfer-download-toast--${downloadStatus}`}
             role="status"
             aria-live="polite"
+            onPointerDown={(event) => event.stopPropagation()}
           >
             {downloadStatus === 'downloading' && (
               <p className="transfer-download-toast__text">
@@ -452,6 +503,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   type="button"
                   className="transfer-download-toast__view"
                   onClick={handleViewConfirmation}
+                  onPointerDown={(event) => event.stopPropagation()}
                 >
                   View
                 </button>
@@ -467,6 +519,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   type="button"
                   className="transfer-download-toast__view"
                   onClick={handleDownloadConfirmation}
+                  onPointerDown={(event) => event.stopPropagation()}
                 >
                   Retry
                 </button>
