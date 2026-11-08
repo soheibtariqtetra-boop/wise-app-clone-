@@ -517,19 +517,21 @@
 }
 
 /* ── Download confirmation toast (portaled into #app-overlay) ── */
-/* Wise reference: wide rounded rectangle (not pill), single-line message + pill View. */
+/* Covers the Download button at Details bottom scroll: 18px inset, 52px tall, bottom 26px. */
+/* Both loading + success share identical outer box; swap animation must keep translateY(0). */
 .transfer-download-toast {
   position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: max(28px, calc(20px + env(safe-area-inset-bottom, 0px)));
-  z-index: 1;
+  left: 18px;
+  right: 18px;
+  bottom: 26px;
+  z-index: 5;
   box-sizing: border-box;
   width: auto;
   max-width: none;
-  min-height: 48px;
-  height: auto;
-  padding: 8px 8px 8px 16px;
+  height: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  padding: 0 8px 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -537,7 +539,7 @@
   background: #ffffff;
   border-radius: 12px;
   box-shadow: none;
-  transform: translateY(16px);
+  transform: translateY(0);
   opacity: 0;
   animation: transfer-toast-in 240ms ease-out forwards;
   pointer-events: auto;
@@ -560,6 +562,8 @@
   color: #2e2e2e;
   text-align: left;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .transfer-download-toast__view {
@@ -580,13 +584,6 @@
 }
 
 @media (max-width: 370px) {
-  .transfer-download-toast {
-    left: 12px;
-    right: 12px;
-    padding: 8px 8px 8px 14px;
-    gap: 8px;
-  }
-
   .transfer-download-toast__text {
     font-size: 14px;
     line-height: 18px;
@@ -600,7 +597,7 @@
 @keyframes transfer-toast-in {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -611,9 +608,11 @@
 @keyframes transfer-toast-swap {
   from {
     opacity: 0.78;
+    transform: translateY(0);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
