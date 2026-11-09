@@ -167,8 +167,8 @@ applyDerivedDateLabels(panagiotisPapastathopoulosTransfer, {
   paidTime: '11:11 AM',
 })
 
-// 837 EUR transfer — PDF 837.pdf is the data source (BST clock times, not converted).
-// Screen02: compact header + Updates timeline. Exact payout/completion clock times are not in the PDF.
+// 837 EUR transfer — PDF 837.pdf is the data source (Screen01 task).
+// Balance / Screen02 / Screen03 reconciliation deferred to follow-up tasks.
 export const joseAntonioMaldonadoGonzalezTransfer = {
   "id": "tx-transfer-jose-antonio-maldonado",
   "type": "transfer",
@@ -187,10 +187,11 @@ export const joseAntonioMaldonadoGonzalezTransfer = {
   "transactionNumber": "#2418268688",
   "recipientReceivedLabel": "JOSE ANTONIO MALDONADO GONZALEZ received",
   "senderAccountName": "Nazar Hussain's",
-  // PDF: created 01:27:58 BST / funded 01:33:25 BST — display uses app timeline style (AM, no invented payout clock).
-  "timelineTimestamp": "Monday, November 09 at 01:27 AM",
-  "timelineSetupTimestamp": "Monday, November 09 at 01:27 AM",
-  "timelineFundedTimestamp": "Monday, November 09 at 01:33 AM",
+  // PDF timestamps preserved with BST as supplied; payout has date only (no invented clock time).
+  "timelineTimestamp": "Monday, November 09 at 01:27:58 BST",
+  "timelineSetupTimestamp": "Monday, November 09 at 01:27:58 BST",
+  "timelineFundedTimestamp": "Monday, November 09 at 01:33:25 BST",
+  "timelinePaidTimestamp": "Monday, November 09 at 01:33:25 BST",
   "timelinePayoutTimestamp": "Monday, November 09",
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 837 EUR to JOSE ANTONIO MALDONADO GONZALEZ .",
