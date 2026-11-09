@@ -167,6 +167,44 @@ applyDerivedDateLabels(panagiotisPapastathopoulosTransfer, {
   paidTime: '11:11 AM',
 })
 
+// 837 EUR transfer — PDF 837.pdf is the data source (BST clock times, not converted).
+// Screen02: compact header + Updates timeline. Exact payout/completion clock times are not in the PDF.
+export const joseAntonioMaldonadoGonzalezTransfer = {
+  "id": "tx-transfer-jose-antonio-maldonado",
+  "type": "transfer",
+  "title": "JOSE ANTONIO MALDONADO GONZALEZ",
+  "displayName": "JOSE ANTONIO",
+  "fullRecipientName": "JOSE ANTONIO MALDONADO GONZALEZ",
+  "compactRecipientName": "JOSE ANTONIO",
+  "titleColor": "#F3F5F1",
+  "amount": "-837 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Monday, November 09",
+  "dateStr": "2026-11-09T01:33:25+01:00",
+  "currency": "EUR",
+  "date": "Monday, November 09",
+  "transactionNumber": "#2418268688",
+  "recipientReceivedLabel": "JOSE ANTONIO MALDONADO GONZALEZ received",
+  "senderAccountName": "Nazar Hussain's",
+  // PDF: created 01:27:58 BST / funded 01:33:25 BST — display uses app timeline style (AM, no invented payout clock).
+  "timelineTimestamp": "Monday, November 09 at 01:27 AM",
+  "timelineSetupTimestamp": "Monday, November 09 at 01:27 AM",
+  "timelineFundedTimestamp": "Monday, November 09 at 01:33 AM",
+  "timelinePayoutTimestamp": "Monday, November 09",
+  "timelineCompletionTitle": "Your transfer's complete",
+  "timelineCompletionDetail": "We sent 837 EUR to JOSE ANTONIO MALDONADO GONZALEZ .",
+  "recipientBankDetails": {
+    "bankDetailsHeadingName": "Jose Antonio Maldonado Gonzalez",
+    "accountHolderName": "Jose Antonio Maldonado Gonzalez",
+    "swiftBic": "INGDESMM",
+    "iban": "ES82 1465 0100 99 1766588061",
+    "bankNameLines": [
+      "ING BANK N.V."
+    ]
+  }
+}
+
 export const incomingEur6200 = {
   "id": "tx-incoming-eur-6200",
   "title": "maxwilliams",
@@ -183,6 +221,12 @@ export const incomingEur6200 = {
 
 // Full transaction history grouped by date
 export const mockFullTransactions = [
+  {
+    "dateGroup": "Monday, November 09",
+    "transactions": [
+      joseAntonioMaldonadoGonzalezTransfer
+    ]
+  },
   {
     "dateGroup": "Friday, November 07",
     "transactions": [
