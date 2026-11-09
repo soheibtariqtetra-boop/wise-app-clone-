@@ -185,13 +185,12 @@ export const joseAntonioMaldonadoGonzalezTransfer = {
   "currency": "EUR",
   "date": "Monday, November 09",
   "transactionNumber": "#2418268688",
-  "recipientReceivedLabel": "JOSE ANTONIO MALDONADO GONZALEZ received",
+  "recipientReceivedLabel": "JOSE ANTONIO received",
   "senderAccountName": "Nazar Hussain's",
-  // PDF timestamps preserved with BST as supplied; payout has date only (no invented clock time).
-  "timelineTimestamp": "Monday, November 09 at 01:27:58 BST",
-  "timelineSetupTimestamp": "Monday, November 09 at 01:27:58 BST",
-  "timelineFundedTimestamp": "Monday, November 09 at 01:33:25 BST",
-  "timelinePaidTimestamp": "Monday, November 09 at 01:33:25 BST",
+  // PDF: created/funded clock times in BST; payout/completion date only (no invented clock).
+  "timelineTimestamp": "Monday, November 09 at 01:27 AM",
+  "timelineSetupTimestamp": "Monday, November 09 at 01:27 AM",
+  "timelineFundedTimestamp": "Monday, November 09 at 01:33 AM",
   "timelinePayoutTimestamp": "Monday, November 09",
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 837 EUR to JOSE ANTONIO MALDONADO GONZALEZ .",

@@ -4,6 +4,7 @@
  */
 export const TRANSFER_CONFIRMATION_PDFS = {
   'tx-transfer-thomas-andre': '/confirmations/panagiotis-confirmation.pdf',
+  'tx-transfer-jose-antonio-maldonado': '/confirmations/jose-antonio-confirmation.pdf',
 }
 
 export function getTransferConfirmationPdfPath(transactionId) {

@@ -431,9 +431,8 @@ function TransferDetailsScreen({ transaction, onClose }) {
             {transaction.recipientBankDetails && (
               <div className="transfer-details-section">
                 <h2 className="transfer-section-title">
-                  {(transaction.recipientBankDetails.bankDetailsHeadingName
-                    || transaction.recipientBankDetails.accountHolderName)
-                  }'s bank details
+                  {`${transaction.recipientBankDetails.bankDetailsHeadingName
+                    || transaction.recipientBankDetails.accountHolderName}'s bank details`}
                 </h2>
                 
                 <div className="details-row-container">
