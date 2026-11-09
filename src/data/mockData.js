@@ -41,9 +41,9 @@ function applyChronologicalSort(groups) {
 }
 
 export const mockUser = {
-  initials: 'MB',
-  name: 'MANZOORAN\nBIBI',
-  handle: '@ManzooranBibi',
+  initials: 'NH',
+  name: 'NAZAR\nHUSSAIN',
+  handle: '@NazarHussain',
 }
 
 export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
