@@ -4,7 +4,6 @@
  */
 
 import { accountBalances, EUR_TO_GBP_RATE as LEDGER_EUR_TO_GBP_RATE } from './accountBalances.js'
-import { applyDerivedDateLabels } from './transactionDates.js'
 
 /** Newest-first by structured dateStr (ISO). Do not sort by formatted date labels. */
 export function compareTransactionsByDateDesc(a, b) {
@@ -87,88 +86,7 @@ export const mockPromoSlides = [
   },
 ]
 
-// Shared transfer — referenced by EUR account list + history (same id as former VICENTA)
-export const hannaYavtukhovskaTransfer = {
-  "id": "tx-transfer-erkan",
-  "type": "transfer",
-  "title": "HANNA YAVTUKHOVSKA",
-  "titleColor": "#F3F5F1",
-  "amount": "-1116 EUR",
-  "amountColor": "#F3F5F1",
-  "listIconKey": "up",
-  "dateGroup": "Friday, November 07",
-  "dateStr": "2026-11-07T12:11:00Z",
-  "currency": "EUR",
-  "date": "Friday, November 07",
-  "transactionNumber": "#2418268788",
-  "recipientReceivedLabel": "HANNA YAVTUKHOVSKA received",
-  "senderAccountName": "Manzooran Bibi's",
-  "timelineTimestamp": "Friday, November 07 at 12:10 PM",
-  "timelineSetupTimestamp": "Friday, November 07 at 12:10 PM",
-  "timelinePaidTimestamp": "Friday, November 07 at 12:11 PM",
-  "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1116 EUR to HANNA YAVTUKHOVSKA .",
-  "recipientBankDetails": {
-    "bankDetailsHeadingName": "Manzooran Bibi",
-    "accountHolderName": "Manzooran Bibi",
-    "swiftBic": "TRWIBEB1XXX",
-    "iban": "BE58903014911979",
-    "bankNameLines": [
-      "Wise Europe SA",
-      "RUE DU TRONE 100",
-      "BRUSSELS"
-    ]
-  }
-}
-applyDerivedDateLabels(hannaYavtukhovskaTransfer, {
-  setupTime: '12:10 PM',
-  paidTime: '12:11 PM',
-})
-
-// Shared transfer — same id as former THOMAS ANDRE; referenced by EUR list + history
-// Screen01 expanded uses fullRecipientName; Screen02/03 compact headers use compactRecipientName.
-export const panagiotisPapastathopoulosTransfer = {
-  "id": "tx-transfer-thomas-andre",
-  "type": "transfer",
-  "title": "PANAGIOTIS PAPASTATHOPOULOS",
-  "displayName": "PANAGIOTIS",
-  "fullRecipientName": "PANAGIOTIS PAPASTATHOPOULOS",
-  "compactRecipientName": "PANAGIOTIS",
-  "titleColor": "#F3F5F1",
-  "amount": "-1209 EUR",
-  "amountColor": "#F3F5F1",
-  "listIconKey": "up",
-  "dateGroup": "Friday, November 07",
-  "dateStr": "2026-11-07T11:11:00Z",
-  "currency": "EUR",
-  "date": "Friday, November 07",
-  "transactionNumber": "#2418298788",
-  "recipientReceivedLabel": "PANAGIOTIS received",
-  "senderAccountName": "Manzooran Bibi's",
-  "timelineTimestamp": "Friday, November 07 at 11:10 AM",
-  "timelineSetupTimestamp": "Friday, November 07 at 11:10 AM",
-  "timelinePaidTimestamp": "Friday, November 07 at 11:11 AM",
-  "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1209 EUR to PANAGIOTIS .",
-  "recipientBankDetails": {
-    "bankDetailsHeadingName": "Manzooran Bibi",
-    "accountHolderName": "Manzooran Bibi",
-    "swiftBic": "TRWIBEB1XXX",
-    "iban": "BE58903014911979",
-    "bankNameLines": [
-      "Wise Europe SA",
-      "RUE DU TRONE 100",
-      "BRUSSELS"
-    ]
-  }
-}
-applyDerivedDateLabels(panagiotisPapastathopoulosTransfer, {
-  setupTime: '11:10 AM',
-  paidTime: '11:11 AM',
-})
-
 // 837 EUR transfer — PDF 837.pdf is the data source (Screen01 task).
-// Balance / Screen02 / Screen03 reconciliation deferred to follow-up tasks.
 export const joseAntonioMaldonadoGonzalezTransfer = {
   "id": "tx-transfer-jose-antonio-maldonado",
   "type": "transfer",
@@ -205,39 +123,12 @@ export const joseAntonioMaldonadoGonzalezTransfer = {
   }
 }
 
-export const incomingEur6200 = {
-  "id": "tx-incoming-eur-6200",
-  "title": "maxwilliams",
-  "titleColor": "#F3F5F1",
-  "amount": "+6,200 EUR",
-  "amountColor": "#9FE870",
-  "listIconKey": "eur-down",
-  "dateGroup": "Friday, November 06",
-  "dateStr": "2026-11-06T10:00:00Z",
-  "currency": "EUR",
-  "date": "Friday, November 06",
-  "isNew": true
-}
-
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
     "dateGroup": "Monday, November 09",
     "transactions": [
       joseAntonioMaldonadoGonzalezTransfer
-    ]
-  },
-  {
-    "dateGroup": "Friday, November 07",
-    "transactions": [
-      panagiotisPapastathopoulosTransfer,
-      hannaYavtukhovskaTransfer
-    ]
-  },
-  {
-    "dateGroup": "Friday, November 06",
-    "transactions": [
-      incomingEur6200
     ]
   },
   {

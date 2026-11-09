@@ -5,13 +5,16 @@
  *   GBP base 3.00 + B2B net +3,040.00 = 3,043.00
  *   EUR base 100.00 + B2B net +2,880.00 = 2,980.00
  *
- * EUR debit tx-transfer-erkan: −1,116 (HANNA YAVTUKHOVSKA).
- * EUR debit tx-transfer-thomas-andre: was −747 (THOMAS ANDRE),
- * then replaced with −1,209 (PANAGIOTIS PAPASTATHOPOULOS) on the same id.
- * Incoming (+6,200) unchanged.
+ * Active EUR posts after removing obsolete transfers:
+ *   debit tx-transfer-jose-antonio-maldonado: −837
  *
- * Closing EUR from the verified pre-transfer opening:
- *   2,980 + 6,200 − 1,116 − 1,209 = 6,855
+ * Removed from ledger (no longer active):
+ *   tx-incoming-eur-6200 (+6,200)
+ *   tx-transfer-erkan (−1,116 HANNA)
+ *   tx-transfer-thomas-andre (−1,209 PANAGIOTIS)
+ *
+ * Closing EUR from the verified opening + remaining active posts:
+ *   2,980 − 837 = 2,143
  *
  * GBP has no new posted ledger changes since 3,043.00.
  * Combined total uses existing EUR_TO_GBP_RATE only.
@@ -23,14 +26,11 @@ export const EUR_TO_GBP_RATE = 0.85
 export const EUR_OPENING_MINOR = 298_000
 
 /** Posted EUR credits that affect the closing balance. */
-export const EUR_CREDITS_MINOR = [
-  { id: 'tx-incoming-eur-6200', amountMinor: 620_000 },
-]
+export const EUR_CREDITS_MINOR = []
 
 /** Posted EUR debits that affect the closing balance. */
 export const EUR_DEBITS_MINOR = [
-  { id: 'tx-transfer-erkan', amountMinor: 111_600 },
-  { id: 'tx-transfer-thomas-andre', amountMinor: 120_900 },
+  { id: 'tx-transfer-jose-antonio-maldonado', amountMinor: 83_700 },
 ]
 
 /** EUR fees in minor units (none posted). */
