@@ -421,12 +421,12 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   <span className="details-value details-value--bold">{fullAmountStr}</span>
                 </div>
                 <div className="transfer-dashed-divider"></div>
-                {transaction.transactionNumber && (
-                  <div className="details-row">
-                    <span className="details-label">Transaction number</span>
-                    <span className="details-value">{transaction.transactionNumber}</span>
-                  </div>
-                )}
+                <div className="details-row">
+                  <span className="details-label">Transaction number</span>
+                  <span className="details-value">
+                    {transaction.transactionNumber || 'Not available'}
+                  </span>
+                </div>
               </div>
             </div>
 
