@@ -6,11 +6,11 @@
  *   EUR base 100.00 + B2B net +2,880.00 = 2,980.00
  *
  * Active EUR posts:
- *   debit tx-transfer-jose-antonio-maldonado: −1,688.24
- *   (same id formerly −837 for Jose Antonio; replaced once, not double-posted)
+ *   debit tx-transfer-jose-antonio-maldonado: −1,688.00
+ *   (same id; amount corrected from −1,688.24 to match confirmation PDF)
  *
  * Closing EUR from the verified opening + remaining active posts:
- *   2,980.00 − 1,688.24 = 1,291.76
+ *   2,980.00 − 1,688.00 = 1,292.00
  *
  * GBP has no new posted ledger changes since 3,043.00.
  * Combined total uses existing EUR_TO_GBP_RATE only.
@@ -26,7 +26,7 @@ export const EUR_CREDITS_MINOR = []
 
 /** Posted EUR debits that affect the closing balance. */
 export const EUR_DEBITS_MINOR = [
-  { id: 'tx-transfer-jose-antonio-maldonado', amountMinor: 168_824 },
+  { id: 'tx-transfer-jose-antonio-maldonado', amountMinor: 168_800 },
 ]
 
 /** EUR fees in minor units (none posted). */

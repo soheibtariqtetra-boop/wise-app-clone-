@@ -1,9 +1,10 @@
 /**
  * Static transfer-confirmation PDF paths keyed by transaction id.
  * Only mapped transfers expose a real confirmation file.
- * Lucas transfer has no verified confirmation PDF asset yet.
  */
-export const TRANSFER_CONFIRMATION_PDFS = {}
+export const TRANSFER_CONFIRMATION_PDFS = {
+  'tx-transfer-jose-antonio-maldonado': '/confirmations/lucas-joel-kranjec.pdf',
+}
 
 export function getTransferConfirmationPdfPath(transactionId) {
   if (!transactionId) return null

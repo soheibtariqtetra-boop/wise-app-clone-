@@ -86,8 +86,9 @@ export const mockPromoSlides = [
   },
 ]
 
-// Replaces former Jose Antonio 837 EUR transfer on the same id.
-// Only start (4:00 PM) and completion (4:01 PM) times were supplied — no invented funded/payout clocks.
+// Synced to confirmation PDF (public/confirmations/lucas-joel-kranjec.pdf).
+// PDF page 1 "Total to" names Jose Antonio; page 2 "Sent to" is LUCAS — recipient UI follows page 2.
+// Source times kept as BST with seconds; display uses minute-level AM/PM. Payout/completion: date only.
 export const lucasJoelKranjecTransfer = {
   "id": "tx-transfer-jose-antonio-maldonado",
   "type": "transfer",
@@ -96,33 +97,30 @@ export const lucasJoelKranjecTransfer = {
   "fullRecipientName": "LUCAS JOEL KRANJEC",
   "compactRecipientName": "LUCAS JOEL KRANJEC",
   "titleColor": "#F3F5F1",
-  "amount": "-1,688.24 EUR",
+  "amount": "-1,688 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
   "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T16:01:00",
+  "dateStr": "2026-11-10T01:33:25+01:00",
   "currency": "EUR",
   "date": "Tuesday, November 10",
-  "transactionNumber": "#2418298288",
+  "transactionNumber": "#2418268688",
   "recipientReceivedLabel": "LUCAS JOEL KRANJEC received",
   "senderAccountName": "Nazar Hussain's",
-  "timelineTimestamp": "Tuesday, November 10 at 4:00 PM",
-  "timelineSetupTimestamp": "Tuesday, November 10 at 4:00 PM",
-  "timelineFundedTimestamp": "Tuesday, November 10 at 4:01 PM",
-  "timelinePayoutTimestamp": "Tuesday, November 10 at 4:01 PM",
-  "timelineCompletionTimestamp": "Tuesday, November 10 at 4:01 PM",
+  "timelineTimestamp": "Tuesday, November 10 at 1:27 AM",
+  "timelineSetupTimestamp": "Tuesday, November 10 at 1:27 AM",
+  "timelineFundedTimestamp": "Tuesday, November 10 at 1:33 AM",
+  "timelinePayoutTimestamp": "Tuesday, November 10",
+  "timelineCompletionTimestamp": "Tuesday, November 10",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1,688.24 EUR to LUCAS JOEL KRANJEC .",
+  "timelineCompletionDetail": "We sent 1,688 EUR to LUCAS JOEL KRANJEC .",
   "recipientBankDetails": {
     "bankDetailsHeadingName": "Lucas Joel Kranjec",
     "accountHolderName": "LUCAS JOEL KRANJEC",
-    "swiftBic": "TRWIBEB1XXX",
+    "swiftBic": "CIALCHBBXXX",
     "iban": "CH87 0871 0042 2771 5200 1",
     "bankNameLines": [
-      "BANK CIC (SWITZERLAND) LTD.",
-      "PLACE DU MARCHE 13",
-      "BASEL",
-      "SWITZERLAND"
+      "Bank CIC (SCHWEIZ) AG"
     ]
   }
 }
