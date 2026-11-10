@@ -103,6 +103,7 @@ export const lucasJoelKranjecTransfer = {
   "dateStr": "2026-11-10T16:01:00",
   "currency": "EUR",
   "date": "Tuesday, November 10",
+  "transactionNumber": "#2418298288",
   "recipientReceivedLabel": "LUCAS JOEL KRANJEC received",
   "senderAccountName": "Nazar Hussain's",
   "timelineTimestamp": "Tuesday, November 10 at 4:00 PM",
@@ -115,7 +116,7 @@ export const lucasJoelKranjecTransfer = {
   "recipientBankDetails": {
     "bankDetailsHeadingName": "Lucas Joel Kranjec",
     "accountHolderName": "LUCAS JOEL KRANJEC",
-    "swiftBic": null,
+    "swiftBic": "TRWIBEB1XXX",
     "iban": "CH87 0871 0042 2771 5200 1",
     "bankNameLines": [
       "BANK CIC (SWITZERLAND) LTD.",

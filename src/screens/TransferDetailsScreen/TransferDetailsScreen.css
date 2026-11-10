@@ -392,12 +392,13 @@
   color: #F3F5F1;
 }
 
-/* Details tab styles */
+/* Details tab styles — Figma TransferDetailsScreen03 (244:114) */
 .transfer-details-tab {
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* Figma Detail sections gap between Transaction + Bank sections = 24px */
+  gap: 24px;
   padding-bottom: 24px;
   /*
    * Shortest height that lets this tab scroll the expanded hero fully
@@ -408,16 +409,28 @@
   min-height: calc(var(--transfer-viewport, 844px) - 185px);
 }
 
+/* Details headings: Figma 244:116 / 244:133 — 20px / 24px Semi Bold.
+ * Scoped so Updates "Transfer timeline" keeps its existing 24px title. */
+.transfer-details-tab .transfer-section-title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #F3F5F1;
+}
+
 .transfer-details-section {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .details-row-container {
   display: flex;
   flex-direction: column;
   padding-top: 8px;
+  width: 100%;
 }
 
 .details-row {
@@ -428,10 +441,25 @@
   padding: 12px 0;
   box-sizing: border-box;
   gap: 16px;
+  width: 100%;
 }
 
 .details-row--tall {
   min-height: 52px;
+  align-items: center;
+}
+
+/* Figma 244:126 — recipient received label column 216px */
+.details-row--tall .details-label {
+  width: auto;
+  max-width: 216px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.details-row--tall .details-value--bold {
+  flex: 0 0 auto;
+  min-width: 122px;
 }
 
 .details-row-compact {
@@ -442,6 +470,7 @@
   padding: 8px 0;
   box-sizing: border-box;
   gap: 12px;
+  width: 100%;
 }
 
 .details-label {
@@ -450,18 +479,27 @@
   font-family: 'Inter', sans-serif;
   line-height: 20px;
   font-weight: 400;
+  letter-spacing: 0;
   width: 194px;
   flex-shrink: 0;
 }
 
 .details-row-compact .details-label {
   font-size: 14px;
+  line-height: 20px;
   width: 170px;
 }
 
+/* Figma 244:136 — Account holder label 142px */
+.details-row-compact--account-holder .details-label {
+  width: 142px;
+  flex: 0 0 142px;
+}
+
 .details-row-compact--iban .details-label {
-  width: auto;
-  max-width: 100px;
+  width: 37px;
+  flex: 0 0 37px;
+  max-width: none;
 }
 
 /* Bank name: Figma 244:144 — label 75px, gap 12, value text-right wraps in remaining width. */
@@ -482,26 +520,33 @@
   font-size: 15px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
+  letter-spacing: 0;
   text-align: right;
   line-height: 20px;
   flex: 1;
+  min-width: 0;
   word-break: break-word;
 }
 
 .details-row-compact .details-value {
   font-size: 14px;
+  line-height: 20px;
 }
 
 /* Account holder value: Figma 244:137 — 16px / 22px (after compact 14px rule). */
 .details-row-compact--account-holder .details-value {
   font-size: 16px;
   line-height: 22px;
+  flex: 1 1 auto;
+  max-width: 197px;
 }
 
 .details-value--iban {
   white-space: normal;
   overflow-wrap: anywhere;
+  word-break: normal;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .details-value--bank-name {
@@ -509,9 +554,12 @@
   flex: 1 1 auto;
   min-width: 0;
   max-width: 265px;
+  margin-left: auto;
   word-break: normal;
   overflow-wrap: break-word;
   white-space: pre-line;
+  font-size: 14px;
+  font-weight: 400;
   line-height: 20px;
 }
 
@@ -519,6 +567,7 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 22px;
+  color: #F3F5F1;
 }
 
 .transfer-dashed-divider {
