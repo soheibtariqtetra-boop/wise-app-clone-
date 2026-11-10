@@ -499,7 +499,8 @@
 }
 
 .details-value--iban {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
   font-size: 14px;
 }
 
@@ -510,7 +511,7 @@
   max-width: 265px;
   word-break: normal;
   overflow-wrap: break-word;
-  white-space: normal;
+  white-space: pre-line;
   line-height: 20px;
 }
 

@@ -86,39 +86,42 @@ export const mockPromoSlides = [
   },
 ]
 
-// 837 EUR transfer — PDF 837.pdf is the data source (Screen01 task).
-export const joseAntonioMaldonadoGonzalezTransfer = {
+// Replaces former Jose Antonio 837 EUR transfer on the same id.
+// Only start (4:00 PM) and completion (4:01 PM) times were supplied — no invented funded/payout clocks.
+export const lucasJoelKranjecTransfer = {
   "id": "tx-transfer-jose-antonio-maldonado",
   "type": "transfer",
-  "title": "JOSE ANTONIO MALDONADO GONZALEZ",
-  "displayName": "JOSE ANTONIO",
-  "fullRecipientName": "JOSE ANTONIO MALDONADO GONZALEZ",
-  "compactRecipientName": "JOSE ANTONIO",
+  "title": "LUCAS JOEL KRANJEC",
+  "displayName": "LUCAS JOEL KRANJEC",
+  "fullRecipientName": "LUCAS JOEL KRANJEC",
+  "compactRecipientName": "LUCAS JOEL KRANJEC",
   "titleColor": "#F3F5F1",
-  "amount": "-837 EUR",
+  "amount": "-1,688.24 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
-  "dateGroup": "Monday, November 09",
-  "dateStr": "2026-11-09T01:33:25+01:00",
+  "dateGroup": "Tuesday, November 10",
+  "dateStr": "2026-11-10T16:01:00",
   "currency": "EUR",
-  "date": "Monday, November 09",
-  "transactionNumber": "#2418268688",
-  "recipientReceivedLabel": "JOSE ANTONIO received",
+  "date": "Tuesday, November 10",
+  "recipientReceivedLabel": "LUCAS JOEL KRANJEC received",
   "senderAccountName": "Nazar Hussain's",
-  // PDF: created/funded clock times in BST; payout/completion date only (no invented clock).
-  "timelineTimestamp": "Monday, November 09 at 01:27 AM",
-  "timelineSetupTimestamp": "Monday, November 09 at 01:27 AM",
-  "timelineFundedTimestamp": "Monday, November 09 at 01:33 AM",
-  "timelinePayoutTimestamp": "Monday, November 09",
+  "timelineTimestamp": "Tuesday, November 10 at 4:00 PM",
+  "timelineSetupTimestamp": "Tuesday, November 10 at 4:00 PM",
+  "timelineFundedTimestamp": "Tuesday, November 10",
+  "timelinePayoutTimestamp": "Tuesday, November 10",
+  "timelineCompletionTimestamp": "Tuesday, November 10 at 4:01 PM",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 837 EUR to JOSE ANTONIO MALDONADO GONZALEZ .",
+  "timelineCompletionDetail": "We sent 1,688.24 EUR to LUCAS JOEL KRANJEC .",
   "recipientBankDetails": {
-    "bankDetailsHeadingName": "Jose Antonio Maldonado Gonzalez",
-    "accountHolderName": "Jose Antonio Maldonado Gonzalez",
-    "swiftBic": "INGDESMM",
-    "iban": "ES82 1465 0100 99 1766588061",
+    "bankDetailsHeadingName": "Lucas Joel Kranjec",
+    "accountHolderName": "LUCAS JOEL KRANJEC",
+    "swiftBic": null,
+    "iban": "CH87 0871 0042 2771 5200 1",
     "bankNameLines": [
-      "ING BANK N.V."
+      "BANK CIC (SWITZERLAND) LTD.",
+      "PLACE DU MARCHE 13",
+      "BASEL",
+      "SWITZERLAND"
     ]
   }
 }
@@ -126,9 +129,9 @@ export const joseAntonioMaldonadoGonzalezTransfer = {
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
-    "dateGroup": "Monday, November 09",
+    "dateGroup": "Tuesday, November 10",
     "transactions": [
-      joseAntonioMaldonadoGonzalezTransfer
+      lucasJoelKranjecTransfer
     ]
   },
   {

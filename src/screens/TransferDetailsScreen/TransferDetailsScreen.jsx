@@ -234,6 +234,8 @@ function TransferDetailsScreen({ transaction, onClose }) {
   const timelinePaidTimestamp = transaction.timelinePaidTimestamp || timelineTimestamp;
   const timelineFundedTimestamp = transaction.timelineFundedTimestamp || timelinePaidTimestamp;
   const timelinePayoutTimestamp = transaction.timelinePayoutTimestamp || timelinePaidTimestamp;
+  const timelineCompletionTimestamp =
+    transaction.timelineCompletionTimestamp || timelinePayoutTimestamp;
   const timelineCompletionTitle = transaction.timelineCompletionTitle;
   const timelineCompletionDetail = transaction.timelineCompletionDetail;
   const senderAccountName = transaction.senderAccountName || "Manzooran Bibi's";
@@ -369,7 +371,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                     <div className="timeline-line"></div>
                   </div>
                   <div className="timeline-content">
-                    <div className="timeline-time">{timelinePayoutTimestamp}</div>
+                    <div className="timeline-time">{timelineCompletionTimestamp}</div>
                     {timelineCompletionDetail ? (
                       <>
                         <div className="timeline-completion-title">
@@ -445,7 +447,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   <div className="details-row-compact">
                     <span className="details-label">Bank code (BIC/SWIFT)</span>
                     <span className="details-value">
-                      {transaction.recipientBankDetails.swiftBic}
+                      {transaction.recipientBankDetails.swiftBic || '—'}
                     </span>
                   </div>
                   <div className="details-row-compact details-row-compact--iban">
@@ -457,7 +459,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
                   <div className="details-row-compact details-row-compact--bank-name">
                     <span className="details-label">Bank name</span>
                     <span className="details-value details-value--bank-name">
-                      {transaction.recipientBankDetails.bankNameLines?.join(' ')}
+                      {transaction.recipientBankDetails.bankNameLines?.join('\n')}
                     </span>
                   </div>
                 </div>
