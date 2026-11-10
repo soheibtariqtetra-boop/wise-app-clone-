@@ -86,9 +86,10 @@ export const mockPromoSlides = [
   },
 ]
 
-// Synced to confirmation PDF (public/confirmations/lucas-joel-kranjec.pdf).
-// PDF page 1 "Total to" names Jose Antonio; page 2 "Sent to" is LUCAS — recipient UI follows page 2.
-// Source times kept as BST with seconds; display uses minute-level AM/PM. Payout/completion: date only.
+// Synced to public/confirmations/lucas-confirmation.pdf (unverified/inconsistent doc).
+// Page 1 "Total to" names Jose Antonio; page 2 "Sent to" is LUCAS — recipient UI follows page 2.
+// Same printed transfer #2418268688 as Gasper PDF — not treated as a verified unique reference.
+// Source times kept as BST with seconds; timeline display uses minute-level AM/PM. Payout/completion: date only.
 export const lucasJoelKranjecTransfer = {
   "id": "tx-transfer-jose-antonio-maldonado",
   "type": "transfer",
@@ -101,10 +102,13 @@ export const lucasJoelKranjecTransfer = {
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
   "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T01:33:25+01:00",
+  "dateStr": "2026-11-10T01:27:58+01:00",
   "currency": "EUR",
   "date": "Tuesday, November 10",
-  "transactionNumber": "#2418268688",
+  "createdAtSource": "November 10, 2026 01:27:58 BST",
+  "fundedAtSource": "November 10, 2026 01:33:25 BST",
+  "paidOutAtSource": "November 10, 2026",
+  "pdfTransferReferencePrinted": "#2418268688",
   "recipientReceivedLabel": "LUCAS JOEL KRANJEC received",
   "senderAccountName": "Nazar Hussain's",
   "timelineTimestamp": "Tuesday, November 10 at 1:27 AM",
@@ -125,11 +129,54 @@ export const lucasJoelKranjecTransfer = {
   }
 }
 
+// Synced to public/confirmations/gasper-confirmation.pdf (unverified/inconsistent doc).
+// Page 1 "Total to" names Jose Antonio; page 2 "Sent to" is GASPER — recipient UI follows page 2.
+// Same printed transfer #2418268688 as Lucas PDF — not treated as a verified unique reference.
+export const gasperMarenceTransfer = {
+  "id": "tx-transfer-gasper-marence",
+  "type": "transfer",
+  "title": "GASPER MARENCE",
+  "displayName": "GASPER MARENCE",
+  "fullRecipientName": "GASPER MARENCE",
+  "compactRecipientName": "GASPER MARENCE",
+  "titleColor": "#F3F5F1",
+  "amount": "-1,766 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Tuesday, November 10",
+  "dateStr": "2026-11-10T03:27:58+01:00",
+  "currency": "EUR",
+  "date": "Tuesday, November 10",
+  "createdAtSource": "November 10, 2026 03:27:58 BST",
+  "fundedAtSource": "November 10, 2026 03:33:25 BST",
+  "paidOutAtSource": "November 10, 2026",
+  "pdfTransferReferencePrinted": "#2418268688",
+  "recipientReceivedLabel": "GASPER MARENCE received",
+  "senderAccountName": "Nazar Hussain's",
+  "timelineTimestamp": "Tuesday, November 10 at 3:27 AM",
+  "timelineSetupTimestamp": "Tuesday, November 10 at 3:27 AM",
+  "timelineFundedTimestamp": "Tuesday, November 10 at 3:33 AM",
+  "timelinePayoutTimestamp": "Tuesday, November 10",
+  "timelineCompletionTimestamp": "Tuesday, November 10",
+  "timelineCompletionTitle": "Your transfer's complete",
+  "timelineCompletionDetail": "We sent 1766 EUR to GASPER MARENCE.",
+  "recipientBankDetails": {
+    "bankDetailsHeadingName": "Gasper Marence",
+    "accountHolderName": "GASPER MARENCE",
+    "swiftBic": "LJBASI2XXXX",
+    "iban": "SI56020811258202790",
+    "bankNameLines": [
+      "NLB D.D."
+    ]
+  }
+}
+
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
     "dateGroup": "Tuesday, November 10",
     "transactions": [
+      gasperMarenceTransfer,
       lucasJoelKranjecTransfer
     ]
   },
