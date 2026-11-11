@@ -46,12 +46,10 @@ function TransactionDetailsScreen({ transaction, onClose }) {
   const dayNum = dObj.getUTCDate();
   const monthName = monthNames[dObj.getUTCMonth()];
   const yearNum = dObj.getUTCFullYear();
-  let hour12 = dObj.getUTCHours() % 12;
-  if (hour12 === 0) hour12 = 12;
+  const hour24 = String(dObj.getUTCHours()).padStart(2, '0');
   const minuteStr = String(dObj.getUTCMinutes()).padStart(2, '0');
-  const meridiem = dObj.getUTCHours() >= 12 ? 'pm' : 'am';
-  // Display-only format: "11 November 2026 at 4:00 pm" (underlying dateStr unchanged).
-  const receivedOnDisplay = `${dayNum} ${monthName} ${yearNum} at ${hour12}:${minuteStr} ${meridiem}`;
+  // Display-only 24-hour format: "10 November 2026 at 15:49" (no AM/PM).
+  const receivedOnDisplay = `${dayNum} ${monthName} ${yearNum} at ${hour24}:${minuteStr}`;
 
   let typeVerb = 'You sent';
   if (isIncoming) typeVerb = 'You received';

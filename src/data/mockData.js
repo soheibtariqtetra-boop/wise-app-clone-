@@ -147,7 +147,7 @@ export const brigitteSchmidtIncomingDemo = {
   "amountColor": "#9FE870",
   "listIconKey": "down",
   "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T16:49:00Z",
+  "dateStr": "2026-11-10T15:49:00Z",
   "currency": "EUR",
   "date": "Tuesday, November 10",
   "subtitle": "Completed (demo)",
@@ -168,21 +168,21 @@ export const brigitteSchmidtOutgoingTransfer = {
   "amount": "-1,000 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
-  "dateGroup": "Wednesday, November 11",
-  "dateStr": "2026-11-11T17:25:50Z",
+  "dateGroup": "Tuesday, November 10",
+  "dateStr": "2026-11-10T17:25:50Z",
   "currency": "EUR",
-  "date": "Wednesday, November 11",
-  "createdAtSource": "November 11, 2026 17:25:50 GMT",
-  "fundedAtSource": "November 11, 2026 17:27:58 GMT",
-  "paidOutAtSource": "November 11, 2026",
+  "date": "Tuesday, November 10",
+  "createdAtSource": "November 10, 2026 17:25:50 GMT",
+  "fundedAtSource": "November 10, 2026 17:27:58 GMT",
+  "paidOutAtSource": "November 10, 2026",
   "transactionNumber": "#2418168688",
   "recipientReceivedLabel": "BRIGITTE SCHMIDT received",
   "senderAccountName": "Johannes Kress's",
-  "timelineTimestamp": "Wednesday, November 11 at 5:25 PM",
-  "timelineSetupTimestamp": "Wednesday, November 11 at 5:25 PM",
-  "timelineFundedTimestamp": "Wednesday, November 11 at 5:27 PM",
-  "timelinePayoutTimestamp": "Wednesday, November 11",
-  "timelineCompletionTimestamp": "Wednesday, November 11",
+  "timelineTimestamp": "Tuesday, November 10 at 15:49",
+  "timelineSetupTimestamp": "Tuesday, November 10 at 15:49",
+  "timelineFundedTimestamp": "Tuesday, November 10 at 17:27",
+  "timelinePayoutTimestamp": "Tuesday, November 10",
+  "timelineCompletionTimestamp": "Tuesday, November 10",
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 1,000 EUR to BRIGITTE SCHMIDT.",
   "recipientBankDetails": {
@@ -199,14 +199,9 @@ export const brigitteSchmidtOutgoingTransfer = {
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
-    "dateGroup": "Wednesday, November 11",
-    "transactions": [
-      brigitteSchmidtOutgoingTransfer
-    ]
-  },
-  {
     "dateGroup": "Tuesday, November 10",
     "transactions": [
+      brigitteSchmidtOutgoingTransfer,
       brigitteSchmidtIncomingDemo,
       lucasJoelKranjecTransfer
     ]
