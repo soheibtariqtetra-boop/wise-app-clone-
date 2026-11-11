@@ -146,10 +146,10 @@ export const brigitteSchmidtIncomingDemo = {
   "amount": "+1,000 EUR",
   "amountColor": "#9FE870",
   "listIconKey": "down",
-  "dateGroup": "Wednesday, November 11",
-  "dateStr": "2026-11-11T16:00:00Z",
+  "dateGroup": "Tuesday, November 10",
+  "dateStr": "2026-11-10T16:49:00Z",
   "currency": "EUR",
-  "date": "Wednesday, November 11",
+  "date": "Tuesday, November 10",
   "subtitle": "Completed (demo)",
   "reference": "DEMO",
   "transactionNumber": "#2418161688",
@@ -201,13 +201,13 @@ export const mockFullTransactions = [
   {
     "dateGroup": "Wednesday, November 11",
     "transactions": [
-      brigitteSchmidtOutgoingTransfer,
-      brigitteSchmidtIncomingDemo
+      brigitteSchmidtOutgoingTransfer
     ]
   },
   {
     "dateGroup": "Tuesday, November 10",
     "transactions": [
+      brigitteSchmidtIncomingDemo,
       lucasJoelKranjecTransfer
     ]
   },
