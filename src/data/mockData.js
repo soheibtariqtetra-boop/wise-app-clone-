@@ -545,6 +545,9 @@ export const mockEurAccount = {
   symbol: '€',
   balance: accountBalances.eur,
   iban: 'BE58903014911979',
+  // Display-only AccountDetailsEURScreen03 placeholder — not a valid German IBAN / not for routing.
+  ibanDisplay: 'DE58903014911979',
+  ibanDisplayIsPlaceholder: true,
   accountLabel: 'Current account / EUR',
   accountName: 'Johannes Kress',
   swiftBic: 'TRWIBEB1XXX',

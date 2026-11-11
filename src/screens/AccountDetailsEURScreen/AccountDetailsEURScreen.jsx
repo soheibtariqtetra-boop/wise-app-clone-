@@ -21,11 +21,19 @@ import imgCheckGreen        from '../../assets/accounts/eur/icon-check-green.png
  */
 function AccountDetailsEURScreen({ onBack, account = mockEurAccount }) {
   const [copiedField, setCopiedField] = useState(null)
+  const ibanDisplay = account.ibanDisplay || account.iban
+  const ibanIsPlaceholder = Boolean(account.ibanDisplayIsPlaceholder && account.ibanDisplay)
 
   const handleCopy = (fieldLabel, value) => {
     navigator.clipboard?.writeText(value)
     setCopiedField(fieldLabel)
     setTimeout(() => setCopiedField(null), 2000)
+  }
+
+  const handleIbanCopy = () => {
+    // Placeholder IBAN must not be copied as a bank credential.
+    if (ibanIsPlaceholder) return
+    handleCopy('IBAN', account.iban)
   }
 
   return (
@@ -125,15 +133,16 @@ function AccountDetailsEURScreen({ onBack, account = mockEurAccount }) {
                 <button
                   type="button"
                   className="eur-details-screen__copy-btn"
-                  onClick={() => handleCopy('IBAN', account.iban)}
-                  aria-label="Copy IBAN"
+                  onClick={handleIbanCopy}
+                  aria-label={ibanIsPlaceholder ? 'IBAN display placeholder — copy disabled' : 'Copy IBAN'}
+                  aria-disabled={ibanIsPlaceholder ? 'true' : undefined}
                   data-node-id="31:369"
                 >
                   <img src={imgCopyIcon} className="eur-details-screen__copy-icon" alt="" draggable={false} />
                 </button>
               </div>
               <div className="eur-details-screen__info-value eur-details-screen__info-value--bold" data-node-id="31:381">
-                {account.iban}
+                {ibanDisplay}
               </div>
               <div className="eur-details-screen__info-note" data-node-id="31:380">
                 Can receive EUR and other currencies.{' '}
