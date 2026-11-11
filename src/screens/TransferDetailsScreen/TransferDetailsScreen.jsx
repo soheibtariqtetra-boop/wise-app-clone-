@@ -466,15 +466,26 @@ function TransferDetailsScreen({ transaction, onClose }) {
               </div>
             )}
 
-            <button
-              type="button"
-              className="transfer-download-btn"
-              onClick={handleDownloadConfirmation}
-              disabled={downloadStatus === 'downloading'}
-              aria-busy={downloadStatus === 'downloading'}
-            >
-              Download transfer confirmation
-            </button>
+            {transaction.isSimulated || transaction.isDemo ? (
+              <button
+                type="button"
+                className="transfer-download-btn"
+                disabled
+                aria-disabled="true"
+              >
+                Demo — confirmation not available
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="transfer-download-btn"
+                onClick={handleDownloadConfirmation}
+                disabled={downloadStatus === 'downloading'}
+                aria-busy={downloadStatus === 'downloading'}
+              >
+                Download transfer confirmation
+              </button>
+            )}
           </div>
         )}
       </div>

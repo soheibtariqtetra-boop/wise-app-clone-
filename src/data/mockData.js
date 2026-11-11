@@ -130,38 +130,59 @@ export const lucasJoelKranjecTransfer = {
   }
 }
 
-// Synced to public/confirmations/gasper-confirmation.pdf (unverified/inconsistent doc).
-// Page 1 "Total to" names Jose Antonio; page 2 "Sent to" is GASPER — recipient UI follows page 2.
-// Same printed transfer #2418268688 as Lucas PDF — not treated as a verified unique reference.
-export const gasperMarenceTransfer = {
-  "id": "tx-transfer-gasper-marence",
+// DEMO ONLY — simulated Gasper pair replacing former -1,766 EUR transfer (tx-transfer-gasper-marence).
+// Bank details below are taken from 1766.pdf page-2 recipient section for UI prototype use.
+// These ±1,000 EUR records are NOT verified by that PDF and must not use its Transfer #2418268688.
+// Demo sort stamps (outgoing after incoming) are for list order only — not PDF-verified clock times.
+export const gasperMarenceIncomingDemo = {
+  "id": "tx-demo-gasper-marence-in",
+  "type": "incoming",
+  "isDemo": true,
+  "isSimulated": true,
+  "demoStatus": "Completed (demo)",
+  "title": "GASPER MARENCE",
+  "displayName": "GASPER MARENCE",
+  "titleColor": "#F3F5F1",
+  "amount": "+1,000 EUR",
+  "amountColor": "#9FE870",
+  "listIconKey": "eur-down",
+  "dateGroup": "Tuesday, November 10",
+  "dateStr": "2026-11-10T10:00:00+01:00",
+  "currency": "EUR",
+  "date": "Tuesday, November 10",
+  "subtitle": "Completed (demo)",
+  "reference": "DEMO",
+  "transactionNumber": "tx-demo-gasper-marence-in",
+}
+
+export const gasperMarenceOutgoingDemo = {
+  "id": "tx-demo-gasper-marence-out",
   "type": "transfer",
+  "isDemo": true,
+  "isSimulated": true,
+  "demoStatus": "Completed (demo)",
   "title": "GASPER MARENCE",
   "displayName": "GASPER MARENCE",
   "fullRecipientName": "GASPER MARENCE",
   "compactRecipientName": "GASPER MARENCE",
   "titleColor": "#F3F5F1",
-  "amount": "-1,766 EUR",
+  "amount": "-1,000 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
   "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T03:27:58+01:00",
+  "dateStr": "2026-11-10T14:00:00+01:00",
   "currency": "EUR",
   "date": "Tuesday, November 10",
-  "createdAtSource": "November 10, 2026 03:27:58 BST",
-  "fundedAtSource": "November 10, 2026 03:33:25 BST",
-  "paidOutAtSource": "November 10, 2026",
-  "pdfTransferReferencePrinted": "#2418268688",
-  "transactionNumber": "#2418268688",
+  "transactionNumber": "tx-demo-gasper-marence-out",
   "recipientReceivedLabel": "GASPER MARENCE received",
   "senderAccountName": "Nazar Hussain's",
-  "timelineTimestamp": "Tuesday, November 10 at 3:27 AM",
-  "timelineSetupTimestamp": "Tuesday, November 10 at 3:27 AM",
-  "timelineFundedTimestamp": "Tuesday, November 10 at 3:33 AM",
+  "timelineTimestamp": "Tuesday, November 10",
+  "timelineSetupTimestamp": "Tuesday, November 10",
+  "timelineFundedTimestamp": "Tuesday, November 10",
   "timelinePayoutTimestamp": "Tuesday, November 10",
   "timelineCompletionTimestamp": "Tuesday, November 10",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1766 EUR to GASPER MARENCE.",
+  "timelineCompletionDetail": "We sent 1,000 EUR to GASPER MARENCE.",
   "recipientBankDetails": {
     "bankDetailsHeadingName": "Gasper Marence",
     "accountHolderName": "GASPER MARENCE",
@@ -178,7 +199,8 @@ export const mockFullTransactions = [
   {
     "dateGroup": "Tuesday, November 10",
     "transactions": [
-      gasperMarenceTransfer,
+      gasperMarenceOutgoingDemo,
+      gasperMarenceIncomingDemo,
       lucasJoelKranjecTransfer
     ]
   },
