@@ -130,17 +130,18 @@ export const lucasJoelKranjecTransfer = {
   }
 }
 
-// DEMO pair replacing former Gasper records (tx-transfer-gasper-marence / tx-demo-gasper-*).
-// Outgoing GIROmobil fields synced to public/confirmations/johannes-giro-original.pdf.
-// Incoming Johannes +1,000 EUR is simulated and NOT verified by that PDF.
-export const johannesKressIncomingDemo = {
-  "id": "tx-demo-johannes-kress-in",
+// DEMO pair replacing former Gasper / GIROmobil / Johannes-incoming demo records.
+// Outgoing source: public/confirmations/brigitte-schmidt-source.pdf
+// PDF discrepancy: page 1 "Total to GIROmobil"; page 2 "Sent to Brigitte Schmidt" — UI uses page 2.
+// Incoming +1,000 EUR is simulated and NOT verified by that PDF.
+export const brigitteSchmidtIncomingDemo = {
+  "id": "tx-demo-brigitte-schmidt-in",
   "type": "incoming",
   "isDemo": true,
   "isSimulated": true,
   "demoStatus": "Completed (demo)",
-  "title": "JOHANNES KRESS",
-  "displayName": "JOHANNES KRESS",
+  "title": "BRIGITTE SCHMIDT",
+  "displayName": "BRIGITTE SCHMIDT",
   "titleColor": "#F3F5F1",
   "amount": "+1,000 EUR",
   "amountColor": "#9FE870",
@@ -151,18 +152,17 @@ export const johannesKressIncomingDemo = {
   "date": "Wednesday, November 11",
   "subtitle": "Completed (demo)",
   "reference": "DEMO",
-  "transactionNumber": "tx-demo-johannes-kress-in",
 }
 
-export const giromobilOutgoingTransfer = {
-  "id": "tx-transfer-giromobil",
+export const brigitteSchmidtOutgoingTransfer = {
+  "id": "tx-transfer-brigitte-schmidt",
   "type": "transfer",
   "isDemo": true,
   "isSimulated": false,
-  "title": "GIROmobil",
-  "displayName": "GIROmobil",
-  "fullRecipientName": "GIROmobil",
-  "compactRecipientName": "GIROmobil",
+  "title": "BRIGITTE SCHMIDT",
+  "displayName": "BRIGITTE SCHMIDT",
+  "fullRecipientName": "BRIGITTE SCHMIDT",
+  "compactRecipientName": "BRIGITTE SCHMIDT",
   "titleColor": "#F3F5F1",
   "amount": "-1,000 EUR",
   "amountColor": "#F3F5F1",
@@ -175,7 +175,7 @@ export const giromobilOutgoingTransfer = {
   "fundedAtSource": "November 11, 2026 17:27:58 GMT",
   "paidOutAtSource": "November 11, 2026",
   "transactionNumber": "#2418168688",
-  "recipientReceivedLabel": "GIROmobil received",
+  "recipientReceivedLabel": "BRIGITTE SCHMIDT received",
   "senderAccountName": "Johannes Kress's",
   "timelineTimestamp": "Wednesday, November 11 at 5:25 PM",
   "timelineSetupTimestamp": "Wednesday, November 11 at 5:25 PM",
@@ -183,10 +183,10 @@ export const giromobilOutgoingTransfer = {
   "timelinePayoutTimestamp": "Wednesday, November 11",
   "timelineCompletionTimestamp": "Wednesday, November 11",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1,000 EUR to GIROmobil.",
+  "timelineCompletionDetail": "We sent 1,000 EUR to BRIGITTE SCHMIDT.",
   "recipientBankDetails": {
-    "bankDetailsHeadingName": "GIROmobil",
-    "accountHolderName": "GIROmobil",
+    "bankDetailsHeadingName": "Brigitte Schmidt",
+    "accountHolderName": "Brigitte Schmidt",
     "swiftBic": "NOLADE21UEL",
     "iban": "DE21 2585 0110 0042 1344 52",
     "bankNameLines": [
@@ -200,8 +200,8 @@ export const mockFullTransactions = [
   {
     "dateGroup": "Wednesday, November 11",
     "transactions": [
-      giromobilOutgoingTransfer,
-      johannesKressIncomingDemo
+      brigitteSchmidtOutgoingTransfer,
+      brigitteSchmidtIncomingDemo
     ]
   },
   {
