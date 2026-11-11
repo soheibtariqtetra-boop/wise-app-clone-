@@ -40,9 +40,9 @@ function applyChronologicalSort(groups) {
 }
 
 export const mockUser = {
-  initials: 'NH',
-  name: 'NAZAR\nHUSSAIN',
-  handle: '@NazarHussain',
+  initials: 'JK',
+  name: 'JOHANNES\nKRESS',
+  handle: '@JohannesKress',
 }
 
 export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
@@ -542,17 +542,30 @@ export const mockGbpAccount = {
   swiftBic: 'TRWIGB2LXXX',
 }
 // EUR account details
+// Receiving IBAN/BIC/address preserved (not replaced by PDF sender-side credentials).
+// PDF paid-out-from sender details stored separately for reference only.
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
   iban: 'BE58903014911979',
   accountLabel: 'Current account / EUR',
-  accountName: 'Nazar Hussain',
+  accountName: 'Johannes Kress',
   swiftBic: 'TRWIBEB1XXX',
   bankAddressLines: [
     'Wise Europe SA',
     'RUE DU TRONE 100',
     'BRUSSELS',
   ],
+  senderDocumentedDetails: {
+    source: 'brigitte-schmidt-source.pdf',
+    note: 'PDF paid-out-from sender details — not verified as Wise EUR receiving credentials',
+    iban: 'DE26 8705 8000 1101 2270 59',
+    swiftBic: 'TRWIBEB1XXX',
+    addressLines: [
+      'Office 2587 321-323 High Road, Chadwell Health',
+      'Essex, RM6 6AX',
+      'United Kingdom',
+    ],
+  },
 }
