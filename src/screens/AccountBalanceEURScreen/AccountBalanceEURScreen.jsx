@@ -151,12 +151,12 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
               {mockEurAccount.balance} {mockEurAccount.currency}
             </div>
 
-            {/* IBAN Pill (31:494/31:495) — Full Pill Touch Target */}
+            {/* IBAN Pill (31:494/31:495) — display placeholder only; not verified routing IBAN */}
             <button
               type="button"
               className="eur-screen__iban-pill"
               onClick={onOpenDetails}
-              aria-label={`Account details — ${mockEurAccount.iban}`}
+              aria-label={`Account details — ${mockEurAccount.ibanDisplay || mockEurAccount.iban}`}
               data-node-id="31:495"
             >
               <img
@@ -166,7 +166,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
                 draggable={false}
               />
               <span className="eur-screen__iban-text" data-node-id="31:499">
-                {mockEurAccount.iban}
+                {mockEurAccount.ibanDisplay || mockEurAccount.iban}
               </span>
               <img
                 src={imgIbanChevron}
