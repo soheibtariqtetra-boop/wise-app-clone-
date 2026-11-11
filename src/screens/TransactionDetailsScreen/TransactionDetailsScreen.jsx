@@ -39,19 +39,19 @@ function TransactionDetailsScreen({ transaction, onClose }) {
   const recipient = transaction.title || '';
 
   const dObj = new Date(transaction.dateStr || '2026-10-01T12:00:00Z');
-  const dateFormatted = dObj.toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-    timeZone: 'UTC',
-  });
-  const timeFormatted = dObj.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-    timeZone: 'UTC',
-  });
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December',
+  ];
+  const dayNum = dObj.getUTCDate();
+  const monthName = monthNames[dObj.getUTCMonth()];
+  const yearNum = dObj.getUTCFullYear();
+  let hour12 = dObj.getUTCHours() % 12;
+  if (hour12 === 0) hour12 = 12;
+  const minuteStr = String(dObj.getUTCMinutes()).padStart(2, '0');
+  const meridiem = dObj.getUTCHours() >= 12 ? 'pm' : 'am';
+  // Display-only format: "11 November 2026 at 4:00 pm" (underlying dateStr unchanged).
+  const receivedOnDisplay = `${dayNum} ${monthName} ${yearNum} at ${hour12}:${minuteStr} ${meridiem}`;
 
   let typeVerb = 'You sent';
   if (isIncoming) typeVerb = 'You received';
@@ -177,14 +177,9 @@ function TransactionDetailsScreen({ transaction, onClose }) {
           <div className="txdetails-groups" data-node-id="124:7">
             <div className="txdetails-row txdetails-row--received-date" data-node-id="124:37">
               <span className="txdetails-row__label" data-node-id="124:14">Received on</span>
-              <div className="txdetails-row__date-value" data-node-id="124:13-12">
-                <span className="txdetails-row__date-line" data-node-id="124:13">
-                  {dateFormatted}
-                </span>
-                <span className="txdetails-row__date-line" data-node-id="124:12">
-                  {`at ${timeFormatted}`}
-                </span>
-              </div>
+              <span className="txdetails-row__value txdetails-row__value--received-on" data-node-id="124:13">
+                {receivedOnDisplay}
+              </span>
             </div>
 
             {showReference && (

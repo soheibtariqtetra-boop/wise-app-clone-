@@ -152,6 +152,7 @@ export const brigitteSchmidtIncomingDemo = {
   "date": "Wednesday, November 11",
   "subtitle": "Completed (demo)",
   "reference": "DEMO",
+  "transactionNumber": "#2418161688",
 }
 
 export const brigitteSchmidtOutgoingTransfer = {

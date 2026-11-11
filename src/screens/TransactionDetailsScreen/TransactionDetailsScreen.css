@@ -278,49 +278,39 @@
   padding-top: 4px;
 }
 
-/* Received on — label keeps natural width; date wraps in remaining space */
-.txdetails-row--received-date {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  align-items: start;
-  column-gap: 20px;
-  row-gap: 0;
-  padding-top: 20px;
+/* Received on + Transaction number — compact single-line rows */
+.txdetails-row--received-date,
+.txdetails-row--txnumber {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 16px;
   padding-bottom: 16px;
 }
 
-.txdetails-row--received-date .txdetails-row__label {
+.txdetails-row--received-date .txdetails-row__label,
+.txdetails-row--txnumber .txdetails-row__label {
   color: #bbbeb9;
-  padding-top: 2px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.txdetails-row__date-value {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  min-width: 0;
-}
-
-.txdetails-row__date-line {
-  font-family: 'Inter', sans-serif;
-  font-size: 16.8px;
-  font-weight: 400;
+.txdetails-row__value--received-on,
+.txdetails-row__value--txnumber {
   color: #babdb9;
-  line-height: 1.35;
   text-align: right;
-  overflow-wrap: break-word;
-  word-break: normal;
-  max-width: 100%;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 15.5px;
 }
 
-.txdetails-row__date-line:first-child {
-  color: #bcbeba;
+.txdetails-row__value--txnumber {
+  color: #cacdc9;
 }
 
-.txdetails-row--reference,
-.txdetails-row--txnumber {
+.txdetails-row--reference {
   padding-top: 14px;
   padding-bottom: 14px;
 }
@@ -329,27 +319,16 @@
   color: #babdb8;
 }
 
-.txdetails-row--txnumber .txdetails-row__label {
-  color: #babdb9;
-}
-
-.txdetails-row__value--txnumber {
-  color: #cacdc9;
-}
-
 @media (max-width: 370px) {
   .txdetails-summary__amount {
     font-size: 28px;
   }
 
-  .txdetails-row--received-date {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
-    column-gap: 12px;
-  }
-
-  .txdetails-row__date-line,
-  .txdetails-row__label {
-    font-size: 15px;
+  .txdetails-row__value--received-on,
+  .txdetails-row__value--txnumber,
+  .txdetails-row--received-date .txdetails-row__label,
+  .txdetails-row--txnumber .txdetails-row__label {
+    font-size: 14.5px;
   }
 }
 
