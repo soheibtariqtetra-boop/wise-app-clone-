@@ -130,66 +130,67 @@ export const lucasJoelKranjecTransfer = {
   }
 }
 
-// DEMO ONLY — simulated Gasper pair replacing former -1,766 EUR transfer (tx-transfer-gasper-marence).
-// Bank details below are taken from 1766.pdf page-2 recipient section for UI prototype use.
-// These ±1,000 EUR records are NOT verified by that PDF and must not use its Transfer #2418268688.
-// Demo sort stamps (outgoing after incoming) are for list order only — not PDF-verified clock times.
-export const gasperMarenceIncomingDemo = {
-  "id": "tx-demo-gasper-marence-in",
+// DEMO pair replacing former Gasper records (tx-transfer-gasper-marence / tx-demo-gasper-*).
+// Outgoing GIROmobil fields synced to public/confirmations/johannes-giro-original.pdf.
+// Incoming Johannes +1,000 EUR is simulated and NOT verified by that PDF.
+export const johannesKressIncomingDemo = {
+  "id": "tx-demo-johannes-kress-in",
   "type": "incoming",
   "isDemo": true,
   "isSimulated": true,
   "demoStatus": "Completed (demo)",
-  "title": "GASPER MARENCE",
-  "displayName": "GASPER MARENCE",
+  "title": "JOHANNES KRESS",
+  "displayName": "JOHANNES KRESS",
   "titleColor": "#F3F5F1",
   "amount": "+1,000 EUR",
   "amountColor": "#9FE870",
-  "listIconKey": "eur-down",
-  "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T10:00:00+01:00",
+  "listIconKey": "down",
+  "dateGroup": "Wednesday, November 11",
+  "dateStr": "2026-11-11T16:00:00Z",
   "currency": "EUR",
-  "date": "Tuesday, November 10",
+  "date": "Wednesday, November 11",
   "subtitle": "Completed (demo)",
   "reference": "DEMO",
-  "transactionNumber": "tx-demo-gasper-marence-in",
+  "transactionNumber": "tx-demo-johannes-kress-in",
 }
 
-export const gasperMarenceOutgoingDemo = {
-  "id": "tx-demo-gasper-marence-out",
+export const giromobilOutgoingTransfer = {
+  "id": "tx-transfer-giromobil",
   "type": "transfer",
   "isDemo": true,
-  "isSimulated": true,
-  "demoStatus": "Completed (demo)",
-  "title": "GASPER MARENCE",
-  "displayName": "GASPER MARENCE",
-  "fullRecipientName": "GASPER MARENCE",
-  "compactRecipientName": "GASPER MARENCE",
+  "isSimulated": false,
+  "title": "GIROmobil",
+  "displayName": "GIROmobil",
+  "fullRecipientName": "GIROmobil",
+  "compactRecipientName": "GIROmobil",
   "titleColor": "#F3F5F1",
   "amount": "-1,000 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
-  "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T14:00:00+01:00",
+  "dateGroup": "Wednesday, November 11",
+  "dateStr": "2026-11-11T17:25:50Z",
   "currency": "EUR",
-  "date": "Tuesday, November 10",
-  "transactionNumber": "tx-demo-gasper-marence-out",
-  "recipientReceivedLabel": "GASPER MARENCE received",
-  "senderAccountName": "Nazar Hussain's",
-  "timelineTimestamp": "Tuesday, November 10",
-  "timelineSetupTimestamp": "Tuesday, November 10",
-  "timelineFundedTimestamp": "Tuesday, November 10",
-  "timelinePayoutTimestamp": "Tuesday, November 10",
-  "timelineCompletionTimestamp": "Tuesday, November 10",
+  "date": "Wednesday, November 11",
+  "createdAtSource": "November 11, 2026 17:25:50 GMT",
+  "fundedAtSource": "November 11, 2026 17:27:58 GMT",
+  "paidOutAtSource": "November 11, 2026",
+  "transactionNumber": "#2418168688",
+  "recipientReceivedLabel": "GIROmobil received",
+  "senderAccountName": "Johannes Kress's",
+  "timelineTimestamp": "Wednesday, November 11 at 5:25 PM",
+  "timelineSetupTimestamp": "Wednesday, November 11 at 5:25 PM",
+  "timelineFundedTimestamp": "Wednesday, November 11 at 5:27 PM",
+  "timelinePayoutTimestamp": "Wednesday, November 11",
+  "timelineCompletionTimestamp": "Wednesday, November 11",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1,000 EUR to GASPER MARENCE.",
+  "timelineCompletionDetail": "We sent 1,000 EUR to GIROmobil.",
   "recipientBankDetails": {
-    "bankDetailsHeadingName": "Gasper Marence",
-    "accountHolderName": "GASPER MARENCE",
-    "swiftBic": "LJBASI2XXXX",
-    "iban": "SI56020811258202790",
+    "bankDetailsHeadingName": "GIROmobil",
+    "accountHolderName": "GIROmobil",
+    "swiftBic": "NOLADE21UEL",
+    "iban": "DE21 2585 0110 0042 1344 52",
     "bankNameLines": [
-      "NLB D.D."
+      "Sparkasse Uelzen Lüchow-Dannenberg"
     ]
   }
 }
@@ -197,10 +198,15 @@ export const gasperMarenceOutgoingDemo = {
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
+    "dateGroup": "Wednesday, November 11",
+    "transactions": [
+      giromobilOutgoingTransfer,
+      johannesKressIncomingDemo
+    ]
+  },
+  {
     "dateGroup": "Tuesday, November 10",
     "transactions": [
-      gasperMarenceOutgoingDemo,
-      gasperMarenceIncomingDemo,
       lucasJoelKranjecTransfer
     ]
   },

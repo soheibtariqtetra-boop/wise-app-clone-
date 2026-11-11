@@ -2,13 +2,12 @@
  * Static transfer-confirmation PDF paths keyed by transaction id.
  * Only mapped transfers expose a real confirmation file.
  *
- * NOTE: lucas-confirmation.pdf is an unverified / inconsistent source document.
- * gasper-confirmation.pdf (1766.pdf) is intentionally unmapped — the former
- * -1,766 Gasper transfer was replaced by simulated ±1,000 demo records that
- * must not present that PDF as confirmation of either demo payment.
+ * johannes-giro-original.pdf documents Johannes Kress → GIROmobil (−1,000 EUR).
+ * It must not be attached to the simulated Johannes incoming demo.
  */
 export const TRANSFER_CONFIRMATION_PDFS = {
   'tx-transfer-jose-antonio-maldonado': '/confirmations/lucas-confirmation.pdf',
+  'tx-transfer-giromobil': '/confirmations/johannes-giro-original.pdf',
 }
 
 export function getTransferConfirmationPdfPath(transactionId) {

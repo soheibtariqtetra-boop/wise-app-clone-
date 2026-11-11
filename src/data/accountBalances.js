@@ -8,8 +8,8 @@
  * Active EUR posts:
  *   debit tx-transfer-jose-antonio-maldonado (Lucas): −1,688.00
  *
- * Former Gasper −1,766 debit removed with tx-transfer-gasper-marence.
- * Demo Gasper ±1,000 EUR pair is simulated only (net 0) and is not posted.
+ * Former Gasper −1,766 debit already reversed (tx-transfer-gasper-marence removed).
+ * Johannes/GIROmobil ±1,000 EUR pair nets 0 and is not posted to the ledger.
  *
  * Closing EUR from the verified opening + remaining active posts:
  *   2,980.00 − 1,688.00 = 1,292.00

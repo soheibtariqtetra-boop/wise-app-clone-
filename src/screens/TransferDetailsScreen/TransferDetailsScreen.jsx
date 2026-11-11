@@ -466,7 +466,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
               </div>
             )}
 
-            {transaction.isSimulated || transaction.isDemo ? (
+            {transaction.isSimulated ? (
               <button
                 type="button"
                 className="transfer-download-btn"
