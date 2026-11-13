@@ -10,29 +10,12 @@ import GBPAccountDetailsScreen from './screens/GBPAccountDetailsScreen/GBPAccoun
 import AccountBalanceGBPScreen from './screens/AccountBalanceGBPScreen/AccountBalanceGBPScreen'
 import TransactionsScreen from './screens/TransactionsScreen/TransactionsScreen'
 import TransferDetailsScreen from './screens/TransferDetailsScreen/TransferDetailsScreen'
-import ConfirmationPdfViewer from './screens/ConfirmationPdfViewer/ConfirmationPdfViewer'
-import { getTransferConfirmationPdfPath } from './data/transferConfirmations'
 
 /**
  * App root — manages lightweight SPA screen navigation.
  */
 function App() {
-  const findTransactionById = (txId) => {
-    if (!txId) return null
-    for (const group of mockFullTransactions) {
-      const tx = group.transactions.find(t => t.id === txId)
-      if (tx) return tx
-    }
-    return null
-  }
-
-  const getConfirmationTxIdFromLocation = () => {
-    if (!window.location.pathname.startsWith('/confirmation/view')) return null
-    return new URLSearchParams(window.location.search).get('tx')
-  }
-
   const getInitialRoute = () => {
-    if (window.location.pathname.startsWith('/confirmation/view')) return 'confirmationView'
     if (window.location.pathname.startsWith('/profile')) return 'profile'
     if (window.location.pathname.startsWith('/account/eur/details')) return 'eurAccountDetails'
     if (window.location.pathname.startsWith('/account/gbp/details')) return 'gbpAccountDetails'
@@ -46,54 +29,43 @@ function App() {
   }
 
   const getInitialTransaction = () => {
-    const confirmationTxId = getConfirmationTxIdFromLocation()
-    if (confirmationTxId) return findTransactionById(confirmationTxId)
-
     if (window.location.pathname.startsWith('/transaction/') || window.location.pathname.startsWith('/transfer/')) {
       const txId = window.location.pathname.split(/\/(?:transaction|transfer)\//)[1]
-      return findTransactionById(txId)
+      for (const group of mockFullTransactions) {
+        const tx = group.transactions.find(t => t.id === txId)
+        if (tx) return tx
+      }
     }
     return null
   }
 
   const [currentRoute, setCurrentRoute]               = useState(getInitialRoute)
   const [selectedTransaction, setSelectedTransaction] = useState(getInitialTransaction)
-  const [confirmationTxId, setConfirmationTxId]       = useState(getConfirmationTxIdFromLocation)
   const homeScrollTopRef                              = useRef(0)
-  const confirmationNavGuardUntilRef                  = useRef(0)
 
   // Sync with browser back/forward buttons (popstate)
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname
-      if (path.startsWith('/confirmation/view')) {
-        const txId = new URLSearchParams(window.location.search).get('tx')
-        const found = findTransactionById(txId)
-        setConfirmationTxId(txId)
-        if (found) setSelectedTransaction(found)
-        setCurrentRoute('confirmationView')
-      } else if (path.startsWith('/profile')) {
-        setConfirmationTxId(null)
+      if (path.startsWith('/profile')) {
         setCurrentRoute('profile')
       } else if (path.startsWith('/account/eur/details')) {
-        setConfirmationTxId(null)
         setCurrentRoute('eurAccountDetails')
       } else if (path.startsWith('/account/gbp/details')) {
-        setConfirmationTxId(null)
         setCurrentRoute('gbpAccountDetails')
       } else if (path.startsWith('/account/details') || path.startsWith('/currency-details')) {
-        setConfirmationTxId(null)
         setCurrentRoute('currencyDetails')
       } else if (path.startsWith('/account/eur') || path.startsWith('/eur')) {
-        setConfirmationTxId(null)
         setCurrentRoute('eurAccount')
       } else if (path.startsWith('/account/gbp') || path.startsWith('/gbp')) {
-        setConfirmationTxId(null)
         setCurrentRoute('gbpAccount')
       } else if ((path.startsWith('/transaction/') || path.startsWith('/transfer/')) && !path.startsWith('/transactions')) {
         const txId = path.split(/\/(?:transaction|transfer)\//)[1]
-        const found = findTransactionById(txId)
-        setConfirmationTxId(null)
+        let found = null
+        for (const group of mockFullTransactions) {
+          const tx = group.transactions.find(t => t.id === txId)
+          if (tx) { found = tx; break; }
+        }
         if (found) {
           setSelectedTransaction(found)
           setCurrentRoute(path.startsWith('/transfer/') ? 'transfer' : 'transaction')
@@ -101,16 +73,14 @@ function App() {
           setCurrentRoute('home')
         }
       } else if (path.startsWith('/transactions')) {
-        setConfirmationTxId(null)
         setCurrentRoute('transactions')
       } else {
-        setConfirmationTxId(null)
         setCurrentRoute('home')
       }
     }
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
-  }, [])
+  }, [selectedTransaction])
 
   // Restore scroll position when returning to Home
   useEffect(() => {
@@ -309,71 +279,18 @@ function App() {
     }
   }
 
-  const navigateToConfirmationView = (txId, pdfPath) => {
-    const now = Date.now()
-    if (now < confirmationNavGuardUntilRef.current) return
-    confirmationNavGuardUntilRef.current = now + 700
-
-    const resolvedPath = pdfPath || getTransferConfirmationPdfPath(txId)
-    if (!txId || !resolvedPath) return
-
-    const nextUrl = `/confirmation/view?tx=${encodeURIComponent(txId)}`
-    const alreadyOpen =
-      currentRoute === 'confirmationView'
-      && window.location.pathname === '/confirmation/view'
-      && new URLSearchParams(window.location.search).get('tx') === txId
-
-    if (alreadyOpen) return
-
-    setConfirmationTxId(txId)
-    window.history.pushState(
-      { route: 'confirmationView', txId, pdfPath: resolvedPath },
-      '',
-      nextUrl,
-    )
-    setCurrentRoute('confirmationView')
-  }
-
-  const closeConfirmationView = () => {
-    if (window.history.state?.route === 'confirmationView') {
-      window.history.back()
-      return
-    }
-
-    if (selectedTransaction?.type === 'transfer' || selectedTransaction?.id) {
-      const txId = selectedTransaction.id
-      window.history.pushState({ route: 'transfer', txId }, '', `/transfer/${txId}`)
-      setConfirmationTxId(null)
-      setCurrentRoute('transfer')
-      return
-    }
-
-    setConfirmationTxId(null)
-    if (window.location.pathname !== '/') {
-      window.history.pushState({ route: 'home' }, '', '/')
-    }
-    setCurrentRoute('home')
-  }
-
   // ── Render ───────────────────────────────────────────
 
   return (
     <div className="app-shell">
       {/* App-scoped overlay host for floating toasts (outside scroll content). */}
       <div id="app-overlay" className="app-overlay" aria-live="polite" />
-      {currentRoute === 'confirmationView' ? (
-        <ConfirmationPdfViewer
-          transactionId={confirmationTxId || selectedTransaction?.id}
-          pdfPath={getTransferConfirmationPdfPath(confirmationTxId || selectedTransaction?.id)}
-          onClose={closeConfirmationView}
-        />
-      ) : currentRoute === 'profile' ? (
+      {currentRoute === 'profile' ? (
         <ProfileScreen onBack={navigateToHome} />
       ) : currentRoute === 'transfer' && selectedTransaction ? (
         <TransferDetailsScreen
           transaction={selectedTransaction}
           onClose={closeTransaction}
-          onViewConfirmation={navigateToConfirmationView}
         />
       ) : currentRoute === 'transaction' && selectedTransaction ? (
         <TransactionDetailsScreen
