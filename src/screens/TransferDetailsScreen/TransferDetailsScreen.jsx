@@ -8,8 +8,13 @@ import imgMore   from '../../assets/transactions/shared/btn-more.png'
 import imgIconUp from '../../assets/home/transactions/tx-up.png'
 import imgGeneral from '../../assets/transactions/details/icon-general.png'
 import { getTransferConfirmationPdfPath } from '../../data/transferConfirmations'
+import {
+  hasConfirmationDownloaded,
+  markConfirmationDownloaded,
+} from '../../data/confirmationSession'
 
 const DOWNLOAD_TOAST_MIN_MS = 850
+const VIEW_NAV_GUARD_MS = 700
 
 const CheckmarkIcon = () => (
   <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,24 +22,33 @@ const CheckmarkIcon = () => (
   </svg>
 )
 
-function TransferDetailsScreen({ transaction, onClose }) {
+function TransferDetailsScreen({ transaction, onClose, onViewConfirmation }) {
   const [activeTab, setActiveTab] = useState(() => 
     typeof window !== 'undefined' && window.location.hash === '#details' ? 'details' : 'updates'
   );
   const [isScrolled, setIsScrolled] = useState(false);
-  const [downloadStatus, setDownloadStatus] = useState('idle');
+  const [downloadStatus, setDownloadStatus] = useState(() => (
+    hasConfirmationDownloaded(transaction?.id) ? 'downloaded' : 'idle'
+  ));
   const [downloadError, setDownloadError] = useState('');
-  const [toastVisible, setToastVisible] = useState(false);
+  const [toastVisible, setToastVisible] = useState(() => (
+    hasConfirmationDownloaded(transaction?.id)
+  ));
   const [overlayHost, setOverlayHost] = useState(null);
   const scrollRef = useRef(null);
   const scrollPositions = useRef({ updates: 0, details: 0 });
-  const pdfUrlRef = useRef(null);
+  const pdfUrlRef = useRef(
+    hasConfirmationDownloaded(transaction?.id)
+      ? getTransferConfirmationPdfPath(transaction?.id)
+      : null,
+  );
   const downloadInFlightRef = useRef(false);
   const downloadTimerRef = useRef(null);
   const toastRef = useRef(null);
   const toastDismissedRef = useRef(false);
   const downloadSessionRef = useRef(0);
   const suppressOutsideUntilRef = useRef(0);
+  const viewNavGuardUntilRef = useRef(0);
 
   useEffect(() => {
     setOverlayHost(document.getElementById('app-overlay'))
@@ -114,6 +128,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
       if (sessionId !== downloadSessionRef.current) return
 
       pdfUrlRef.current = pdfPath
+      markConfirmationDownloaded(transaction?.id)
 
       const filename = pdfPath.split('/').pop() || 'transfer-confirmation.pdf'
       const objectUrl = URL.createObjectURL(blob)
@@ -124,7 +139,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
       document.body.appendChild(anchor)
       anchor.click()
       anchor.remove()
-      // Revoke after the download handoff; View uses the static public path.
+      // Revoke after the download handoff; View uses the in-app PDF viewer only.
       setTimeout(() => URL.revokeObjectURL(objectUrl), 1500)
 
       setDownloadStatus('downloaded')
@@ -160,9 +175,16 @@ function TransferDetailsScreen({ transaction, onClose }) {
   }, [downloadStatus, transaction])
 
   const handleViewConfirmation = useCallback((event) => {
+    event?.preventDefault?.()
     event?.stopPropagation?.()
-    const url = pdfUrlRef.current || getTransferConfirmationPdfPath(transaction?.id)
-    if (!url) {
+
+    // One tap → one in-app navigation. Ignore rapid duplicate taps.
+    const now = Date.now()
+    if (now < viewNavGuardUntilRef.current) return
+    viewNavGuardUntilRef.current = now + VIEW_NAV_GUARD_MS
+
+    const pdfPath = pdfUrlRef.current || getTransferConfirmationPdfPath(transaction?.id)
+    if (!pdfPath || !transaction?.id) {
       toastDismissedRef.current = false
       suppressOutsideUntilRef.current = Date.now() + 350
       setDownloadError('Confirmation file is no longer available. Please download again.')
@@ -171,17 +193,18 @@ function TransferDetailsScreen({ transaction, onClose }) {
       return
     }
 
-    const opened = window.open(url, '_blank', 'noopener,noreferrer')
-    if (opened) return
+    // View must never re-trigger download / window.open / native PDF navigation.
+    if (typeof onViewConfirmation === 'function') {
+      onViewConfirmation(transaction.id, pdfPath)
+      return
+    }
 
-    const anchor = document.createElement('a')
-    anchor.href = url
-    anchor.target = '_blank'
-    anchor.rel = 'noopener noreferrer'
-    document.body.appendChild(anchor)
-    anchor.click()
-    anchor.remove()
-  }, [transaction])
+    toastDismissedRef.current = false
+    suppressOutsideUntilRef.current = Date.now() + 350
+    setDownloadError('Unable to open confirmation viewer')
+    setDownloadStatus('error')
+    setToastVisible(true)
+  }, [onViewConfirmation, transaction])
 
   const handleScroll = (e) => {
     const top = e.target.scrollTop;
