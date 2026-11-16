@@ -28,7 +28,7 @@ import imgRate from '../../assets/profile/actions/icon-rate.png'
 import imgClose from '../../assets/profile/actions/icon-close.png'
 import imgLogout from '../../assets/profile/actions/icon-logout.png'
 
-function ProfileScreen({ onBack }) {
+function ProfileScreen({ onBack, onLogout }) {
   React.useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const scrollTarget = params.get('scroll')
@@ -406,6 +406,8 @@ function ProfileScreen({ onBack }) {
               titleColor="#ced0cc"
               chevronY={24.917}
               dataNodeId="21:77"
+              onClick={onLogout}
+              ariaLabel="Log out"
             />
           </div>
         </section>

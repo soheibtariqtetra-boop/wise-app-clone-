@@ -1,7 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { mockFullTransactions } from './data/mockData'
+import {
+  isAuthenticated as readIsAuthenticated,
+  setAuthenticated as persistAuthenticated,
+  setLoggedOut as persistLoggedOut,
+} from './data/authSession'
 import HomeScreen from './screens/HomeScreen/HomeScreen'
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen'
+import LoginScreen from './screens/LoginScreen/LoginScreen'
 import TransactionDetailsScreen from './screens/TransactionDetailsScreen/TransactionDetailsScreen'
 import AccountBalanceEURScreen from './screens/AccountBalanceEURScreen/AccountBalanceEURScreen'
 import AccountDetailsEURScreen from './screens/AccountDetailsEURScreen/AccountDetailsEURScreen'
@@ -15,20 +21,27 @@ import TransferDetailsScreen from './screens/TransferDetailsScreen/TransferDetai
  * App root — manages lightweight SPA screen navigation.
  */
 function App() {
-  const getInitialRoute = () => {
-    if (window.location.pathname.startsWith('/profile')) return 'profile'
-    if (window.location.pathname.startsWith('/account/eur/details')) return 'eurAccountDetails'
-    if (window.location.pathname.startsWith('/account/gbp/details')) return 'gbpAccountDetails'
-    if (window.location.pathname.startsWith('/account/details') || window.location.pathname.startsWith('/currency-details')) return 'currencyDetails'
-    if (window.location.pathname.startsWith('/account/eur') || window.location.pathname.startsWith('/eur')) return 'eurAccount'
-    if (window.location.pathname.startsWith('/account/gbp') || window.location.pathname.startsWith('/gbp')) return 'gbpAccount'
-    if (window.location.pathname.startsWith('/transactions')) return 'transactions'
-    if (window.location.pathname.startsWith('/transfer/')) return 'transfer'
-    if (window.location.pathname.startsWith('/transaction/')) return 'transaction'
+  const resolveRouteFromPath = (path) => {
+    if (path.startsWith('/login')) return 'login'
+    if (path.startsWith('/profile')) return 'profile'
+    if (path.startsWith('/account/eur/details')) return 'eurAccountDetails'
+    if (path.startsWith('/account/gbp/details')) return 'gbpAccountDetails'
+    if (path.startsWith('/account/details') || path.startsWith('/currency-details')) return 'currencyDetails'
+    if (path.startsWith('/account/eur') || path.startsWith('/eur')) return 'eurAccount'
+    if (path.startsWith('/account/gbp') || path.startsWith('/gbp')) return 'gbpAccount'
+    if (path.startsWith('/transactions')) return 'transactions'
+    if (path.startsWith('/transfer/')) return 'transfer'
+    if (path.startsWith('/transaction/')) return 'transaction'
     return 'home'
   }
 
+  const getInitialRoute = () => {
+    if (!readIsAuthenticated()) return 'login'
+    return resolveRouteFromPath(window.location.pathname)
+  }
+
   const getInitialTransaction = () => {
+    if (!readIsAuthenticated()) return null
     if (window.location.pathname.startsWith('/transaction/') || window.location.pathname.startsWith('/transfer/')) {
       const txId = window.location.pathname.split(/\/(?:transaction|transfer)\//)[1]
       for (const group of mockFullTransactions) {
@@ -41,25 +54,57 @@ function App() {
 
   const [currentRoute, setCurrentRoute]               = useState(getInitialRoute)
   const [selectedTransaction, setSelectedTransaction] = useState(getInitialTransaction)
+  const [authReady, setAuthReady]                     = useState(() => readIsAuthenticated())
   const homeScrollTopRef                              = useRef(0)
+
+  const forceLoginRoute = useCallback(() => {
+    if (window.location.pathname !== '/login') {
+      window.history.replaceState({ route: 'login' }, '', '/login')
+    }
+    setSelectedTransaction(null)
+    setCurrentRoute('login')
+  }, [])
+
+  // Keep logged-out users on LoginScreen01 across refresh / deep links.
+  useEffect(() => {
+    if (!authReady) {
+      forceLoginRoute()
+    }
+  }, [authReady, forceLoginRoute])
 
   // Sync with browser back/forward buttons (popstate)
   useEffect(() => {
     const handlePopState = () => {
+      if (!readIsAuthenticated()) {
+        persistLoggedOut()
+        setAuthReady(false)
+        forceLoginRoute()
+        return
+      }
+
       const path = window.location.pathname
-      if (path.startsWith('/profile')) {
+      const nextRoute = resolveRouteFromPath(path)
+
+      if (nextRoute === 'login') {
+        // Authenticated user landed on /login — send home.
+        window.history.replaceState({ route: 'home' }, '', '/')
+        setCurrentRoute('home')
+        return
+      }
+
+      if (nextRoute === 'profile') {
         setCurrentRoute('profile')
-      } else if (path.startsWith('/account/eur/details')) {
+      } else if (nextRoute === 'eurAccountDetails') {
         setCurrentRoute('eurAccountDetails')
-      } else if (path.startsWith('/account/gbp/details')) {
+      } else if (nextRoute === 'gbpAccountDetails') {
         setCurrentRoute('gbpAccountDetails')
-      } else if (path.startsWith('/account/details') || path.startsWith('/currency-details')) {
+      } else if (nextRoute === 'currencyDetails') {
         setCurrentRoute('currencyDetails')
-      } else if (path.startsWith('/account/eur') || path.startsWith('/eur')) {
+      } else if (nextRoute === 'eurAccount') {
         setCurrentRoute('eurAccount')
-      } else if (path.startsWith('/account/gbp') || path.startsWith('/gbp')) {
+      } else if (nextRoute === 'gbpAccount') {
         setCurrentRoute('gbpAccount')
-      } else if ((path.startsWith('/transaction/') || path.startsWith('/transfer/')) && !path.startsWith('/transactions')) {
+      } else if (nextRoute === 'transfer' || nextRoute === 'transaction') {
         const txId = path.split(/\/(?:transaction|transfer)\//)[1]
         let found = null
         for (const group of mockFullTransactions) {
@@ -68,11 +113,11 @@ function App() {
         }
         if (found) {
           setSelectedTransaction(found)
-          setCurrentRoute(path.startsWith('/transfer/') ? 'transfer' : 'transaction')
+          setCurrentRoute(nextRoute)
         } else {
           setCurrentRoute('home')
         }
-      } else if (path.startsWith('/transactions')) {
+      } else if (nextRoute === 'transactions') {
         setCurrentRoute('transactions')
       } else {
         setCurrentRoute('home')
@@ -80,7 +125,7 @@ function App() {
     }
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
-  }, [selectedTransaction])
+  }, [forceLoginRoute])
 
   // Restore scroll position when returning to Home
   useEffect(() => {
@@ -279,14 +324,47 @@ function App() {
     }
   }
 
+  const navigateToLogin = () => {
+    persistLoggedOut()
+    setAuthReady(false)
+    // Replace so browser Back cannot re-enter protected screens.
+    window.history.replaceState({ route: 'login' }, '', '/login')
+    setSelectedTransaction(null)
+    setCurrentRoute('login')
+  }
+
+  const handleLogBackIn = () => {
+    // Demo session restore — no password / real auth system in this clone.
+    persistAuthenticated()
+    setAuthReady(true)
+    window.history.replaceState({ route: 'home' }, '', '/')
+    setCurrentRoute('home')
+  }
+
+  const handleLoginBack = () => {
+    // Logged-out back must not reopen protected account screens.
+    forceLoginRoute()
+  }
+
+  const handleUseAnotherAccount = () => {
+    // No account-selection route exists in this clone yet.
+    // Keep the user on LoginScreen01 rather than inventing an auth system.
+  }
+
   // ── Render ───────────────────────────────────────────
 
   return (
     <div className="app-shell">
       {/* App-scoped overlay host for floating toasts (outside scroll content). */}
       <div id="app-overlay" className="app-overlay" aria-live="polite" />
-      {currentRoute === 'profile' ? (
-        <ProfileScreen onBack={navigateToHome} />
+      {!authReady || currentRoute === 'login' ? (
+        <LoginScreen
+          onLogBackIn={handleLogBackIn}
+          onUseAnotherAccount={handleUseAnotherAccount}
+          onBack={handleLoginBack}
+        />
+      ) : currentRoute === 'profile' ? (
+        <ProfileScreen onBack={navigateToHome} onLogout={navigateToLogin} />
       ) : currentRoute === 'transfer' && selectedTransaction ? (
         <TransferDetailsScreen
           transaction={selectedTransaction}
