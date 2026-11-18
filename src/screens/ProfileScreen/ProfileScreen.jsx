@@ -158,11 +158,6 @@ function ProfileScreen({ onBack, onLogout }) {
             </h1>
           )}
 
-          {/* Account Type (Figma node 7:525) */}
-          <p className="profile-identity__type" data-node-id="7:525">
-            Business account
-          </p>
-
           {/* Email Pill (Figma node 7:521) */}
           <div className="profile-identity__email-pill" data-node-id="7:521">
             <img src={imgWiseFlag} alt="" className="profile-identity__email-icon" draggable={false} data-node-id="7:524" />

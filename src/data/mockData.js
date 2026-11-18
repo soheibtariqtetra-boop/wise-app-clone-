@@ -40,9 +40,11 @@ function applyChronologicalSort(groups) {
 }
 
 export const mockUser = {
-  initials: 'JK',
-  name: 'JOHANNES\nKRESS',
-  handle: '@JohannesKress',
+  initials: 'MU',
+  name: 'MUHAMMAD\nUSMAN',
+  handle: '@MuhammadUsman',
+  // LoginScreen01 masked email source. Not used for Wise auth.
+  email: 'humairaamc26@gmail.com',
 }
 
 export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
@@ -551,17 +553,15 @@ export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
+  // Synced from Figma AccountDetailsEURScreen03 (node 31:344 / card 31:365).
   iban: 'BE58903014911979',
-  // Display-only AccountDetailsEURScreen03 placeholder — not a valid German IBAN / not for routing.
-  ibanDisplay: 'DE58903014911979',
-  ibanDisplayIsPlaceholder: true,
+  ibanDisplay: 'BE58903014911979',
+  ibanDisplayIsPlaceholder: false,
   accountLabel: 'Current account / EUR',
-  accountName: 'Johannes Kress',
+  accountName: 'Muhmmad Usman',
   swiftBic: 'TRWIBEB1XXX',
   bankAddressLines: [
-    'Wise Europe SA',
-    'RUE DU TRONE 100',
-    'BRUSSELS',
+    'Post Office Chak No. 156-P, Goth Jangu, Tehsil Sadiqabad, District Rahim Yar Khan.',
   ],
   senderDocumentedDetails: {
     source: 'brigitte-schmidt-source.pdf',

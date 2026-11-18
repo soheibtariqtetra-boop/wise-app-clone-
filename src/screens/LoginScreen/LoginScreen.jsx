@@ -1,19 +1,19 @@
 import './LoginScreen.css'
 import { mockUser, mockEurAccount } from '../../data/mockData'
-import { maskEmailForLogin } from '../../data/authSession'
-import imgWiseLogo from '../../assets/login/wise-logo.png'
+import { getLoginAvatarInitial, maskEmailForLogin } from '../../data/authSession'
 import imgBack from '../../assets/login/btn-back.png'
+import imgWiseLogo from '../../assets/login/wise-logo.png'
 
 /**
  * LoginScreen01 — Figma node 253:6 (390 × 844)
- * Saved-account login after logout. Uses current profile identity.
+ * Demo saved-account login after logout. Not an official Wise login page.
  */
 function LoginScreen({ onLogBackIn, onUseAnotherAccount, onBack }) {
   const displayName =
     mockEurAccount?.accountName
     || mockUser?.name?.replace(/\n/g, ' ')
     || ''
-  const initials = mockUser?.initials || 'JK'
+  const avatarInitial = getLoginAvatarInitial(displayName)
   const maskedEmail = maskEmailForLogin(mockUser?.email)
 
   return (
@@ -21,6 +21,8 @@ function LoginScreen({ onLogBackIn, onUseAnotherAccount, onBack }) {
       className="login-screen"
       data-node-id="253:6"
       data-name="LoginScreen01"
+      data-demo="true"
+      aria-label="Demo login screen"
     >
       <button
         type="button"
@@ -37,13 +39,15 @@ function LoginScreen({ onLogBackIn, onUseAnotherAccount, onBack }) {
           src={imgWiseLogo}
           alt="Wise"
           className="login-screen__logo"
-          draggable={false}
           data-node-id="260:11"
+          width={108}
+          height={25}
+          draggable={false}
         />
 
         <div className="login-screen__avatar" data-node-id="260:12" aria-hidden="true">
           <span className="login-screen__avatar-initials" data-node-id="260:13">
-            {initials}
+            {avatarInitial}
           </span>
         </div>
 

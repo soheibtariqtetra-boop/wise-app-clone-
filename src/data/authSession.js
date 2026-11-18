@@ -45,8 +45,8 @@ export function setLoggedOut() {
 
 /**
  * Mask an email for LoginScreen01 using the Figma pattern:
- * first character + asterisks + last local-part character + @domain
- * Example: m***************0@gmail.com
+ * first character + 15 asterisks + last local-part character + @domain
+ * Example: j***************3@example.com
  */
 export function maskEmailForLogin(email) {
   if (!email || typeof email !== 'string' || !email.includes('@')) return null
@@ -54,6 +54,14 @@ export function maskEmailForLogin(email) {
   if (!local || !domain) return null
   if (local.length === 1) return `${local}@${domain}`
   if (local.length === 2) return `${local[0]}*${local[1]}@${domain}`
-  const stars = '*'.repeat(Math.max(local.length - 2, 1))
-  return `${local[0]}${stars}${local[local.length - 1]}@${domain}`
+  // Figma LoginScreen01 uses a fixed 15-asterisk mask span.
+  return `${local[0]}${'*'.repeat(15)}${local[local.length - 1]}@${domain}`
+}
+
+/** First letter of the account holder's first name for LoginScreen01 avatar. */
+export function getLoginAvatarInitial(displayName) {
+  if (!displayName || typeof displayName !== 'string') return ''
+  const firstToken = displayName.replace(/\n/g, ' ').trim().split(/\s+/)[0] || ''
+  const letter = firstToken.match(/[A-Za-z]/)?.[0]
+  return letter ? letter.toUpperCase() : ''
 }
