@@ -317,14 +317,14 @@ function ProfileScreen({ onBack, onLogout }) {
             <ProfileSettingsRow
               icon={imgBusiness}
               title="Business details"
-              height={37.375}
+              description="Manage your business information"
+              height={77.458}
               paddingTop={10.833}
-              iconHeight={26}
               titleWidth={134.875}
-              titleColor="#d0d3cf"
-              chevronHeight={6.5}
+              descWidth={237.792}
+              titleColor="#dcdeda"
+              descColor="#c2c5c1"
               chevronY={30.333}
-              isClipped={true}
               dataNodeId="21:9"
             />
           </div>
