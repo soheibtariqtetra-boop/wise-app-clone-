@@ -43,8 +43,8 @@ export const mockUser = {
   initials: 'NH',
   name: 'NAZAR\nHUSSAIN',
   handle: '@NazarHussain',
-  // No authorized email for this demo identity — do not show a prior identity's address.
-  email: null,
+  // LoginScreen01 masked email source. Not used for Wise auth.
+  email: 'nazarhussain17D@gmail.com',
 }
 
 export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
