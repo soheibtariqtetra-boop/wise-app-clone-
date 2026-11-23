@@ -163,7 +163,7 @@ export const brigitteSchmidtIncomingDemo = {
 // Supersedes any incorrect Sergej Busch / 672.pdf mapping (never landed in this repo).
 // PDF prints BST in November (UK winter is GMT) — literal BST preserved in source fields.
 // PDF sender name is Nazar Hussain — synced to demo EUR/profile identity.
-// Timeline display uses existing 24-hour minute-level strings; seconds kept in *AtSource.
+// PDF source times stay in *AtSource; timeline* fields are display overrides.
 export const zhichaoWangOutgoingTransfer = {
   "id": "tx-transfer-zhichao-wang",
   "type": "transfer",
@@ -189,11 +189,12 @@ export const zhichaoWangOutgoingTransfer = {
   "bankingPartnerReference": "GW26100723803737",
   "recipientReceivedLabel": "ZHICHAO WANG received",
   "senderAccountName": "Nazar Hussain's",
-  "timelineTimestamp": "Monday, November 23 at 11:36",
-  "timelineSetupTimestamp": "Monday, November 23 at 11:36",
-  "timelineFundedTimestamp": "Monday, November 23 at 11:43",
-  "timelinePayoutTimestamp": "Monday, November 23",
-  "timelineCompletionTimestamp": "Monday, November 23",
+  // Timeline display overrides only — not PDF-verified (*AtSource unchanged).
+  "timelineTimestamp": "Monday, November 23 at 11:36 AM",
+  "timelineSetupTimestamp": "Monday, November 23 at 11:36 AM",
+  "timelineFundedTimestamp": "Monday, November 23 at 11:38 AM",
+  "timelinePayoutTimestamp": "Monday, November 23 at 11:42 AM",
+  "timelineCompletionTimestamp": "Monday, November 23 at 11:43 AM",
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 672 EUR to ZHICHAO WANG.",
   "recipientBankDetails": {
