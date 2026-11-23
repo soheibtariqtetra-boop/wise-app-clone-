@@ -40,11 +40,11 @@ function applyChronologicalSort(groups) {
 }
 
 export const mockUser = {
-  initials: 'MU',
-  name: 'MUHAMMAD\nUSMAN',
-  handle: '@MuhammadUsman',
-  // LoginScreen01 masked email source. Not used for Wise auth.
-  email: 'humairaamc26@gmail.com',
+  initials: 'NH',
+  name: 'NAZAR\nHUSSAIN',
+  handle: '@NazarHussain',
+  // No authorized email for this demo identity — do not show a prior identity's address.
+  email: null,
 }
 
 export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
@@ -162,7 +162,7 @@ export const brigitteSchmidtIncomingDemo = {
 // Outgoing EUR transfer — source: public/confirmations/zhichao-wang-source.pdf (672 (1).pdf).
 // Supersedes any incorrect Sergej Busch / 672.pdf mapping (never landed in this repo).
 // PDF prints BST in November (UK winter is GMT) — literal BST preserved in source fields.
-// PDF sender name is Nazar Hussain; demo EUR accountName is Muhmmad Usman (same IBAN BE58…).
+// PDF sender name is Nazar Hussain — synced to demo EUR/profile identity.
 // Timeline display uses existing 24-hour minute-level strings; seconds kept in *AtSource.
 export const zhichaoWangOutgoingTransfer = {
   "id": "tx-transfer-zhichao-wang",
@@ -635,20 +635,23 @@ export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
-  // Synced from Figma AccountDetailsEURScreen03 (node 31:344 / card 31:365).
+  // AccountDetailsEURScreen03 — holder name synced to PDF sender (672 (1).pdf).
+  // IBAN/BIC kept as existing receiving-card values (also match PDF paid-out-from).
+  // Bank street address not established by that PDF — leave existing card address unchanged.
   iban: 'BE58903014911979',
   ibanDisplay: 'BE58903014911979',
   ibanDisplayIsPlaceholder: false,
   accountLabel: 'Current account / EUR',
-  accountName: 'Muhmmad Usman',
+  accountName: 'Nazar Hussain',
   swiftBic: 'TRWIBEB1XXX',
   bankAddressLines: [
     'Post Office Chak No. 156-P, Goth Jangu, Tehsil Sadiqabad, District Rahim Yar Khan.',
   ],
   senderDocumentedDetails: {
-    source: 'brigitte-schmidt-source.pdf',
+    source: 'zhichao-wang-source.pdf',
     note: 'PDF paid-out-from sender details — not verified as Wise EUR receiving credentials',
-    iban: 'DE26 8705 8000 1101 2270 59',
+    name: 'Nazar Hussain',
+    iban: 'BE58903014911979',
     swiftBic: 'TRWIBEB1XXX',
     addressLines: [
       'Office 2587 321-323 High Road, Chadwell Health',

@@ -9,11 +9,13 @@ import imgWiseLogo from '../../assets/login/wise-logo.png'
  * Demo saved-account login after logout. Not an official Wise login page.
  */
 function LoginScreen({ onLogBackIn, onUseAnotherAccount, onBack }) {
+  // Prefer EUR holder name (title case). Avatar uses first letter of first name only.
   const displayName =
     mockEurAccount?.accountName
     || mockUser?.name?.replace(/\n/g, ' ')
     || ''
   const avatarInitial = getLoginAvatarInitial(displayName)
+  // Only show masked email when an authorized address exists for this demo identity.
   const maskedEmail = maskEmailForLogin(mockUser?.email)
 
   return (

@@ -15,8 +15,8 @@
  * Closing EUR from the verified opening + remaining active posts:
  *   2,980.00 − 1,688.00 − 672.00 = 620.00
  *
- * PDF sender name is Nazar Hussain; demo EUR accountName is Muhmmad Usman.
- * Debit is posted because paid-out-from IBAN matches mockEurAccount (BE58…).
+ * PDF / demo EUR account holder: Nazar Hussain (IBAN BE58…).
+ * Debit is posted because paid-out-from IBAN matches mockEurAccount.
  *
  * GBP has no new posted ledger changes since 3,043.00.
  * Combined total uses existing EUR_TO_GBP_RATE only.
