@@ -103,10 +103,11 @@ export const lucasJoelKranjecTransfer = {
   "amount": "-1,688 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
-  "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T01:27:58+01:00",
+  // Demo list display date only — PDF source times stay in *AtSource / timeline*.
+  "dateGroup": "Friday, November 20",
+  "dateStr": "2026-11-20T01:27:58+01:00",
   "currency": "EUR",
-  "date": "Tuesday, November 10",
+  "date": "Friday, November 20",
   "createdAtSource": "November 10, 2026 01:27:58 BST",
   "fundedAtSource": "November 10, 2026 01:33:25 BST",
   "paidOutAtSource": "November 10, 2026",
@@ -148,10 +149,11 @@ export const brigitteSchmidtIncomingDemo = {
   "amount": "+1,000 EUR",
   "amountColor": "#9FE870",
   "listIconKey": "down",
-  "dateGroup": "Tuesday, November 10",
-  "dateStr": "2026-11-10T15:49:00Z",
+  // Demo list display date (simulated incoming — no PDF confirmation).
+  "dateGroup": "Saturday, November 21",
+  "dateStr": "2026-11-21T15:49:00Z",
   "currency": "EUR",
-  "date": "Tuesday, November 10",
+  "date": "Saturday, November 21",
   "subtitle": "Completed (demo)",
   "reference": "DEMO",
   "transactionNumber": "#2418161688",
@@ -225,10 +227,11 @@ export const brigitteSchmidtOutgoingTransfer = {
   "amount": "-1,000 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
-  "dateGroup": "Wednesday, November 11",
-  "dateStr": "2026-11-11T17:25:50Z",
+  // Demo list display date only — PDF source times stay in *AtSource / timeline*.
+  "dateGroup": "Sunday, November 22",
+  "dateStr": "2026-11-22T17:25:50Z",
   "currency": "EUR",
-  "date": "Wednesday, November 11",
+  "date": "Sunday, November 22",
   "createdAtSource": "November 11, 2026 17:25:50 GMT",
   "fundedAtSource": "November 11, 2026 17:27:58 GMT",
   "paidOutAtSource": "November 11, 2026",
@@ -253,6 +256,39 @@ export const brigitteSchmidtOutgoingTransfer = {
   }
 }
 
+// Demo list-only display records (no PDF confirmation).
+export const westfieldCreativeIncoming = {
+  "id": "tx-new-eur-6",
+  "title": "Westfield Creative",
+  "displayName": "Westfield Creative",
+  "titleColor": "#F3F5F1",
+  "amount": "+1,480 EUR",
+  "amountColor": "#9FE870",
+  "listIconKey": "eur-down",
+  "dateGroup": "Thursday, November 19",
+  "dateStr": "2026-11-19T14:10:00Z",
+  "currency": "EUR",
+  "isNew": true,
+  "date": "Thursday, November 19",
+  "transactionNumber": "#2409599651"
+}
+
+export const horizonBusinessOutgoing = {
+  "id": "tx-new-eur-7",
+  "title": "Horizon Business",
+  "displayName": "Horizon Business",
+  "titleColor": "#F3F5F1",
+  "amount": "-265 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Wednesday, November 18",
+  "dateStr": "2026-11-18T11:50:00Z",
+  "currency": "EUR",
+  "isNew": true,
+  "date": "Wednesday, November 18",
+  "transactionNumber": "#2409599653"
+}
+
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
@@ -262,16 +298,33 @@ export const mockFullTransactions = [
     ]
   },
   {
-    "dateGroup": "Wednesday, November 11",
+    "dateGroup": "Sunday, November 22",
     "transactions": [
       brigitteSchmidtOutgoingTransfer
     ]
   },
   {
-    "dateGroup": "Tuesday, November 10",
+    "dateGroup": "Saturday, November 21",
     "transactions": [
-      brigitteSchmidtIncomingDemo,
+      brigitteSchmidtIncomingDemo
+    ]
+  },
+  {
+    "dateGroup": "Friday, November 20",
+    "transactions": [
       lucasJoelKranjecTransfer
+    ]
+  },
+  {
+    "dateGroup": "Thursday, November 19",
+    "transactions": [
+      westfieldCreativeIncoming
+    ]
+  },
+  {
+    "dateGroup": "Wednesday, November 18",
+    "transactions": [
+      horizonBusinessOutgoing
     ]
   },
   {
@@ -292,21 +345,6 @@ export const mockFullTransactions = [
         "transactionNumber": "#2409599650"
       },
       {
-        "id": "tx-new-eur-6",
-        "title": "Westfield Creative",
-        "displayName": "Westfield Creative",
-        "titleColor": "#F3F5F1",
-        "amount": "+1,480 EUR",
-        "amountColor": "#9FE870",
-        "listIconKey": "eur-down",
-        "dateGroup": "Tuesday, November 03",
-        "dateStr": "2026-11-03T14:10:00Z",
-        "currency": "EUR",
-        "isNew": true,
-        "date": "Tuesday, November 03",
-        "transactionNumber": "#2409599651"
-      },
-      {
         "id": "tx-new-gbp-2",
         "title": "Oakwell Trading Ltd",
         "titleColor": "#F3F5F1",
@@ -319,21 +357,6 @@ export const mockFullTransactions = [
         "isNew": true,
         "date": "Tuesday, November 03",
         "transactionNumber": "#2409599652"
-      },
-      {
-        "id": "tx-new-eur-7",
-        "title": "Horizon Business",
-        "displayName": "Horizon Business",
-        "titleColor": "#F3F5F1",
-        "amount": "-265 EUR",
-        "amountColor": "#F3F5F1",
-        "listIconKey": "up",
-        "dateGroup": "Tuesday, November 03",
-        "dateStr": "2026-11-03T11:50:00Z",
-        "currency": "EUR",
-        "isNew": true,
-        "date": "Tuesday, November 03",
-        "transactionNumber": "#2409599653"
       },
       {
         "id": "tx-new-gbp-3",
