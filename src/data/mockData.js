@@ -157,6 +157,59 @@ export const brigitteSchmidtIncomingDemo = {
   "transactionNumber": "#2418161688",
 }
 
+// Outgoing EUR transfer — source: public/confirmations/zhichao-wang-source.pdf (672 (1).pdf).
+// Supersedes any incorrect Sergej Busch / 672.pdf mapping (never landed in this repo).
+// PDF prints BST in November (UK winter is GMT) — literal BST preserved in source fields.
+// PDF sender name is Nazar Hussain; demo EUR accountName is Muhmmad Usman (same IBAN BE58…).
+// Timeline display uses existing 24-hour minute-level strings; seconds kept in *AtSource.
+export const zhichaoWangOutgoingTransfer = {
+  "id": "tx-transfer-zhichao-wang",
+  "type": "transfer",
+  "isDemo": false,
+  "isSimulated": false,
+  "title": "ZHICHAO WANG",
+  "displayName": "ZHICHAO WANG",
+  "fullRecipientName": "ZHICHAO WANG",
+  "compactRecipientName": "ZHICHAO WANG",
+  "titleColor": "#F3F5F1",
+  "amount": "-672 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Monday, November 23",
+  "dateStr": "2026-11-23T11:36:58+01:00",
+  "currency": "EUR",
+  "date": "Monday, November 23",
+  "createdAtSource": "November 23, 2026 11:36:58 BST",
+  "fundedAtSource": "November 23, 2026 11:43:25 BST",
+  "paidOutAtSource": "November 23, 2026",
+  "transactionNumber": "#2858268525",
+  "pdfTransferReferencePrinted": "#2858268525",
+  "bankingPartnerReference": "GW26100723803737",
+  "recipientReceivedLabel": "ZHICHAO WANG received",
+  "senderAccountName": "Nazar Hussain's",
+  "timelineTimestamp": "Monday, November 23 at 11:36",
+  "timelineSetupTimestamp": "Monday, November 23 at 11:36",
+  "timelineFundedTimestamp": "Monday, November 23 at 11:43",
+  "timelinePayoutTimestamp": "Monday, November 23",
+  "timelineCompletionTimestamp": "Monday, November 23",
+  "timelineCompletionTitle": "Your transfer's complete",
+  "timelineCompletionDetail": "We sent 672 EUR to ZHICHAO WANG.",
+  "recipientBankDetails": {
+    "bankDetailsHeadingName": "Zhichao Wang",
+    "accountHolderName": "Zhichao Wang",
+    "swiftBic": "BUNQDE82XXX",
+    "iban": "DE33370190001011651021",
+    "bankNameLines": [
+      "BUNQ NIEDERLASSUNG DEUTSCHLAND"
+    ]
+  },
+  "senderSideBankDetails": {
+    "iban": "BE58903014911979",
+    "swiftBic": "TRWIBEB1XXX",
+    "note": "PDF paid-out-from details — not recipient credentials"
+  }
+}
+
 // Outgoing timestamps are independent of brigitteSchmidtIncomingDemo (tx-demo-brigitte-schmidt-in).
 // Source PDF: November 11, 2026 17:25:50 / 17:27:58 GMT; payout/completion date-only.
 export const brigitteSchmidtOutgoingTransfer = {
@@ -202,6 +255,12 @@ export const brigitteSchmidtOutgoingTransfer = {
 
 // Full transaction history grouped by date
 export const mockFullTransactions = [
+  {
+    "dateGroup": "Monday, November 23",
+    "transactions": [
+      zhichaoWangOutgoingTransfer
+    ]
+  },
   {
     "dateGroup": "Wednesday, November 11",
     "transactions": [
