@@ -44,8 +44,8 @@ export const mockUser = {
   initials: 'MM',
   name: 'MATHIAS\nMUNDRY',
   handle: '@MathiasMundry',
-  // Example.com only — not used for Wise auth.
-  email: 'mathias.mundry@example.com',
+  // LoginScreen01 masked email source. Not used for Wise auth.
+  email: 'MathiasMundryundFrauIna22@gmail.com',
   // Personal postal address from confirmation "Your details" (not recipient bank).
   personalAddressLines: [
     'Office 2587 321-323 High Road, Chadwell Health',
