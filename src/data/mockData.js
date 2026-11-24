@@ -197,8 +197,8 @@ export const viktorCherniavskyiDemoTransfer = {
   "timelineTimestamp": "Tuesday, November 24 at 10:28 AM",
   "timelineSetupTimestamp": "Tuesday, November 24 at 10:28 AM",
   "timelineFundedTimestamp": "Tuesday, November 24 at 10:29 AM",
-  "timelinePayoutTimestamp": "Tuesday, November 24",
-  "timelineCompletionTimestamp": "Tuesday, November 24",
+  "timelinePayoutTimestamp": "Tuesday, November 24 at 10:29 AM",
+  "timelineCompletionTimestamp": "Tuesday, November 24 at 10:29 AM",
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 1,013 EUR to VIKTOR CHERNIAVSKYI.",
   "recipientBankDetails": {
