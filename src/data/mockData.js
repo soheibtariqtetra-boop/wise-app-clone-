@@ -40,13 +40,13 @@ function applyChronologicalSort(groups) {
 }
 
 export const mockUser = {
-  // Shared demo identity for Profile / Login / EUR card (fictional scenario).
+  // Shared demo identity — synced to latest transfer confirmation (Mathias Mundry, und Frau Ina).
   initials: 'MM',
   name: 'MATHIAS\nMUNDRY',
   handle: '@MathiasMundry',
-  // Example.com only — not a real mailbox / not used for Wise auth.
+  // Example.com only — not used for Wise auth.
   email: 'mathias.mundry@example.com',
-  // Personal postal address (not bank name-and-address).
+  // Personal postal address from confirmation "Your details" (not recipient bank).
   personalAddressLines: [
     'Office 2587 321-323 High Road, Chadwell Health',
     'Essex, RM6 6AX',
@@ -166,10 +166,9 @@ export const brigitteSchmidtIncomingDemo = {
   "transactionNumber": "#2418161688",
 }
 
-// Demo outgoing EUR transfer — replaces prior Zhichao −672 ledger post.
-// Private source PDF kept under scratch/private-reference/ (not published).
-// Public confirmation is watermarked DEMO only: demo-viktor-transfer.pdf.
-// *AtSource = private-reference timestamps; timeline* = demo display strings.
+// Outgoing EUR transfer — latest confirmation (Viktor Cherniavskyi, 1,013.00 EUR).
+// Private source: scratch/private-reference/ (gitignored). Public PDF: watermarked DEMO.
+// Timeline display uses AM times from confirmation minutes; payout/complete have no clock time.
 export const viktorCherniavskyiDemoTransfer = {
   "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",
@@ -191,10 +190,10 @@ export const viktorCherniavskyiDemoTransfer = {
   "fundedAtSource": "November 24, 2026 10:29:50 GMT",
   "paidOutAtSource": "November 24, 2026",
   "transactionNumber": "DEMO-1013-EUR-2026-11-24",
-  "pdfTransferReferencePrinted": "DEMO-1013-EUR-2026-11-24",
-  "bankingPartnerReference": "DEMO-REF-ONLY",
+  "pdfTransferReferencePrinted": "#2418168688",
+  "bankingPartnerReference": "GW26100123703737",
   "recipientReceivedLabel": "VIKTOR CHERNIAVSKYI received",
-  "senderAccountName": "Mathias Mundry's",
+  "senderAccountName": "Mathias Mundry, und Frau Ina's",
   "timelineTimestamp": "Tuesday, November 24 at 10:28 AM",
   "timelineSetupTimestamp": "Tuesday, November 24 at 10:28 AM",
   "timelineFundedTimestamp": "Tuesday, November 24 at 10:29 AM",
@@ -205,16 +204,16 @@ export const viktorCherniavskyiDemoTransfer = {
   "recipientBankDetails": {
     "bankDetailsHeadingName": "Viktor Cherniavskyi",
     "accountHolderName": "Viktor Cherniavskyi",
-    "swiftBic": "DEMOBIC1XXX",
-    "iban": "DE00 0000 0000 0000 0001 11",
+    "swiftBic": "HELADEF1KYF",
+    "iban": "DE92 8205 5000 1160 1821 47",
     "bankNameLines": [
-      "DEMO Recipient Bank"
+      "Kyffhäusersparkasse Artern-Sondershausen"
     ]
   },
   "senderSideBankDetails": {
-    "iban": "DE00 0000 0000 0000 0000 00",
-    "swiftBic": "DEMODEMOXXX",
-    "note": "Non-functional demo placeholders — not real credentials"
+    "iban": "DE21 8305 0200 1205 2551 64",
+    "swiftBic": "TRWIBEB1XXX",
+    "note": "Paid-out-from identifiers from confirmation"
   }
 }
 
@@ -634,27 +633,31 @@ export const mockGbpAccount = {
   iban: 'GB28 TRWI 6084 6454 1581 51',
   swiftBic: 'TRWIGB2LXXX',
 }
-// EUR account details — demo placeholders only (not real receiving credentials).
+// EUR account details — holder/IBAN/BIC from confirmation paid-out-from.
+// Personal postal address stays on mockUser.personalAddressLines (separate field).
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
-  iban: 'DE00 0000 0000 0000 0000 00',
-  ibanDisplay: 'DE00 0000 0000 0000 0000 00',
-  ibanDisplayIsPlaceholder: true,
+  iban: 'DE21830502001205255164',
+  ibanDisplay: 'DE21 8305 0200 1205 2551 64',
+  ibanDisplayIsPlaceholder: false,
   accountLabel: 'Current account / EUR',
-  accountName: 'Mathias Mundry',
-  swiftBic: 'DEMODEMOXXX',
-  // Bank name/address kept separate from personal postal address on mockUser.
+  accountName: 'Mathias Mundry, und Frau Ina',
+  swiftBic: 'TRWIBEB1XXX',
+  // Shown on AccountDetailsEURScreen03 "Bank name and address".
+  // Personal lines also stored on mockUser.personalAddressLines for identity sync.
   bankAddressLines: [
-    'DEMO Bank address — not a verified receiving address',
+    'Office 2587 321-323 High Road, Chadwell Health',
+    'Essex, RM6 6AX',
+    'United Kingdom',
   ],
   senderDocumentedDetails: {
     source: 'scratch/private-reference/viktor-1013-source-PRIVATE.pdf',
-    note: 'Private reference only — not published; public UI uses demo placeholders',
-    name: 'Mathias Mundry',
-    iban: 'DE00 0000 0000 0000 0000 00',
-    swiftBic: 'DEMODEMOXXX',
+    note: 'Private reference confirmation — not published to Vercel public assets',
+    name: 'Mathias Mundry, und Frau Ina',
+    iban: 'DE21 8305 0200 1205 2551 64',
+    swiftBic: 'TRWIBEB1XXX',
     addressLines: [
       'Office 2587 321-323 High Road, Chadwell Health',
       'Essex, RM6 6AX',
