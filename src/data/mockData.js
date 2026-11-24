@@ -40,11 +40,18 @@ function applyChronologicalSort(groups) {
 }
 
 export const mockUser = {
-  initials: 'NH',
-  name: 'NAZAR\nHUSSAIN',
-  handle: '@NazarHussain',
-  // LoginScreen01 masked email source. Not used for Wise auth.
-  email: 'nazarhussain17D@gmail.com',
+  // Shared demo identity for Profile / Login / EUR card (fictional scenario).
+  initials: 'MM',
+  name: 'MATHIAS\nMUNDRY',
+  handle: '@MathiasMundry',
+  // Example.com only — not a real mailbox / not used for Wise auth.
+  email: 'mathias.mundry@example.com',
+  // Personal postal address (not bank name-and-address).
+  personalAddressLines: [
+    'Office 2587 321-323 High Road, Chadwell Health',
+    'Essex, RM6 6AX',
+    'United Kingdom',
+  ],
 }
 
 export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
@@ -159,57 +166,55 @@ export const brigitteSchmidtIncomingDemo = {
   "transactionNumber": "#2418161688",
 }
 
-// Outgoing EUR transfer — source: public/confirmations/zhichao-wang-source.pdf (672 (1).pdf).
-// Supersedes any incorrect Sergej Busch / 672.pdf mapping (never landed in this repo).
-// PDF prints BST in November (UK winter is GMT) — literal BST preserved in source fields.
-// PDF sender name is Nazar Hussain — synced to demo EUR/profile identity.
-// PDF source times stay in *AtSource; timeline* fields are display overrides.
-export const zhichaoWangOutgoingTransfer = {
-  "id": "tx-transfer-zhichao-wang",
+// Demo outgoing EUR transfer — replaces prior Zhichao −672 ledger post.
+// Private source PDF kept under scratch/private-reference/ (not published).
+// Public confirmation is watermarked DEMO only: demo-viktor-transfer.pdf.
+// *AtSource = private-reference timestamps; timeline* = demo display strings.
+export const viktorCherniavskyiDemoTransfer = {
+  "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",
-  "isDemo": false,
+  "isDemo": true,
   "isSimulated": false,
-  "title": "ZHICHAO WANG",
-  "displayName": "ZHICHAO WANG",
-  "fullRecipientName": "ZHICHAO WANG",
-  "compactRecipientName": "ZHICHAO WANG",
+  "title": "VIKTOR CHERNIAVSKYI",
+  "displayName": "VIKTOR CHERNIAVSKYI",
+  "fullRecipientName": "VIKTOR CHERNIAVSKYI",
+  "compactRecipientName": "VIKTOR CHERNIAVSKYI",
   "titleColor": "#F3F5F1",
-  "amount": "-672 EUR",
+  "amount": "-1,013 EUR",
   "amountColor": "#F3F5F1",
   "listIconKey": "up",
-  "dateGroup": "Monday, November 23",
-  "dateStr": "2026-11-23T11:36:58+01:00",
+  "dateGroup": "Tuesday, November 24",
+  "dateStr": "2026-11-24T10:28:50Z",
   "currency": "EUR",
-  "date": "Monday, November 23",
-  "createdAtSource": "November 23, 2026 11:36:58 BST",
-  "fundedAtSource": "November 23, 2026 11:43:25 BST",
-  "paidOutAtSource": "November 23, 2026",
-  "transactionNumber": "#2858268525",
-  "pdfTransferReferencePrinted": "#2858268525",
-  "bankingPartnerReference": "GW26100723803737",
-  "recipientReceivedLabel": "ZHICHAO WANG received",
-  "senderAccountName": "Nazar Hussain's",
-  // Timeline display overrides only — not PDF-verified (*AtSource unchanged).
-  "timelineTimestamp": "Monday, November 23 at 11:36 AM",
-  "timelineSetupTimestamp": "Monday, November 23 at 11:36 AM",
-  "timelineFundedTimestamp": "Monday, November 23 at 11:38 AM",
-  "timelinePayoutTimestamp": "Monday, November 23 at 11:42 AM",
-  "timelineCompletionTimestamp": "Monday, November 23 at 11:43 AM",
+  "date": "Tuesday, November 24",
+  "createdAtSource": "November 24, 2026 10:28:50 GMT",
+  "fundedAtSource": "November 24, 2026 10:29:50 GMT",
+  "paidOutAtSource": "November 24, 2026",
+  "transactionNumber": "DEMO-1013-EUR-2026-11-24",
+  "pdfTransferReferencePrinted": "DEMO-1013-EUR-2026-11-24",
+  "bankingPartnerReference": "DEMO-REF-ONLY",
+  "recipientReceivedLabel": "VIKTOR CHERNIAVSKYI received",
+  "senderAccountName": "Mathias Mundry's",
+  "timelineTimestamp": "Tuesday, November 24 at 10:28 AM",
+  "timelineSetupTimestamp": "Tuesday, November 24 at 10:28 AM",
+  "timelineFundedTimestamp": "Tuesday, November 24 at 10:29 AM",
+  "timelinePayoutTimestamp": "Tuesday, November 24",
+  "timelineCompletionTimestamp": "Tuesday, November 24",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 672 EUR to ZHICHAO WANG.",
+  "timelineCompletionDetail": "We sent 1,013 EUR to VIKTOR CHERNIAVSKYI.",
   "recipientBankDetails": {
-    "bankDetailsHeadingName": "Zhichao Wang",
-    "accountHolderName": "Zhichao Wang",
-    "swiftBic": "BUNQDE82XXX",
-    "iban": "DE33370190001011651021",
+    "bankDetailsHeadingName": "Viktor Cherniavskyi",
+    "accountHolderName": "Viktor Cherniavskyi",
+    "swiftBic": "DEMOBIC1XXX",
+    "iban": "DE00 0000 0000 0000 0001 11",
     "bankNameLines": [
-      "BUNQ NIEDERLASSUNG DEUTSCHLAND"
+      "DEMO Recipient Bank"
     ]
   },
   "senderSideBankDetails": {
-    "iban": "BE58903014911979",
-    "swiftBic": "TRWIBEB1XXX",
-    "note": "PDF paid-out-from details — not recipient credentials"
+    "iban": "DE00 0000 0000 0000 0000 00",
+    "swiftBic": "DEMODEMOXXX",
+    "note": "Non-functional demo placeholders — not real credentials"
   }
 }
 
@@ -293,9 +298,9 @@ export const horizonBusinessOutgoing = {
 // Full transaction history grouped by date
 export const mockFullTransactions = [
   {
-    "dateGroup": "Monday, November 23",
+    "dateGroup": "Tuesday, November 24",
     "transactions": [
-      zhichaoWangOutgoingTransfer
+      viktorCherniavskyiDemoTransfer
     ]
   },
   {
@@ -629,31 +634,27 @@ export const mockGbpAccount = {
   iban: 'GB28 TRWI 6084 6454 1581 51',
   swiftBic: 'TRWIGB2LXXX',
 }
-// EUR account details
-// Receiving IBAN/BIC/address preserved (not replaced by PDF sender-side credentials).
-// PDF paid-out-from sender details stored separately for reference only.
+// EUR account details — demo placeholders only (not real receiving credentials).
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
-  // AccountDetailsEURScreen03 — holder name synced to PDF sender (672 (1).pdf).
-  // IBAN/BIC kept as existing receiving-card values (also match PDF paid-out-from).
-  // Bank street address not established by that PDF — leave existing card address unchanged.
-  iban: 'BE58903014911979',
-  ibanDisplay: 'BE58903014911979',
-  ibanDisplayIsPlaceholder: false,
+  iban: 'DE00 0000 0000 0000 0000 00',
+  ibanDisplay: 'DE00 0000 0000 0000 0000 00',
+  ibanDisplayIsPlaceholder: true,
   accountLabel: 'Current account / EUR',
-  accountName: 'Nazar Hussain',
-  swiftBic: 'TRWIBEB1XXX',
+  accountName: 'Mathias Mundry',
+  swiftBic: 'DEMODEMOXXX',
+  // Bank name/address kept separate from personal postal address on mockUser.
   bankAddressLines: [
-    'Post Office Chak No. 156-P, Goth Jangu, Tehsil Sadiqabad, District Rahim Yar Khan.',
+    'DEMO Bank address — not a verified receiving address',
   ],
   senderDocumentedDetails: {
-    source: 'zhichao-wang-source.pdf',
-    note: 'PDF paid-out-from sender details — not verified as Wise EUR receiving credentials',
-    name: 'Nazar Hussain',
-    iban: 'BE58903014911979',
-    swiftBic: 'TRWIBEB1XXX',
+    source: 'scratch/private-reference/viktor-1013-source-PRIVATE.pdf',
+    note: 'Private reference only — not published; public UI uses demo placeholders',
+    name: 'Mathias Mundry',
+    iban: 'DE00 0000 0000 0000 0000 00',
+    swiftBic: 'DEMODEMOXXX',
     addressLines: [
       'Office 2587 321-323 High Road, Chadwell Health',
       'Essex, RM6 6AX',

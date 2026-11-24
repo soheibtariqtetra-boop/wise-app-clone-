@@ -7,16 +7,16 @@
  *
  * Active EUR posts:
  *   debit tx-transfer-jose-antonio-maldonado (Lucas): −1,688.00
- *   debit tx-transfer-zhichao-wang: −672.00
+ *   debit tx-demo-viktor-cherniavskyi: −1,013.00
  *
- * Former Gasper −1,766 debit already reversed (tx-transfer-gasper-marence removed).
+ * Reversed / removed:
+ *   Former Gasper −1,766 (removed)
+ *   Former Zhichao −672 (replaced by Viktor demo; ledger effect reversed)
+ *
  * Brigitte Schmidt ±1,000 EUR demo pair nets 0 and is not posted to the ledger.
  *
- * Closing EUR from the verified opening + remaining active posts:
- *   2,980.00 − 1,688.00 − 672.00 = 620.00
- *
- * PDF / demo EUR account holder: Nazar Hussain (IBAN BE58…).
- * Debit is posted because paid-out-from IBAN matches mockEurAccount.
+ * Closing EUR:
+ *   2,980.00 − 1,688.00 − 1,013.00 = 279.00
  *
  * GBP has no new posted ledger changes since 3,043.00.
  * Combined total uses existing EUR_TO_GBP_RATE only.
@@ -33,7 +33,7 @@ export const EUR_CREDITS_MINOR = []
 /** Posted EUR debits that affect the closing balance. */
 export const EUR_DEBITS_MINOR = [
   { id: 'tx-transfer-jose-antonio-maldonado', amountMinor: 168_800 },
-  { id: 'tx-transfer-zhichao-wang', amountMinor: 67_200 },
+  { id: 'tx-demo-viktor-cherniavskyi', amountMinor: 101_300 },
 ]
 
 /** EUR fees in minor units (none posted). */
