@@ -466,16 +466,7 @@ function TransferDetailsScreen({ transaction, onClose }) {
               </div>
             )}
 
-            {transaction.isSimulated ? (
-              <button
-                type="button"
-                className="transfer-download-btn"
-                disabled
-                aria-disabled="true"
-              >
-                Demo — confirmation not available
-              </button>
-            ) : (
+            {getTransferConfirmationPdfPath(transaction?.id) ? (
               <button
                 type="button"
                 className="transfer-download-btn"
@@ -484,6 +475,15 @@ function TransferDetailsScreen({ transaction, onClose }) {
                 aria-busy={downloadStatus === 'downloading'}
               >
                 Download transfer confirmation
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="transfer-download-btn transfer-download-btn--demo"
+                disabled
+                aria-disabled="true"
+              >
+                Demo — confirmation not available
               </button>
             )}
           </div>

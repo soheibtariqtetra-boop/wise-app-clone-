@@ -4,6 +4,7 @@
  */
 
 import { accountBalances, EUR_TO_GBP_RATE as LEDGER_EUR_TO_GBP_RATE } from './accountBalances.js'
+import { timelineUiTestFixtures } from './fixtures/timelineTimeFixtures.js'
 
 /** Newest-first by structured dateStr (ISO). Do not sort by formatted date labels. */
 export function compareTransactionsByDateDesc(a, b) {
@@ -45,8 +46,8 @@ export const mockUser = {
   initials: 'RK',
   name: 'RITA\nKNEISEL',
   handle: '@RitaKneisel',
-  // No authorized email supplied for this identity — LoginScreen hides the row when null.
-  email: null,
+  // LoginScreen01 UI masking (Figma 15-asterisk pattern).
+  email: 'rita.kneisel@gmail.com',
   personalAddressLines: [
     'Office 2587 321-323 High Road, Chadwell Health',
     'Essex, RM6 6AX',
@@ -166,21 +167,22 @@ export const brigitteSchmidtIncomingDemo = {
   "transactionNumber": "#2418161688",
 }
 
-// Unverified import from 672 _1_.pdf (private storage only — not published).
+// Import from replaced 672 _1_ (1).pdf — confirmation at public/confirmations/rita-kneisel-shahan-confirmation.pdf.
 // Sender Rita und Günther Kneisel → Muhammad Shahan Afzal Khan, −1,538 EUR.
-// Payout clock time unavailable on source; timeline display uses CET minutes for create/fund only.
+// Recipient BIC GENODE51SB2 (replacement PDF). Payout clock unavailable on source.
 // Not posted to EUR ledger until verified (see unverifiedTransferImports).
 export const muhammadShahanAfzalKhanImportTransfer = {
   "id": "tx-import-muhammad-shahan-afzal-khan",
   "type": "transfer",
   "isDemo": true,
-  "isSimulated": true,
+  "isSimulated": false,
   "unverifiedImport": true,
   "importKey": "import-672-1-rita-kneisel-1538",
   "title": "MUHAMMAD SHAHAN AFZAL KHAN",
   "displayName": "MUHAMMAD SHAHAN AFZAL KHAN",
   "fullRecipientName": "MUHAMMAD SHAHAN AFZAL KHAN",
   "compactRecipientName": "MUHAMMAD SHAHAN AFZAL KHAN",
+  "listDisplayName": "MUHAMMAD SHAHAN",
   "titleColor": "#F3F5F1",
   "amount": "-1,538 EUR",
   "amountColor": "#F3F5F1",
@@ -189,6 +191,7 @@ export const muhammadShahanAfzalKhanImportTransfer = {
   "dateStr": "2026-11-24T07:35:21+01:00",
   "currency": "EUR",
   "date": "Tuesday, November 24",
+  // Verified financial source stamps (PDF) — kept separate from UI clocks.
   "createdAtSource": "November 24, 2026 07:35:21 CET",
   "fundedAtSource": "November 24, 2026 07:39:19 CET",
   "paidOutAtSource": "November 24, 2026",
@@ -197,17 +200,14 @@ export const muhammadShahanAfzalKhanImportTransfer = {
   "bankingPartnerReference": "GW26100713803737",
   "recipientReceivedLabel": "MUHAMMAD SHAHAN AFZAL KHAN received",
   "senderAccountName": "Rita und Günther Kneisel's",
-  "timelineTimestamp": "Tuesday, November 24 at 7:35 AM",
-  "timelineSetupTimestamp": "Tuesday, November 24 at 7:35 AM",
-  "timelineFundedTimestamp": "Tuesday, November 24 at 7:39 AM",
-  "timelinePayoutTimestamp": "Tuesday, November 24",
-  "timelineCompletionTimestamp": "Tuesday, November 24",
+  // Isolated UI-test clocks (07:35 / 07:36 / 07:38 / 07:39) — not PDF payout times.
+  ...timelineUiTestFixtures,
   "timelineCompletionTitle": "Your transfer's complete",
   "timelineCompletionDetail": "We sent 1,538 EUR to MUHAMMAD SHAHAN AFZAL KHAN.",
   "recipientBankDetails": {
     "bankDetailsHeadingName": "Muhammad Shahan Afzal Khan",
     "accountHolderName": "Muhammad Shahan Afzal Khan",
-    "swiftBic": "BUNQDE82XXX",
+    "swiftBic": "GENODE51SB2",
     "iban": "DE35 5909 2000 1565 4902 02",
     "bankNameLines": [
       "United People's Bank"
@@ -708,8 +708,9 @@ export const mockEurAccount = {
     'United Kingdom',
   ],
   senderDocumentedDetails: {
-    source: 'scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf',
-    note: 'Private unverified import — not published to Vercel public assets',
+    source: 'public/confirmations/rita-kneisel-shahan-confirmation.pdf',
+    privateCopy: 'scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf',
+    note: 'Confirmation PDF attached for Details download (replaced 672 _1_ (1).pdf)',
     verified: false,
     name: 'Rita und Günther Kneisel',
     iban: 'DE46 5306 1230 0007 0327 57',

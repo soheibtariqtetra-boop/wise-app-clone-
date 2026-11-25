@@ -506,6 +506,10 @@
   font-weight: 600;
   font-size: 16.792px;
   line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 190px);
 }
 
 .eur-screen__tx-date {

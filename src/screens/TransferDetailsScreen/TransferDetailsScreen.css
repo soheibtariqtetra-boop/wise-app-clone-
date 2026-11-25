@@ -580,7 +580,7 @@
   background-color: #153200;
   color: #9FE870;
   height: 52px;
-  border-radius: 28px;
+  border-radius: 999px;
   border: none;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
@@ -589,14 +589,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   cursor: pointer;
   margin-top: auto;
   width: 100%;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .transfer-download-btn:disabled {
   cursor: default;
-  opacity: 0.85;
+}
+
+/* Unavailable confirmation pill — matches demo bar reference (dark forest + lime). */
+.transfer-download-btn--demo {
+  background-color: #1A2E0F;
+  color: #9FE870;
+  opacity: 1;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* ── Download confirmation toast (portaled into #app-overlay) ── */

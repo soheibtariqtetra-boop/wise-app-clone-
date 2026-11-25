@@ -15,8 +15,9 @@ export const unverifiedTransferImports = {
    */
   'import-672-1-rita-kneisel-1538': {
     verified: false,
-    sourceFileName: '672 _1_.pdf',
+    sourceFileName: '672 _1_ (1).pdf',
     privateStoragePath: 'scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf',
+    publicConfirmationPath: 'public/confirmations/rita-kneisel-shahan-confirmation.pdf',
     linkedTransactionId: 'tx-import-muhammad-shahan-afzal-khan',
     extracted: {
       senderName: 'Rita und Günther Kneisel',
@@ -36,11 +37,13 @@ export const unverifiedTransferImports = {
       transferNumberPrinted: '#2858668525',
       membershipNumberPrinted: 'P101634505',
       bankingPartnerReference: 'GW26100713803737',
+      paymentReference: 'Rita und Günther Kneisel',
       senderSideIban: 'DE46 5306 1230 0007 0327 57',
       senderSideBic: 'GENODEF1HUE',
       recipientBankName: 'United People\'s Bank',
       recipientIban: 'DE35 5909 2000 1565 4902 02',
-      recipientBic: 'BUNQDE82XXX',
+      // Updated from replacement PDF (was BUNQDE82XXX on prior 672 _1_.pdf).
+      recipientBic: 'GENODE51SB2',
     },
   },
 }

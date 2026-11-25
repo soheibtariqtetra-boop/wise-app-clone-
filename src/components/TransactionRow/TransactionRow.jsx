@@ -26,6 +26,11 @@ const ICON_MAP = {
  */
 function TransactionRow({ transaction, onSelect }) {
   const icon = ICON_MAP[transaction.listIconKey] || imgIconDown
+  // List rows may use a shortened label; full name stays on the transaction record.
+  const listName =
+    transaction.listDisplayName
+    || transaction.displayName
+    || transaction.title
 
   const handleClick = () => {
     if (onSelect) onSelect(transaction)
@@ -44,7 +49,7 @@ function TransactionRow({ transaction, onSelect }) {
       className="transaction-row"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      aria-label={`${transaction.displayName || transaction.title}, ${transaction.date || transaction.subtitle || ''}, ${transaction.amount}`}
+      aria-label={`${listName}, ${transaction.date || transaction.subtitle || ''}, ${transaction.amount}`}
       data-tx-id={transaction.id}
     >
       <img
@@ -58,7 +63,7 @@ function TransactionRow({ transaction, onSelect }) {
           className="transaction-row__title"
           style={{ color: transaction.titleColor }}
         >
-          {transaction.displayName || transaction.title}
+          {listName}
         </div>
         {(transaction.date || transaction.subtitle) && (
           <div className="transaction-row__meta">{transaction.date || transaction.subtitle}</div>

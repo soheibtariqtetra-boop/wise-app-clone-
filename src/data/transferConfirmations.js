@@ -7,13 +7,16 @@
  *
  * viktor-cherniavskyi-source.pdf — Mathias Mundry, und Frau Ina → Viktor Cherniavskyi (−1,013 EUR).
  *
- * 672 _1_.pdf (Rita → Muhammad Shahan Afzal Khan) stays in
- * scratch/private-reference/ — never mapped here; tx remains isSimulated.
+ * rita-kneisel-shahan-confirmation.pdf — replaced 672 _1_ (1).pdf
+ * (Rita und Günther Kneisel → Muhammad Shahan Afzal Khan, −1,538 EUR).
+ * Recipient BIC on this revision: GENODE51SB2 (was BUNQDE82XXX).
+ * Private copy also kept at scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf.
  */
 export const TRANSFER_CONFIRMATION_PDFS = {
   'tx-transfer-jose-antonio-maldonado': '/confirmations/lucas-confirmation.pdf',
   'tx-transfer-brigitte-schmidt': '/confirmations/brigitte-schmidt-source.pdf',
   'tx-demo-viktor-cherniavskyi': '/confirmations/viktor-cherniavskyi-source.pdf',
+  'tx-import-muhammad-shahan-afzal-khan': '/confirmations/rita-kneisel-shahan-confirmation.pdf',
 }
 
 export function getTransferConfirmationPdfPath(transactionId) {
