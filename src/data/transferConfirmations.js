@@ -6,6 +6,9 @@
  * Do not attach that PDF to the simulated Brigitte incoming demo.
  *
  * viktor-cherniavskyi-source.pdf — Mathias Mundry, und Frau Ina → Viktor Cherniavskyi (−1,013 EUR).
+ *
+ * 672 _1_.pdf (Rita → Muhammad Shahan Afzal Khan) stays in
+ * scratch/private-reference/ — never mapped here; tx remains isSimulated.
  */
 export const TRANSFER_CONFIRMATION_PDFS = {
   'tx-transfer-jose-antonio-maldonado': '/confirmations/lucas-confirmation.pdf',

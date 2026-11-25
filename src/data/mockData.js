@@ -40,13 +40,13 @@ function applyChronologicalSort(groups) {
 }
 
 export const mockUser = {
-  // Shared demo identity — synced to latest transfer confirmation (Mathias Mundry, und Frau Ina).
-  initials: 'MM',
-  name: 'MATHIAS\nMUNDRY',
-  handle: '@MathiasMundry',
-  // LoginScreen01 masked email source. Not used for Wise auth.
-  email: 'MathiasMundryundFrauIna22@gmail.com',
-  // Personal postal address from confirmation "Your details" (not recipient bank).
+  // Active account identity — Rita und Günther Kneisel (from 672 _1_.pdf import).
+  // Do not rewrite historical Mathias/Johannes sender fields on other transfers.
+  initials: 'RK',
+  name: 'RITA\nKNEISEL',
+  handle: '@RitaKneisel',
+  // No authorized email supplied for this identity — LoginScreen hides the row when null.
+  email: null,
   personalAddressLines: [
     'Office 2587 321-323 High Road, Chadwell Health',
     'Essex, RM6 6AX',
@@ -166,9 +166,62 @@ export const brigitteSchmidtIncomingDemo = {
   "transactionNumber": "#2418161688",
 }
 
-// Outgoing EUR transfer — latest confirmation (Viktor Cherniavskyi, 1,013.00 EUR).
-// Private source: scratch/private-reference/ (gitignored). Public PDF: watermarked DEMO.
-// Timeline display uses AM times from confirmation minutes; payout/complete have no clock time.
+// Unverified import from 672 _1_.pdf (private storage only — not published).
+// Sender Rita und Günther Kneisel → Muhammad Shahan Afzal Khan, −1,538 EUR.
+// Payout clock time unavailable on source; timeline display uses CET minutes for create/fund only.
+// Not posted to EUR ledger until verified (see unverifiedTransferImports).
+export const muhammadShahanAfzalKhanImportTransfer = {
+  "id": "tx-import-muhammad-shahan-afzal-khan",
+  "type": "transfer",
+  "isDemo": true,
+  "isSimulated": true,
+  "unverifiedImport": true,
+  "importKey": "import-672-1-rita-kneisel-1538",
+  "title": "MUHAMMAD SHAHAN AFZAL KHAN",
+  "displayName": "MUHAMMAD SHAHAN AFZAL KHAN",
+  "fullRecipientName": "MUHAMMAD SHAHAN AFZAL KHAN",
+  "compactRecipientName": "MUHAMMAD SHAHAN AFZAL KHAN",
+  "titleColor": "#F3F5F1",
+  "amount": "-1,538 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Tuesday, November 24",
+  "dateStr": "2026-11-24T07:35:21+01:00",
+  "currency": "EUR",
+  "date": "Tuesday, November 24",
+  "createdAtSource": "November 24, 2026 07:35:21 CET",
+  "fundedAtSource": "November 24, 2026 07:39:19 CET",
+  "paidOutAtSource": "November 24, 2026",
+  "transactionNumber": "#2858668525",
+  "pdfTransferReferencePrinted": "#2858668525",
+  "bankingPartnerReference": "GW26100713803737",
+  "recipientReceivedLabel": "MUHAMMAD SHAHAN AFZAL KHAN received",
+  "senderAccountName": "Rita und Günther Kneisel's",
+  "timelineTimestamp": "Tuesday, November 24 at 7:35 AM",
+  "timelineSetupTimestamp": "Tuesday, November 24 at 7:35 AM",
+  "timelineFundedTimestamp": "Tuesday, November 24 at 7:39 AM",
+  "timelinePayoutTimestamp": "Tuesday, November 24",
+  "timelineCompletionTimestamp": "Tuesday, November 24",
+  "timelineCompletionTitle": "Your transfer's complete",
+  "timelineCompletionDetail": "We sent 1,538 EUR to MUHAMMAD SHAHAN AFZAL KHAN.",
+  "recipientBankDetails": {
+    "bankDetailsHeadingName": "Muhammad Shahan Afzal Khan",
+    "accountHolderName": "Muhammad Shahan Afzal Khan",
+    "swiftBic": "BUNQDE82XXX",
+    "iban": "DE35 5909 2000 1565 4902 02",
+    "bankNameLines": [
+      "United People's Bank"
+    ]
+  },
+  "senderSideBankDetails": {
+    "iban": "DE46 5306 1230 0007 0327 57",
+    "swiftBic": "GENODEF1HUE",
+    "note": "Paid-out-from identifiers from private import — unverified"
+  }
+}
+
+// Independent Mathias Mundry → Viktor record (do not rewrite sender to Rita).
+// Kept in history; removed from active Rita EUR ledger (different account holder).
 export const viktorCherniavskyiDemoTransfer = {
   "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",
@@ -299,7 +352,8 @@ export const mockFullTransactions = [
   {
     "dateGroup": "Tuesday, November 24",
     "transactions": [
-      viktorCherniavskyiDemoTransfer
+      viktorCherniavskyiDemoTransfer,
+      muhammadShahanAfzalKhanImportTransfer
     ]
   },
   {
@@ -633,18 +687,19 @@ export const mockGbpAccount = {
   iban: 'GB28 TRWI 6084 6454 1581 51',
   swiftBic: 'TRWIGB2LXXX',
 }
-// EUR account details — holder/IBAN/BIC from confirmation paid-out-from.
+// EUR account details — holder from 672 _1_.pdf (Rita und Günther Kneisel).
+// Paid-out-from IBAN/BIC from the private import (unverified until provider check).
 // Personal postal address stays on mockUser.personalAddressLines (separate field).
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
-  iban: 'DE21830502001205255164',
-  ibanDisplay: 'DE21 8305 0200 1205 2551 64',
+  iban: 'DE46530612300007032757',
+  ibanDisplay: 'DE46 5306 1230 0007 0327 57',
   ibanDisplayIsPlaceholder: false,
   accountLabel: 'Current account / EUR',
-  accountName: 'Mathias Mundry, und Frau Ina',
-  swiftBic: 'TRWIBEB1XXX',
+  accountName: 'Rita und Günther Kneisel',
+  swiftBic: 'GENODEF1HUE',
   // Shown on AccountDetailsEURScreen03 "Bank name and address".
   // Personal lines also stored on mockUser.personalAddressLines for identity sync.
   bankAddressLines: [
@@ -653,11 +708,12 @@ export const mockEurAccount = {
     'United Kingdom',
   ],
   senderDocumentedDetails: {
-    source: 'scratch/private-reference/viktor-1013-source-PRIVATE.pdf',
-    note: 'Private reference confirmation — not published to Vercel public assets',
-    name: 'Mathias Mundry, und Frau Ina',
-    iban: 'DE21 8305 0200 1205 2551 64',
-    swiftBic: 'TRWIBEB1XXX',
+    source: 'scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf',
+    note: 'Private unverified import — not published to Vercel public assets',
+    verified: false,
+    name: 'Rita und Günther Kneisel',
+    iban: 'DE46 5306 1230 0007 0327 57',
+    swiftBic: 'GENODEF1HUE',
     addressLines: [
       'Office 2587 321-323 High Road, Chadwell Health',
       'Essex, RM6 6AX',

@@ -5,18 +5,22 @@
  *   GBP base 3.00 + B2B net +3,040.00 = 3,043.00
  *   EUR base 100.00 + B2B net +2,880.00 = 2,980.00
  *
- * Active EUR posts:
+ * Active EUR posts (Rita und Günther Kneisel ledger):
  *   debit tx-transfer-jose-antonio-maldonado (Lucas): −1,688.00
- *   debit tx-demo-viktor-cherniavskyi: −1,013.00
+ *
+ * Not posted (different holder or unverified):
+ *   tx-demo-viktor-cherniavskyi (−1,013) — Mathias Mundry history; reversed from active ledger
+ *   tx-import-muhammad-shahan-afzal-khan (−1,538) — unverified 672 _1_.pdf import; no debit until verified
  *
  * Reversed / removed:
  *   Former Gasper −1,766 (removed)
- *   Former Zhichao −672 (replaced by Viktor demo; ledger effect reversed)
+ *   Former Zhichao −672 (replaced; ledger effect reversed)
+ *   Former Viktor −1,013 (kept in transaction history; not on Rita ledger)
  *
  * Brigitte Schmidt ±1,000 EUR demo pair nets 0 and is not posted to the ledger.
  *
  * Closing EUR:
- *   2,980.00 − 1,688.00 − 1,013.00 = 279.00
+ *   2,980.00 − 1,688.00 = 1,292.00
  *
  * GBP has no new posted ledger changes since 3,043.00.
  * Combined total uses existing EUR_TO_GBP_RATE only.
@@ -33,7 +37,6 @@ export const EUR_CREDITS_MINOR = []
 /** Posted EUR debits that affect the closing balance. */
 export const EUR_DEBITS_MINOR = [
   { id: 'tx-transfer-jose-antonio-maldonado', amountMinor: 168_800 },
-  { id: 'tx-demo-viktor-cherniavskyi', amountMinor: 101_300 },
 ]
 
 /** EUR fees in minor units (none posted). */
