@@ -220,17 +220,18 @@ export const muhammadShahanAfzalKhanImportTransfer = {
   }
 }
 
-// Independent Mathias Mundry → Viktor record (do not rewrite sender to Rita).
+// Independent Mathias Mundry → Muhammad Usman record (do not rewrite sender to Rita).
 // Kept in history; removed from active Rita EUR ledger (different account holder).
+// Internal id/PDF key unchanged; recipient display name updated only.
 export const viktorCherniavskyiDemoTransfer = {
   "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",
   "isDemo": true,
   "isSimulated": false,
-  "title": "VIKTOR CHERNIAVSKYI",
-  "displayName": "VIKTOR CHERNIAVSKYI",
-  "fullRecipientName": "VIKTOR CHERNIAVSKYI",
-  "compactRecipientName": "VIKTOR CHERNIAVSKYI",
+  "title": "MUHAMMAD USMAN",
+  "displayName": "MUHAMMAD USMAN",
+  "fullRecipientName": "MUHAMMAD USMAN",
+  "compactRecipientName": "MUHAMMAD USMAN",
   "titleColor": "#F3F5F1",
   "amount": "-1,013 EUR",
   "amountColor": "#F3F5F1",
@@ -245,7 +246,7 @@ export const viktorCherniavskyiDemoTransfer = {
   "transactionNumber": "#2418168688",
   "pdfTransferReferencePrinted": "#2418168688",
   "bankingPartnerReference": "GW26100123703737",
-  "recipientReceivedLabel": "VIKTOR CHERNIAVSKYI received",
+  "recipientReceivedLabel": "MUHAMMAD USMAN received",
   "senderAccountName": "Mathias Mundry, und Frau Ina's",
   "timelineTimestamp": "Tuesday, November 24 at 10:28 AM",
   "timelineSetupTimestamp": "Tuesday, November 24 at 10:28 AM",
@@ -253,10 +254,10 @@ export const viktorCherniavskyiDemoTransfer = {
   "timelinePayoutTimestamp": "Tuesday, November 24 at 10:29 AM",
   "timelineCompletionTimestamp": "Tuesday, November 24 at 10:29 AM",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1,013 EUR to VIKTOR CHERNIAVSKYI.",
+  "timelineCompletionDetail": "We sent 1,013 EUR to MUHAMMAD USMAN.",
   "recipientBankDetails": {
-    "bankDetailsHeadingName": "Viktor Cherniavskyi",
-    "accountHolderName": "Viktor Cherniavskyi",
+    "bankDetailsHeadingName": "Muhammad Usman",
+    "accountHolderName": "Muhammad Usman",
     "swiftBic": "HELADEF1KYF",
     "iban": "DE92 8205 5000 1160 1821 47",
     "bankNameLines": [
