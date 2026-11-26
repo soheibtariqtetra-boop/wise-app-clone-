@@ -484,6 +484,16 @@
   background-color: rgba(255, 255, 255, 0.03);
 }
 
+/* Imported statement rows are display-only — no detail navigation. */
+.eur-screen__tx-row--readonly {
+  cursor: default;
+  pointer-events: none;
+}
+
+.eur-screen__tx-row--readonly:active {
+  background-color: transparent;
+}
+
 .eur-screen__tx-icon {
   position: absolute;
   left: 17.33px;

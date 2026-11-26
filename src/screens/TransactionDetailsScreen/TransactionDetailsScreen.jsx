@@ -56,8 +56,9 @@ function TransactionDetailsScreen({ transaction, onClose }) {
   if (transaction.listIconKey === 'plus') typeVerb = 'You added';
 
   // Pill labels match Wise reference UI; demoStatus stays in data only.
-  let statusLabel = 'Money sent';
-  if (isIncoming || transaction.listIconKey === 'plus') statusLabel = 'Money added';
+  let statusLabel = 'Money sent'
+  if (transaction.isSample) statusLabel = 'Sample activity'
+  else if (isIncoming || transaction.listIconKey === 'plus') statusLabel = 'Money added';
 
   const txIcon = ICON_MAP[transaction.listIconKey] || imgIconDown;
   const showReference =

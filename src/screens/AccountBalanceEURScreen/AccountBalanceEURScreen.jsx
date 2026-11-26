@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import './AccountBalanceEURScreen.css'
 
-import { mockEurAccount, mockEurTransactions } from '../../data/mockData'
+import { mockEurAccount } from '../../data/mockData'
+import {
+  eurStatementTransactions,
+  sortStatementTransactions,
+} from '../../data/eurStatementImport'
 
 /* ── Local assets (extracted from Figma nodes 31:454 & 24:144) ── */
 import imgClose         from '../../assets/accounts/eur/btn-close.png'
@@ -40,12 +44,14 @@ const txIconMap = {
  *
  * Props:
  *   onClose             — called when X is tapped; returns to Home
- *   onSelectTransaction — called with a transaction object to open details
+ *   onSelectTransaction — unused for imported statement rows (read-only list)
  */
 function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }) {
   const [interestVisible, setInterestVisible] = useState(true)
   const [isScrolled, setIsScrolled]           = useState(false)
   const scrollRef                             = useRef(null)
+  // Imported statement history only — not authenticated account activity.
+  const statementTransactions = sortStatementTransactions(eurStatementTransactions)
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -60,12 +66,6 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
 
   const handleScroll = (e) => {
     setIsScrolled(e.target.scrollTop > 100)
-  }
-
-  const handleTxRowClick = (tx) => {
-    if (onSelectTransaction) {
-      onSelectTransaction(tx)
-    }
   }
 
   return (
@@ -251,19 +251,23 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
             </button>
           </div>
 
-          {/* ── Transaction List (Data-Driven & Repeatable) ── */}
-          <div className="eur-screen__tx-list" data-node-id="24:165">
-            {mockEurTransactions.map((tx) => {
+          {/* ── Transaction List — imported statement (read-only) ── */}
+          <div
+            className="eur-screen__tx-list"
+            data-node-id="24:165"
+            data-statement-import="true"
+            aria-label="Imported statement transactions"
+          >
+            {statementTransactions.map((tx) => {
               const iconSrc = txIconMap[tx.listIconKey] || imgTxDown
               const listName = tx.listDisplayName || tx.displayName || tx.title
               return (
-              <button
+              <div
                 key={tx.id}
-                type="button"
-                className="eur-screen__tx-row"
-                onClick={() => handleTxRowClick(tx)}
-                aria-label={`${listName}, ${tx.amount}`}
+                className="eur-screen__tx-row eur-screen__tx-row--readonly"
+                aria-label={`${listName}, ${tx.date}, ${tx.amount}`}
                 data-node-id="24:171"
+                data-tx-id={tx.id}
               >
                 <div className="eur-screen__tx-icon" data-node-id="24:176">
                   <img src={iconSrc} alt="" draggable={false} />
@@ -285,7 +289,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
                 >
                   {tx.amount}
                 </div>
-              </button>
+              </div>
               )
             })}
 

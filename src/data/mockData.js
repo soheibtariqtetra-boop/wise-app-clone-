@@ -5,6 +5,7 @@
 
 import { accountBalances, EUR_TO_GBP_RATE as LEDGER_EUR_TO_GBP_RATE } from './accountBalances.js'
 import { timelineUiTestFixtures } from './fixtures/timelineTimeFixtures.js'
+import { eurSampleTransactions } from './eurSampleTransactions.js'
 
 /** Newest-first by structured dateStr (ISO). Do not sort by formatted date labels. */
 export function compareTransactionsByDateDesc(a, b) {
@@ -40,18 +41,47 @@ function applyChronologicalSort(groups) {
   return groups
 }
 
+/** Group flat transactions into dateGroup sections for the full history list. */
+function groupTransactionsByDateGroup(transactions) {
+  const map = new Map()
+  for (const tx of transactions) {
+    const key = tx.dateGroup || 'Unknown'
+    if (!map.has(key)) {
+      map.set(key, { dateGroup: key, transactions: [] })
+    }
+    map.get(key).transactions.push(tx)
+  }
+  return Array.from(map.values())
+}
+
+
+
+/**
+ * Shared sample account identity — Profile, Login, Home avatar, EUR/GBP account Name.
+ * Do not rewrite documented historical transfer senders (Rita/Mathias/Johannes PDFs)
+ * or recipient bank credentials to this identity.
+ */
+export const sampleAccountIdentity = {
+  fullName: 'Muhammad Usman',
+  profileName: 'MUHAMMAD\nUSMAN',
+  initials: 'MU',
+  handle: '@MuhammadUsman',
+  // LoginScreen01 UI masking (Figma 15-asterisk pattern) → h***************6@example.com
+  email: 'hello6@example.com',
+}
+
 export const mockUser = {
-  // Active account identity — Rita und Günther Kneisel (from 672 _1_.pdf import).
-  // Do not rewrite historical Mathias/Johannes sender fields on other transfers.
-  initials: 'RK',
-  name: 'RITA\nKNEISEL',
-  handle: '@RitaKneisel',
-  // LoginScreen01 UI masking (Figma 15-asterisk pattern).
-  email: 'rita.kneisel@gmail.com',
+  // Active sample account identity (see sampleAccountIdentity).
+  fullName: sampleAccountIdentity.fullName,
+  initials: sampleAccountIdentity.initials,
+  name: sampleAccountIdentity.profileName,
+  handle: sampleAccountIdentity.handle,
+  email: sampleAccountIdentity.email,
+  // Address from EUR statement_174986227 (5).pdf
   personalAddressLines: [
-    'Office 2587 321-323 High Road, Chadwell Health',
-    'Essex, RM6 6AX',
-    'United Kingdom',
+    'Post Office Chak No. 156-P,',
+    'Goth Jangu,Tehsil Sadiqabad,Punjab',
+    'Pakistan',
   ],
 }
 
@@ -220,18 +250,18 @@ export const muhammadShahanAfzalKhanImportTransfer = {
   }
 }
 
-// Independent Mathias Mundry → Muhammad Usman record (do not rewrite sender to Rita).
-// Kept in history; removed from active Rita EUR ledger (different account holder).
-// Internal id/PDF key unchanged; recipient display name updated only.
+// Demo/sample outgoing (−1,013 EUR). Synthetic recipient display: OLIVER BENNETT.
+// Do not rewrite PDF sender or bank identifiers. Not posted to active sample ledger.
+// Internal id/PDF key unchanged. Profile account holder (Muhammad Usman) is separate.
 export const viktorCherniavskyiDemoTransfer = {
   "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",
   "isDemo": true,
   "isSimulated": false,
-  "title": "MUHAMMAD USMAN",
-  "displayName": "MUHAMMAD USMAN",
-  "fullRecipientName": "MUHAMMAD USMAN",
-  "compactRecipientName": "MUHAMMAD USMAN",
+  "title": "OLIVER BENNETT",
+  "displayName": "OLIVER BENNETT",
+  "fullRecipientName": "OLIVER BENNETT",
+  "compactRecipientName": "OLIVER BENNETT",
   "titleColor": "#F3F5F1",
   "amount": "-1,013 EUR",
   "amountColor": "#F3F5F1",
@@ -246,7 +276,7 @@ export const viktorCherniavskyiDemoTransfer = {
   "transactionNumber": "#2418168688",
   "pdfTransferReferencePrinted": "#2418168688",
   "bankingPartnerReference": "GW26100123703737",
-  "recipientReceivedLabel": "MUHAMMAD USMAN received",
+  "recipientReceivedLabel": "OLIVER BENNETT received",
   "senderAccountName": "Mathias Mundry, und Frau Ina's",
   "timelineTimestamp": "Tuesday, November 24 at 10:28 AM",
   "timelineSetupTimestamp": "Tuesday, November 24 at 10:28 AM",
@@ -254,10 +284,10 @@ export const viktorCherniavskyiDemoTransfer = {
   "timelinePayoutTimestamp": "Tuesday, November 24 at 10:29 AM",
   "timelineCompletionTimestamp": "Tuesday, November 24 at 10:29 AM",
   "timelineCompletionTitle": "Your transfer's complete",
-  "timelineCompletionDetail": "We sent 1,013 EUR to MUHAMMAD USMAN.",
+  "timelineCompletionDetail": "We sent 1,013 EUR to OLIVER BENNETT.",
   "recipientBankDetails": {
-    "bankDetailsHeadingName": "Muhammad Usman",
-    "accountHolderName": "Muhammad Usman",
+    "bankDetailsHeadingName": "Oliver Bennett",
+    "accountHolderName": "Oliver Bennett",
     "swiftBic": "HELADEF1KYF",
     "iban": "DE92 8205 5000 1160 1821 47",
     "bankNameLines": [
@@ -655,6 +685,9 @@ export const mockFullTransactions = [
   }
 ];
 
+// Append synthetic EUR sample activity (Jul–Nov 2026). Sorted with documented rows below.
+mockFullTransactions.push(...groupTransactionsByDateGroup(eurSampleTransactions))
+
 applyChronologicalSort(mockFullTransactions)
 
 const allTransactionsChronological = uniqueTransactionsById(
@@ -674,13 +707,13 @@ export const mockGbpTransactions = allTransactionsChronological.filter(
   (tx) => tx.currency === 'GBP',
 )
 
-// GBP account details
+// GBP account details — Name from sampleAccountIdentity; IBAN/BIC unchanged.
 export const mockGbpAccount = {
   currency: 'GBP',
   symbol: '£',
   balance: accountBalances.gbp,
   accountLabel: 'Current account / GBP',
-  accountName: 'Muhammad Rana hussnain',
+  accountName: sampleAccountIdentity.fullName,
   accountNumber: '54158151',
   sortCode: '60-84-64',
   pillLabel: '60-84-64 · 54158151',
@@ -688,38 +721,36 @@ export const mockGbpAccount = {
   iban: 'GB28 TRWI 6084 6454 1581 51',
   swiftBic: 'TRWIGB2LXXX',
 }
-// EUR account details — holder from 672 _1_.pdf (Rita und Günther Kneisel).
-// Paid-out-from IBAN/BIC from the private import (unverified until provider check).
-// Personal postal address stays on mockUser.personalAddressLines (separate field).
+// EUR account details — Name / IBAN / BIC / address from statement (5).pdf
+// statement_174986227_EUR_2026-08-25_2026-11-25 (5).pdf
+// Personal postal address also on mockUser.personalAddressLines.
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
-  iban: 'DE46530612300007032757',
-  ibanDisplay: 'DE46 5306 1230 0007 0327 57',
+  iban: 'BE58901014911979',
+  ibanDisplay: 'BE58 9010 1491 1979',
   ibanDisplayIsPlaceholder: false,
   accountLabel: 'Current account / EUR',
-  accountName: 'Rita und Günther Kneisel',
-  swiftBic: 'GENODEF1HUE',
+  accountName: sampleAccountIdentity.fullName,
+  swiftBic: 'TRWIBEB1XXX',
   // Shown on AccountDetailsEURScreen03 "Bank name and address".
-  // Personal lines also stored on mockUser.personalAddressLines for identity sync.
   bankAddressLines: [
-    'Office 2587 321-323 High Road, Chadwell Health',
-    'Essex, RM6 6AX',
-    'United Kingdom',
+    'Post Office Chak No. 156-P,',
+    'Goth Jangu,Tehsil Sadiqabad,Punjab',
+    'Pakistan',
   ],
   senderDocumentedDetails: {
-    source: 'public/confirmations/rita-kneisel-shahan-confirmation.pdf',
-    privateCopy: 'scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf',
-    note: 'Confirmation PDF attached for Details download (replaced 672 _1_ (1).pdf)',
+    source: 'scratch/private-reference/statement_174986227_EUR_2026-08-25_2026-11-25-PRIVATE.pdf',
+    note: 'Account holder details from EUR statement (5).pdf — private storage only',
     verified: false,
-    name: 'Rita und Günther Kneisel',
-    iban: 'DE46 5306 1230 0007 0327 57',
-    swiftBic: 'GENODEF1HUE',
+    name: 'Muhammad Usman',
+    iban: 'BE58 9010 1491 1979',
+    swiftBic: 'TRWIBEB1XXX',
     addressLines: [
-      'Office 2587 321-323 High Road, Chadwell Health',
-      'Essex, RM6 6AX',
-      'United Kingdom',
+      'Post Office Chak No. 156-P,',
+      'Goth Jangu,Tehsil Sadiqabad,Punjab',
+      'Pakistan',
     ],
   },
 }
