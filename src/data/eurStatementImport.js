@@ -13,7 +13,7 @@ export const EUR_STATEMENT_SOURCE = {
   privateStoragePath: 'scratch/private-reference/statement_174986227_EUR_2026-08-25_2026-11-25-PRIVATE.pdf',
   periodLabel: '15 September 2026 – 26 November 2026',
   closingBalanceMajor: 1518.43,
-  accountHolderPrinted: 'Muhammad Akbar',
+  accountHolderPrinted: 'Zain UL Abideen',
   ibanPrinted: 'BE58 9010 1491 1979',
   swiftBicPrinted: 'TRWIBEB1XXX',
   addressLinesPrinted: [

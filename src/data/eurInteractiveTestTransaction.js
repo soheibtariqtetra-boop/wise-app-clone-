@@ -2,33 +2,39 @@
  * Single interactive UI-test transfer for AccountBalanceEURScreen.
  *
  * Separate from statement_174986227 import and from balance ledgers.
- * No confirmation PDF. Display transaction number / bank details only.
+ * No confirmation PDF attached.
+ *
+ * Timeline clocks are UI-test events only (24-hour, no AM/PM):
+ *   15:08 → 15:09 → 15:11 → 15:11
  */
 
-const DATE_STR = '2026-11-23T15:11:00Z' // Monday, November 23, 2026
-// UI-test timeline clocks — exact display labels from user reference (15:08 → 15:09 → 15:11 → 15:11 PM).
-const TIMELINE_SETUP = 'Monday, November 23 at 15:08 PM'
-const TIMELINE_FUNDED = 'Monday, November 23 at 15:09 PM'
-const TIMELINE_PAYOUT = 'Monday, November 23 at 15:11 PM'
-const TIMELINE_COMPLETION = 'Monday, November 23 at 15:11 PM'
+const DATE_STR = '2026-11-27T15:11:00Z' // Friday, November 27, 2026
+const DATE_LABEL = 'Friday, November 27'
 
-/** Fictional recipient — UI test only. */
-const RECIPIENT_FULL = 'QUOC LONG HUYNH'
-const RECIPIENT_COMPACT = 'QUOC LONG HUYNH'
-const RECIPIENT_TITLE = 'Quoc Long Huynh'
+// UI-test timeline clocks — 24-hour display, no AM/PM suffix.
+const TIMELINE_SETUP = `${DATE_LABEL} at 15:08`
+const TIMELINE_FUNDED = `${DATE_LABEL} at 15:09`
+const TIMELINE_PAYOUT = `${DATE_LABEL} at 15:11`
+const TIMELINE_COMPLETION = `${DATE_LABEL} at 15:11`
+
+/** Recipient — UI test transfer. */
+const RECIPIENT_FULL = 'ALEKSI OSKARI RUOKONEN'
+const RECIPIENT_COMPACT = 'ALEKSI OSKARI RUOKONEN'
+const RECIPIENT_TITLE = 'Aleksi Oskari Ruokonen'
 /** Matches sampleAccountIdentity.fullName — display sender only, not a ledger post. */
-const SENDER_ACCOUNT_NAME = "Muhammad Akbar's"
+const SENDER_ACCOUNT_NAME = "Zain UL Abideen's"
 
 /**
- * Outgoing −756 EUR interactive test row.
+ * Outgoing −7,355 EUR interactive test row.
  * Clickable → TransferDetailsScreen01/02/03.
  */
 export const eurInteractiveTestTransaction = {
-  id: 'tx-ui-test-eur-756-quoc-long-huynh',
+  id: 'tx-ui-test-eur-7355-aleksi-oskari-ruokonen',
   type: 'transfer',
   isInteractiveTest: true,
   isDemo: true,
   isSimulated: true,
+  isTimelineUiTest: true,
   // Not part of statement import or posted ledger.
   isStatementImport: false,
   title: RECIPIENT_FULL,
@@ -37,34 +43,35 @@ export const eurInteractiveTestTransaction = {
   compactRecipientName: RECIPIENT_COMPACT,
   listDisplayName: RECIPIENT_FULL,
   titleColor: '#F3F5F1',
-  amount: '-756 EUR',
+  amount: '-7,355 EUR',
   amountColor: '#F3F5F1',
   listIconKey: 'up',
-  dateGroup: 'Monday, November 23',
-  date: 'Monday, November 23',
+  dateGroup: DATE_LABEL,
+  date: DATE_LABEL,
   dateStr: DATE_STR,
   currency: 'EUR',
-  // Chronological placement among Nov 23 rows (afternoon after noon statement stubs).
-  sourceOrder: 5.5,
-  signedAmountMajor: -756,
+  // Newest among EUR list rows (after statement Nov 26).
+  sourceOrder: 0,
+  signedAmountMajor: -7355,
   transactionNumber: '#2418298788',
-  pdfTransferReferencePrinted: '#2418298788',
+  pdfTransferReferencePrinted: undefined,
   bankingPartnerReference: undefined,
   recipientReceivedLabel: `${RECIPIENT_FULL} received`,
   senderAccountName: SENDER_ACCOUNT_NAME,
+  // Test event clocks (UI only — not verified payment events).
   timelineTimestamp: TIMELINE_SETUP,
   timelineSetupTimestamp: TIMELINE_SETUP,
   timelineFundedTimestamp: TIMELINE_FUNDED,
   timelinePayoutTimestamp: TIMELINE_PAYOUT,
   timelineCompletionTimestamp: TIMELINE_COMPLETION,
   timelineCompletionTitle: "Your transfer's complete",
-  timelineCompletionDetail: `We sent 756 EUR to ${RECIPIENT_FULL}.`,
+  timelineCompletionDetail: `We sent 7,355 EUR to ${RECIPIENT_FULL}.`,
   recipientBankDetails: {
     bankDetailsHeadingName: RECIPIENT_TITLE,
     accountHolderName: RECIPIENT_TITLE,
-    swiftBic: 'GENODES1VBB',
-    iban: 'DE76 6049 1430 0605 4320 07',
-    bankNameLines: ['VR-Bank Ludwigsburg'],
+    swiftBic: 'OKOYFIHH',
+    iban: 'FI35 5410 0220 4744 75',
+    bankNameLines: ['OP CORPORATE BANK PLC'],
   },
 }
 
