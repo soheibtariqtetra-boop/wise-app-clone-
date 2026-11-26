@@ -62,10 +62,10 @@ function groupTransactionsByDateGroup(transactions) {
  * or recipient bank credentials to this identity.
  */
 export const sampleAccountIdentity = {
-  fullName: 'Muhammad Usman',
-  profileName: 'MUHAMMAD\nUSMAN',
-  initials: 'MU',
-  handle: '@MuhammadUsman',
+  fullName: 'Muhammad Akbar',
+  profileName: 'MUHAMMAD\nAKBAR',
+  initials: 'MA',
+  handle: '@MuhammadAkbar',
   // LoginScreen01 UI masking (Figma 15-asterisk pattern) → h***************6@example.com
   email: 'hello6@example.com',
 }
@@ -252,7 +252,7 @@ export const muhammadShahanAfzalKhanImportTransfer = {
 
 // Demo/sample outgoing (−1,013 EUR). Synthetic recipient display: OLIVER BENNETT.
 // Do not rewrite PDF sender or bank identifiers. Not posted to active sample ledger.
-// Internal id/PDF key unchanged. Profile account holder (Muhammad Usman) is separate.
+// Internal id/PDF key unchanged. Profile account holder (Muhammad Akbar) is separate.
 export const viktorCherniavskyiDemoTransfer = {
   "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",
@@ -744,7 +744,7 @@ export const mockEurAccount = {
     source: 'scratch/private-reference/statement_174986227_EUR_2026-08-25_2026-11-25-PRIVATE.pdf',
     note: 'Account holder details from EUR statement (5).pdf — private storage only',
     verified: false,
-    name: 'Muhammad Usman',
+    name: sampleAccountIdentity.fullName,
     iban: 'BE58 9010 1491 1979',
     swiftBic: 'TRWIBEB1XXX',
     addressLines: [

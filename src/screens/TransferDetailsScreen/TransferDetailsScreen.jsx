@@ -466,26 +466,16 @@ function TransferDetailsScreen({ transaction, onClose }) {
               </div>
             )}
 
-            {getTransferConfirmationPdfPath(transaction?.id) ? (
-              <button
-                type="button"
-                className="transfer-download-btn"
-                onClick={handleDownloadConfirmation}
-                disabled={downloadStatus === 'downloading'}
-                aria-busy={downloadStatus === 'downloading'}
-              >
-                Download transfer confirmation
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="transfer-download-btn transfer-download-btn--demo"
-                disabled
-                aria-disabled="true"
-              >
-                Demo — confirmation not available
-              </button>
-            )}
+            {/* Figma TransferDetailsScreen03 download bar — reuse existing .transfer-download-btn */}
+            <button
+              type="button"
+              className="transfer-download-btn"
+              onClick={handleDownloadConfirmation}
+              disabled={downloadStatus === 'downloading'}
+              aria-busy={downloadStatus === 'downloading'}
+            >
+              Download transfer confirmation
+            </button>
           </div>
         )}
       </div>

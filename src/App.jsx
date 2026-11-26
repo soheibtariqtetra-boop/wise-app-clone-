@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { mockFullTransactions } from './data/mockData'
+import { findEurInteractiveTestTransaction } from './data/eurInteractiveTestTransaction'
 import {
   isAuthenticated as readIsAuthenticated,
   setAuthenticated as persistAuthenticated,
@@ -40,14 +41,21 @@ function App() {
     return resolveRouteFromPath(window.location.pathname)
   }
 
+  const findTransactionById = (txId) => {
+    if (!txId) return null
+    for (const group of mockFullTransactions) {
+      const tx = group.transactions.find((t) => t.id === txId)
+      if (tx) return tx
+    }
+    // Interactive EUR UI-test transfer — not part of the financial ledger.
+    return findEurInteractiveTestTransaction(txId)
+  }
+
   const getInitialTransaction = () => {
     if (!readIsAuthenticated()) return null
     if (window.location.pathname.startsWith('/transaction/') || window.location.pathname.startsWith('/transfer/')) {
       const txId = window.location.pathname.split(/\/(?:transaction|transfer)\//)[1]
-      for (const group of mockFullTransactions) {
-        const tx = group.transactions.find(t => t.id === txId)
-        if (tx) return tx
-      }
+      return findTransactionById(txId)
     }
     return null
   }
@@ -106,11 +114,7 @@ function App() {
         setCurrentRoute('gbpAccount')
       } else if (nextRoute === 'transfer' || nextRoute === 'transaction') {
         const txId = path.split(/\/(?:transaction|transfer)\//)[1]
-        let found = null
-        for (const group of mockFullTransactions) {
-          const tx = group.transactions.find(t => t.id === txId)
-          if (tx) { found = tx; break; }
-        }
+        const found = findTransactionById(txId)
         if (found) {
           setSelectedTransaction(found)
           setCurrentRoute(nextRoute)
@@ -277,11 +281,7 @@ function App() {
 
   const resolveTransaction = (transaction) => {
     if (!transaction?.id) return transaction
-    for (const group of mockFullTransactions) {
-      const found = group.transactions.find((t) => t.id === transaction.id)
-      if (found) return found
-    }
-    return transaction
+    return findTransactionById(transaction.id) || transaction
   }
 
   const navigateToTransaction = (transaction) => {

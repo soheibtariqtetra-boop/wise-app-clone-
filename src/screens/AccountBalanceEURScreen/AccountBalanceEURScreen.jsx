@@ -6,6 +6,7 @@ import {
   eurStatementTransactions,
   sortStatementTransactions,
 } from '../../data/eurStatementImport'
+import { eurInteractiveTestTransaction } from '../../data/eurInteractiveTestTransaction'
 
 /* ── Local assets (extracted from Figma nodes 31:454 & 24:144) ── */
 import imgClose         from '../../assets/accounts/eur/btn-close.png'
@@ -44,14 +45,17 @@ const txIconMap = {
  *
  * Props:
  *   onClose             — called when X is tapped; returns to Home
- *   onSelectTransaction — unused for imported statement rows (read-only list)
+ *   onSelectTransaction — opens TransferDetails for the interactive test row only
  */
 function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }) {
   const [interestVisible, setInterestVisible] = useState(true)
   const [isScrolled, setIsScrolled]           = useState(false)
   const scrollRef                             = useRef(null)
-  // Imported statement history only — not authenticated account activity.
-  const statementTransactions = sortStatementTransactions(eurStatementTransactions)
+  // 40 imported statement rows (read-only) + 1 interactive UI-test transfer.
+  const listTransactions = sortStatementTransactions([
+    ...eurStatementTransactions,
+    eurInteractiveTestTransaction,
+  ])
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -66,6 +70,10 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
 
   const handleScroll = (e) => {
     setIsScrolled(e.target.scrollTop > 100)
+  }
+
+  const handleTestTxClick = (tx) => {
+    if (onSelectTransaction) onSelectTransaction(tx)
   }
 
   return (
@@ -251,45 +259,72 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
             </button>
           </div>
 
-          {/* ── Transaction List — imported statement (read-only) ── */}
+          {/* ── Transaction List — statement (read-only) + interactive test row ── */}
           <div
             className="eur-screen__tx-list"
             data-node-id="24:165"
             data-statement-import="true"
-            aria-label="Imported statement transactions"
+            aria-label="EUR transactions"
           >
-            {statementTransactions.map((tx) => {
+            {listTransactions.map((tx) => {
               const iconSrc = txIconMap[tx.listIconKey] || imgTxDown
               const listName = tx.listDisplayName || tx.displayName || tx.title
+              const isInteractive = Boolean(tx.isInteractiveTest)
+              const rowClass = isInteractive
+                ? 'eur-screen__tx-row'
+                : 'eur-screen__tx-row eur-screen__tx-row--readonly'
+              const rowBody = (
+                <>
+                  <div className="eur-screen__tx-icon" data-node-id="24:176">
+                    <img src={iconSrc} alt="" draggable={false} />
+                  </div>
+                  <div
+                    className="eur-screen__tx-title"
+                    style={{ color: tx.titleColor }}
+                    data-node-id="24:175"
+                  >
+                    {listName}
+                  </div>
+                  <div className="eur-screen__tx-date" data-node-id="24:174">
+                    {tx.date}
+                  </div>
+                  <div
+                    className="eur-screen__tx-amount"
+                    style={{ color: tx.amountColor }}
+                    data-node-id="24:172"
+                  >
+                    {tx.amount}
+                  </div>
+                </>
+              )
+
+              if (isInteractive) {
+                return (
+                  <button
+                    key={tx.id}
+                    type="button"
+                    className={rowClass}
+                    onClick={() => handleTestTxClick(tx)}
+                    aria-label={`${listName}, ${tx.date}, ${tx.amount}`}
+                    data-node-id="24:171"
+                    data-tx-id={tx.id}
+                    data-interactive-test="true"
+                  >
+                    {rowBody}
+                  </button>
+                )
+              }
+
               return (
-              <div
-                key={tx.id}
-                className="eur-screen__tx-row eur-screen__tx-row--readonly"
-                aria-label={`${listName}, ${tx.date}, ${tx.amount}`}
-                data-node-id="24:171"
-                data-tx-id={tx.id}
-              >
-                <div className="eur-screen__tx-icon" data-node-id="24:176">
-                  <img src={iconSrc} alt="" draggable={false} />
-                </div>
                 <div
-                  className="eur-screen__tx-title"
-                  style={{ color: tx.titleColor }}
-                  data-node-id="24:175"
+                  key={tx.id}
+                  className={rowClass}
+                  aria-label={`${listName}, ${tx.date}, ${tx.amount}`}
+                  data-node-id="24:171"
+                  data-tx-id={tx.id}
                 >
-                  {listName}
+                  {rowBody}
                 </div>
-                <div className="eur-screen__tx-date" data-node-id="24:174">
-                  {tx.date}
-                </div>
-                <div
-                  className="eur-screen__tx-amount"
-                  style={{ color: tx.amountColor }}
-                  data-node-id="24:172"
-                >
-                  {tx.amount}
-                </div>
-              </div>
               )
             })}
 
