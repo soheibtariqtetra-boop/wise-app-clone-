@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './GBPAccountDetailsScreen.css'
+import { mockGbpAccount } from '../../data/mockData'
 
 /* ── Local assets (Figma node 177:308 — GBPAccountDetailsScreen) ── */
 import imgBackButton from '../../assets/accounts/gbp/btn-back.png'
@@ -31,11 +32,12 @@ function GBPAccountDetailsScreen({ onBack }) {
   const [activeTab, setActiveTab]     = useState('Fees')
 
   const account = {
-    name:          'Muhammad Rana hussnain',
-    accountNumber: '54158151',
-    sortCode:      '60-84-64',
-    iban:          'GB28 TRWI 6084 6454 1581 51',
-    swiftBic:      'TRWIGB2LXXX',
+    // Name from shared prototype identity; GBP routing stays existing Wise UK sample.
+    name:          mockGbpAccount.accountName,
+    accountNumber: mockGbpAccount.accountNumber,
+    sortCode:      mockGbpAccount.sortCode,
+    iban:          mockGbpAccount.iban,
+    swiftBic:      mockGbpAccount.swiftBic,
     bankAddress:   [
       'Wise Payments Limited,',
       'Worship Square, 65 Clifton',

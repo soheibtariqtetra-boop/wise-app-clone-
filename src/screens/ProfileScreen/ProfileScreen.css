@@ -205,16 +205,22 @@
 .profile-identity__name--stacked {
   height: auto;
   min-height: 77px;
-  line-height: 0.75;
-  gap: 5px;
+  /* Safer tracking for dynamic prototype names — avoid glyph collision. */
+  letter-spacing: -2px;
+  line-height: 0.78;
+  gap: 6px;
   justify-content: flex-start;
+  overflow: visible;
 }
 
 .profile-identity__name--stacked .profile-identity__name-line {
   display: block;
   width: 100%;
-  line-height: 0.75;
+  max-width: 100%;
+  line-height: 0.78;
   text-align: center;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 .profile-identity__layer-main {

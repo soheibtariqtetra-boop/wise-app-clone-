@@ -11,12 +11,17 @@
  * (Rita und Günther Kneisel → Muhammad Shahan Afzal Khan, −1,538 EUR).
  * Recipient BIC on this revision: GENODE51SB2 (was BUNQDE82XXX).
  * Private copy also kept at scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf.
+ *
+ * zhichao-wang-source.pdf — 672 (2).pdf
+ * (Nazar Hussain → Zhichao Wang, −672 EUR).
+ * Private copy: scratch/private-reference/672_2_PRIVATE.pdf.
  */
 export const TRANSFER_CONFIRMATION_PDFS = {
   'tx-transfer-jose-antonio-maldonado': '/confirmations/lucas-confirmation.pdf',
   'tx-transfer-brigitte-schmidt': '/confirmations/brigitte-schmidt-source.pdf',
   'tx-demo-viktor-cherniavskyi': '/confirmations/viktor-cherniavskyi-source.pdf',
   'tx-import-muhammad-shahan-afzal-khan': '/confirmations/rita-kneisel-shahan-confirmation.pdf',
+  'tx-import-zhichao-wang-672': '/confirmations/zhichao-wang-source.pdf',
 }
 
 export function getTransferConfirmationPdfPath(transactionId) {

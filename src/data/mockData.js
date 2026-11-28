@@ -9,6 +9,12 @@ import {
   zhichaoUiTestFixtures,
 } from './fixtures/timelineTimeFixtures.js'
 import { eurSampleTransactions } from './eurSampleTransactions.js'
+import {
+  sampleAccountIdentity,
+  authorizedReceivingEurAccount,
+} from './sampleAccountIdentity.js'
+
+export { sampleAccountIdentity, authorizedReceivingEurAccount } from './sampleAccountIdentity.js'
 
 /** Newest-first by structured dateStr (ISO). Do not sort by formatted date labels. */
 export function compareTransactionsByDateDesc(a, b) {
@@ -59,33 +65,16 @@ function groupTransactionsByDateGroup(transactions) {
 
 
 
-/**
- * Shared sample account identity — Profile, Login, Home avatar, EUR/GBP account Name.
- * Do not rewrite documented historical transfer senders (Rita/Mathias/Johannes PDFs)
- * or recipient bank credentials to this identity.
- */
-export const sampleAccountIdentity = {
-  fullName: 'Zain UL Abideen',
-  profileName: 'ZAIN UL\nABIDEEN',
-  initials: 'ZA',
-  handle: '@ZainULAbideen',
-  // LoginScreen01 UI masking (Figma 15-asterisk pattern) → h***************6@example.com
-  email: 'hello6@example.com',
-}
-
 export const mockUser = {
-  // Active sample account identity (see sampleAccountIdentity).
+  // Active prototype account identity (see sampleAccountIdentity.js).
   fullName: sampleAccountIdentity.fullName,
   initials: sampleAccountIdentity.initials,
   name: sampleAccountIdentity.profileName,
   handle: sampleAccountIdentity.handle,
   email: sampleAccountIdentity.email,
-  // Address from EUR statement_174986227 (5).pdf
-  personalAddressLines: [
-    'Post Office Chak No. 156-P,',
-    'Goth Jangu,Tehsil Sadiqabad,Punjab',
-    'Pakistan',
-  ],
+  membershipNumber: sampleAccountIdentity.membershipNumber,
+  // Personal postal only — not the EUR "Bank name and address" field.
+  personalAddressLines: [...sampleAccountIdentity.personalAddressLines],
 }
 
 export const EUR_TO_GBP_RATE = LEDGER_EUR_TO_GBP_RATE;
@@ -200,12 +189,11 @@ export const brigitteSchmidtIncomingDemo = {
   "transactionNumber": "#2418161688",
 }
 
-// Import from 672 (2).pdf — private only (scratch/private-reference/672_2_PRIVATE.pdf).
+// Import from 672 (2).pdf — confirmation: public/confirmations/zhichao-wang-source.pdf
+// Private copy: scratch/private-reference/672_2_PRIVATE.pdf
 // Sender Nazar Hussain → Zhichao Wang, −672 EUR.
-// Paid-out-from IBAN/BIC stay on senderSideBankDetails (do not rewrite receiving account).
 // Source prints BST on 23 Nov — flag timezone discrepancy; payout clock unavailable.
 // Not posted to EUR ledger until verified (see unverifiedTransferImports).
-// Profile identity (Zain UL Abideen) is separate — transfer sender is Nazar Hussain.
 export const zhichaoWangImportTransfer = {
   "id": "tx-import-zhichao-wang-672",
   "type": "transfer",
@@ -313,7 +301,7 @@ export const muhammadShahanAfzalKhanImportTransfer = {
 
 // Demo/sample outgoing (−1,013 EUR). Synthetic recipient display: OLIVER BENNETT.
 // Do not rewrite PDF sender or bank identifiers. Not posted to active sample ledger.
-// Internal id/PDF key unchanged. Profile account holder (Zain UL Abideen) is separate.
+// Internal id/PDF key unchanged. Profile account holder (Nazar Hussain) is separate.
 export const viktorCherniavskyiDemoTransfer = {
   "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",
@@ -788,36 +776,27 @@ export const mockGbpAccount = {
   iban: 'GB28 TRWI 6084 6454 1581 51',
   swiftBic: 'TRWIGB2LXXX',
 }
-// EUR account details — Name / IBAN / BIC / address from statement (5).pdf
-// statement_174986227_EUR_2026-08-25_2026-11-25 (5).pdf
-// Personal postal address also on mockUser.personalAddressLines.
+// EUR receiving account — Name/IBAN/BIC from authorizedReceivingEurAccount.
+// Personal postal stays on mockUser.personalAddressLines (separate field).
 export const mockEurAccount = {
   currency: 'EUR',
   symbol: '€',
   balance: accountBalances.eur,
-  iban: 'BE58901014911979',
-  ibanDisplay: 'BE58 9010 1491 1979',
-  ibanDisplayIsPlaceholder: false,
   accountLabel: 'Current account / EUR',
-  accountName: sampleAccountIdentity.fullName,
-  swiftBic: 'TRWIBEB1XXX',
-  // Shown on AccountDetailsEURScreen03 "Bank name and address".
-  bankAddressLines: [
-    'Post Office Chak No. 156-P,',
-    'Goth Jangu,Tehsil Sadiqabad,Punjab',
-    'Pakistan',
-  ],
+  accountName: authorizedReceivingEurAccount.accountName,
+  iban: authorizedReceivingEurAccount.iban,
+  ibanDisplay: authorizedReceivingEurAccount.ibanDisplay,
+  ibanDisplayIsPlaceholder: authorizedReceivingEurAccount.ibanDisplayIsPlaceholder,
+  swiftBic: authorizedReceivingEurAccount.swiftBic,
+  // AccountDetailsEURScreen03 "Bank name and address" (not personal-details address).
+  bankAddressLines: [...authorizedReceivingEurAccount.bankAddressLines],
   senderDocumentedDetails: {
     source: 'scratch/private-reference/statement_174986227_EUR_2026-08-25_2026-11-25-PRIVATE.pdf',
-    note: 'Account holder details from EUR statement (5).pdf — private storage only',
+    note: 'Receiving-account credentials — private statement storage only',
     verified: false,
-    name: sampleAccountIdentity.fullName,
-    iban: 'BE58 9010 1491 1979',
-    swiftBic: 'TRWIBEB1XXX',
-    addressLines: [
-      'Post Office Chak No. 156-P,',
-      'Goth Jangu,Tehsil Sadiqabad,Punjab',
-      'Pakistan',
-    ],
+    name: authorizedReceivingEurAccount.accountName,
+    iban: authorizedReceivingEurAccount.ibanDisplay,
+    swiftBic: authorizedReceivingEurAccount.swiftBic,
+    addressLines: [...authorizedReceivingEurAccount.bankAddressLines],
   },
 }

@@ -20,7 +20,7 @@ export const unverifiedTransferImports = {
     verified: false,
     sourceFileName: '672 (2).pdf',
     privateStoragePath: 'scratch/private-reference/672_2_PRIVATE.pdf',
-    publicConfirmationPath: null,
+    publicConfirmationPath: 'public/confirmations/zhichao-wang-source.pdf',
     linkedTransactionId: 'tx-import-zhichao-wang-672',
     extracted: {
       senderName: 'Nazar Hussain',

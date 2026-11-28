@@ -1,22 +1,20 @@
 import './LoginScreen.css'
-import { mockUser, mockEurAccount } from '../../data/mockData'
-import { getLoginAvatarInitial, maskEmailForLogin } from '../../data/authSession'
+import { sampleAccountIdentity } from '../../data/sampleAccountIdentity'
+import { maskEmailForLogin } from '../../data/authSession'
 import imgBack from '../../assets/login/btn-back.png'
 import imgWiseLogo from '../../assets/login/wise-logo.png'
 
 /**
  * LoginScreen01 — Figma node 253:6 (390 × 844)
  * Demo saved-account login after logout. Not an official Wise login page.
+ * Identity bound to sampleAccountIdentity (same record as Profile / EUR Name).
  */
 function LoginScreen({ onLogBackIn, onUseAnotherAccount, onBack }) {
-  // Prefer EUR holder name (title case). Avatar uses first letter of first name only.
-  const displayName =
-    mockEurAccount?.accountName
-    || mockUser?.name?.replace(/\n/g, ' ')
-    || ''
-  const avatarInitial = getLoginAvatarInitial(displayName)
-  // Only show masked email when an authorized address exists for this demo identity.
-  const maskedEmail = maskEmailForLogin(mockUser?.email)
+  const displayName = sampleAccountIdentity.fullName
+  const avatarInitial =
+    sampleAccountIdentity.loginAvatarInitial
+    || displayName.trim().charAt(0).toUpperCase()
+  const maskedEmail = maskEmailForLogin(sampleAccountIdentity.email)
 
   return (
     <div
@@ -24,6 +22,7 @@ function LoginScreen({ onLogBackIn, onUseAnotherAccount, onBack }) {
       data-node-id="253:6"
       data-name="LoginScreen01"
       data-demo="true"
+      data-prototype-test={sampleAccountIdentity.isPrototypeTestAccount ? 'true' : undefined}
       aria-label="Demo login screen"
     >
       <button

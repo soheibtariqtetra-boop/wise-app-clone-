@@ -8,6 +8,8 @@
  *   15:08 → 15:09 → 15:11 → 15:11
  */
 
+import { sampleAccountIdentity } from './sampleAccountIdentity.js'
+
 const DATE_STR = '2026-11-27T15:11:00Z' // Friday, November 27, 2026
 const DATE_LABEL = 'Friday, November 27'
 
@@ -21,8 +23,8 @@ const TIMELINE_COMPLETION = `${DATE_LABEL} at 15:11`
 const RECIPIENT_FULL = 'ALEKSI OSKARI RUOKONEN'
 const RECIPIENT_COMPACT = 'ALEKSI OSKARI RUOKONEN'
 const RECIPIENT_TITLE = 'Aleksi Oskari Ruokonen'
-/** Matches sampleAccountIdentity.fullName — display sender only, not a ledger post. */
-const SENDER_ACCOUNT_NAME = "Zain UL Abideen's"
+/** Matches shared prototype identity — display sender only, not a ledger post. */
+const SENDER_ACCOUNT_NAME = `${sampleAccountIdentity.fullName}'s`
 
 /**
  * Outgoing −7,355 EUR interactive test row.

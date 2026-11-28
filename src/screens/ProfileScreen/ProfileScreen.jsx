@@ -94,69 +94,25 @@ function ProfileScreen({ onBack, onLogout }) {
             />
           </div>
 
-          {/* Business Name (Figma node 7:526 & 304:23 & 319:25) */}
-          {mockUser.name === 'REGINA SYBILLE\nKROOG' ? (
-              <div className="profile-identity__name" data-node-id="7:526" aria-label="REGINA SYBILLE KROOG">
-                <div className="profile-identity__layer-main" aria-hidden="true">
-                  <div style={{ position: 'absolute', left: '0px', top: '-3.333px', height: '48px', display: 'flex', alignItems: 'center', whiteSpace: 'pre' }}>
-                    <span style={{ lineHeight: 0.9 }}>regina </span>
-                    <span style={{ lineHeight: 0.9, letterSpacing: '-1.92px' }}>s</span>
-                    <span style={{ lineHeight: 0.9, letterSpacing: '-1.76px' }}>y</span>
-                  </div>
-                  <div style={{ position: 'absolute', left: '213px', top: '-3.333px', height: '48px', display: 'flex', alignItems: 'center', whiteSpace: 'pre' }}>
-                    <span style={{ lineHeight: 0.9 }}>ille</span>
-                  </div>
-                  <div style={{ position: 'absolute', left: '98px', top: '31.667px', height: '48px', display: 'flex', alignItems: 'center', whiteSpace: 'pre' }}>
-                    <span style={{ lineHeight: 0.9 }}>roog</span>
-                  </div>
-                </div>
-                <div className="profile-identity__layer-b" aria-hidden="true" data-node-id="319:23">
-                  <span className="profile-identity__name-z">b</span>
-                </div>
-                <div className="profile-identity__layer-k" aria-hidden="true" data-node-id="319:25">
-                  <span className="profile-identity__name-z">k</span>
-                </div>
-              </div>
-          ) : mockUser.name === 'MUHAMMAD\nWAZEER' ? (
-            <h1
-              className="profile-identity__name"
-              data-node-id="7:526"
-              aria-label="MUHAMMAD WAZEER"
-            >
-              <span className="profile-identity__name-line" aria-hidden="true">
-                <span style={{ letterSpacing: '-2.8438px' }}>MUHA</span>
-                <span style={{ letterSpacing: '-0.8px' }}>M</span>
-                <span style={{ letterSpacing: '-2.8438px' }}>MAD</span>
+          {/* Account name — always from shared sampleAccountIdentity via mockUser */}
+          <h1
+            className="profile-identity__name profile-identity__name--stacked"
+            data-node-id="7:526"
+            aria-label={mockUser.name.replace(/\n/g, ' ')}
+          >
+            {mockUser.name.split('\n').map((line, i) => (
+              <span
+                key={i}
+                className={
+                  i === 0
+                    ? 'profile-identity__name-line'
+                    : 'profile-identity__name-line profile-identity__name-line--second'
+                }
+              >
+                {line}
               </span>
-              <span className="profile-identity__name-line profile-identity__name-line--second" aria-hidden="true">
-                <span style={{ letterSpacing: '-7.5px' }}>W</span>
-                <span style={{ letterSpacing: '-3.2px' }}>A</span>
-                <span data-node-id="304:23" className="profile-identity__name-z" style={{ letterSpacing: '-2.8438px' }}>Z</span>
-                <span style={{ letterSpacing: '-2.8438px' }}>E</span>
-                <span style={{ letterSpacing: '-2.8438px' }}>E</span>
-                <span style={{ letterSpacing: '-2.8438px' }}>R</span>
-              </span>
-            </h1>
-          ) : (
-            <h1
-              className="profile-identity__name profile-identity__name--stacked"
-              data-node-id="7:526"
-              aria-label={mockUser.name.replace(/\n/g, ' ')}
-            >
-              {mockUser.name.split('\n').map((line, i) => (
-                <span
-                  key={i}
-                  className={
-                    i === 0
-                      ? 'profile-identity__name-line'
-                      : 'profile-identity__name-line profile-identity__name-line--second'
-                  }
-                >
-                  {line}
-                </span>
-              ))}
-            </h1>
-          )}
+            ))}
+          </h1>
 
           {/* Email Pill (Figma node 7:521) */}
           <div className="profile-identity__email-pill" data-node-id="7:521">
@@ -380,7 +336,7 @@ function ProfileScreen({ onBack, onLogout }) {
             <ProfileSettingsRow
               icon={imgClose}
               title="Close account"
-              description="Close the business account for Muhammad Ahsan Ayaz Ltd"
+              description={`Close the business account for ${mockUser.fullName}`}
               height={99.667}
               paddingTop={11.375}
               titleWidth={118.625}
@@ -411,7 +367,7 @@ function ProfileScreen({ onBack, onLogout }) {
         <section className="profile-info-section" aria-label="Account and App Information">
           <ProfileInfoRow
             label="Your membership number"
-            value="P101684505"
+            value={mockUser.membershipNumber || 'P101684505'}
             labelBold={true}
             labelColor="#d2d4d0"
             valueSize={14.625}
