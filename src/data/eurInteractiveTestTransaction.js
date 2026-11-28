@@ -5,19 +5,19 @@
  * No confirmation PDF attached.
  *
  * Timeline clocks are UI-test events only (24-hour, no AM/PM):
- *   15:08 → 15:09 → 15:11 → 15:11
+ *   18:15 → 18:16 → 18:17 → 18:17
  */
 
 import { sampleAccountIdentity } from './sampleAccountIdentity.js'
 
-const DATE_STR = '2026-11-27T15:11:00Z' // Friday, November 27, 2026
-const DATE_LABEL = 'Friday, November 27'
+const DATE_STR = '2026-11-28T18:15:00Z' // Saturday, November 28, 2026
+const DATE_LABEL = 'Saturday, November 28'
 
-// UI-test timeline clocks — 24-hour display, no AM/PM suffix.
-const TIMELINE_SETUP = `${DATE_LABEL} at 15:08`
-const TIMELINE_FUNDED = `${DATE_LABEL} at 15:09`
-const TIMELINE_PAYOUT = `${DATE_LABEL} at 15:11`
-const TIMELINE_COMPLETION = `${DATE_LABEL} at 15:11`
+// UI-test timeline clocks — 24-hour display, no AM/PM suffix (6:15–6:17 PM).
+const TIMELINE_SETUP = `${DATE_LABEL} at 18:15`
+const TIMELINE_FUNDED = `${DATE_LABEL} at 18:16`
+const TIMELINE_PAYOUT = `${DATE_LABEL} at 18:17`
+const TIMELINE_COMPLETION = `${DATE_LABEL} at 18:17`
 
 /** Recipient — UI test transfer. */
 const RECIPIENT_FULL = 'ALEKSI OSKARI RUOKONEN'
@@ -52,7 +52,6 @@ export const eurInteractiveTestTransaction = {
   date: DATE_LABEL,
   dateStr: DATE_STR,
   currency: 'EUR',
-  // Newest among EUR list rows (after statement Nov 26).
   sourceOrder: 0,
   signedAmountMajor: -7355,
   transactionNumber: '#2418298788',
@@ -60,7 +59,6 @@ export const eurInteractiveTestTransaction = {
   bankingPartnerReference: undefined,
   recipientReceivedLabel: `${RECIPIENT_FULL} received`,
   senderAccountName: SENDER_ACCOUNT_NAME,
-  // Test event clocks (UI only — not verified payment events).
   timelineTimestamp: TIMELINE_SETUP,
   timelineSetupTimestamp: TIMELINE_SETUP,
   timelineFundedTimestamp: TIMELINE_FUNDED,

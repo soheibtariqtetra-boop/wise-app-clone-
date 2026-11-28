@@ -301,7 +301,7 @@ export const muhammadShahanAfzalKhanImportTransfer = {
 
 // Demo/sample outgoing (−1,013 EUR). Synthetic recipient display: OLIVER BENNETT.
 // Do not rewrite PDF sender or bank identifiers. Not posted to active sample ledger.
-// Internal id/PDF key unchanged. Profile account holder (Nazar Hussain) is separate.
+// Internal id/PDF key unchanged. Profile account holder (Zain UL Abideen) is separate.
 export const viktorCherniavskyiDemoTransfer = {
   "id": "tx-demo-viktor-cherniavskyi",
   "type": "transfer",

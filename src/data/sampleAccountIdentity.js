@@ -5,8 +5,8 @@
  * AccountDetailsEURScreen03 Name, AccountBalanceEURScreen01 (via mockEurAccount),
  * GBP account Name.
  *
- * Prototype / unofficial app test profile: Nazar Hussain.
- * EUR receiving fields from 672 (2).pdf "Paid out from" / "Your details".
+ * Prototype / unofficial app test profile: Zain UL Abideen.
+ * EUR receiving banking fields remain from 672 (2).pdf paid-out-from / address.
  */
 
 import { getLoginAvatarInitial } from './authSession.js'
@@ -26,21 +26,19 @@ export function getTwoLetterInitials(fullName) {
 }
 
 /**
- * Prototype test account — Nazar Hussain.
- * Postal + membership from 672 (2).pdf.
+ * Prototype test account — Zain UL Abideen.
  */
 export const sampleAccountIdentity = {
   isPrototypeTestAccount: true,
-  fullName: 'Nazar Hussain',
+  fullName: 'Zain UL Abideen',
   /** ProfileScreen stacked display (newline separates lines). */
-  profileName: 'NAZAR\nHUSSAIN',
-  handle: '@NazarHussain',
+  profileName: 'ZAIN UL\nABIDEEN',
+  handle: '@ZainULAbideen',
   // LoginScreen01 UI masking (Figma 15-asterisk pattern)
-  // nazar.hussain@gmail.com → n***************n@gmail.com
-  email: 'nazar.hussain@gmail.com',
-  /** Printed on 672 (2).pdf */
+  // humairaamc26@gmail.com → h***************6@gmail.com
+  email: 'humairaamc26@gmail.com',
   membershipNumber: 'P101684505',
-  /** Personal postal from 672 (2).pdf "Your details". */
+  /** Personal postal (kept from 672 (2).pdf Your details address). */
   personalAddressLines: [
     'Office 2587 321-323 High Road, Chadwell Health',
     'Essex, RM6 6AX',
@@ -54,7 +52,7 @@ sampleAccountIdentity.loginAvatarInitial = getLoginAvatarInitial(sampleAccountId
 /**
  * EUR account details for AccountDetailsEURScreen03 / EUR IBAN pill.
  * Banking identifiers from 672 (2).pdf "Paid out from".
- * Postal shown under "Bank name and address" from PDF "Your details" address.
+ * Holder name follows selected prototype identity.
  */
 export const authorizedReceivingEurAccount = {
   accountName: sampleAccountIdentity.fullName,
