@@ -7,6 +7,7 @@ import {
   sortStatementTransactions,
 } from '../../data/eurStatementImport'
 import { eurInteractiveTestTransaction } from '../../data/eurInteractiveTestTransaction'
+import { zhichaoWangImportTransfer } from '../../data/mockData'
 
 /* ── Local assets (extracted from Figma nodes 31:454 & 24:144) ── */
 import imgClose         from '../../assets/accounts/eur/btn-close.png'
@@ -51,10 +52,11 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
   const [interestVisible, setInterestVisible] = useState(true)
   const [isScrolled, setIsScrolled]           = useState(false)
   const scrollRef                             = useRef(null)
-  // 40 imported statement rows (read-only) + 1 interactive UI-test transfer.
+  // 40 statement rows (read-only) + interactive UI-test + unverified 672 (2) import.
   const listTransactions = sortStatementTransactions([
     ...eurStatementTransactions,
     eurInteractiveTestTransaction,
+    zhichaoWangImportTransfer,
   ])
 
   useEffect(() => {
@@ -269,7 +271,7 @@ function AccountBalanceEURScreen({ onClose, onSelectTransaction, onOpenDetails }
             {listTransactions.map((tx) => {
               const iconSrc = txIconMap[tx.listIconKey] || imgTxDown
               const listName = tx.listDisplayName || tx.displayName || tx.title
-              const isInteractive = Boolean(tx.isInteractiveTest)
+              const isInteractive = Boolean(tx.isInteractiveTest || tx.unverifiedImport)
               const rowClass = isInteractive
                 ? 'eur-screen__tx-row'
                 : 'eur-screen__tx-row eur-screen__tx-row--readonly'

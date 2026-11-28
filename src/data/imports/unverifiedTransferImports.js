@@ -10,6 +10,48 @@
 
 export const unverifiedTransferImports = {
   /**
+   * Source file: 672 (2).pdf
+   * Local private copy: scratch/private-reference/672_2_PRIVATE.pdf
+   * Sender Nazar Hussain → Zhichao Wang, −672 EUR.
+   * Note: PDF prints BST on November 23 (UK winter is GMT) — flag timezone discrepancy.
+   * Paid-out-from IBAN is sender-side only — does not set receiving-account ownership.
+   */
+  'import-672-2-nazar-zhichao-672': {
+    verified: false,
+    sourceFileName: '672 (2).pdf',
+    privateStoragePath: 'scratch/private-reference/672_2_PRIVATE.pdf',
+    publicConfirmationPath: null,
+    linkedTransactionId: 'tx-import-zhichao-wang-672',
+    extracted: {
+      senderName: 'Nazar Hussain',
+      senderAddressLines: [
+        'Office 2587 321-323 High Road, Chadwell Health',
+        'Essex, RM6 6AX',
+        'United Kingdom',
+      ],
+      recipientName: 'Zhichao Wang',
+      amountMajor: 672.0,
+      currency: 'EUR',
+      feesMajor: 0.0,
+      createdAtSource: 'November 23, 2026 11:36:58 BST',
+      fundedAtSource: 'November 23, 2026 11:43:25 BST',
+      paidOutAtSource: 'November 23, 2026',
+      payoutClockTimeAvailable: false,
+      novemberBstDiscrepancy: true,
+      transferNumberPrinted: '#2858268525',
+      membershipNumberPrinted: 'P101684505',
+      bankingPartnerReference: 'GW26100723803737',
+      paymentReference: 'Nazar Hussain',
+      // Paid-out-from (sender-side) — not the authorized EUR receiving IBAN.
+      senderSideIban: 'BE58 9030 1491 1979',
+      senderSideBic: 'TRWIBEB1XXX',
+      recipientBankName: 'BUNQ NIEDERLASSUNG DEUTSCHLAND',
+      recipientIban: 'DE33 3701 9000 1011 6510 21',
+      recipientBic: 'BUNQDE82XXX',
+    },
+  },
+
+  /**
    * Source file: 672 _1_.pdf
    * Local private copy: scratch/private-reference/672_1_rita-kneisel-PRIVATE.pdf
    */

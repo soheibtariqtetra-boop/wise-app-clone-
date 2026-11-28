@@ -79,3 +79,66 @@ export const shahanVerifiedTimelineFixtures = formatTransferTimelineEvents({
   paidOutAtSource: 'November 24, 2026',
   timeZone: TIMELINE_CET_TIMEZONE,
 })
+
+/** Calendar anchor matching 672 (2).pdf BST create stamp (printed wall clock). */
+export const ZHICHAO_TIMELINE_FIXTURE_DATE_STR = '2026-11-23T11:36:58+01:00'
+
+/**
+ * Isolated UI-test clocks for Zhichao import (672 (2).pdf).
+ * Required display sequence: 11:36 → 11:38 → 11:42 → 11:43 AM.
+ * Does NOT overwrite createdAtSource / fundedAtSource / paidOutAtSource.
+ */
+export const ZHICHAO_UI_TEST_REFERENCE_CLOCKS = {
+  setup: { hours24: 11, minutes: 36 },
+  funded: { hours24: 11, minutes: 38 },
+  payout: { hours24: 11, minutes: 42 },
+  completion: { hours24: 11, minutes: 43 },
+}
+
+export const zhichaoUiTestClockLabels = {
+  setup: formatTimelineClockTime(11, 36),
+  funded: formatTimelineClockTime(11, 38),
+  payout: formatTimelineClockTime(11, 42),
+  completion: formatTimelineClockTime(11, 43),
+}
+
+export const zhichaoUiTestFixtures = {
+  timelineTimestamp: formatTimelineTimestamp(
+    ZHICHAO_TIMELINE_FIXTURE_DATE_STR,
+    zhichaoUiTestClockLabels.setup,
+    TIMELINE_CET_TIMEZONE,
+  ),
+  timelineSetupTimestamp: formatTimelineTimestamp(
+    ZHICHAO_TIMELINE_FIXTURE_DATE_STR,
+    zhichaoUiTestClockLabels.setup,
+    TIMELINE_CET_TIMEZONE,
+  ),
+  timelineFundedTimestamp: formatTimelineTimestamp(
+    ZHICHAO_TIMELINE_FIXTURE_DATE_STR,
+    zhichaoUiTestClockLabels.funded,
+    TIMELINE_CET_TIMEZONE,
+  ),
+  timelinePayoutTimestamp: formatTimelineTimestamp(
+    ZHICHAO_TIMELINE_FIXTURE_DATE_STR,
+    zhichaoUiTestClockLabels.payout,
+    TIMELINE_CET_TIMEZONE,
+  ),
+  timelineCompletionTimestamp: formatTimelineTimestamp(
+    ZHICHAO_TIMELINE_FIXTURE_DATE_STR,
+    zhichaoUiTestClockLabels.completion,
+    TIMELINE_CET_TIMEZONE,
+  ),
+}
+
+/**
+ * Verified financial timeline shape for Zhichao (672 (2).pdf):
+ * create + fund have BST clocks; payout/completion are date-only.
+ * November BST print flagged — UK winter is normally GMT.
+ */
+export const zhichaoVerifiedTimelineFixtures = formatTransferTimelineEvents({
+  dateStr: ZHICHAO_TIMELINE_FIXTURE_DATE_STR,
+  createdAtSource: 'November 23, 2026 11:36:58 BST',
+  fundedAtSource: 'November 23, 2026 11:43:25 BST',
+  paidOutAtSource: 'November 23, 2026',
+  timeZone: TIMELINE_CET_TIMEZONE,
+})

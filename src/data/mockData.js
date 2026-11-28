@@ -4,7 +4,10 @@
  */
 
 import { accountBalances, EUR_TO_GBP_RATE as LEDGER_EUR_TO_GBP_RATE } from './accountBalances.js'
-import { timelineUiTestFixtures } from './fixtures/timelineTimeFixtures.js'
+import {
+  timelineUiTestFixtures,
+  zhichaoUiTestFixtures,
+} from './fixtures/timelineTimeFixtures.js'
 import { eurSampleTransactions } from './eurSampleTransactions.js'
 
 /** Newest-first by structured dateStr (ISO). Do not sort by formatted date labels. */
@@ -197,6 +200,64 @@ export const brigitteSchmidtIncomingDemo = {
   "transactionNumber": "#2418161688",
 }
 
+// Import from 672 (2).pdf — private only (scratch/private-reference/672_2_PRIVATE.pdf).
+// Sender Nazar Hussain → Zhichao Wang, −672 EUR.
+// Paid-out-from IBAN/BIC stay on senderSideBankDetails (do not rewrite receiving account).
+// Source prints BST on 23 Nov — flag timezone discrepancy; payout clock unavailable.
+// Not posted to EUR ledger until verified (see unverifiedTransferImports).
+// Profile identity (Zain UL Abideen) is separate — transfer sender is Nazar Hussain.
+export const zhichaoWangImportTransfer = {
+  "id": "tx-import-zhichao-wang-672",
+  "type": "transfer",
+  "isDemo": true,
+  "isSimulated": false,
+  "unverifiedImport": true,
+  "importKey": "import-672-2-nazar-zhichao-672",
+  "title": "ZHICHAO WANG",
+  "displayName": "ZHICHAO WANG",
+  "fullRecipientName": "ZHICHAO WANG",
+  "compactRecipientName": "ZHICHAO WANG",
+  "listDisplayName": "ZHICHAO WANG",
+  "titleColor": "#F3F5F1",
+  "amount": "-672 EUR",
+  "amountColor": "#F3F5F1",
+  "listIconKey": "up",
+  "dateGroup": "Monday, November 23",
+  "dateStr": "2026-11-23T11:36:58+01:00",
+  "currency": "EUR",
+  "date": "Monday, November 23",
+  // Verified financial source stamps (PDF) — kept separate from UI clocks.
+  "createdAtSource": "November 23, 2026 11:36:58 BST",
+  "fundedAtSource": "November 23, 2026 11:43:25 BST",
+  "paidOutAtSource": "November 23, 2026",
+  "novemberBstDiscrepancy": true,
+  "transactionNumber": "#2858268525",
+  "pdfTransferReferencePrinted": "#2858268525",
+  "bankingPartnerReference": "GW26100723803737",
+  "membershipNumberPrinted": "P101684505",
+  "feesLabel": "0.00 EUR",
+  "recipientReceivedLabel": "ZHICHAO WANG received",
+  "senderAccountName": "Nazar Hussain's",
+  // Isolated UI-test clocks (11:36 / 11:38 / 11:42 / 11:43 AM) — not PDF payout times.
+  ...zhichaoUiTestFixtures,
+  "timelineCompletionTitle": "Your transfer's complete",
+  "timelineCompletionDetail": "We sent 672 EUR to ZHICHAO WANG.",
+  "recipientBankDetails": {
+    "bankDetailsHeadingName": "Zhichao Wang",
+    "accountHolderName": "Zhichao Wang",
+    "swiftBic": "BUNQDE82XXX",
+    "iban": "DE33 3701 9000 1011 6510 21",
+    "bankNameLines": [
+      "BUNQ NIEDERLASSUNG DEUTSCHLAND"
+    ]
+  },
+  "senderSideBankDetails": {
+    "iban": "BE58 9030 1491 1979",
+    "swiftBic": "TRWIBEB1XXX",
+    "note": "Paid-out-from identifiers from 672 (2).pdf — unverified; not receiving-account ownership"
+  }
+}
+
 // Import from replaced 672 _1_ (1).pdf — confirmation at public/confirmations/rita-kneisel-shahan-confirmation.pdf.
 // Sender Rita und Günther Kneisel → Muhammad Shahan Afzal Khan, −1,538 EUR.
 // Recipient BIC GENODE51SB2 (replacement PDF). Payout clock unavailable on source.
@@ -385,6 +446,12 @@ export const mockFullTransactions = [
     "transactions": [
       viktorCherniavskyiDemoTransfer,
       muhammadShahanAfzalKhanImportTransfer
+    ]
+  },
+  {
+    "dateGroup": "Monday, November 23",
+    "transactions": [
+      zhichaoWangImportTransfer
     ]
   },
   {
